@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <!--
+    Álgebra Lineal – Unidad 1 (revisión pedagógica + técnica)
+    ▸ Estilo claro institucional (blancos + azul acero)
+    ▸ Todo en un solo archivo HTML (carga externa solo de Google Fonts y MathJax por CDN)
+    ▸ Novedades:
+       1) Diapositiva 0: Nomenclatura y Notación
+       2) Diapositiva 0b: Mapa conceptual (SVG inline)
+       3) Bloques "Mostrar desarrollo" (details/summary) en operaciones y determinantes
+       4) Uniformización de simbología (\mathbb{R}^{m\times n}, a_{ij}, \det(A), \ker(A), \operatorname{rank} A)
+       5) Colores pedagógicos en multiplicación (resaltar filas/columnas)
+       6) Accesibilidad (contraste, skip-link, atajos, focus states)
+  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Álgebra Lineal - Unidad I: Matrices y Determinantes - Semanas 1-4 (revisión clara)" />
+  <title>Unidad I: Matrices y Determinantes — Álgebra Lineal (estilo claro)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Paleta institucional clara */
+      --bg: #f7f9fc;              /* fondo base */
+      --panel: #ffffff;           /* paneles/tarjetas */
+      --ink: #0f172a;             /* texto principal */
+      --muted: #475569;           /* texto secundario */
+      --primary: #1565c0;         /* azul acero institucional */
+      --secondary: #00a88b;       /* acento verde-azulado */
+      --accent: #fb8c00;          /* acento cálido */
+      --success: #1b9e77;
+      --warn: #f59e0b;
+      --danger: #d1435b;
+      --steel: #64748b;
+
+      --border: 1px solid rgba(2, 6, 23, 0.08);
+      --shadow-sm: 0 4px 16px rgba(2, 6, 23, 0.06);
+      --shadow-md: 0 10px 30px rgba(2, 6, 23, 0.08);
+      --radius-lg: 20px;
+    }
+    *{box-sizing:border-box}
+    html, body{height:100%;}
+    body{
+      margin:0; font:16px/1.65 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--ink); background:
+        radial-gradient(1000px 500px at 80% -10%, rgba(21,101,192,0.06) 0%, transparent 70%),
+        radial-gradient(800px 400px at 10% 110%, rgba(0,168,139,0.07) 0%, transparent 60%),
+        var(--bg);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    a.skip-link{position:absolute;left:-9999px;top:auto}
+    a.skip-link:focus{left:12px;top:12px;background:#000;color:#fff;padding:8px 12px;border-radius:8px;z-index:1000}
+
+    /* Ribbon de controles */
+    .ribbon{position:fixed; inset:10px 10px auto 10px; display:flex; gap:12px; z-index:60; backdrop-filter:saturate(1.2) blur(8px); flex-wrap:wrap}
+    .ribbon .block{display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:14px; background:rgba(255,255,255,0.9); border:var(--border); box-shadow: var(--shadow-sm)}
+    .ribbon .block h4{margin:0 6px 0 0; color:var(--steel); font:700 12px 'JetBrains Mono', monospace; letter-spacing:.05em; text-transform:uppercase}
+    .btn{appearance:none; border:var(--border); border-radius:12px; padding:9px 12px; color:var(--ink); background:#fff; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font:600 13px 'Inter',sans-serif; transition:.18s; box-shadow: var(--shadow-sm)}
+    .btn:hover{transform:translateY(-1px); box-shadow: var(--shadow-md)}
+    .btn[aria-pressed="true"]{outline:2px solid var(--primary); outline-offset:1px; background:linear-gradient(145deg, #e3f2fd, #ffffff)}
+    .kbd{font:11px/1 'JetBrains Mono',monospace; color:#334155; background:#eef2ff; padding:3px 8px; border-radius:8px; border:1px solid #c7d2fe}
+
+    /* Deck + slides */
+    .deck{position:fixed; inset:80px 0 0 0; display:grid; grid-template-columns:1fr; place-items:center}
+    .slide{width:min(1160px, 94vw); height:min(660px, 84vh); border-radius:var(--radius-lg); background:var(--panel); border:var(--border); box-shadow: var(--shadow-md); padding:28px 34px; display:none; grid-template-rows:auto 1fr auto; gap:16px; position:relative; overflow:auto}
+    .slide.active{display:grid; animation:fadeIn .28s ease-out}
+    @keyframes fadeIn{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)}}
+
+    .badge{font:700 11px 'JetBrains Mono', monospace; letter-spacing:.18em; text-transform:uppercase; color:#0b5394; background:#e3f2fd; border:1px solid #bbdefb; padding:7px 12px; border-radius:999px; align-self:flex-start}
+    h1{margin:0; font:900 clamp(26px, 3.4vw, 38px)/1.2 'Inter', sans-serif; color:#0b3c7b}
+    h2{margin:0; font:800 clamp(20px, 2.6vw, 30px)/1.25 'Inter', sans-serif; color:#0f4c81}
+    h3{margin:0; font:700 clamp(16px, 2.2vw, 22px)/1.25 'Inter', sans-serif; color:#0f4c81}
+    p, li{color:var(--ink)}
+
+    .footer{display:flex; align-items:center; justify-content:space-between; color:#55627a}
+    .progress{height:8px; width:45%; background:#eef2ff; border-radius:999px; overflow:hidden; border:1px solid #c7d2fe}
+    .progress>i{display:block; height:100%; width:0; background:linear-gradient(90deg, #1565c0, #00a88b)}
+
+    .card{background:#ffffff; border:var(--border); border-radius:14px; padding:16px 18px; margin:10px 0; box-shadow:var(--shadow-sm)}
+    .two-col{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    @media (max-width: 900px){.two-col{grid-template-columns:1fr}}
+
+    .info-box, .warning-box, .success-box, .tip-box{margin: 10px 0; padding: 12px 14px; border-radius:12px; border: var(--border)}
+    .info-box{background:#e6fffb; border-left:4px solid var(--secondary)}
+    .warning-box{background:#fff4f3; border-left:4px solid var(--danger)}
+    .success-box{background:#ecfdf5; border-left:4px solid var(--success)}
+    .tip-box{background:#fff7ed; border-left:4px solid var(--warn)}
+
+    table{width:100%; border-collapse:collapse; margin:10px 0}
+    th, td{border:1px solid #e5e7eb; padding:8px; text-align:left}
+    th{background:#f3f4f6}
+
+    /* Panel multimedia (opcional) */
+    .media-dock{display:none; position:sticky; top:88px; max-width:420px; margin-left:auto; margin-right:clamp(8px,4vw,24px); z-index:30}
+    @media (min-width:1280px){.media-dock{display:block}}
+    .media-dock .pane{background:#fff; border:var(--border); border-radius:12px; padding:10px 12px; box-shadow: var(--shadow-sm); max-height: calc(100vh - 120px); overflow:auto}
+
+    /* Bloques desplegables de desarrollo */
+    details.dev{border:1px dashed #cbd5e1; border-radius:12px; padding:10px 12px; background:#f8fafc}
+    details.dev>summary{cursor:pointer; font-weight:700; color:#0b3c7b}
+    details.dev[open]{background:#eef2ff; border-color:#bcd1ff}
+
+    /* Resaltado pedagógico para producto matricial */
+    .mul-grid{display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:10px; align-items:center}
+    .matrix{display:inline-grid; grid-auto-rows:minmax(28px,auto); gap:4px; padding:8px; border:1px solid #cbd5e1; border-radius:10px; background:#fff}
+    .matrix .row{display:grid; grid-auto-flow:column; gap:6px}
+    .cell{min-width:34px; text-align:center; padding:4px 6px; border-radius:8px}
+    .row-hl .cell{background:#e3f2fd}
+    .col-hl .cell{background:#e6fffb}
+    .eq{font-weight:800; color:#0b3c7b}
+
+    /* Ayuda modal */
+    .modal{position:fixed; inset:0; background:rgba(2,6,23,0.55); display:none; z-index:90}
+    .modal .box{background:#fff; border-radius:16px; width:min(720px, 94vw); margin:12vh auto; padding:22px 24px; box-shadow: var(--shadow-md); border:var(--border)}
+
+  </style>
+  <!-- MathJax 3 (CDN). Todo el contenido LaTeX se procesa en cliente. -->
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <div class="course-info" style="margin:6px 14px 0; font-size:.95rem; color:#334155">Universidad SABES · Licenciatura: Ingeniería en Logística · Álgebra Lineal</div>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <nav class="ribbon" aria-label="Barra de controles">
+    <div class="block" role="group" aria-label="Navegación">
+      <h4>Navegación</h4>
+      <button class="btn" id="prevBtn" title="Anterior (←)">⟵ Anterior <span class="kbd">←</span></button>
+      <button class="btn" id="nextBtn" title="Siguiente (→)">Siguiente ⟶ <span class="kbd">→</span></button>
+    </div>
+    <div class="block" role="group" aria-label="Reproducción">
+      <h4>Repro</h4>
+      <button class="btn" id="playBtn" aria-pressed="false" title="Auto-avance (P)">▶ Play <span class="kbd">P</span></button>
+      <button class="btn" id="pauseBtn" title="Pausar (O)">⏸ Pausa <span class="kbd">O</span></button>
+      <button class="btn" id="resetBtn" title="Reiniciar (R)">⟲ Reset <span class="kbd">R</span></button>
+    </div>
+    <div class="block" role="group" aria-label="Vista">
+      <h4>Vista</h4>
+      <button class="btn" id="fullBtn" title="Pantalla completa (F)">⤢ Pantalla completa <span class="kbd">F</span></button>
+      <button class="btn" id="helpBtn" title="Ayuda (?)">❓ Ayuda <span class="kbd">?</span></button>
+      <button class="btn" id="fontDec" title="Reducir texto (A-)">A-</button>
+      <button class="btn" id="fontReset" title="Tamaño por defecto (A)">A</button>
+      <button class="btn" id="fontInc" title="Aumentar texto (A+)">A+</button>
+      <button class="btn" id="mediaBtn" title="Mostrar/ocultar panel multimedia">🎞️ Media</button>
+    </div>
+  </nav>
+
+  <main class="deck" id="deck" tabindex="-1">
+    <!-- ==================== NUEVAS DIAPOSITIVAS (0 y 0b) ==================== -->
+    <section class="slide active" data-week="0" data-slide="0">
+      <span class="badge">Convenciones</span>
+      <h1>📘 Nomenclatura y notación (Unidad 1)</h1>
+      <div class="card">
+        <p>En esta unidad trabajaremos con matrices, vectores y transformaciones lineales. Usaremos la siguiente notación estándar:</p>
+        <table>
+          <thead>
+            <tr><th>Símbolo</th><th>Significado</th><th>Lectura / Uso</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>$A \in \mathbb{R}^{m\times n}$</code></td><td>Matriz real de <em>m</em> filas y <em>n</em> columnas</td><td>"A pertenece a R potencia m por n"</td></tr>
+            <tr><td><code>$a_{ij}$</code></td><td>Entrada en fila <em>i</em>, columna <em>j</em></td><td>Elemento de A en (i,j)</td></tr>
+            <tr><td><code>$A^T$</code></td><td>Transpuesta de A</td><td>Intercambia filas por columnas</td></tr>
+            <tr><td><code>$\det(A)$</code></td><td>Determinante</td><td>Factor de escala (área/volumen) de la transformación</td></tr>
+            <tr><td><code>$\ker(A)$</code></td><td>Núcleo</td><td>Conjunto de vectores que A envía al cero</td></tr>
+            <tr><td><code>$\operatorname{rank} A$</code></td><td>Rango</td><td>Número de columnas l.i. (pivotes)</td></tr>
+            <tr><td><code>$I_m$</code></td><td>Matriz identidad de orden <em>m</em></td><td>Neutro multiplicativo</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip-box"><strong>Sugerencia:</strong> Refiérete a esta tabla cuando aparezcan símbolos nuevos en las diapositivas.</div>
+      <div class="footer"><span>0/30</span><div class="progress"><i></i></div><span class="week-tag">Unidad 1</span></div>
+    </section>
+
+    <section class="slide" data-week="0" data-slide="0.5">
+      <span class="badge">Mapa</span>
+      <h2>Mapa conceptual · Unidad 1</h2>
+      <div class="card" style="padding:20px">
+        <!-- Diagrama SVG inline (flujo) -->
+        <svg viewBox="0 0 940 260" width="100%" height="auto" role="img" aria-label="Mapa conceptual de la Unidad 1">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1565c0"/><stop offset="100%" stop-color="#00a88b"/>
+            </linearGradient>
+            <style>
+              .n{font:700 16px Inter, sans-serif; fill:#0f172a}
+              .s{font:600 13px Inter, sans-serif; fill:#334155}
+              .box{rx:14; ry:14; fill:#fff; stroke:#cbd5e1;}
+              .arrow{stroke:url(#g1); stroke-width:3; marker-end:url(#m); fill:none}
+            </style>
+            <marker id="m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#1565c0"/>
+            </marker>
+          </defs>
+          <!-- Boxes -->
+          <rect class="box" x="40" y="40" width="200" height="80"/>
+          <text class="n" x="140" y="73" text-anchor="middle">Matrices</text>
+          <text class="s" x="140" y="98" text-anchor="middle">notación · tipos</text>
+
+          <rect class="box" x="300" y="40" width="220" height="80"/>
+          <text class="n" x="410" y="73" text-anchor="middle">Operaciones</text>
+          <text class="s" x="410" y="98" text-anchor="middle">suma · producto · propiedades</text>
+
+          <rect class="box" x="570" y="40" width="260" height="80"/>
+          <text class="n" x="700" y="73" text-anchor="middle">Transf. elementales</text>
+          <text class="s" x="700" y="98" text-anchor="middle">escalonamiento · inversa</text>
+
+          <rect class="box" x="380" y="150" width="220" height="80"/>
+          <text class="n" x="490" y="183" text-anchor="middle">Determinantes</text>
+          <text class="s" x="490" y="208" text-anchor="middle">invertibilidad · adjunta</text>
+
+          <!-- Arrows -->
+          <path class="arrow" d="M 240 80 C 270 80 270 80 300 80"/>
+          <path class="arrow" d="M 520 80 C 545 80 545 80 570 80"/>
+          <path class="arrow" d="M 700 120 C 700 140 700 140 610 150"/>
+          <path class="arrow" d="M 490 150 C 490 130 490 120 410 120"/>
+        </svg>
+      </div>
+      <div class="info-box">Este mapa te orienta sobre la progresión de contenidos y las relaciones entre temas.</div>
+      <div class="footer"><span>0b/30</span><div class="progress"><i></i></div><span class="week-tag">Unidad 1</span></div>
+    </section>
+
+    <!-- ==================== SEMANA 1: MATRICES ==================== -->
+    <section class="slide" data-week="1" data-slide="1">
+      <span class="badge">Semana 1 · Matrices</span>
+      <h1>1.1 Matrices</h1>
+      <div class="two-col">
+        <div class="card">
+          <h3>🎯 Objetivo de aprendizaje</h3>
+          <p>Comprender el concepto, notación, clasificación y tipos de matrices; interpretar su estructura y función en el álgebra lineal y aplicaciones en ingeniería.</p>
+        </div>
+        <div class="card">
+          <h3>💥 Preguntas detonadoras</h3>
+          <ul>
+            <li>¿Cómo modelan las matrices problemas reales (logística, mezcla de producción)?</li>
+            <li>¿Qué cambia entre multiplicar números y multiplicar matrices?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"><span>1/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 1</span></div>
+    </section>
+
+    <section class="slide" data-week="1" data-slide="2">
+      <span class="badge">Definición</span>
+      <h2>1.1.1 Definición de matriz</h2>
+      <div class="card">
+        <h3>📘 Concepto fundamental</h3>
+        <p>Una <strong>matriz</strong> es un arreglo rectangular de elementos (números, símbolos, etc.) en <em>m</em> filas y <em>n</em> columnas. Si $A \in \mathbb{R}^{m\times n}$, su forma típica es:</p>
+        <p style="text-align:center; margin: 12px 0; font-size: 1.05em;">
+          $$A = \begin{bmatrix}
+            a_{11} & a_{12} & \dots & a_{1n} \\
+            a_{21} & a_{22} & \dots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} & a_{m2} & \dots & a_{mn}
+          \end{bmatrix}$$
+        </p>
+      </div>
+      <div class="info-box">💡 <strong>Aplicación:</strong> representación de datos, transformaciones geométricas y resolución de sistemas de ecuaciones.</div>
+      <div class="footer"><span>2/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 1</span></div>
+    </section>
+
+    <section class="slide" data-week="1" data-slide="3">
+      <span class="badge">Notación</span>
+      <h2>Notación y orden de una matriz</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>📏 Orden</h3>
+          <ul>
+            <li><strong>Orden:</strong> $m \times n$ (m filas, n columnas)</li>
+            <li><strong>Elemento:</strong> $a_{ij}$ indica posición (fila i, columna j)</li>
+          </ul>
+          <p><strong>Ejemplo:</strong></p>
+          <p style="text-align:center">$$B=\begin{bmatrix}2 & -1 & 3 \\ 0 & 4 & 5\end{bmatrix}$$</p>
+        </div>
+        <div class="card">
+          <h3>🔍 Interpretación</h3>
+          <p>B es de orden <strong>2×3</strong>:</p>
+          <ul>
+            <li>2 filas, 3 columnas</li>
+            <li>$b_{12}=-1$; $b_{23}=5$</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"><span>3/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 1</span></div>
+    </section>
+
+    <section class="slide" data-week="1" data-slide="4">
+      <span class="badge">Clasificación</span>
+      <h2>1.1.2 Clasificación de matrices</h2>
+      <div class="card">
+        <table>
+          <tr><th>Tipo</th><th>Condición</th><th>Ejemplo</th></tr>
+          <tr><td><strong>Cuadrada</strong></td><td>$m=n$</td><td>$3\times3$</td></tr>
+          <tr><td><strong>Rectangular</strong></td><td>$m\neq n$</td><td>$2\times3$</td></tr>
+          <tr><td><strong>Fila</strong></td><td>$m=1$</td><td>$1\times4$</td></tr>
+          <tr><td><strong>Columna</strong></td><td>$n=1$</td><td>$3\times1$</td></tr>
+        </table>
+      </div>
+      <div class="footer"><span>4/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 1</span></div>
+    </section>
+
+    <section class="slide" data-week="1" data-slide="5">
+      <span class="badge">Tipos especiales</span>
+      <h2>1.1.3 Matriz nula e identidad</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>🔹 Nula</h3>
+          <p>Todos sus elementos son cero: $Z=\begin{bmatrix}0&0\\0&0\end{bmatrix}$</p>
+          <p><strong>Propiedad:</strong> $A+Z=A$</p>
+        </div>
+        <div class="card">
+          <h3>🔹 Identidad</h3>
+          <p>Diagonal principal con unos: $I_3=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}$</p>
+          <p><strong>Propiedad:</strong> $AI=IA=A$</p>
+        </div>
+      </div>
+      <div class="footer"><span>5/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 1</span></div>
+    </section>
+
+    <section class="slide" data-week="1" data-slide="6">
+      <span class="badge">Tipos especiales</span>
+      <h2>Diagonal y transpuesta</h2>
+      <div class="two-col">
+        <div class="card"><h3>🔹 Diagonal</h3><p>$D=\begin{bmatrix}4&0&0\\0&-2&0\\0&0&5\end{bmatrix}$</p></div>
+        <div class="card"><h3>🔹 Transpuesta</h3><p>$(A^T)^T=A$</p></div>
+      </div>
+      <div class="footer"><span>6/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 1</span></div>
+    </section>
+
+    <section class="slide" data-week="1" data-slide="7">
+      <span class="badge">Tipos especiales</span>
+      <h2>Simétrica y triangulares</h2>
+      <div class="card"><h3>🔹 Simétrica</h3><p>$A=A^T$</p></div>
+      <div class="two-col">
+        <div class="card"><h3>🔹 Triangular superior</h3><p>$\begin{bmatrix}1&2&3\\0&4&5\\0&0&6\end{bmatrix}$</p></div>
+        <div class="card"><h3>🔹 Triangular inferior</h3><p>$\begin{bmatrix}7&0&0\\2&8&0\\1&5&9\end{bmatrix}$</p></div>
+      </div>
+      <div class="footer"><span>7/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 1</span></div>
+    </section>
+
+    <section class="slide" data-week="1" data-slide="8">
+      <span class="badge">Aplicaciones</span>
+      <h2>Aplicaciones de matrices</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Sistemas lineales:</strong> resolución matricial</li>
+          <li><strong>Transformaciones geométricas:</strong> rotaciones, escalados</li>
+          <li><strong>Redes/grafos:</strong> matrices de adyacencia</li>
+          <li><strong>Imágenes:</strong> filtros y convoluciones</li>
+          <li><strong>Economía:</strong> insumo-producto</li>
+          <li><strong>Ingeniería:</strong> circuitos y estructuras</li>
+        </ul>
+      </div>
+      <div class="footer"><span>8/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 1</span></div>
+    </section>
+
+    <!-- ==================== SEMANA 2: OPERACIONES ==================== -->
+    <section class="slide" data-week="2" data-slide="10">
+      <span class="badge">Semana 2 · Operaciones</span>
+      <h1>1.1.4 Operaciones con matrices</h1>
+      <div class="two-col">
+        <div class="card"><h3>🎯 Objetivo</h3><p>Aplicar suma, resta, producto, y producto por vector para modelar y resolver problemas.</p></div>
+        <div class="card"><h3>💥 Preguntas</h3><ul><li>¿En qué difiere el producto matricial del escalar?</li><li>¿Qué restricciones de dimensiones existen?</li></ul></div>
+      </div>
+      <div class="footer"><span>10/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 2</span></div>
+    </section>
+
+    <section class="slide" data-week="2" data-slide="11">
+      <span class="badge">Operaciones básicas</span>
+      <h2>Suma y resta</h2>
+      <div class="card">
+        <p><strong>Requisito:</strong> mismo orden. Elemento a elemento: $$A+B=[a_{ij}]+[b_{ij}]=[a_{ij}+b_{ij}]$$</p>
+        <details class="dev"><summary>Mostrar desarrollo</summary>
+          <p>Ejemplo: $\begin{bmatrix}1&2\\3&4\end{bmatrix}+\begin{bmatrix}5&6\\7&8\end{bmatrix}=\begin{bmatrix}6&8\\10&12\end{bmatrix}$</p>
+        </details>
+      </div>
+      <div class="footer"><span>11/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 2</span></div>
+    </section>
+
+    <section class="slide" data-week="2" data-slide="12">
+      <span class="badge">Operaciones básicas</span>
+      <h2>Multiplicación por escalar</h2>
+      <div class="card">
+        <p>$$cA=c\cdot[a_{ij}]=[c\,a_{ij}]$$</p>
+        <details class="dev"><summary>Mostrar desarrollo</summary>
+          <p>Si $c=3$ y $A=\begin{bmatrix}1&2\\3&4\end{bmatrix}$ entonces $3A=\begin{bmatrix}3&6\\9&12\end{bmatrix}$.</p>
+        </details>
+      </div>
+      <div class="footer"><span>12/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 2</span></div>
+    </section>
+
+    <section class="slide" data-week="2" data-slide="13">
+      <span class="badge">Operaciones avanzadas</span>
+      <h2>Producto matricial (matriz × matriz)</h2>
+      <div class="card">
+        <p><strong>Condición:</strong> si $A\in\mathbb{R}^{m\times n}$ y $B\in\mathbb{R}^{n\times p}$, entonces $AB\in\mathbb{R}^{m\times p}$. Además, $\,(AB)_{ij}=\sum_{k=1}^{n} a_{ik}b_{kj}$.</p>
+        <!-- Visual interactivo: resaltar fila/columna -->
+        <div class="mul-grid" aria-label="Producto A por B resaltando fila y columna">
+          <div class="matrix" id="matA">
+            <div class="row row-hl"><span class="cell">1</span><span class="cell">2</span></div>
+            <div class="row"><span class="cell">3</span><span class="cell">4</span></div>
+          </div>
+          <div class="eq">×</div>
+          <div class="matrix" id="matB">
+            <div class="row col-hl"><span class="cell">2</span><span class="cell">0</span></div>
+            <div class="row col-hl"><span class="cell">1</span><span class="cell">2</span></div>
+          </div>
+          <div class="eq">=</div>
+          <div class="matrix" id="matC">
+            <div class="row"><span class="cell">4</span><span class="cell">4</span></div>
+            <div class="row"><span class="cell">10</span><span class="cell">8</span></div>
+          </div>
+        </div>
+        <details class="dev"><summary>Mostrar desarrollo del elemento (1,1)</summary>
+          <p>$c_{11} = 1\cdot2 + 2\cdot1 = 4$ (fila 1 de A por columna 1 de B).</p>
+        </details>
+      </div>
+      <div class="warning-box">⚠️ No es conmutativo: en general $AB\neq BA$.</div>
+      <div class="footer"><span>13/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 2</span></div>
+    </section>
+
+    <section class="slide" data-week="2" data-slide="14">
+      <span class="badge">Operaciones avanzadas</span>
+      <h2>Producto matriz por vector</h2>
+      <div class="card">
+        <p>Si $A\in\mathbb{R}^{m\times n}$ y $x\in\mathbb{R}^n$, entonces $Ax\in\mathbb{R}^m$.</p>
+        <details class="dev"><summary>Mostrar desarrollo</summary>
+          <p>Con $A=\begin{bmatrix}1&2\\3&4\end{bmatrix}$ y $x=\begin{bmatrix}1\\-1\end{bmatrix}$: $Ax=\begin{bmatrix}-1\\-1\end{bmatrix}$.</p>
+        </details>
+      </div>
+      <div class="success-box">Base para resolver $Ax=b$.</div>
+      <div class="footer"><span>14/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 2</span></div>
+    </section>
+
+    <section class="slide" data-week="2" data-slide="15">
+      <span class="badge">Propiedades</span>
+      <h2>Propiedades de las operaciones</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Suma:</strong> conmutativa y asociativa</li>
+          <li><strong>Producto:</strong> asociativa y distributiva</li>
+          <li><strong>Neutros:</strong> $A+0=A$ y $AI=IA=A$</li>
+        </ul>
+      </div>
+      <div class="warning-box">⚠️ Recordatorio: el producto no es conmutativo.</div>
+      <div class="footer"><span>15/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 2</span></div>
+    </section>
+
+    <!-- ==================== SEMANA 3: TRANSFORMACIONES ==================== -->
+    <section class="slide" data-week="3" data-slide="17">
+      <span class="badge">Semana 3 · Transformaciones</span>
+      <h1>1.2 Transformaciones elementales por renglón</h1>
+      <div class="two-col">
+        <div class="card"><h3>🎯 Objetivo</h3><p>Aplicar transformaciones elementales para forma escalonada, núcleo, rango e inversa.</p></div>
+        <div class="card"><h3>💥 Preguntas</h3><ul><li>¿Qué significa geométricamente $\det(A)=0$?</li><li>¿Por qué importa la inversa en optimización?</li></ul></div>
+      </div>
+      <div class="footer"><span>17/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 3</span></div>
+    </section>
+
+    <section class="slide" data-week="3" data-slide="18">
+      <span class="badge">Operaciones</span>
+      <h2>1.2.1 Transformaciones elementales</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Tipo I:</strong> $R_i \leftrightarrow R_j$</li>
+          <li><strong>Tipo II:</strong> $R_i \to kR_i$ ($k\neq 0$)</li>
+          <li><strong>Tipo III:</strong> $R_i \to R_i + kR_j$</li>
+        </ul>
+      </div>
+      <div class="info-box">💡 No cambian el conjunto solución del sistema lineal asociado.</div>
+      <div class="footer"><span>18/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 3</span></div>
+    </section>
+
+    <section class="slide" data-week="3" data-slide="19">
+      <span class="badge">Forma escalonada</span>
+      <h2>Escalonamiento</h2>
+      <div class="card">
+        <p>Una matriz está en forma escalonada si: filas nulas al final; pivotes a la derecha respecto a la fila anterior; ceros debajo de cada pivote.</p>
+        <details class="dev"><summary>Mostrar ejemplo guiado</summary>
+          <p>$\begin{bmatrix}1&2&3\\0&1&4\\0&0&1\end{bmatrix}$ — Tres pivotes → rango 3.</p>
+        </details>
+      </div>
+      <div class="footer"><span>19/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 3</span></div>
+    </section>
+
+    <section class="slide" data-week="3" data-slide="20">
+      <span class="badge">Conceptos clave</span>
+      <h2>1.2.2 Núcleo y rango</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>🎯 Núcleo</h3>
+          <p>$\ker(A)=\{x\in\mathbb{R}^n: Ax=0\}$ → vectores que colapsan a 0.</p>
+        </div>
+        <div class="card">
+          <h3>📏 Rango</h3>
+          <p>$\operatorname{rank} A$ = número de pivotes = dimensión de la imagen.</p>
+        </div>
+      </div>
+      <div class="success-box">Teorema: $\dim(\ker A)+\operatorname{rank} A = n$.</div>
+      <div class="footer"><span>20/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 3</span></div>
+    </section>
+
+    <section class="slide" data-week="3" data-slide="21">
+      <span class="badge">Matriz inversa</span>
+      <h2>1.2.3 Inversa por transformaciones</h2>
+      <div class="card">
+        <p>Aplicar transformaciones a la aumentada: $[A|I]\to[I|A^{-1}]$ si existe.</p>
+        <details class="dev"><summary>Mostrar pasos</summary>
+          <ol>
+            <li>Formar $[A|I]$</li>
+            <li>Reducir a $[I|A^{-1}]$ con operaciones por renglón</li>
+            <li>Si no se llega a $I$, A no es invertible</li>
+          </ol>
+        </details>
+      </div>
+      <div class="footer"><span>21/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 3</span></div>
+    </section>
+
+    <section class="slide" data-week="3" data-slide="22">
+      <span class="badge">Ejemplo</span>
+      <h2>Ejemplo: inversa de $\begin{bmatrix}2&1\\5&3\end{bmatrix}$</h2>
+      <div class="card">
+        <details class="dev" open><summary>Mostrar desarrollo</summary>
+          <p>1) $\left[\begin{array}{cc|cc}2&1&1&0\\5&3&0&1\end{array}\right]$<br>2) $R_1\to\tfrac{1}{2}R_1$, $R_2\to R_2-5R_1$, ...<br>Resultado: $A^{-1}=\begin{bmatrix}3&-1\\-5&2\end{bmatrix}$</p>
+        </details>
+      </div>
+      <div class="footer"><span>22/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 3</span></div>
+    </section>
+
+    <!-- ==================== SEMANA 4: DETERMINANTES ==================== -->
+    <section class="slide" data-week="4" data-slide="24">
+      <span class="badge">Semana 4 · Determinantes</span>
+      <h1>1.3 Determinantes</h1>
+      <div class="two-col">
+        <div class="card"><h3>🎯 Objetivo</h3><p>Comprender propiedades del determinante, invertibilidad y método de la adjunta.</p></div>
+        <div class="card"><h3>💥 Preguntas</h3><ul><li>Interpretación geométrica de $\det(A)$</li><li>¿Qué implica $\det(A)=0$?</li></ul></div>
+      </div>
+      <div class="footer"><span>24/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 4</span></div>
+    </section>
+
+    <section class="slide" data-week="4" data-slide="25">
+      <span class="badge">Definición</span>
+      <h2>1.3.1 Definición</h2>
+      <div class="card">
+        <h3>2×2</h3>
+        <p>Para $A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$, $\det(A)=ad-bc$.</p>
+        <details class="dev"><summary>Mostrar ejemplo</summary>
+          <p>Con $A=\begin{bmatrix}3&2\\1&4\end{bmatrix}$, $\det(A)=12-2=10$.</p>
+        </details>
+      </div>
+      <div class="tip-box">Para $n>2$: regla de Sarrus (3×3) o expansión por cofactores.</div>
+      <div class="footer"><span>25/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 4</span></div>
+    </section>
+
+    <section class="slide" data-week="4" data-slide="26">
+      <span class="badge">Propiedades</span>
+      <h2>Propiedades del determinante</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Intercambio de filas:</strong> cambia el signo</li>
+          <li><strong>Fila múltiplo/combinación lineal:</strong> $\det(A)=0$</li>
+          <li><strong>Multiplicación:</strong> $\det(AB)=\det(A)\det(B)$</li>
+          <li><strong>Transpuesta:</strong> $\det(A^T)=\det(A)$</li>
+          <li><strong>Inversa:</strong> $\det(A^{-1})=1/\det(A)$</li>
+        </ul>
+        <details class="dev"><summary>Mostrar demostración breve (idea)</summary>
+          <p>Las propiedades derivan de la unicidad de la función alternante, multilineal y normalizada sobre filas/columnas.</p>
+        </details>
+      </div>
+      <div class="footer"><span>26/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 4</span></div>
+    </section>
+
+    <section class="slide" data-week="4" data-slide="27">
+      <span class="badge">Interpretación</span>
+      <h2>Determinante y transformación del espacio</h2>
+      <div class="card">
+        <p>El determinante es el <strong>factor de escala de volumen/área</strong> de la transformación lineal asociada.</p>
+        <ul>
+          <li>$|\det(A)|>1$: expande</li>
+          <li>$|\det(A)|<1$: contrae</li>
+          <li>$\det(A)=0$: colapsa dimensión</li>
+          <li>$\det(A)<0$: invierte orientación</li>
+        </ul>
+      </div>
+      <div class="success-box">Ej.: $\det(A)=2$ → el área/volumen se duplica.</div>
+      <div class="footer"><span>27/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 4</span></div>
+    </section>
+
+    <section class="slide" data-week="4" data-slide="28">
+      <span class="badge">Adjunta</span>
+      <h2>1.3.2 Inversa por adjunta</h2>
+      <div class="card">
+        <p>$$A^{-1}=\dfrac{1}{\det(A)}\,\operatorname{adj}(A)$$ si $\det(A)\neq 0$ (donde $\operatorname{adj}(A)$ es la transpuesta de cofactores).</p>
+        <details class="dev"><summary>Mostrar pasos</summary>
+          <ol>
+            <li>Calcular menores y cofactores</li>
+            <li>Formar la matriz de cofactores y transponerla</li>
+            <li>Dividir por $\det(A)$</li>
+          </ol>
+        </details>
+      </div>
+      <div class="footer"><span>28/30</span><div class="progress"><i></i></div><span class="week-tag">Semana 4</span></div>
+    </section>
+  </main>
+
+  <!-- Panel multimedia opcional (oculto en móviles) -->
+  <aside class="media-dock" aria-label="Panel multimedia" id="mediaDock">
+    <div class="pane">
+      <div class="dock-header">
+        <h4 class="dock-title" style="margin:0">Recursos</h4>
+        <div class="dock-actions" role="group" aria-label="Acciones panel">
+          <button class="btn" id="mediaMin" title="Minimizar">−</button>
+          <button class="btn" id="mediaHide" title="Ocultar">✕</button>
+        </div>
+      </div>
+      <figure id="mediaFigure"><div class="ph" style="width:100%; aspect-ratio:16/9; display:grid; place-items:center; background:#f3f4f6; color:#475569">Pulsa "Cargar video" o "Imagen".</div></figure>
+      <div class="controls" style="display:flex; gap:.5rem; margin-top:8px; flex-wrap:wrap">
+        <button class="btn" id="loadVideo">▶ Cargar video</button>
+        <button class="btn" id="showImage">🖼️ Imagen</button>
+      </div>
+      <p class="note" style="margin-top:10px; font-size:.95rem; color:#475569">Recursos multimedia de álgebra lineal.</p>
+    </div>
+  </aside>
+
+  <!-- Modal de ayuda -->
+  <div class="modal" id="helpModal">
+    <div class="box">
+      <h2 style="color: var(--primary); font-family:'JetBrains Mono',monospace; margin:0 0 12px">Atajos de teclado</h2>
+      <ul style="margin:0 0 12px; color:#1f2937">
+        <li><strong>←/→</strong> navegar entre diapositivas</li>
+        <li><strong>F</strong> pantalla completa</li>
+        <li><strong>P</strong> auto-play · <strong>O</strong> pausa · <strong>R</strong> reiniciar</li>
+        <li><strong>?</strong> mostrar/ocultar ayuda</li>
+      </ul>
+      <div style="text-align:right"><button class="btn" id="helpClose">Entendido</button></div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Navegación básica entre slides =====
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let index = slides.findIndex(s => s.classList.contains('active')) || 0;
+    const progressBar = () => {
+      const prog = document.querySelector('.slide.active .progress > i');
+      if (!prog) return; const pos = (index+1)/slides.length*100; prog.style.width = pos+'%';
+    };
+    function show(i){ slides.forEach(s=>s.classList.remove('active')); index = (i+slides.length)%slides.length; slides[index].classList.add('active'); progressBar(); }
+    document.getElementById('prevBtn').onclick = ()=> show(index-1);
+    document.getElementById('nextBtn').onclick = ()=> show(index+1);
+    document.addEventListener('keydown', e=>{
+      if(e.key==='ArrowLeft') show(index-1);
+      if(e.key==='ArrowRight') show(index+1);
+      if(e.key==='?') toggleHelp();
+      if(e.key==='F' || e.key==='f') toggleFull();
+      if(e.key==='P' || e.key==='p') play();
+      if(e.key==='O' || e.key==='o') pause();
+      if(e.key==='R' || e.key==='r') { pause(); show(0);} 
+    });
+
+    // ===== Auto-play =====
+    let timer=null; const STEP_MS=7000; // 7s
+    const playBtn = document.getElementById('playBtn');
+    function play(){ if(timer) return; playBtn.setAttribute('aria-pressed','true'); timer=setInterval(()=>show(index+1), STEP_MS);} 
+    function pause(){ playBtn.setAttribute('aria-pressed','false'); clearInterval(timer); timer=null; }
+    document.getElementById('playBtn').onclick = play;
+    document.getElementById('pauseBtn').onclick = pause;
+    document.getElementById('resetBtn').onclick = ()=>{ pause(); show(0); };
+
+    // ===== Fuente accesible =====
+    let html = document.documentElement; let base=16;
+    const setFS = v => { base = Math.max(14, Math.min(20, v)); html.style.fontSize = base+'px'; };
+    document.getElementById('fontInc').onclick = ()=> setFS(base+1);
+    document.getElementById('fontDec').onclick = ()=> setFS(base-1);
+    document.getElementById('fontReset').onclick = ()=> setFS(16);
+
+    // ===== Pantalla completa =====
+    function toggleFull(){ if(!document.fullscreenElement){ document.documentElement.requestFullscreen?.(); } else { document.exitFullscreen?.(); } }
+    document.getElementById('fullBtn').onclick = toggleFull;
+
+    // ===== Ayuda =====
+    const help = document.getElementById('helpModal');
+    const toggleHelp = ()=> help.style.display = (help.style.display==='block'?'none':'block');
+    document.getElementById('helpBtn').onclick = toggleHelp;
+    document.getElementById('helpClose').onclick = toggleHelp;
+
+    // ===== Media dock =====
+    const dock = document.getElementById('mediaDock');
+    document.getElementById('mediaBtn').onclick = ()=> dock.classList.toggle('is-hidden');
+    document.getElementById('mediaMin')?.addEventListener('click', ()=> dock.classList.toggle('is-min'));
+    document.getElementById('mediaHide')?.addEventListener('click', ()=> dock.classList.add('is-hidden'));
+    document.getElementById('loadVideo')?.addEventListener('click', ()=>{
+      document.getElementById('mediaFigure').innerHTML = '<video src="" controls style="width:100%; background:#000" aria-label="Video ejemplo"/>'
+    });
+    document.getElementById('showImage')?.addEventListener('click', ()=>{
+      document.getElementById('mediaFigure').innerHTML = '<img alt="Imagen de ejemplo" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 338%22%3E%3Crect width=%22600%22 height=%22338%22 fill=%22%23eef2ff%22/%3E%3Ctext x=%22300%22 y=%22180%22 text-anchor=%22middle%22 font-family=%22Inter%22 font-size=%2220%22 fill=%22%231565c0%22%3EIlustraci%C3%B3n Algebra Lineal%3C/text%3E%3C/svg%3E" style="width:100%" />'
+    });
+
+    // Inicializar
+    progressBar();
+  </script>
+</body>
+</html>
