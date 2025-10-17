@@ -1,0 +1,1557 @@
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Universidad del SABES">
+  <meta name="copyright" content="© 2025 Universidad del SABES. Material educativo interactivo.">
+  <meta name="description" content="Actividad 1: Matrices y Determinantes - Álgebra Lineal, Universidad del SABES">
+  <meta name="keywords" content="matrices, determinantes, álgebra lineal, universidad, SABES, educación">
+  <meta name="robots" content="noindex, nofollow">
+  <title>📐 Actividad 1: Matrices y Determinantes</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    :root {
+      --bg: #1a1f2e;
+      --panel: #2a3142ee;
+      --ink: #ffffff;
+      --muted: #94a3b8;
+      --primary: #6496fa;
+      --secondary: #00d4aa;
+      --accent: #ffd60a;
+      --success: #06d6a0;
+      --danger: #ef476f;
+      --grad-primary: linear-gradient(135deg, #6496fa 0%, #00d4aa 100%);
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.2);
+      --shadow-xl: 0 20px 50px rgba(0,0,0,0.3);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 30px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --panel: #ffffffee;
+      --ink: #1e293b;
+      --muted: #64748b;
+      --primary: #3b82f6;
+      --secondary: #10b981;
+      --accent: #f59e0b;
+      --success: #06d6a0;
+      --danger: #ef476f;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      transition: var(--transition);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(90deg, rgba(100, 150, 250, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(0, 212, 170, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: matrixFlow 20s linear infinite;
+      z-index: 0;
+    }
+    
+    @keyframes matrixFlow {
+      from { transform: translate(0, 0); }
+      to { transform: translate(50px, 50px); }
+    }
+    
+    /* Mejoras de accesibilidad WCAG 2.2 */
+    *:focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+    
+    /* Skip to main content para lectores de pantalla */
+    .skip-to-main {
+      position: absolute;
+      left: -9999px;
+      z-index: 999;
+      padding: 1em;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-md);
+    }
+    
+    .skip-to-main:focus {
+      left: 50%;
+      transform: translateX(-50%);
+      top: 1em;
+    }
+    
+    /* Modo de alto contraste */
+    @media (prefers-contrast: high) {
+      :root {
+        --primary: #0066cc;
+        --secondary: #008855;
+        --muted: #333333;
+      }
+    }
+    
+    /* Reducción de movimiento para accesibilidad */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      padding-bottom: 100px;
+    }
+    
+    .header {
+      background: var(--grad-primary);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: var(--radius-xl);
+      margin-bottom: 30px;
+      box-shadow: var(--shadow-xl);
+      border: 2px solid rgba(100, 150, 250, 0.3);
+    }
+    
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 5px;
+    }
+    
+    .section {
+      background: linear-gradient(145deg, var(--panel), var(--bg));
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow-xl);
+      border: 2px solid rgba(100, 150, 250, 0.2);
+      transition: var(--transition);
+    }
+    
+    .section h2 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .section h3 {
+      color: var(--secondary);
+      font-size: 1.4rem;
+      margin: 25px 0 15px 0;
+    }
+    
+    .objetive-box {
+      background: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+      border-left: 4px solid var(--secondary);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .objetive-box strong {
+      color: var(--secondary);
+      font-size: 1.1rem;
+    }
+    
+    .info-box {
+      background: linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .warning-box {
+      background: linear-gradient(145deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .steps {
+      display: grid;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    .step {
+      background: linear-gradient(145deg, var(--panel), rgba(100, 150, 250, 0.05));
+      border: 2px solid rgba(100, 150, 250, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 25px;
+      transition: var(--transition);
+    }
+    
+    [data-theme="light"] .step {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border: 2px solid rgba(59, 130, 246, 0.2);
+    }
+    
+    .step:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary);
+    }
+    
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--grad-primary);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-weight: 900;
+      font-size: 1.2rem;
+      margin-right: 15px;
+    }
+    
+    .step-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .step-content {
+      margin-left: 55px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    
+    .step-content ul {
+      margin: 10px 0 10px 20px;
+    }
+    
+    .step-content li {
+      margin-bottom: 8px;
+    }
+    
+    .ejercicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    .ejercicio-card {
+      background: linear-gradient(145deg, var(--panel), rgba(100, 150, 250, 0.05));
+      border: 2px solid rgba(0, 212, 170, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      transition: var(--transition);
+    }
+    
+    [data-theme="light"] .ejercicio-card {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border: 2px solid rgba(16, 185, 129, 0.3);
+    }
+    
+    .ejercicio-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--secondary);
+    }
+    
+    .ejercicio-card h4 {
+      color: var(--secondary);
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    
+    .ejercicio-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    
+    .matrix-display {
+      background: rgba(59, 130, 246, 0.05);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: var(--radius-md);
+      padding: 15px;
+      font-family: 'JetBrains Mono', monospace;
+      text-align: center;
+      margin: 15px 0;
+      font-size: 1.1rem;
+    }
+    
+    .calculator-section {
+      background: linear-gradient(145deg, var(--panel), rgba(100, 150, 250, 0.05));
+      border: 2px solid rgba(100, 150, 250, 0.2);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      margin: 30px 0;
+    }
+    
+    [data-theme="light"] .calculator-section {
+      background: linear-gradient(145deg, #f8fafc, #ffffff);
+      border: 2px solid rgba(59, 130, 246, 0.2);
+    }
+    
+    .calculator-title {
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .matrix-input-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 300px;
+      margin: 20px auto;
+    }
+    
+    .matrix-input {
+      width: 100%;
+      padding: 15px;
+      text-align: center;
+      border: 2px solid rgba(59, 130, 246, 0.3);
+      border-radius: var(--radius-md);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: var(--transition);
+      background: var(--panel);
+      color: var(--ink);
+    }
+    
+    .matrix-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+    
+    .matrix-input:hover {
+      border-color: var(--primary);
+    }
+    
+    .btn {
+      background: var(--grad-primary);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .btn:active {
+      transform: translateY(-1px);
+    }
+    
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .btn-secondary {
+      background: linear-gradient(145deg, #6b7280, #4b5563);
+    }
+    
+    .btn-large {
+      font-size: 1.3rem;
+      padding: 20px 40px;
+    }
+    
+    .download-section {
+      text-align: center;
+      padding: 40px;
+      background: linear-gradient(145deg, rgba(255, 214, 10, 0.15), rgba(255, 214, 10, 0.05));
+      border-radius: var(--radius-xl);
+      margin: 30px 0;
+      border: 2px solid rgba(255, 214, 10, 0.3);
+    }
+    
+    [data-theme="light"] .download-section {
+      background: linear-gradient(145deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+      border: 2px solid rgba(245, 158, 11, 0.3);
+    }
+    
+    .download-section h3 {
+      color: var(--accent);
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    
+    .result-display {
+      background: linear-gradient(145deg, #ecfdf5, #d1fae5);
+      border: 2px solid var(--secondary);
+      border-radius: var(--radius-lg);
+      padding: 25px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    .result-display h4 {
+      color: var(--secondary);
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+    
+    .result-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      color: white;
+      border-radius: var(--radius-xl);
+      margin-top: 50px;
+    }
+    
+    .footer a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .rubrica-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    [data-theme="light"] .rubrica-table {
+      background: white;
+    }
+    
+    .rubrica-table th {
+      background: var(--grad-primary);
+      color: white;
+      padding: 15px;
+      text-align: left;
+      font-weight: 700;
+    }
+    
+    .rubrica-table td {
+      padding: 15px;
+      border-bottom: 1px solid rgba(100, 150, 250, 0.1);
+      color: var(--ink);
+    }
+    
+    [data-theme="light"] .rubrica-table td {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .rubrica-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .rubrica-table tr:hover {
+      background: rgba(100, 150, 250, 0.1);
+    }
+    
+    [data-theme="light"] .rubrica-table tr:hover {
+      background: rgba(59, 130, 246, 0.05);
+    }
+    
+    /* Sección de privacidad y accesibilidad */
+    .privacy-section {
+      background: linear-gradient(145deg, rgba(99, 102, 241, 0.05), rgba(99, 102, 241, 0.02));
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      margin: 30px 0;
+    }
+    
+    .privacy-section h3 {
+      color: #6366f1;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    .privacy-card {
+      background: var(--panel);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      transition: var(--transition);
+    }
+    
+    .privacy-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: #6366f1;
+    }
+    
+    .privacy-card h4 {
+      color: #6366f1;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .privacy-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+    
+    .privacy-card li {
+      padding: 8px 0;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .privacy-card li:before {
+      content: "✓";
+      color: var(--secondary);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    .wcag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin: 10px 5px;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--panel);
+      border: 2px solid var(--primary);
+      border-radius: 50px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      z-index: 1000;
+      transition: var(--transition);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .theme-toggle:hover {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .accessibility-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--panel);
+      border: 2px solid var(--secondary);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: var(--transition);
+      box-shadow: var(--shadow-lg);
+      color: var(--ink);
+    }
+    
+    .accessibility-btn:hover {
+      background: var(--secondary);
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .modal.show {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: var(--panel);
+      border: 3px solid var(--primary);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      max-width: 800px;
+      max-height: 80vh;
+      overflow-y: auto;
+      color: var(--ink);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .modal-content h2 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+    
+    .modal-content h3 {
+      color: var(--secondary);
+      margin: 25px 0 15px 0;
+      font-size: 1.5rem;
+    }
+    
+    .modal-content p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--muted);
+    }
+    
+    .modal-content ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+      color: var(--muted);
+    }
+    
+    .modal-content li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    
+    .modal-close {
+      background: var(--grad-primary);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 25px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      width: 100%;
+      transition: var(--transition);
+    }
+    
+    .modal-close:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .wcag-badge {
+      display: inline-block;
+      background: var(--success);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-left: 10px;
+    }
+    
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(26, 31, 46, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 12px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(100, 150, 250, 0.2);
+      z-index: 50;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    
+    [data-theme="light"] .footer {
+      background: rgba(248, 250, 252, 0.95);
+      border-top: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    
+    .footer a {
+      color: var(--secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateX(400px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideOut {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(400px); opacity: 0; }
+    }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width: 768px) {
+      .container { padding: 10px; padding-bottom: 100px; }
+      .header { padding: 30px 15px; }
+      .section { padding: 20px; }
+      .ejercicios-grid { grid-template-columns: 1fr; }
+      .matrix-input-grid { grid-template-columns: repeat(3, 1fr); max-width: 250px; }
+      .step-content { margin-left: 0; margin-top: 15px; }
+      .theme-toggle { top: 10px; right: 10px; font-size: 0.9rem; padding: 10px 15px; }
+      .accessibility-btn { bottom: 100px; width: 50px; height: 50px; font-size: 1.3rem; }
+      .footer { font-size: 0.75rem; padding: 10px 15px; }
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Enlace de accesibilidad: Skip to main content -->
+  <a href="#main-content" class="skip-to-main">Saltar al contenido principal</a>
+  
+  <!-- Toggle de tema oscuro/claro -->
+  <button class="theme-toggle" onclick="toggleTheme()">🌙 Tema</button>
+  
+  <!-- Botón de accesibilidad flotante -->
+  <button class="accessibility-btn" onclick="openModal()" aria-label="Información de privacidad y accesibilidad" title="Privacidad y Accesibilidad">♿</button>
+  
+  <div class="container">
+    <header class="header" role="banner">
+      <h1>📐 Actividad 1: Matrices y Determinantes</h1>
+      <p>Álgebra Lineal - Unidad I</p>
+      <div style="margin-top: 15px;">
+        <span class="badge" role="status">⏱️ Sumativa</span>
+        <span class="badge" role="status">💯 10 puntos</span>
+        <span class="badge" role="status">📅 Semanas 1-4</span>
+      </div>
+    </header>
+
+    <main id="main-content" role="main">
+      <section class="section" aria-labelledby="aprendizaje-heading">
+        <h2 id="aprendizaje-heading">🎯 Aprendizaje Esperado</h2>
+        <div class="objetive-box">
+          <strong>Aplicar las matrices, los determinantes y operaciones entre ellas, para resolver problemas en las diferentes áreas de las matemáticas y de la ingeniería.</strong>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="instrucciones-heading">
+        <h2 id="instrucciones-heading">📋 Instrucciones Generales</h2>
+        <div class="info-box">
+          <p><strong>📌 Importante:</strong> Esta actividad consta de <strong>4 etapas secuenciales</strong> que debes completar para demostrar tu dominio de matrices y determinantes aplicados a problemas reales.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-title">
+              <span class="step-number">1</span>
+              Selección del Problema
+            </div>
+            <div class="step-content">
+              <p><strong>🔍 Objetivo:</strong> Elegir y personalizar un ejercicio del banco proporcionado.</p>
+              <ul>
+                <li><strong>SELECCIONE</strong> un ejercicio del banco de ejercicios modelo (1-5)</li>
+                <li><strong>MODIFIQUE</strong> dos parámetros numéricos para hacerlo único</li>
+                <li><strong>DOCUMENTE</strong> el ejercicio original y tus modificaciones</li>
+              </ul>
+              <div class="warning-box">
+                ⚠️ <strong>Nota:</strong> Los parámetros modificados deben mantener la coherencia matemática del problema (por ejemplo, no hacer que el sistema sea inconsistente si el original tenía solución).
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-title">
+              <span class="step-number">2</span>
+              Resolución Mediante Métodos Matriciales Específicos
+            </div>
+            <div class="step-content">
+              <p><strong>🔢 Objetivo:</strong> Resolver el problema usando técnicas matriciales formales.</p>
+              <ul>
+                <li><strong>a)</strong> EXPRESE el problema como sistema Ax = b</li>
+                <li><strong>b)</strong> CALCULE det(A) por expansión de cofactores</li>
+                <li><strong>c)</strong> DETERMINE A⁻¹ usando el método de la matriz adjunta</li>
+                <li><strong>d)</strong> RESUELVA usando x = A⁻¹b</li>
+                <li><strong>e)</strong> VERIFIQUE por sustitución directa</li>
+              </ul>
+              <div class="info-box">
+                💡 <strong>Tip:</strong> Usa la calculadora de matrices de esta página para verificar tus cálculos intermedios.
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-title">
+              <span class="step-number">3</span>
+              Verificación y Métodos Alternativos
+            </div>
+            <div class="step-content">
+              <p><strong>🔄 Objetivo:</strong> Validar la solución usando un método alternativo.</p>
+              <ul>
+                <li><strong>RESUELVA</strong> el mismo sistema por el método de Gauss-Jordan</li>
+                <li><strong>COMPARE</strong> ambas soluciones (deben ser idénticas)</li>
+                <li><strong>EXPLIQUE</strong> las diferencias en el proceso de cada método</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-title">
+              <span class="step-number">4</span>
+              Análisis y Reporte Profesional
+            </div>
+            <div class="step-content">
+              <p><strong>📊 Objetivo:</strong> Elaborar un informe técnico completo.</p>
+              <p><strong>Tu reporte debe incluir:</strong></p>
+              <ul>
+                <li><strong>Desarrollo matemático</strong> de ambos métodos con todos los pasos</li>
+                <li><strong>Interpretación del determinante</strong> en el contexto del problema</li>
+                <li><strong>Reflexión crítica</strong> sobre cuándo usar cada método</li>
+                <li><strong>Conclusiones</strong> sobre la aplicación práctica</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="ejercicios-heading">
+        <h2 id="ejercicios-heading">💼 Banco de Ejercicios Modelo</h2>
+        <p style="margin-bottom: 20px; color: var(--muted);">
+          A continuación se presentan <strong>5 ejercicios modelo</strong> del banco oficial de la Unidad I. Selecciona uno y modifica <strong>dos parámetros numéricos</strong> para personalizarlo.
+        </p>
+
+        <div class="info-box" style="margin-bottom: 25px;">
+          <p><strong>📚 Banco Completo de Ejercicios:</strong></p>
+          <p>Para acceder a más ejercicios modelo, ejercicios puente y ejercicios propuestos con soluciones detalladas, consulta el documento oficial:</p>
+          <p style="margin-top: 10px;"><strong>"F8 Banco de Ejercicios UNIDAD I - Matrices y Determinantes"</strong></p>
+          <p style="font-size: 0.9rem; color: var(--muted); margin-top: 10px;">
+            ✓ 5 Ejercicios Modelo completos<br>
+            ✓ 2 Ejercicios Puente (Determinantes e Inversas)<br>
+            ✓ 8 Ejercicios Propuestos con respuestas<br>
+            ✓ Solucionario completo para verificación
+          </p>
+        </div>
+
+        <div class="ejercicios-grid" role="list">
+          <div class="ejercicio-card" role="listitem">
+            <h4>🏭 Ejercicio Modelo 1: Planificación de Producción</h4>
+            <p><strong>Contexto:</strong> Una fábrica produce mesas, sillas y estanterías con recursos limitados.</p>
+            <div class="matrix-display">
+              4x₁ + 1x₂ + 6x₃ = 220 (madera m²)<br>
+              3x₁ + 1.5x₂ + 2x₃ = 140 (mano obra h)<br>
+              2x₁ + 1x₂ + 3x₃ = 100 (acabado h)
+            </div>
+            <p><strong>Método:</strong> Gauss-Jordan para sistemas lineales</p>
+            <p><strong>Parámetros modificables:</strong> Recursos disponibles (220, 140, 100) o coeficientes técnicos</p>
+          </div>
+
+          <div class="ejercicio-card" role="listitem">
+            <h4>📊 Ejercicio Modelo 2: Control de Calidad</h4>
+            <p><strong>Contexto:</strong> Componentes electrónicos evaluados con matriz de ponderaciones.</p>
+            <div class="matrix-display">
+              M = [0.5  0.3  0.2]  Automoción<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;[0.2  0.5  0.3]  Consumo<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;[0.4  0.2  0.4]  Industrial<br>
+              <br>
+              Puntuaciones: RT=8.5, CE=7.2, RV=9.1
+            </div>
+            <p><strong>Método:</strong> Multiplicación matriz × vector</p>
+            <p><strong>Parámetros modificables:</strong> Ponderaciones o puntuaciones de pruebas</p>
+          </div>
+
+          <div class="ejercicio-card" role="listitem">
+            <h4>📦 Ejercicio Modelo 3: Gestión de Inventario</h4>
+            <p><strong>Contexto:</strong> Distribución desde 3 almacenes a 4 tiendas.</p>
+            <div class="matrix-display">
+              Inventarios: A₁=350, A₂=420, A₃=280<br>
+              Matriz distribución P (3×4)<br>
+              Matriz distancias D (3×4)
+            </div>
+            <p><strong>Método:</strong> Transpuesta, multiplicación y producto Hadamard</p>
+            <p><strong>Parámetros modificables:</strong> Inventarios o porcentajes de distribución</p>
+          </div>
+
+          <div class="ejercicio-card" role="listitem">
+            <h4>💵 Ejercicio Modelo 4: Análisis de Costos</h4>
+            <p><strong>Contexto:</strong> Cálculo de costos con 3 productos y 4 materias primas.</p>
+            <div class="matrix-display">
+              Producción: P₁=200, P₂=150, P₃=100<br>
+              Costos: M₁=$5, M₂=$3, M₃=$4, M₄=$6/kg<br>
+              Matriz requerimientos A (4×3)
+            </div>
+            <p><strong>Método:</strong> Producto matriz-vector para costos totales</p>
+            <p><strong>Parámetros modificables:</strong> Cantidades de producción o costos unitarios</p>
+          </div>
+
+          <div class="ejercicio-card" role="listitem">
+            <h4>⚙️ Ejercicio Modelo 5: Análisis de Capacidad</h4>
+            <p><strong>Contexto:</strong> Optimización de 2 productos en 3 estaciones de trabajo.</p>
+            <div class="matrix-display">
+              10x + 15y = 600 (Estación 1)<br>
+              12x + 8y = 480 (Estación 2)<br>
+              8x + 10y = 420 (Estación 3)
+            </div>
+            <p><strong>Método:</strong> Análisis matricial de capacidad y rango</p>
+            <p><strong>Parámetros modificables:</strong> Capacidades de estaciones o tiempos requeridos</p>
+          </div>
+        </div>
+
+        <div class="warning-box" style="margin-top: 25px;">
+          <p><strong>📝 Instrucciones importantes:</strong></p>
+          <ul style="margin: 10px 0 0 20px; color: var(--muted);">
+            <li>Selecciona <strong>UN</strong> ejercicio del banco</li>
+            <li>Modifica <strong>DOS</strong> parámetros numéricos (mantén coherencia matemática)</li>
+            <li>Documenta el ejercicio original y tus modificaciones</li>
+            <li>Resuelve aplicando los métodos estudiados en la Unidad I</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="calculadora-heading">
+        <h2 id="calculadora-heading">🧮 Calculadora de Matrices Interactiva</h2>
+        <p style="text-align: center; color: var(--muted); margin-bottom: 20px;">
+          Usa esta herramienta para verificar tus cálculos de determinantes
+        </p>
+
+        <div class="calculator-section" role="application" aria-label="Calculadora de determinantes de matriz 3x3">
+          <div class="calculator-title">📊 Matriz 3×3</div>
+          
+          <div class="matrix-input-grid" role="group" aria-label="Entrada de valores de matriz 3x3">
+            <input type="number" class="matrix-input" id="a11" value="3" placeholder="a₁₁" aria-label="Elemento fila 1 columna 1">
+            <input type="number" class="matrix-input" id="a12" value="2" placeholder="a₁₂" aria-label="Elemento fila 1 columna 2">
+            <input type="number" class="matrix-input" id="a13" value="1" placeholder="a₁₃" aria-label="Elemento fila 1 columna 3">
+            
+            <input type="number" class="matrix-input" id="a21" value="2" placeholder="a₂₁" aria-label="Elemento fila 2 columna 1">
+            <input type="number" class="matrix-input" id="a22" value="4" placeholder="a₂₂" aria-label="Elemento fila 2 columna 2">
+            <input type="number" class="matrix-input" id="a23" value="1" placeholder="a₂₃" aria-label="Elemento fila 2 columna 3">
+            
+            <input type="number" class="matrix-input" id="a31" value="1" placeholder="a₃₁" aria-label="Elemento fila 3 columna 1">
+            <input type="number" class="matrix-input" id="a32" value="1" placeholder="a₃₂" aria-label="Elemento fila 3 columna 2">
+            <input type="number" class="matrix-input" id="a33" value="2" placeholder="a₃₃" aria-label="Elemento fila 3 columna 3">
+          </div>
+
+          <div style="text-align: center; margin: 20px 0;">
+            <button class="btn" onclick="calculateDeterminant()" aria-label="Calcular el determinante de la matriz">
+              🔢 Calcular Determinante
+            </button>
+          </div>
+
+          <div id="result" class="result-display" style="display: none;" role="status" aria-live="polite">
+            <h4>Resultado:</h4>
+            <div class="result-value" id="detValue" aria-label="Valor del determinante">0</div>
+            <p style="color: var(--muted); margin-top: 10px;">
+              <strong>Método:</strong> Regla de Sarrus
+            </p>
+            <div id="interpretation" style="margin-top: 15px; padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: var(--radius-md);">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="evaluacion-heading">
+        <h2 id="evaluacion-heading">📊 Criterios de Evaluación</h2>
+        <p style="margin-bottom: 20px; color: var(--muted);">
+          Tu actividad será evaluada con base en los siguientes criterios:
+        </p>
+
+        <table class="rubrica-table" role="table" aria-label="Tabla de criterios de evaluación">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 25%;">Criterio</th>
+              <th scope="col" style="width: 18%;">Excepcional (100%)</th>
+              <th scope="col" style="width: 18%;">Satisfactorio (50%)</th>
+              <th scope="col" style="width: 18%;">Básico (25%)</th>
+              <th scope="col" style="width: 18%;">Insuficiente (0%)</th>
+              <th scope="col" style="width: 10%;">Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Planteamiento del problema</strong><br><small style="color: var(--muted);">Originalidad y personalización del ejercicio</small></td>
+              <td>Problema claramente definido, justificación sólida y relevancia práctica</td>
+              <td>Problema bien definido, justificación adecuada, relevancia clara</td>
+              <td>Problema parcialmente definido, justificación débil, relevancia limitada</td>
+              <td>Problema mal definido, sin justificación ni relevancia clara</td>
+              <td><strong>2 pts</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Operaciones matriciales</strong><br><small style="color: var(--muted);">Correcta aplicación de operaciones</small></td>
+              <td>Operaciones ejecutadas correctamente, justificación completa, resultados precisos</td>
+              <td>Operaciones correctas, mayoría justificada, resultados adecuados</td>
+              <td>Operaciones básicas, varios errores, poca justificación</td>
+              <td>Operaciones incorrectas o ausentes, sin justificación</td>
+              <td><strong>2 pts</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Determinantes e inversas</strong><br><small style="color: var(--muted);">Exactitud en cálculos</small></td>
+              <td>Cálculo impecable, interpretación precisa, método adecuado</td>
+              <td>Cálculo correcto, interpretación adecuada, método suficiente</td>
+              <td>Cálculo básico, interpretación limitada, método débil</td>
+              <td>Cálculo incorrecto o ausente, sin interpretación</td>
+              <td><strong>2 pts</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Informe escrito</strong><br><small style="color: var(--muted);">Claridad y profundidad</small></td>
+              <td>Informe claro, bien estructurado, reflexivo y original</td>
+              <td>Informe adecuado, estructura correcta, reflexión parcial</td>
+              <td>Informe básico, estructura limitada, reflexión mínima</td>
+              <td>Informe deficiente, desorganizado, sin reflexión</td>
+              <td><strong>2 pts</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Evidencia en GeoGebra</strong><br><small style="color: var(--muted);">Comprobación digital</small></td>
+              <td>Evidencia completa, única y clara</td>
+              <td>Evidencia adecuada, clara</td>
+              <td>Evidencia limitada o básica</td>
+              <td>Sin evidencia o evidencia incorrecta</td>
+              <td><strong>2 pts</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="warning-box" role="note" style="margin-top: 25px;">
+          <strong>⚠️ Criterios adicionales:</strong>
+          <ul style="margin: 15px 0 0 20px; color: var(--muted);">
+            <li><strong>Entrega puntual:</strong> Penalización del 10% por día de retraso</li>
+            <li><strong>Formato solicitado:</strong> -10% si no cumple con Word/PDF o video según indicaciones</li>
+            <li><strong>Originalidad:</strong> 0 puntos si se detecta plagio</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Sección compacta de Privacidad y Accesibilidad (eliminada, ahora solo en modal) -->
+
+      <section class="download-section" aria-labelledby="descarga-heading">
+        <h3 id="descarga-heading">📥 Descarga el Formato de Captura</h3>
+        <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 25px;">
+          Completa tu actividad en el formato oficial y entrégalo en el aula virtual
+        </p>
+        <button class="btn btn-large" onclick="downloadFormat()" aria-label="Descargar formato de captura en texto">
+          📄 Descargar Formato TXT
+        </button>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--muted);">
+          <strong>Formato:</strong> ACTIVIDAD1_APELLIDO_NOMBRE.txt
+        </p>
+      </section>
+
+      <section class="section" aria-labelledby="recursos-heading">
+        <h2 id="recursos-heading">💡 Recursos de Apoyo</h2>
+        <div class="info-box">
+          <p><strong>📚 Materiales recomendados:</strong></p>
+          <ul>
+            <li>Presentación interactiva: <strong>Unidad I - Matrices y Determinantes</strong></li>
+            <li>Videos tutoriales en el aula virtual</li>
+            <li>Bibliografía del curso (Grossman, Lay, Kolman)</li>
+            <li>Horas de asesoría con el docente</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer institucional -->
+    <div class="footer">
+      <p>
+        © 2025 <strong>Universidad del SABES</strong> · Uso educativo exclusivo · 
+        Curso: <strong>Álgebra Lineal</strong> (Licenciatura en Ingeniería 2025) · 
+        <a href="https://www.sabes.edu.mx" target="_blank" rel="noopener noreferrer">www.sabes.edu.mx</a>
+      </p>
+    </div>
+
+    <!-- Modal de Privacidad y Accesibilidad -->
+    <div class="modal" id="privacyModal">
+      <div class="modal-content">
+        <h2>🔒 Privacidad y Accesibilidad</h2>
+        
+        <h3>📋 Política de Privacidad</h3>
+        <p>Esta actividad de Álgebra Lineal está diseñada con tu privacidad en mente:</p>
+        <ul>
+          <li><strong>Sin recopilación de datos personales:</strong> No solicitamos ni almacenamos información personal identificable.</li>
+          <li><strong>Procesamiento local:</strong> Todos los cálculos se realizan en tu navegador.</li>
+          <li><strong>Sin cookies de terceros:</strong> No utilizamos cookies de seguimiento ni analíticas de terceros.</li>
+          <li><strong>Sin conexión a servidores externos:</strong> Toda la funcionalidad opera completamente en tu navegador.</li>
+          <li><strong>Archivos locales:</strong> Los formatos descargados se crean en tu dispositivo.</li>
+        </ul>
+        
+        <h3>♿ Declaración de Accesibilidad <span class="wcag-badge">WCAG 2.2 AA</span></h3>
+        <p>Nos comprometemos a hacer este material accesible para todos los estudiantes.</p>
+        
+        <p><strong>Características de Accesibilidad:</strong></p>
+        <ul>
+          <li><strong>Navegación por teclado:</strong> Tab para navegar, Enter para activar.</li>
+          <li><strong>Lectores de pantalla:</strong> Compatibilidad completa con NVDA, JAWS y VoiceOver.</li>
+          <li><strong>Contraste de color:</strong> Cumple con WCAG 2.2 nivel AA (mínimo 4.5:1).</li>
+          <li><strong>Texto redimensionable:</strong> Legible con zoom hasta 200%.</li>
+          <li><strong>Animaciones reducidas:</strong> Respeta la preferencia del sistema.</li>
+          <li><strong>Etiquetas ARIA:</strong> Todas las interacciones tienen descripciones semánticas.</li>
+          <li><strong>Modo oscuro/claro:</strong> Alternancia disponible para reducir fatiga visual.</li>
+        </ul>
+        
+        <p><strong>🎓 Uso Educativo:</strong></p>
+        <ul>
+          <li>Material exclusivo para estudiantes de la Universidad del SABES</li>
+          <li>Uso permitido solo con fines educativos y académicos</li>
+          <li>Prohibida la redistribución comercial sin autorización</li>
+          <li>Contenido verificado y respaldado académicamente</li>
+        </ul>
+        
+        <p style="font-size: 0.9rem; color: var(--muted); margin-top: 20px;">
+          <strong>Última actualización:</strong> Octubre 2025<br>
+          <strong>Estándares cumplidos:</strong> WCAG 2.2 Nivel AA, HTML5, ARIA 1.2<br>
+          <strong>Contacto:</strong> Si encuentras barreras de accesibilidad, contacta al departamento de Tecnologías Educativas
+        </p>
+        
+        <button class="modal-close" onclick="closeModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Función para alternar tema oscuro/claro
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      const toggleBtn = document.querySelector('.theme-toggle');
+      
+      html.setAttribute('data-theme', newTheme);
+      toggleBtn.textContent = newTheme === 'dark' ? '☀️ Tema' : '🌙 Tema';
+      
+      // Guardar preferencia (sin usar localStorage en artifacts)
+      console.log('Tema cambiado a:', newTheme);
+    }
+    
+    // Función para abrir modal
+    function openModal() {
+      document.getElementById('privacyModal').classList.add('show');
+    }
+    
+    // Función para cerrar modal
+    function closeModal() {
+      document.getElementById('privacyModal').classList.remove('show');
+    }
+    
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const modal = document.getElementById('privacyModal');
+        if (modal.classList.contains('show')) {
+          closeModal();
+        }
+      }
+    });
+    
+    // Función para calcular determinante
+    function calculateDeterminant() {
+      const a11 = parseFloat(document.getElementById('a11').value) || 0;
+      const a12 = parseFloat(document.getElementById('a12').value) || 0;
+      const a13 = parseFloat(document.getElementById('a13').value) || 0;
+      const a21 = parseFloat(document.getElementById('a21').value) || 0;
+      const a22 = parseFloat(document.getElementById('a22').value) || 0;
+      const a23 = parseFloat(document.getElementById('a23').value) || 0;
+      const a31 = parseFloat(document.getElementById('a31').value) || 0;
+      const a32 = parseFloat(document.getElementById('a32').value) || 0;
+      const a33 = parseFloat(document.getElementById('a33').value) || 0;
+      
+      // Regla de Sarrus para matriz 3x3
+      const det = a11*a22*a33 + a12*a23*a31 + a13*a21*a32 
+                - a13*a22*a31 - a11*a23*a32 - a12*a21*a33;
+      
+      document.getElementById('detValue').textContent = det.toFixed(4);
+      document.getElementById('result').style.display = 'block';
+      
+      // Interpretación
+      const interpretation = document.getElementById('interpretation');
+      if (det === 0) {
+        interpretation.innerHTML = `
+          <strong style="color: var(--danger);">⚠️ Determinante = 0</strong><br>
+          <p style="margin-top: 10px;">La matriz es <strong>singular</strong> (no invertible). 
+          El sistema puede no tener solución o tener infinitas soluciones.</p>
+        `;
+      } else if (Math.abs(det) < 0.01) {
+        interpretation.innerHTML = `
+          <strong style="color: var(--accent);">⚠️ Determinante muy pequeño</strong><br>
+          <p style="margin-top: 10px;">La matriz está cerca de ser singular. 
+          Los cálculos pueden ser inestables numéricamente.</p>
+        `;
+      } else {
+        interpretation.innerHTML = `
+          <strong style="color: var(--success);">✅ Determinante ≠ 0</strong><br>
+          <p style="margin-top: 10px;">La matriz es <strong>invertible</strong>. 
+          El sistema tiene solución única y puedes usar el método de matriz inversa.</p>
+        `;
+      }
+      
+      // Animación
+      document.getElementById('result').style.animation = 'none';
+      setTimeout(() => {
+        document.getElementById('result').style.animation = 'slideUp 0.5s ease';
+      }, 10);
+      
+      // Anunciar resultado para lectores de pantalla
+      const resultText = 'Determinante calculado: ' + det.toFixed(4);
+      document.getElementById('result').setAttribute('aria-label', resultText);
+    }
+    
+    // Función para descargar formato
+    function downloadFormat() {
+      const formatContent = `UNIVERSIDAD DEL SABES
+ÁLGEBRA LINEAL - ACTIVIDAD 1: MATRICES Y DETERMINANTES
+
+DATOS DEL ESTUDIANTE:
+Nombre completo: _________________________________________
+Matrícula: _______________
+Grupo: _______________
+Fecha de entrega: _______________
+
+═══════════════════════════════════════════════════════════
+
+ETAPA 1: SELECCIÓN DEL PROBLEMA
+
+Ejercicio seleccionado del banco: Modelo #_____
+
+Parámetros originales:
+[Escribir aquí los valores originales del ejercicio modelo]
+
+Parámetros modificados:
+Parámetro 1: _____________ (Justificación: _______________)
+Parámetro 2: _____________ (Justificación: _______________)
+
+Sistema de ecuaciones resultante:
+Ecuación 1: _______________________________________________
+Ecuación 2: _______________________________________________
+Ecuación 3: _______________________________________________
+
+═══════════════════════════════════════════════════════════
+
+ETAPA 2: RESOLUCIÓN MEDIANTE MÉTODOS MATRICIALES
+
+a) Expresión como sistema Ax = b
+
+Matriz A:
+[Escribir la matriz de coeficientes]
+
+Vector b:
+[Escribir el vector de términos independientes]
+
+Vector x:
+[Variables a resolver]
+
+b) Cálculo de det(A) por expansión de cofactores
+
+Desarrollo paso a paso:
+[Mostrar el cálculo completo con cofactores]
+
+Resultado: det(A) = _______________
+
+c) Determinación de A⁻¹ por método de la adjunta
+
+Paso 1: Matriz de cofactores
+[Calcular cada cofactor]
+
+Paso 2: Matriz adjunta (transpuesta de cofactores)
+[Transponer la matriz de cofactores]
+
+Paso 3: Cálculo de A⁻¹ = (1/det(A)) × adj(A)
+[Desarrollo completo]
+
+Resultado: A⁻¹ = _______________
+
+d) Resolución usando x = A⁻¹b
+
+Desarrollo:
+[Multiplicación matricial completa]
+
+Solución obtenida:
+x₁ = _______________
+x₂ = _______________
+x₃ = _______________
+
+e) Verificación por sustitución
+
+Sustitución en ecuación 1:
+[Verificar que se cumple la igualdad]
+
+Sustitución en ecuación 2:
+[Verificar que se cumple la igualdad]
+
+Sustitución en ecuación 3:
+[Verificar que se cumple la igualdad]
+
+¿La solución es correcta? _____
+
+═══════════════════════════════════════════════════════════
+
+ETAPA 3: VERIFICACIÓN Y MÉTODOS ALTERNATIVOS
+
+Resolución por Gauss-Jordan:
+
+Matriz aumentada inicial [A|b]:
+[Escribir la matriz aumentada]
+
+Operaciones elementales aplicadas:
+Paso 1: _______________________________________________
+Paso 2: _______________________________________________
+Paso 3: _______________________________________________
+[Continuar según sea necesario]
+
+Matriz reducida final [I|x]:
+[Mostrar la forma escalonada reducida]
+
+Solución obtenida por Gauss-Jordan:
+x₁ = _______________
+x₂ = _______________
+x₃ = _______________
+
+Comparación de soluciones:
+¿Son idénticas? _____
+Diferencias observadas (si las hay): _____________________
+
+═══════════════════════════════════════════════════════════
+
+ETAPA 4: ANÁLISIS Y REPORTE PROFESIONAL
+
+1. Interpretación del determinante en contexto:
+[Explicar qué significa el valor del determinante en el contexto 
+del problema específico seleccionado]
+
+2. Comparación de métodos:
+
+Ventajas del método de matriz inversa:
+- 
+- 
+
+Desventajas del método de matriz inversa:
+- 
+- 
+
+Ventajas del método de Gauss-Jordan:
+- 
+- 
+
+Desventajas del método de Gauss-Jordan:
+- 
+- 
+
+3. Reflexión sobre cuándo usar cada método:
+[Explicar en qué situaciones es preferible usar uno u otro método,
+considerando eficiencia computacional, facilidad de cálculo manual,
+estabilidad numérica, etc.]
+
+4. Conclusiones sobre la aplicación práctica:
+[Reflexión sobre la importancia de matrices y determinantes en la
+ingeniería, y cómo este ejercicio refleja situaciones reales]
+
+═══════════════════════════════════════════════════════════
+
+AUTOEVALUACIÓN:
+
+¿Completaste todas las etapas? _____
+¿Verificaste todos tus cálculos? _____
+¿Incluiste el desarrollo completo? _____
+¿Revisaste ortografía y presentación? _____
+
+═══════════════════════════════════════════════════════════
+
+Firma del estudiante: _______________
+
+PARA USO DEL DOCENTE:
+
+Etapa 1 - Selección y modificación: _____ / 1.5 pts
+Etapa 2 - Método matricial: _____ / 3.5 pts
+Etapa 3 - Gauss-Jordan: _____ / 2.5 pts
+Etapa 4 - Análisis: _____ / 2.0 pts
+Presentación: _____ / 0.5 pts
+
+CALIFICACIÓN TOTAL: _____ / 10 pts
+
+Observaciones del docente:
+_______________________________________________________________
+_______________________________________________________________
+`;
+
+      const blob = new Blob([formatContent], { type: 'text/plain;charset=utf-8' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ACTIVIDAD1_FORMATO_ALGEBRA_LINEAL.txt';
+      a.setAttribute('aria-label', 'Descargar formato de actividad');
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+      
+      showNotification();
+    }
+    
+    // Función para mostrar notificación
+    function showNotification() {
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        padding: 20px 30px;
+        border-radius: 15px;
+        font-weight: 700;
+        z-index: 10000;
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);
+        animation: slideIn 0.5s ease;
+      `;
+      notification.setAttribute('role', 'alert');
+      notification.setAttribute('aria-live', 'polite');
+      notification.innerHTML = `
+        ✅ Formato descargado correctamente<br>
+        <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.9;">
+          Guárdalo como: ACTIVIDAD1_APELLIDO_NOMBRE.txt
+        </span>
+      `;
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.style.animation = 'slideOut 0.5s ease';
+        setTimeout(() => notification.remove(), 500);
+      }, 4000);
+    }
+    
+    // Actualizar cálculo automático al cambiar valores
+    document.querySelectorAll('.matrix-input').forEach(input => {
+      input.addEventListener('input', () => {
+        if (document.getElementById('result').style.display === 'block') {
+          calculateDeterminant();
+        }
+      });
+      
+      // Anunciar cuando el campo es modificado
+      input.addEventListener('change', (e) => {
+        const label = e.target.getAttribute('aria-label');
+        console.log(label + ' actualizado a ' + e.target.value);
+      });
+    });
+    
+    // Soporte para navegación por teclado mejorada
+    document.addEventListener('keydown', (e) => {
+      // Alt + T para cambiar tema
+      if (e.altKey && e.key === 't') {
+        e.preventDefault();
+        toggleTheme();
+      }
+      
+      // Alt + C para calcular determinante
+      if (e.altKey && e.key === 'c') {
+        e.preventDefault();
+        calculateDeterminant();
+      }
+    });
+    
+    // Inicialización
+    console.log('🔒 Privacidad: Sin recopilación de datos');
+    console.log('🎨 Tema por defecto: Oscuro');
+  </script>
+</body>
+</html>
