@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,9 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
     
+    /* ======= VARIABLES CSS ALINEADAS CON UNIDAD 1 ======= */
     :root {
+      --base-font: 16px;
       --bg: #1a1f2e;
       --panel: #2a3142ee;
       --ink: #ffffff;
@@ -21,7 +23,9 @@
       --secondary: #00d4aa;
       --accent: #ffd60a;
       --success: #06d6a0;
+      --warn: #ffbe0b;
       --danger: #ef476f;
+      --steel: #64748b;
       --grad-primary: linear-gradient(135deg, #6496fa 0%, #00d4aa 100%);
     }
     
@@ -29,16 +33,84 @@
       --bg: #f8fafc;
       --panel: #ffffff;
       --ink: #1e293b;
-      --muted: #64748b;
-      --primary: #3b82f6;
-      --secondary: #10b981;
+      --muted: #475569;
+      --primary: #2563eb;
+      --secondary: #059669;
+      --accent: #d97706;
+      --success: #059669;
+      --warn: #d97706;
+      --danger: #dc2626;
+      --steel: #64748b;
     }
     
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
     
+    /* ======= FOCO VISIBLE MEJORADO (WCAG 2.4.7 y 2.4.11) ======= */
+    *:focus {
+      outline: 3px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    *:focus:not(:focus-visible) {
+      outline: none;
+    }
+
     *:focus-visible {
       outline: 3px solid var(--primary);
       outline-offset: 2px;
+      box-shadow: 0 0 0 5px rgba(100, 150, 250, 0.2);
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid #f57c00;
+      outline-offset: 2px;
+      box-shadow: 0 0 0 5px rgba(245, 124, 0, 0.2);
+    }
+
+    [data-theme="dark"] *:focus-visible {
+      outline-color: var(--secondary);
+      box-shadow: 0 0 0 5px rgba(0, 212, 170, 0.2);
+    }
+    
+    /* ======= MODO ALTO CONTRASTE (WCAG 2.2) ======= */
+    @media (prefers-contrast: high) {
+      :root {
+        --primary: #0000ff;
+        --secondary: #008000;
+        --accent: #ff8800;
+      }
+      
+      [data-theme="light"] {
+        --ink: #000000;
+        --bg: #ffffff;
+        --muted: #000000;
+      }
+      
+      [data-theme="dark"] {
+        --ink: #ffffff;
+        --bg: #000000;
+        --muted: #ffffff;
+      }
+      
+      .option, .week-card, .question-header {
+        border: 2px solid currentColor !important;
+      }
+    }
+    
+    /* ======= RESPETO A PREFERENCIAS DE MOVIMIENTO (WCAG 2.2) ======= */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
     
     body {
@@ -48,6 +120,9 @@
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
+      font-size: var(--base-font);
+      line-height: 1.65;
+      transition: all 0.3s ease;
     }
     
     body::before {
@@ -250,149 +325,241 @@
       height: 100%;
       background: var(--grad-primary);
       width: 0%;
-      transition: width 0.5s ease;
-    }
-    
-    .question-card {
-      background: linear-gradient(145deg, var(--panel), var(--bg));
-      border: 3px solid var(--secondary);
-      border-radius: 25px;
-      padding: 40px;
-      margin-bottom: 30px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .question-text {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-size: 1.8rem;
       font-weight: 700;
       color: var(--ink);
-      text-align: center;
-      line-height: 1.4;
-      margin-bottom: 20px;
+      line-height: 1.5;
+      margin-bottom: 10px;
     }
     
-    .question-tip {
-      background: rgba(255, 214, 10, 0.1);
-      border-left: 4px solid var(--accent);
-      border-radius: 12px;
-      padding: 15px 20px;
-      margin-top: 20px;
-      font-size: 1rem;
+    /* ======= INSTRUCCIONES DE LA PREGUNTA (NUEVA) ======= */
+    .question-instruction {
+      font-size: 1.1rem;
       color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 25px;
+      padding: 15px 20px;
+      background: rgba(100, 150, 250, 0.1);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
     }
     
     .options-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      margin-bottom: 30px;
+      margin-top: 30px;
     }
     
+    /* ======= OPCIONES MEJORADAS CON MEJOR LEGIBILIDAD ======= */
     .option {
-      background: linear-gradient(145deg, var(--panel), var(--bg));
-      border: 3px solid transparent;
+      background: linear-gradient(145deg, var(--panel), rgba(42, 49, 66, 0.5));
+      border: 3px solid rgba(100, 150, 250, 0.3);
       border-radius: 20px;
-      padding: 30px;
+      padding: 25px 30px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      min-height: 120px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .option::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grad-primary);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .option:hover {
+      transform: translateX(10px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(100, 150, 250, 0.3);
+    }
+    
+    .option:hover::before {
+      opacity: 0.1;
+    }
+    
+    /* ======= LETRA DE OPCIÓN MÁS LEGIBLE ======= */
+    .option-letter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--primary);
+      background: rgba(100, 150, 250, 0.2);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: 600;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      user-select: none;
+      flex-shrink: 0;
+      border: 3px solid var(--primary);
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
     
-    .option:nth-child(1) { border-color: #ff6b6b; }
-    .option:nth-child(2) { border-color: #4ecdc4; }
-    .option:nth-child(3) { border-color: #ffd93d; }
-    .option:nth-child(4) { border-color: #95e1d3; }
+    /* ======= TEXTO DE OPCIÓN MÁS LEGIBLE ======= */
+    .option-text {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--ink);
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      line-height: 1.6;
+      /* Mejor contraste para legibilidad */
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
     
-    .option:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 20px 50px rgba(100, 150, 250, 0.5);
+    /* Estados de las opciones */
+    .option.selected {
+      border-color: var(--primary);
+      background: linear-gradient(145deg, rgba(100, 150, 250, 0.2), rgba(0, 212, 170, 0.1));
+    }
+    
+    .option.selected::before {
+      opacity: 0.2;
+    }
+    
+    .option.selected .option-letter {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.1);
     }
     
     .option.correct {
       border-color: var(--success);
-      background: linear-gradient(145deg, rgba(6, 214, 160, 0.3), rgba(6, 214, 160, 0.1));
-      animation: correctBurst 0.8s ease;
+      background: linear-gradient(145deg, rgba(6, 214, 160, 0.2), rgba(6, 214, 160, 0.1));
+      animation: correctPulse 0.6s ease;
     }
     
-    @keyframes correctBurst {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+    .option.correct .option-letter {
+      background: var(--success);
+      color: white;
+      border-color: var(--success);
     }
     
     .option.incorrect {
       border-color: var(--danger);
-      background: linear-gradient(145deg, rgba(239, 71, 111, 0.3), rgba(239, 71, 111, 0.1));
-      animation: incorrectShake 0.6s ease;
+      background: linear-gradient(145deg, rgba(239, 71, 111, 0.2), rgba(239, 71, 111, 0.1));
+      animation: shake 0.5s ease;
     }
     
-    @keyframes incorrectShake {
+    .option.incorrect .option-letter {
+      background: var(--danger);
+      color: white;
+      border-color: var(--danger);
+    }
+    
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    @keyframes shake {
       0%, 100% { transform: translateX(0); }
       25% { transform: translateX(-10px); }
       75% { transform: translateX(10px); }
     }
     
     .feedback {
-      background: linear-gradient(145deg, var(--panel), var(--bg));
-      border: 3px solid transparent;
-      border-radius: 25px;
-      padding: 30px;
-      margin: 30px 0;
-      text-align: center;
-      display: none;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    }
-    
-    .feedback.show {
-      display: block;
-      animation: feedbackPop 0.6s ease;
-    }
-    
-    @keyframes feedbackPop {
-      0% { opacity: 0; transform: scale(0.5); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-    
-    .feedback.correct {
-      border-color: var(--success);
-    }
-    
-    .feedback.incorrect {
-      border-color: var(--danger);
-    }
-    
-    .feedback-emoji {
-      font-size: 5rem;
-      display: block;
-      margin-bottom: 20px;
-    }
-    
-    .feedback-title {
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 15px;
-    }
-    
-    .feedback-text {
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 20px;
       font-size: 1.2rem;
-      color: var(--muted);
+      font-weight: 600;
+      display: none;
+      animation: feedbackSlide 0.5s ease;
       line-height: 1.6;
     }
     
-    .feedback-points {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 3rem;
-      font-weight: 900;
-      color: var(--accent);
-      margin: 20px 0;
+    @keyframes feedbackSlide {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .feedback.correct {
+      background: linear-gradient(145deg, rgba(6, 214, 160, 0.2), rgba(6, 214, 160, 0.1));
+      border: 2px solid var(--success);
+      color: var(--success);
+    }
+    
+    .feedback.incorrect {
+      background: linear-gradient(145deg, rgba(239, 71, 111, 0.2), rgba(239, 71, 111, 0.1));
+      border: 2px solid var(--danger);
+      color: var(--danger);
+    }
+    
+    .btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: 18px 40px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: white;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .btn:hover::before {
+      opacity: 0.1;
+    }
+    
+    .btn:active {
+      transform: scale(0.95);
+    }
+    
+    .btn-primary {
+      background: var(--grad-primary);
+      color: white;
+      box-shadow: 0 10px 30px rgba(100, 150, 250, 0.4);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(100, 150, 250, 0.5);
+    }
+    
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--steel) 0%, var(--muted) 100%);
+      color: white;
+      box-shadow: 0 10px 30px rgba(100, 116, 139, 0.4);
+    }
+    
+    .btn-secondary:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(100, 116, 139, 0.5);
+    }
+    
+    .question-actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
     }
     
     .results-screen {
@@ -405,39 +572,38 @@
       animation: slideUp 0.8s ease;
     }
     
-    .results-container {
+    .results-card {
       background: linear-gradient(145deg, var(--panel), var(--bg));
-      border: 3px solid var(--primary);
+      border: 2px solid var(--primary);
       border-radius: 30px;
       padding: 50px 40px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
     
     .trophy {
-      font-size: 8rem;
-      display: block;
-      margin: 0 auto 30px;
+      font-size: 6rem;
+      margin-bottom: 20px;
+      animation: pulse 2s ease-in-out infinite;
     }
     
-    .final-score {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: clamp(4rem, 10vw, 7rem);
+    .results-title {
+      font-size: 2.5rem;
       font-weight: 900;
       background: var(--grad-primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin: 30px 0;
+      margin-bottom: 20px;
     }
     
     .results-message {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin: 20px 0;
+      font-size: 1.5rem;
+      color: var(--muted);
+      margin-bottom: 40px;
+      font-weight: 600;
     }
     
-    .results-stats {
+    .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
@@ -451,54 +617,82 @@
       padding: 25px;
     }
     
+    .stat-label {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
     .stat-value {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 900;
       color: var(--primary);
     }
     
-    .stat-label {
-      font-size: 1rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: 10px;
+    .personal-feedback {
+      background: rgba(100, 150, 250, 0.1);
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 25px;
+      margin: 30px 0;
+      text-align: left;
     }
     
-    .btn {
-      background: var(--grad-primary);
-      color: white;
-      border: none;
-      padding: 18px 40px;
-      border-radius: 30px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      box-shadow: 0 15px 40px rgba(100, 150, 250, 0.4);
+    .personal-feedback h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.3rem;
     }
     
-    .btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 20px 50px rgba(100, 150, 250, 0.6);
+    .personal-feedback p {
+      color: var(--ink);
+      margin: 10px 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
     
-    .btn-secondary {
-      background: linear-gradient(145deg, #6c7b95, #5a6b85);
-    }
-    
-    .action-buttons {
+    .results-actions {
       display: flex;
-      justify-content: center;
       gap: 20px;
-      margin-top: 40px;
+      justify-content: center;
       flex-wrap: wrap;
+      margin-top: 40px;
     }
     
-    .confetti {
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      background: var(--panel);
+      color: var(--primary);
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+    
+    .theme-toggle:hover {
+      transform: rotate(360deg) scale(1.1);
+      box-shadow: 0 10px 30px rgba(100, 150, 250, 0.4);
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+    
+    .confetti-container {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -509,7 +703,6 @@
       position: absolute;
       width: 10px;
       height: 10px;
-      background: var(--primary);
       top: -10px;
       animation: confettiFall 3s linear forwards;
     }
@@ -521,62 +714,16 @@
       }
     }
     
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--panel);
-      border: 2px solid var(--primary);
-      border-radius: 50px;
-      padding: 12px 20px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--ink);
-      z-index: 100;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    
-    .theme-toggle:hover {
-      background: var(--primary);
-      color: white;
-      transform: scale(1.1);
-    }
-    
-    .accessibility-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--panel);
-      border: 2px solid var(--secondary);
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      cursor: pointer;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    
-    .accessibility-btn:hover {
-      background: var(--secondary);
-      transform: scale(1.1);
-    }
-    
     .modal {
-      display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.8);
       z-index: 10000;
+      display: none;
       align-items: center;
       justify-content: center;
       padding: 20px;
+      backdrop-filter: blur(10px);
     }
     
     .modal.show {
@@ -585,561 +732,646 @@
     
     .modal-content {
       background: var(--panel);
-      border: 3px solid var(--primary);
+      border: 2px solid var(--primary);
       border-radius: 25px;
       padding: 40px;
-      max-width: 800px;
+      max-width: 600px;
+      width: 100%;
       max-height: 80vh;
       overflow-y: auto;
-      color: var(--ink);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      animation: modalEnter 0.4s ease;
     }
     
-    .modal-content h2 {
+    @keyframes modalEnter {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    .modal-header {
+      font-size: 2rem;
+      font-weight: 900;
       color: var(--primary);
       margin-bottom: 20px;
-      font-size: 2rem;
     }
     
-    .modal-content h3 {
-      color: var(--secondary);
-      margin: 25px 0 15px 0;
-      font-size: 1.5rem;
-    }
-    
-    .modal-content p {
+    .modal-body {
+      color: var(--ink);
+      font-size: 1.1rem;
       line-height: 1.8;
-      margin-bottom: 15px;
-      color: var(--muted);
     }
     
-    .modal-content ul {
-      margin-left: 20px;
+    .modal-body p {
       margin-bottom: 15px;
-      color: var(--muted);
-    }
-    
-    .modal-content li {
-      margin-bottom: 10px;
-      line-height: 1.6;
     }
     
     .modal-close {
-      background: var(--grad-primary);
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      border-radius: 25px;
-      cursor: pointer;
-      margin-top: 25px;
-      font-size: 1.1rem;
-      font-weight: 700;
+      margin-top: 30px;
       width: 100%;
     }
     
-    .wcag-badge {
-      display: inline-block;
-      background: var(--success);
-      color: white;
-      padding: 5px 12px;
-      border-radius: 15px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-left: 10px;
-    }
-    
-    .hidden {
-      display: none !important;
-    }
-    
-    /* Footer institucional */
-    .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(26, 31, 46, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 12px 20px;
+    .credits-screen {
+      display: none;
       text-align: center;
-      border-top: 1px solid rgba(100, 150, 250, 0.2);
-      z-index: 50;
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.4;
     }
     
-    [data-theme="light"] .footer {
-      background: rgba(248, 250, 252, 0.95);
-      border-top: 1px solid rgba(59, 130, 246, 0.2);
+    .credits-screen.active {
+      display: block;
+      animation: slideUp 0.8s ease;
     }
     
-    .footer a {
-      color: var(--secondary);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .footer a:hover {
-      color: var(--primary);
-      text-decoration: underline;
-    }
-    
-    .credits-slide {
+    .credits-card {
       background: linear-gradient(145deg, var(--panel), var(--bg));
       border: 2px solid var(--primary);
       border-radius: 30px;
       padding: 50px 40px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
-      text-align: center;
     }
     
-    .credits-slide h2 {
+    .credits-title {
       font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 30px;
       font-weight: 900;
+      background: var(--grad-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 30px;
     }
     
-    .credits-slide p {
-      font-size: 1.1rem;
+    .credits-content {
+      color: var(--ink);
+      font-size: 1.2rem;
       line-height: 1.8;
-      color: var(--muted);
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
     
-    .credits-slide .highlight {
-      color: var(--accent);
-      font-weight: 700;
+    .credits-content p {
+      margin-bottom: 15px;
     }
     
-    .cc-license {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin: 30px 0;
-      padding: 20px;
-      background: rgba(100, 150, 250, 0.1);
-      border-radius: 15px;
-      border: 2px solid rgba(100, 150, 250, 0.3);
-    }
-    
-    .cc-license img {
-      max-width: 88px;
-      height: auto;
+    .credits-content strong {
+      color: var(--primary);
     }
     
     @media (max-width: 768px) {
-      .quiz-container { padding: 10px; padding-bottom: 80px; }
-      .start-screen, .question-card, .results-container { padding: 30px 20px; }
-      .options-grid { grid-template-columns: 1fr; }
-      .week-selector { grid-template-columns: 1fr; }
-      .action-buttons { flex-direction: column; }
-      .btn { width: 100%; }
-      .accessibility-btn { bottom: 140px; }
-      .footer { font-size: 0.75rem; padding: 10px 15px; }
-      .cc-license { flex-direction: column; }
-    }
-    
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
+      .quiz-container {
+        padding: 15px;
+      }
+      
+      .start-screen, .results-card, .credits-card {
+        padding: 30px 20px;
+      }
+      
+      .quiz-title {
+        font-size: 2rem;
+      }
+      
+      .quiz-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .question-text {
+        font-size: 1.4rem;
+      }
+      
+      .option {
+        padding: 20px;
+      }
+      
+      .option-letter {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+      
+      .option-text {
+        font-size: 1.1rem;
+      }
+      
+      .btn {
+        font-size: 1rem;
+        padding: 15px 30px;
+      }
+      
+      .question-info {
+        flex-direction: column;
+      }
+      
+      .timer {
+        font-size: 1.5rem;
+        padding: 10px 20px;
+      }
+      
+      .theme-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">🌓 Tema</button>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">🌓</button>
   
-  <button class="accessibility-btn" onclick="openModal()">♿</button>
-  
-  <div class="confetti" id="confetti"></div>
-  
-  <main class="quiz-container">
-    <div class="start-screen" id="startScreen">
+  <div class="quiz-container">
+    <!-- Pantalla de inicio -->
+    <div id="startScreen" class="start-screen">
       <div class="quiz-logo">🎯</div>
-      <h1 class="quiz-title">QUIZ ÁLGEBRA LINEAL</h1>
-      <p class="quiz-subtitle">Matrices y Determinantes - Unidad I</p>
-      
-      <div style="margin: 30px 0;">
-        <p style="color: var(--muted); font-size: 1.2rem; margin-bottom: 25px;">
-          ¡Pon a prueba tus conocimientos de álgebra lineal! 🧮
-        </p>
-        <p style="color: var(--muted); font-size: 1rem;">
-          Selecciona la semana para comenzar tu desafío matemático
-        </p>
-      </div>
+      <h1 class="quiz-title">Quiz Álgebra Lineal</h1>
+      <p class="quiz-subtitle">Unidad I: Matrices y Determinantes</p>
       
       <div class="week-selector">
-        <button class="week-card" onclick="startWeek(1)">
-          <div class="week-number">📐 01</div>
-          <div class="week-name">Introducción a Matrices</div>
-        </button>
-        <button class="week-card" onclick="startWeek(2)">
-          <div class="week-number">➕ 02</div>
-          <div class="week-name">Operaciones Matriciales</div>
-        </button>
-        <button class="week-card" onclick="startWeek(3)">
-          <div class="week-number">🔄 03</div>
-          <div class="week-name">Transformaciones</div>
-        </button>
-        <button class="week-card" onclick="startWeek(4)">
-          <div class="week-number">🎲 04</div>
-          <div class="week-name">Determinantes</div>
-        </button>
+        <div class="week-card" onclick="startQuiz(1)" tabindex="0" role="button" aria-label="Iniciar quiz Semana 1">
+          <div class="week-number">1️⃣</div>
+          <div class="week-name">Semana 1</div>
+          <p style="color: var(--muted); margin-top: 10px; font-size: 0.9rem;">Definiciones básicas</p>
+        </div>
+        
+        <div class="week-card" onclick="startQuiz(2)" tabindex="0" role="button" aria-label="Iniciar quiz Semana 2">
+          <div class="week-number">2️⃣</div>
+          <div class="week-name">Semana 2</div>
+          <p style="color: var(--muted); margin-top: 10px; font-size: 0.9rem;">Operaciones matriciales</p>
+        </div>
+        
+        <div class="week-card" onclick="startQuiz(3)" tabindex="0" role="button" aria-label="Iniciar quiz Semana 3">
+          <div class="week-number">3️⃣</div>
+          <div class="week-name">Semana 3</div>
+          <p style="color: var(--muted); margin-top: 10px; font-size: 0.9rem;">Inversas y sistemas</p>
+        </div>
+        
+        <div class="week-card" onclick="startQuiz(4)" tabindex="0" role="button" aria-label="Iniciar quiz Semana 4">
+          <div class="week-number">4️⃣</div>
+          <div class="week-name">Semana 4</div>
+          <p style="color: var(--muted); margin-top: 10px; font-size: 0.9rem;">Determinantes</p>
+        </div>
       </div>
       
-      <div style="margin-top: 30px; padding: 20px; background: rgba(100, 150, 250, 0.1); border-radius: 20px; border: 2px solid rgba(100, 150, 250, 0.3);">
-        <p style="font-size: 0.95rem; color: var(--muted);">
-          ⏱️ 30 segundos por pregunta • 🎯 4 preguntas por semana • 💯 100 puntos por respuesta correcta
-        </p>
+      <div style="margin-top: 40px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <button class="btn btn-secondary" onclick="openModal()">ℹ️ Información</button>
+        <button class="btn btn-secondary" onclick="showCredits()">👥 Créditos</button>
       </div>
     </div>
     
-    <div class="question-screen" id="questionScreen">
+    <!-- Pantalla de preguntas -->
+    <div id="questionScreen" class="question-screen">
       <div class="question-header">
         <div class="question-info">
-          <div class="question-counter" id="questionCounter">Pregunta 1/4</div>
+          <div class="question-counter" id="questionCounter">Pregunta 1/10</div>
           <div class="timer" id="timer">30</div>
-          <div class="score-display" id="scoreDisplay">💎 0 pts</div>
+          <div class="score-display" id="scoreDisplay">0 pts</div>
         </div>
+        
         <div class="progress-bar">
-          <div class="progress-fill" id="progressFill"></div>
+          <div class="progress-fill" id="progressBar"></div>
         </div>
-      </div>
-      
-      <div class="question-card">
-        <div class="question-text" id="questionText"></div>
-        <div class="question-tip" id="questionTip"></div>
+        
+        <h2 class="question-text" id="questionText"></h2>
+        
+        <!-- INSTRUCCIÓN AGREGADA AQUÍ -->
+        <div class="question-instruction">
+          📌 Selecciona una de las siguientes opciones:
+        </div>
       </div>
       
       <div class="options-grid" id="optionsGrid"></div>
       
-      <div class="feedback" id="feedback">
-        <span class="feedback-emoji" id="feedbackEmoji"></span>
-        <div class="feedback-title" id="feedbackTitle"></div>
-        <div class="feedback-text" id="feedbackText"></div>
-        <div class="feedback-points" id="feedbackPoints"></div>
-      </div>
+      <div class="feedback" id="feedback"></div>
       
-      <div class="action-buttons">
-        <button class="btn" id="nextBtn" onclick="nextQuestion()" style="display: none;">
-          Siguiente Pregunta ▶
+      <div class="question-actions">
+        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="display: none;">
+          Siguiente Pregunta →
         </button>
       </div>
     </div>
     
-    <div class="results-screen" id="resultsScreen">
-      <div class="results-container">
-        <span class="trophy" id="trophyEmoji">🏆</span>
-        <h2 style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;">
-          ¡Quiz Completado!
-        </h2>
-        <div class="final-score" id="finalScore">0 pts</div>
-        <div class="results-message" id="resultsMessage"></div>
+    <!-- Pantalla de resultados -->
+    <div id="resultsScreen" class="results-screen">
+      <div class="results-card">
+        <div class="trophy" id="trophyEmoji">🏆</div>
+        <h2 class="results-title">¡Quiz Completado!</h2>
+        <p class="results-message" id="resultsMessage"></p>
         
-        <div class="results-stats">
+        <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-value" id="correctCount">0</div>
-            <div class="stat-label">✅ Correctas</div>
+            <div class="stat-label">Puntuación Final</div>
+            <div class="stat-value" id="finalScore">0 pts</div>
           </div>
+          
           <div class="stat-card">
+            <div class="stat-label">Respuestas Correctas</div>
+            <div class="stat-value" id="correctCount">0/10</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-label">Precisión</div>
             <div class="stat-value" id="accuracyPercent">0%</div>
-            <div class="stat-label">🎯 Precisión</div>
           </div>
+          
           <div class="stat-card">
+            <div class="stat-label">Tiempo Promedio</div>
             <div class="stat-value" id="timeAverage">0s</div>
-            <div class="stat-label">⏱️ Tiempo Promedio</div>
           </div>
         </div>
         
-        <div style="margin: 30px 0; padding: 25px; background: rgba(100, 150, 250, 0.1); border-radius: 20px; border: 2px solid rgba(100, 150, 250, 0.3);">
-          <div id="personalFeedback"></div>
-        </div>
+        <div class="personal-feedback" id="personalFeedback"></div>
         
-        <div class="action-buttons">
-          <button class="btn" onclick="restartQuiz()">🔄 Otra Semana</button>
-          <button class="btn btn-secondary" onclick="reviewAnswers()">📊 Revisar</button>
+        <div class="results-actions">
+          <button class="btn btn-primary" onclick="restartQuiz()">🔄 Nuevo Quiz</button>
+          <button class="btn btn-secondary" onclick="reviewAnswers()">📊 Revisar Respuestas</button>
           <button class="btn btn-secondary" onclick="shareResults()">📤 Compartir</button>
-          <button class="btn btn-secondary" onclick="showCredits()">📘 Créditos</button>
         </div>
       </div>
     </div>
     
-    <!-- Pantalla de Créditos -->
-    <div class="results-screen" id="creditsScreen">
-      <div class="credits-slide">
-        <h2>📘 Créditos y Derechos de Uso</h2>
-        
-        <p>
-          Este material interactivo fue desarrollado como <strong>recurso didáctico</strong> dentro del curso 
-          <span class="highlight">Álgebra Lineal - Unidad I: Matrices y Determinantes</span> 
-          correspondiente al <strong>Plan de Estudios de Licenciatura en Ingeniería 2025</strong> 
-          de la <strong>Universidad del SABES</strong>.
-        </p>
-        
-        <p>
-          Su objetivo es <strong>fortalecer el aprendizaje autónomo</strong> mediante la aplicación de herramientas digitales 
-          interactivas, gamificación educativa y evaluación formativa continua.
-        </p>
-        
-        <div style="margin: 30px 0; padding: 25px; background: rgba(255, 214, 10, 0.1); border-radius: 20px; border: 2px solid rgba(255, 214, 10, 0.3);">
-          <p style="color: var(--accent); font-size: 1.2rem; font-weight: 700; margin-bottom: 15px;">
-            © 2025 Universidad del SABES
-          </p>
-          <p style="font-size: 1rem;">
-            <strong>Todos los derechos reservados.</strong><br>
-            Uso exclusivo para fines académicos y de formación profesional.<br>
-            Prohibida su reproducción o distribución con fines de lucro sin autorización expresa.
+    <!-- Pantalla de créditos -->
+    <div id="creditsScreen" class="credits-screen">
+      <div class="credits-card">
+        <h2 class="credits-title">👥 Créditos</h2>
+        <div class="credits-content">
+          <p><strong>🎓 Universidad del SABES</strong></p>
+          <p><strong>📚 Curso:</strong> Álgebra Lineal</p>
+          <p><strong>📖 Unidad I:</strong> Matrices y Determinantes</p>
+          <p><strong>👨‍🏫 Material didáctico interactivo</strong></p>
+          <p>Diseñado para facilitar el aprendizaje y evaluación de conceptos fundamentales del álgebra lineal</p>
+          <p style="margin-top: 30px; color: var(--muted); font-size: 1rem;">
+            © 2025 Universidad del SABES<br>
+            Todos los derechos reservados<br>
+            Uso exclusivo con fines educativos
           </p>
         </div>
-        
-        <div class="cc-license">
-          <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank">
-            <img alt="Licencia Creative Commons" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png">
-          </a>
-          <p style="font-size: 0.95rem; text-align: left; margin: 0;">
-            Este material está protegido bajo una<br>
-            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" style="color: var(--secondary); font-weight: 600;">
-              Licencia Creative Commons Atribución-NoComercial-SinDerivadas 4.0 Internacional
-            </a>
-          </p>
-        </div>
-        
-        <p style="font-size: 1rem; margin-top: 25px;">
-          <strong>Desarrollado por:</strong> Equipo Docente de Ingeniería - Universidad del SABES<br>
-          <strong>Año académico:</strong> 2025<br>
-          <strong>Contacto institucional:</strong> 
-          <a href="https://www.sabes.edu.mx" target="_blank" style="color: var(--secondary); font-weight: 600;">
-            www.sabes.edu.mx
-          </a>
-        </p>
-        
-        <div class="action-buttons" style="margin-top: 40px;">
-          <button class="btn" onclick="closeCredits()">⬅️ Volver al Inicio</button>
-        </div>
+        <button class="btn btn-primary" onclick="closeCredits()">← Volver</button>
       </div>
     </div>
-  </main>
-  
-  <!-- Footer institucional -->
-  <div class="footer">
-    <p>
-      © 2025 <strong>Universidad del SABES</strong> · Uso educativo exclusivo · 
-      Curso: <strong>Álgebra Lineal</strong> (Licenciatura en Ingeniería 2025) · 
-      <a href="https://www.sabes.edu.mx" target="_blank">www.sabes.edu.mx</a>
-    </p>
   </div>
   
-  <div class="modal" id="privacyModal">
+  <!-- Modal de información -->
+  <div id="privacyModal" class="modal">
     <div class="modal-content">
-      <h2>🔒 Privacidad y Accesibilidad</h2>
-      
-      <h3>📋 Política de Privacidad</h3>
-      <p>Este quiz de Álgebra Lineal está diseñado con tu privacidad en mente:</p>
-      <ul>
-        <li><strong>Sin recopilación de datos personales:</strong> No solicitamos ni almacenamos información personal identificable.</li>
-        <li><strong>Almacenamiento local:</strong> Únicamente guardamos tu tema preferido (claro/oscuro) en el almacenamiento local de tu navegador.</li>
-        <li><strong>Sin cookies de terceros:</strong> No utilizamos cookies de seguimiento ni analíticas de terceros.</li>
-        <li><strong>Sin conexión a servidores externos:</strong> Toda la funcionalidad del quiz opera completamente en tu navegador.</li>
-      </ul>
-      
-      <h3>♿ Declaración de Accesibilidad <span class="wcag-badge">WCAG 2.2 AA</span></h3>
-      <p>Nos comprometemos a hacer este quiz accesible para todos los usuarios.</p>
-      
-      <p><strong>Características de Accesibilidad:</strong></p>
-      <ul>
-        <li><strong>Navegación por teclado:</strong> Números 1-4 para opciones, Enter para avanzar.</li>
-        <li><strong>Lectores de pantalla:</strong> Compatibilidad completa con NVDA, JAWS y VoiceOver.</li>
-        <li><strong>Contraste de color:</strong> Cumple con WCAG 2.2 nivel AA (mínimo 4.5:1).</li>
-        <li><strong>Texto redimensionable:</strong> Legible con zoom hasta 200%.</li>
-        <li><strong>Animaciones reducidas:</strong> Respeta la preferencia del sistema.</li>
-      </ul>
-      
-      <p style="font-size: 0.9rem; color: var(--muted); margin-top: 20px;">
-        <strong>Última actualización:</strong> Octubre 2025<br>
-        <strong>Estándares cumplidos:</strong> WCAG 2.2 Nivel AA, HTML5, ARIA 1.2
-      </p>
-      
-      <button class="modal-close" onclick="closeModal()">Cerrar</button>
+      <h3 class="modal-header">ℹ️ Información del Quiz</h3>
+      <div class="modal-body">
+        <p><strong>📋 Formato:</strong> 10 preguntas aleatorias por semana</p>
+        <p><strong>⏱️ Tiempo:</strong> 30 segundos por pregunta</p>
+        <p><strong>🎯 Puntuación:</strong></p>
+        <ul style="margin-left: 20px; margin-bottom: 15px;">
+          <li>Respuesta rápida (0-10s): 15 puntos</li>
+          <li>Respuesta media (11-20s): 10 puntos</li>
+          <li>Respuesta lenta (21-30s): 5 puntos</li>
+          <li>Sin respuesta: 0 puntos</li>
+        </ul>
+        <p><strong>⌨️ Atajos de teclado:</strong></p>
+        <ul style="margin-left: 20px; margin-bottom: 15px;">
+          <li>Teclas 1-4: Seleccionar opción</li>
+          <li>Enter: Siguiente pregunta</li>
+          <li>Escape: Cerrar modal</li>
+        </ul>
+        <p><strong>♿ Accesibilidad:</strong> Este quiz cumple con los estándares WCAG 2.2 AA</p>
+        <p><strong>🔒 Privacidad:</strong> Tus respuestas no se guardan ni se comparten</p>
+      </div>
+      <button class="btn btn-primary modal-close" onclick="closeModal()">Entendido</button>
     </div>
   </div>
-
+  
+  <div id="confetti" class="confetti-container"></div>
+  
   <script>
-    const questionBank = {
-      week1: [
+    const questionsByWeek = {
+      1: [
         {
-          question: "Una matriz de orden 3×5 tiene:",
-          options: ["3 filas y 5 columnas 📊", "5 filas y 3 columnas 📈", "8 elementos totales 🔢", "15 posiciones en diagonal ↗️"],
+          question: "¿Cuál es el orden de la matriz A = [[1, 2, 3], [4, 5, 6]]?",
+          options: ["2×3", "3×2", "2×2", "3×3"],
           correct: 0,
-          tip: "💡 El orden se escribe como filas × columnas. ¿Cuál número va primero?",
-          explanation: "¡Exacto! En el orden m×n, 'm' representa las filas y 'n' las columnas.",
-          funnyWrong: ["¡Invertiste el orden! 🔄", "No se trata de sumar... 🤔", "Las diagonales son otra historia 📐"]
+          explanation: "El orden de una matriz se expresa como filas × columnas. Esta matriz tiene 2 filas y 3 columnas, por lo tanto su orden es 2×3."
         },
         {
-          question: "¿Cuál de estas matrices es una matriz identidad?",
-          options: ["[[1,0],[0,1]] 🎯", "[[0,0],[0,0]] ⚫", "[[1,1],[1,1]] 1️⃣", "[[2,0],[0,2]] 2️⃣"],
+          question: "Una matriz cuadrada es aquella donde:",
+          options: ["El número de filas es igual al número de columnas", "Todos los elementos son iguales", "La diagonal principal son ceros", "Tiene solo dos filas"],
           correct: 0,
-          tip: "💡 La matriz identidad tiene unos en la diagonal principal y ceros en el resto",
-          explanation: "¡Perfecto! La matriz identidad I tiene 1s en la diagonal y 0s fuera de ella.",
-          funnyWrong: ["Esa es la matriz nula 🕳️", "Demasiados unos 🙃", "Casi, pero no es 'I', es '2I' 🔢"]
+          explanation: "Una matriz cuadrada es aquella que tiene el mismo número de filas que de columnas, como una matriz 3×3 o 5×5."
         },
         {
-          question: "Si A es una matriz cuadrada 4×4, ¿cuántos elementos tiene?",
-          options: ["16 elementos 🎲", "8 elementos 🎯", "4 elementos 📍", "12 elementos 📦"],
+          question: "¿Qué caracteriza a una matriz diagonal?",
+          options: ["Todos los elementos fuera de la diagonal principal son cero", "Todos los elementos son iguales", "Solo tiene dos columnas", "La diagonal principal es cero"],
           correct: 0,
-          tip: "💡 Multiplica filas × columnas para obtener el total de elementos",
-          explanation: "¡Correcto! 4×4 = 16. Cada posición cuenta como un elemento.",
-          funnyWrong: ["Solo contaste una dimensión 📏", "Eso sería para 2×2 🤓", "Te acercaste 🔢"]
+          explanation: "Una matriz diagonal tiene todos sus elementos fuera de la diagonal principal iguales a cero. Los elementos de la diagonal pueden ser cualquier valor."
         },
         {
-          question: "Una matriz diagonal es aquella que:",
-          options: ["Tiene ceros fuera de la diagonal principal ↘️", "Tiene todos sus elementos iguales 🟰", "Solo tiene elementos positivos ➕", "Es siempre 2×2 🔲"],
+          question: "Una matriz identidad de orden 3 tiene:",
+          options: ["Unos en la diagonal principal y ceros en el resto", "Todos los elementos iguales a 1", "Tres filas y dos columnas", "Ceros en la diagonal principal"],
           correct: 0,
-          tip: "💡 Piensa en dónde se ubican los valores no nulos",
-          explanation: "¡Excelente! Una matriz diagonal tiene elementos solo en la diagonal principal.",
-          funnyWrong: ["Eso sería matriz escalar 🎚️", "Los signos no importan ➖➕", "Puede ser de cualquier orden 📐"]
+          explanation: "La matriz identidad tiene unos (1) en su diagonal principal y ceros (0) en todos los demás elementos."
+        },
+        {
+          question: "¿Cuál es la traspuesta de la matriz [[1, 2], [3, 4]]?",
+          options: ["[[1, 3], [2, 4]]", "[[4, 3], [2, 1]]", "[[2, 1], [4, 3]]", "[[1, 2], [3, 4]]"],
+          correct: 0,
+          explanation: "La traspuesta de una matriz se obtiene intercambiando filas por columnas. Así, la primera fila [1, 2] se convierte en la primera columna."
+        },
+        {
+          question: "Una matriz simétrica cumple que:",
+          options: ["A = Aᵀ (es igual a su traspuesta)", "Todos sus elementos son iguales", "Es una matriz cuadrada con diagonal cero", "Tiene orden 2×2"],
+          correct: 0,
+          explanation: "Una matriz es simétrica cuando es igual a su traspuesta, es decir, A = Aᵀ. Esto implica que los elementos reflejados respecto a la diagonal son iguales."
+        },
+        {
+          question: "¿Qué es una matriz nula?",
+          options: ["Una matriz donde todos los elementos son cero", "Una matriz sin filas", "Una matriz con determinante cero", "Una matriz 1×1"],
+          correct: 0,
+          explanation: "Una matriz nula o matriz cero es aquella donde todos sus elementos son iguales a cero, independientemente de su orden."
+        },
+        {
+          question: "En una matriz triangular superior:",
+          options: ["Todos los elementos debajo de la diagonal principal son cero", "Todos los elementos arriba de la diagonal son cero", "La diagonal principal es cero", "Todos los elementos son iguales"],
+          correct: 0,
+          explanation: "Una matriz triangular superior tiene todos los elementos por debajo de la diagonal principal iguales a cero."
+        },
+        {
+          question: "¿Cuál es el elemento a₂₃ en una matriz A?",
+          options: ["Elemento en la fila 2, columna 3", "Elemento en la fila 3, columna 2", "Elemento en posición (2,2)", "Elemento en posición (3,3)"],
+          correct: 0,
+          explanation: "La notación aᵢⱼ indica el elemento en la fila i y columna j. Por lo tanto, a₂₃ es el elemento en la fila 2, columna 3."
+        },
+        {
+          question: "Dos matrices se pueden sumar si:",
+          options: ["Tienen el mismo orden", "Son matrices cuadradas", "Tienen el mismo determinante", "Son matrices simétricas"],
+          correct: 0,
+          explanation: "Para sumar dos matrices, ambas deben tener exactamente el mismo orden (mismo número de filas y columnas)."
+        },
+        {
+          question: "Una matriz escalar es:",
+          options: ["Una matriz diagonal con todos los elementos de la diagonal iguales", "Una matriz con un solo elemento", "Una matriz 1×1", "Una matriz multiplicada por un escalar"],
+          correct: 0,
+          explanation: "Una matriz escalar es una matriz diagonal donde todos los elementos de la diagonal principal son iguales entre sí."
+        },
+        {
+          question: "¿Qué propiedad NO cumple la suma de matrices?",
+          options: ["División", "Conmutativa", "Asociativa", "Elemento neutro"],
+          correct: 0,
+          explanation: "La división no está definida como operación entre matrices. Las matrices sí cumplen las propiedades conmutativa, asociativa y tienen elemento neutro."
         }
       ],
-      
-      week2: [
+      2: [
         {
-          question: "Para sumar dos matrices A y B, ¿qué condición deben cumplir?",
-          options: ["Tener el mismo orden 📏", "Ser cuadradas 🟦", "Tener determinante ≠ 0 🎲", "Ser simétricas 🔄"],
+          question: "¿Cuál operación NO cambia el determinante?",
+          options: ["Sumar a una fila un múltiplo de otra", "Multiplicar una fila por un escalar", "Intercambiar dos filas", "Multiplicar la matriz por un escalar"],
           correct: 0,
-          tip: "💡 Solo puedes sumar elementos en la misma posición",
-          explanation: "¡Exacto! Solo se pueden sumar matrices con el mismo número de filas y columnas.",
-          funnyWrong: ["No necesitan ser cuadradas 📐", "El determinante no importa 🎯", "La simetría no es requisito ➕"]
+          explanation: "Sumar a una fila un múltiplo de otra fila no cambia el valor del determinante. Esta es una operación fundamental en el método de Gauss."
         },
         {
-          question: "Si multiplicamos 2×3 por 3×4, el resultado será:",
-          options: ["Una matriz 2×4 📊", "Una matriz 3×3 ⬛", "Una matriz 2×3 📈", "No se puede ❌"],
+          question: "Para multiplicar dos matrices A y B, se requiere que:",
+          options: ["El número de columnas de A sea igual al número de filas de B", "Ambas sean matrices cuadradas", "Tengan el mismo orden", "Sean matrices simétricas"],
           correct: 0,
-          tip: "💡 En multiplicación: (m×n) × (n×p) = (m×p)",
-          explanation: "¡Perfecto! El resultado toma las filas de la primera y columnas de la segunda.",
-          funnyWrong: ["Esa sería otra combinación 🔢", "No se promedian 📏", "¡Sí se puede! ✅"]
+          explanation: "Para que el producto AB esté definido, el número de columnas de A debe ser igual al número de filas de B."
         },
         {
           question: "La multiplicación de matrices es:",
-          options: ["Asociativa pero NO conmutativa 🔀", "Conmutativa pero NO asociativa 🔄", "Conmutativa Y asociativa ✅", "Ni conmutativa ni asociativa ❌"],
+          options: ["Asociativa pero no conmutativa", "Conmutativa pero no asociativa", "Conmutativa y asociativa", "Ni conmutativa ni asociativa"],
           correct: 0,
-          tip: "💡 ¿A×B siempre es igual a B×A?",
-          explanation: "¡Correcto! Puedes reagrupar, pero A×B ≠ B×A en general.",
-          funnyWrong: ["El orden SÍ importa 🔢", "Sí puedes reagrupar 🎯", "Una propiedad sí cumple 📐"]
+          explanation: "La multiplicación de matrices es asociativa (A(BC) = (AB)C) pero NO es conmutativa (AB ≠ BA en general)."
         },
         {
-          question: "Si k=3 y A=[[1,2],[3,4]], entonces 3A es:",
-          options: ["[[3,6],[9,12]] ✖️3️⃣", "[[4,5],[6,7]] ➕3️⃣", "[[3,3],[3,3]] 🔢", "[[1,2,3],[3,4,3]] ➕"],
+          question: "Si A es una matriz 3×2 y B es 2×4, entonces AB es:",
+          options: ["3×4", "2×2", "3×2", "No se puede multiplicar"],
           correct: 0,
-          tip: "💡 Multiplicar por escalar = multiplicar CADA elemento",
-          explanation: "¡Excelente! Cada elemento se multiplica por 3.",
-          funnyWrong: ["No es suma 🎚️", "No llenas con el escalar 🚫", "No agregas columnas 📊"]
+          explanation: "El producto de una matriz m×n por una matriz n×p resulta en una matriz m×p. Por lo tanto, 3×2 por 2×4 da 3×4."
+        },
+        {
+          question: "¿Qué resultado da I·A donde I es la identidad?",
+          options: ["A", "I", "0", "Aᵀ"],
+          correct: 0,
+          explanation: "La matriz identidad es el elemento neutro de la multiplicación. Por lo tanto, I·A = A·I = A."
+        },
+        {
+          question: "Al multiplicar una matriz por un escalar k:",
+          options: ["Cada elemento se multiplica por k", "Solo la diagonal se multiplica por k", "El determinante no cambia", "La matriz se hace invertible"],
+          correct: 0,
+          explanation: "Al multiplicar una matriz por un escalar k, cada uno de sus elementos se multiplica por ese escalar."
+        },
+        {
+          question: "La propiedad distributiva en matrices establece:",
+          options: ["A(B + C) = AB + AC", "AB = BA", "(AB)ᵀ = AᵀBᵀ", "A + BC = (A + B)(A + C)"],
+          correct: 0,
+          explanation: "La multiplicación de matrices distribuye sobre la suma: A(B + C) = AB + AC."
+        },
+        {
+          question: "Si (AB)ᵀ = BᵀAᵀ, entonces:",
+          options: ["Se invierte el orden de los factores al trasponerlos", "A = B", "AB = BA", "A y B son simétricas"],
+          correct: 0,
+          explanation: "Al trasponer un producto de matrices, se invierte el orden de los factores: (AB)ᵀ = BᵀAᵀ."
+        },
+        {
+          question: "Una matriz A es idempotente si:",
+          options: ["A² = A", "A² = I", "A² = 0", "Aᵀ = A"],
+          correct: 0,
+          explanation: "Una matriz es idempotente cuando al multiplicarla por sí misma se obtiene la misma matriz: A² = A."
+        },
+        {
+          question: "El elemento (i,j) del producto AB se calcula como:",
+          options: ["La suma de productos de elementos de la fila i de A por elementos de la columna j de B", "El producto de aᵢⱼ por bᵢⱼ", "La suma de aᵢⱼ y bᵢⱼ", "El producto de la fila i por la fila j"],
+          correct: 0,
+          explanation: "El elemento (i,j) de AB es la suma de los productos de los elementos de la fila i de A por los elementos correspondientes de la columna j de B."
+        },
+        {
+          question: "Si A es 2×3 y B es 3×2, entonces:",
+          options: ["AB y BA tienen órdenes diferentes", "AB = BA", "Ningún producto está definido", "AB y BA son iguales"],
+          correct: 0,
+          explanation: "AB será una matriz 2×2 y BA será una matriz 3×3, por lo que tienen órdenes diferentes y no pueden ser iguales."
+        },
+        {
+          question: "¿Cuál es la traza de una matriz?",
+          options: ["La suma de los elementos de la diagonal principal", "El determinante", "El producto de la diagonal", "La suma de todos los elementos"],
+          correct: 0,
+          explanation: "La traza (tr(A)) de una matriz es la suma de todos los elementos en su diagonal principal."
         }
       ],
-      
-      week3: [
+      3: [
+        {
+          question: "Una matriz A es invertible si:",
+          options: ["det(A) ≠ 0", "det(A) = 0", "Es una matriz diagonal", "Es una matriz simétrica"],
+          correct: 0,
+          explanation: "Una matriz es invertible (no singular) si y solo si su determinante es diferente de cero."
+        },
+        {
+          question: "La matriz inversa A⁻¹ cumple que:",
+          options: ["AA⁻¹ = A⁻¹A = I", "AA⁻¹ = 0", "AA⁻¹ = A", "A⁻¹ = Aᵀ"],
+          correct: 0,
+          explanation: "La matriz inversa cumple que al multiplicarla por la matriz original (en cualquier orden) da la matriz identidad."
+        },
+        {
+          question: "El método de Gauss-Jordan se usa para:",
+          options: ["Encontrar la matriz inversa y resolver sistemas", "Calcular determinantes únicamente", "Multiplicar matrices", "Sumar matrices"],
+          correct: 0,
+          explanation: "El método de Gauss-Jordan se utiliza para encontrar matrices inversas y resolver sistemas de ecuaciones lineales."
+        },
+        {
+          question: "En el método de Gauss-Jordan, la matriz aumentada [A|I] se transforma en:",
+          options: ["[I|A⁻¹]", "[A⁻¹|I]", "[A|A⁻¹]", "[I|A]"],
+          correct: 0,
+          explanation: "Al aplicar Gauss-Jordan a [A|I], si A es invertible, se obtiene [I|A⁻¹], donde A⁻¹ es la inversa de A."
+        },
+        {
+          question: "Si det(A) = 0, entonces A es:",
+          options: ["Singular (no invertible)", "Invertible", "La matriz identidad", "Una matriz diagonal"],
+          correct: 0,
+          explanation: "Una matriz con determinante cero es singular, lo que significa que no tiene inversa."
+        },
+        {
+          question: "¿Cuál es la inversa de la matriz identidad I?",
+          options: ["I", "0", "No existe", "-I"],
+          correct: 0,
+          explanation: "La matriz identidad es su propia inversa, ya que I·I = I."
+        },
+        {
+          question: "Si A y B son invertibles, entonces (AB)⁻¹ es:",
+          options: ["B⁻¹A⁻¹", "A⁻¹B⁻¹", "AB", "(BA)⁻¹"],
+          correct: 0,
+          explanation: "La inversa de un producto se calcula invirtiendo el orden: (AB)⁻¹ = B⁻¹A⁻¹."
+        },
+        {
+          question: "Una operación elemental por filas:",
+          options: ["Puede revertirse con otra operación elemental", "Cambia siempre el determinante", "No se puede deshacer", "Solo se aplica a matrices cuadradas"],
+          correct: 0,
+          explanation: "Toda operación elemental por filas tiene una operación inversa que la deshace."
+        },
+        {
+          question: "El rango de una matriz A es:",
+          options: ["El número máximo de filas linealmente independientes", "El determinante de A", "El número de columnas", "El número de filas"],
+          correct: 0,
+          explanation: "El rango es el número máximo de filas (o columnas) linealmente independientes en la matriz."
+        },
+        {
+          question: "Un sistema de ecuaciones Ax = b tiene solución única si:",
+          options: ["A es invertible", "det(A) = 0", "A no es cuadrada", "b = 0"],
+          correct: 0,
+          explanation: "Un sistema Ax = b tiene solución única cuando A es invertible (det(A) ≠ 0), y la solución es x = A⁻¹b."
+        },
+        {
+          question: "¿Qué matriz NO es invertible?",
+          options: ["[[1, 2], [2, 4]]", "[[1, 0], [0, 1]]", "[[2, 1], [1, 2]]", "[[1, 2], [3, 4]]"],
+          correct: 0,
+          explanation: "La matriz [[1, 2], [2, 4]] tiene determinante 0 (la segunda fila es el doble de la primera), por lo que no es invertible."
+        },
+        {
+          question: "Si A² = I, entonces A⁻¹ es:",
+          options: ["A", "I", "A²", "-A"],
+          correct: 0,
+          explanation: "Si A² = I, entonces A·A = I, lo que significa que A es su propia inversa: A⁻¹ = A."
+        }
+      ],
+      4: [
+        {
+          question: "El determinante de una matriz 2×2 [[a,b],[c,d]] es:",
+          options: ["ad - bc", "ab - cd", "ac - bd", "a + b + c + d"],
+          correct: 0,
+          explanation: "Para una matriz 2×2, el determinante se calcula como ad - bc (producto de la diagonal principal menos producto de la diagonal secundaria)."
+        },
+        {
+          question: "Si se intercambian dos filas de una matriz, su determinante:",
+          options: ["Cambia de signo", "Se duplica", "No cambia", "Se hace cero"],
+          correct: 0,
+          explanation: "Intercambiar dos filas (o dos columnas) de una matriz cambia el signo del determinante."
+        },
+        {
+          question: "Si una fila es múltiplo de otra, el determinante es:",
+          options: ["0", "1", "El valor del múltiplo", "Infinito"],
+          correct: 0,
+          explanation: "Si una fila (o columna) es múltiplo de otra, significa que las filas son linealmente dependientes y el determinante es cero."
+        },
         {
           question: "¿Cuál operación NO cambia el determinante?",
-          options: ["Sumar a una fila un múltiplo de otra ➕", "Intercambiar dos filas 🔄", "Multiplicar fila por escalar ✖️", "Todas lo cambian 🎲"],
+          options: ["Sumar a una fila un múltiplo de otra", "Multiplicar una fila por un escalar", "Intercambiar dos filas", "Multiplicar la matriz por un escalar"],
           correct: 0,
-          tip: "💡 ¿Cuál solo 'reorganiza' sin alterar el valor?",
-          explanation: "¡Exacto! Sumar un múltiplo preserva el determinante.",
-          funnyWrong: ["Intercambiar cambia el signo 🔀", "Multiplicar multiplica el det 📊", "Una lo preserva ✅"]
+          explanation: "Sumar a una fila un múltiplo de otra fila no altera el valor del determinante."
         },
         {
-          question: "Una matriz A es invertible si y solo si:",
-          options: ["det(A) ≠ 0 🎯", "Es diagonal 📐", "Es simétrica 🔄", "Tiene elementos positivos ➕"],
+          question: "El determinante de la matriz identidad es:",
+          options: ["1", "0", "El orden de la matriz", "Infinito"],
           correct: 0,
-          tip: "💡 ¿Qué condición da solución única?",
-          explanation: "¡Perfecto! Solo matrices con determinante no nulo tienen inversa.",
-          funnyWrong: ["Diagonales pueden tener ceros 0️⃣", "Simetría no garantiza 🔄", "Los signos no afectan ➖➕"]
+          explanation: "El determinante de cualquier matriz identidad I es siempre igual a 1."
         },
         {
-          question: "Gauss-Jordan para A⁻¹ consiste en:",
-          options: ["Reducir [A|I] a [I|A⁻¹] 🔄", "Calcular det(A) y dividir 🎲", "Transponer y cambiar signos ↔️", "Multiplicar A por sí misma ✖️"],
+          question: "Si det(A) = 5 y det(B) = 3, entonces det(AB) es:",
+          options: ["15", "8", "2", "5/3"],
           correct: 0,
-          tip: "💡 Transforma A en identidad con operaciones elementales",
-          explanation: "¡Correcto! Formamos [A|I] y reducimos a [I|A⁻¹]",
-          funnyWrong: ["Eso da un escalar 📉", "Transpuesta ≠ inversa 📊", "A×A da A², no A⁻¹ 🔢"]
+          explanation: "El determinante de un producto es el producto de los determinantes: det(AB) = det(A)·det(B) = 5·3 = 15."
         },
         {
-          question: "Si una matriz escalonada tiene fila de ceros:",
-          options: ["Infinitas soluciones o ninguna 🔄", "Solución única ✅", "Es invertible 🎯", "Determinante es 1 1️⃣"],
+          question: "El determinante de una matriz triangular es:",
+          options: ["El producto de los elementos de la diagonal principal", "La suma de la diagonal", "Siempre cero", "Siempre uno"],
           correct: 0,
-          tip: "💡 Fila de ceros indica menos ecuaciones independientes",
-          explanation: "¡Exacto! Filas de ceros indican dependencia lineal.",
-          funnyWrong: ["Filas cero impiden solución única 🚫", "Filas cero → det=0 ❌", "El det sería 0 0️⃣"]
-        }
-      ],
-      
-      week4: [
-        {
-          question: "El determinante de [[2,1],[4,2]] es:",
-          options: ["0 (matriz singular) 🚫", "8 📊", "-2 ➖", "4 🔢"],
-          correct: 0,
-          tip: "💡 Para 2×2: det = ad - bc",
-          explanation: "¡Exacto! 2×2 - 1×4 = 0. NO es invertible.",
-          funnyWrong: ["Solo multiplicaste 🎯", "El signo importa ➖", "Revisa ad-bc 📐"]
+          explanation: "Para matrices triangulares (superiores o inferiores), el determinante es el producto de todos los elementos de la diagonal principal."
         },
         {
-          question: "Si det(A) = 3 y det(B) = 2, entonces det(AB) es:",
-          options: ["6 ✖️", "5 ➕", "1.5 ➗", "8 🎲"],
+          question: "Si det(A) = k, entonces det(cA) es (donde c es un escalar y A es n×n):",
+          options: ["cⁿk", "ck", "k", "c + k"],
           correct: 0,
-          tip: "💡 Recuerda: det(AB) = det(A) × det(B)",
-          explanation: "¡Perfecto! Los determinantes se multiplican: 3 × 2 = 6",
-          funnyWrong: ["No se suman ➕", "No se dividen 📉", "No es potenciación 🔢"]
+          explanation: "Al multiplicar una matriz n×n por un escalar c, su determinante se multiplica por cⁿ. Por lo tanto, det(cA) = cⁿ·det(A)."
         },
         {
-          question: "La Regla de Cramer sirve para:",
-          options: ["Resolver sistemas lineales 📝", "Calcular inversas 🔄", "Multiplicar matrices 📊", "Encontrar autovalores 🎯"],
+          question: "El cofactor Cᵢⱼ de un elemento aᵢⱼ se calcula como:",
+          options: ["(-1)^(i+j) × Mᵢⱼ", "aᵢⱼ × Mᵢⱼ", "Mᵢⱼ / aᵢⱼ", "(-1)^(ij) × aᵢⱼ"],
           correct: 0,
-          tip: "💡 Usa determinantes para encontrar x₁, x₂, x₃...",
-          explanation: "¡Correcto! Cramer usa cocientes de determinantes para resolver Ax=b.",
-          funnyWrong: ["Para inversas: Gauss-Jordan 🔄", "No optimiza multiplicación ✖️", "Autovalores: otro método 📐"]
+          explanation: "El cofactor Cᵢⱼ se obtiene multiplicando (-1)^(i+j) por el menor Mᵢⱼ correspondiente al elemento aᵢⱼ."
         },
         {
-          question: "Determinante de matriz triangular es:",
-          options: ["Producto de diagonales ↘️", "Suma de elementos ➕", "Siempre 1 1️⃣", "Siempre 0 0️⃣"],
+          question: "La regla de Cramer se usa para:",
+          options: ["Resolver sistemas de ecuaciones lineales", "Calcular matrices inversas", "Multiplicar matrices", "Hallar eigenvectores"],
           correct: 0,
-          tip: "💡 En triangulares, solo la diagonal importa",
-          explanation: "¡Excelente! Multiplicas elementos de la diagonal principal.",
-          funnyWrong: ["No sumes, multiplica 🔢", "Puede ser cualquier valor 🎲", "Solo 0 si diagonal es 0 📊"]
+          explanation: "La regla de Cramer es un método para resolver sistemas de ecuaciones lineales usando determinantes."
+        },
+        {
+          question: "Si det(A) ≠ 0, entonces:",
+          options: ["A es invertible", "A no es invertible", "A = I", "A = 0"],
+          correct: 0,
+          explanation: "Una matriz es invertible si y solo si su determinante es diferente de cero."
+        },
+        {
+          question: "El determinante de Aᵀ (A traspuesta) es:",
+          options: ["Igual a det(A)", "Negativo de det(A)", "El inverso de det(A)", "Cero"],
+          correct: 0,
+          explanation: "El determinante de una matriz y el de su traspuesta son iguales: det(Aᵀ) = det(A)."
+        },
+        {
+          question: "Si una matriz tiene una fila de ceros, su determinante es:",
+          options: ["0", "1", "Indefinido", "Igual a las otras filas"],
+          correct: 0,
+          explanation: "Si una matriz tiene una fila (o columna) completamente de ceros, su determinante es siempre cero."
+        },
+        {
+          question: "Para una matriz 3×3, ¿cuántos términos tiene su desarrollo por cofactores?",
+          options: ["6", "3", "9", "12"],
+          correct: 0,
+          explanation: "El desarrollo del determinante de una matriz 3×3 tiene 6 términos (3! = 6 permutaciones)."
         }
       ]
     };
     
-    let currentWeek = 1;
+    let currentWeek = 0;
+    let questionPool = [];
     let currentQuestionIndex = 0;
     let score = 0;
     let selectedAnswer = -1;
     let timeLeft = 30;
-    let timer = null;
+    let timer;
     let userAnswers = [];
-    let questionPool = [];
-    let questionStartTime = 0;
     let totalTime = 0;
     
-    function startWeek(week) {
+    function startQuiz(week) {
       currentWeek = week;
+      
+      // Seleccionar 10 preguntas aleatorias de la semana
+      const allQuestions = questionsByWeek[week];
+      questionPool = shuffleArray(allQuestions).slice(0, 10);
+      
       currentQuestionIndex = 0;
       score = 0;
       userAnswers = [];
       totalTime = 0;
       
-      const weekKey = 'week' + week;
-      const allQuestions = [...questionBank[weekKey]];
-      questionPool = shuffleArray(allQuestions).slice(0, 4);
-      
       document.getElementById('startScreen').classList.add('hidden');
       document.getElementById('questionScreen').classList.add('active');
-      document.getElementById('resultsScreen').classList.remove('active');
       
       loadQuestion();
-      startTimer();
     }
     
     function loadQuestion() {
@@ -1148,105 +1380,134 @@
         return;
       }
       
-      const question = questionPool[currentQuestionIndex];
-      questionStartTime = Date.now();
+      selectedAnswer = -1;
+      timeLeft = 30;
       
-      document.getElementById('questionCounter').textContent = 'Pregunta ' + (currentQuestionIndex + 1) + '/' + questionPool.length;
+      const question = questionPool[currentQuestionIndex];
+      
+      document.getElementById('questionCounter').textContent = 
+        `Pregunta ${currentQuestionIndex + 1}/10`;
       document.getElementById('questionText').textContent = question.question;
-      document.getElementById('questionTip').textContent = question.tip;
+      document.getElementById('scoreDisplay').textContent = score + ' pts';
+      document.getElementById('nextBtn').style.display = 'none';
+      document.getElementById('feedback').style.display = 'none';
       
       const progress = ((currentQuestionIndex + 1) / questionPool.length) * 100;
-      document.getElementById('progressFill').style.width = progress + '%';
+      document.getElementById('progressBar').style.width = progress + '%';
       
       const optionsGrid = document.getElementById('optionsGrid');
       optionsGrid.innerHTML = '';
       
-      question.options.forEach((option, index) => {
-        const optionElement = document.createElement('button');
-        optionElement.className = 'option';
-        optionElement.innerHTML = option;
-        optionElement.onclick = function() { selectOption(index); };
-        optionsGrid.appendChild(optionElement);
+      // Mezclar las opciones aleatoriamente
+      const shuffledOptions = question.options.map((option, index) => ({
+        text: option,
+        originalIndex: index
+      }));
+      
+      // Barajar el array de opciones
+      for (let i = shuffledOptions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
+      }
+      
+      // Encontrar la nueva posición de la respuesta correcta
+      const newCorrectIndex = shuffledOptions.findIndex(opt => opt.originalIndex === question.correct);
+      
+      // Guardar el nuevo índice correcto y las opciones mezcladas en la pregunta
+      question.shuffledCorrect = newCorrectIndex;
+      question.shuffledOptions = shuffledOptions;
+      
+      const letters = ['A', 'B', 'C', 'D'];
+      shuffledOptions.forEach((option, index) => {
+        const optionDiv = document.createElement('div');
+        optionDiv.className = 'option';
+        optionDiv.onclick = () => selectOption(index);
+        optionDiv.tabIndex = 0;
+        optionDiv.setAttribute('role', 'button');
+        optionDiv.setAttribute('aria-label', `Opción ${letters[index]}: ${option.text}`);
+        
+        optionDiv.innerHTML = `
+          <div class="option-letter">${letters[index]}</div>
+          <div class="option-text">${option.text}</div>
+        `;
+        
+        optionsGrid.appendChild(optionDiv);
       });
       
-      selectedAnswer = -1;
-      document.getElementById('feedback').classList.remove('show', 'correct', 'incorrect');
-      document.getElementById('nextBtn').style.display = 'none';
-      timeLeft = 30;
-      document.getElementById('timer').classList.remove('warning');
+      startTimer();
     }
     
     function selectOption(index) {
       if (selectedAnswer !== -1) return;
       
+      clearInterval(timer);
       selectedAnswer = index;
+      
       const question = questionPool[currentQuestionIndex];
       const options = document.querySelectorAll('.option');
-      
-      clearInterval(timer);
-      const responseTime = Math.round((Date.now() - questionStartTime) / 1000);
-      totalTime += responseTime;
+      const timeTaken = 30 - timeLeft;
       
       options.forEach(opt => opt.onclick = null);
       
-      setTimeout(() => {
-        const isCorrect = index === question.correct;
-        let pointsEarned = 0;
+      options[index].classList.add('selected');
+      
+      let points = 0;
+      let isCorrect = index === question.shuffledCorrect;
+      
+      // Obtener los textos de las respuestas desde las opciones mezcladas
+      const selectedAnswerText = question.shuffledOptions[index].text;
+      const correctAnswerText = question.shuffledOptions[question.shuffledCorrect].text;
+      
+      if (isCorrect) {
+        if (timeTaken <= 10) points = 15;
+        else if (timeTaken <= 20) points = 10;
+        else points = 5;
         
-        if (isCorrect) {
-          pointsEarned = Math.max(50, 100 - (30 - timeLeft) * 2);
-          score += pointsEarned;
-          options[index].classList.add('correct');
-          showFeedback(true, question.explanation, pointsEarned);
-          createConfetti();
-        } else {
-          options[index].classList.add('incorrect');
-          options[question.correct].classList.add('correct');
-          const funnyMsg = question.funnyWrong[index] || "¡No exactamente! 🤔";
-          showFeedback(false, funnyMsg + " " + question.explanation, 0);
-        }
-        
-        userAnswers.push({
-          question: question.question,
-          selectedIndex: index,
-          correctIndex: question.correct,
-          isCorrect: isCorrect,
-          points: pointsEarned,
-          time: responseTime
-        });
-        
-        document.getElementById('scoreDisplay').textContent = '💎 ' + score + ' pts';
-        document.getElementById('nextBtn').style.display = 'block';
-      }, 800);
+        score += points;
+        options[index].classList.add('correct');
+        showFeedback(true, "✅ ¡Correcto! " + question.explanation, points);
+      } else {
+        options[index].classList.add('incorrect');
+        options[question.shuffledCorrect].classList.add('correct');
+        showFeedback(false, "❌ Incorrecto. " + question.explanation, 0);
+      }
+      
+      userAnswers.push({
+        question: question.question,
+        selectedIndex: index,
+        correctIndex: question.shuffledCorrect,
+        selectedAnswer: selectedAnswerText,
+        correctAnswer: correctAnswerText,
+        isCorrect: isCorrect,
+        points: points,
+        time: timeTaken
+      });
+      
+      totalTime += timeTaken;
+      document.getElementById('scoreDisplay').textContent = score + ' pts';
+      document.getElementById('nextBtn').style.display = 'block';
+      
+      if (isCorrect) {
+        createConfetti();
+      }
     }
     
     function showFeedback(isCorrect, message, points) {
       const feedback = document.getElementById('feedback');
-      const emojis = isCorrect ? ['🎉', '🚀', '⭐', '🔥', '💎', '🏆'] : ['😅', '🤔', '😬', '💭', '🎓'];
-      const titles = isCorrect ? ['¡Correcto!', '¡Excelente!', '¡Genial!', '¡Perfecto!'] : ['¡Ups!', '¡Casi!', '¡No exactamente!'];
-      
-      document.getElementById('feedbackEmoji').textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      document.getElementById('feedbackTitle').textContent = titles[Math.floor(Math.random() * titles.length)];
-      document.getElementById('feedbackText').textContent = message;
-      document.getElementById('feedbackPoints').textContent = (isCorrect ? '+' : '+0 ') + (isCorrect ? points : '') + ' puntos';
-      
-      feedback.className = 'feedback show ' + (isCorrect ? 'correct' : 'incorrect');
+      feedback.className = 'feedback ' + (isCorrect ? 'correct' : 'incorrect');
+      feedback.innerHTML = message + (points > 0 ? ` <strong>+${points} pts</strong>` : '');
+      feedback.style.display = 'block';
     }
     
     function nextQuestion() {
       currentQuestionIndex++;
-      if (currentQuestionIndex >= questionPool.length) {
-        showResults();
-      } else {
-        document.getElementById('feedback').classList.remove('show');
-        loadQuestion();
-        startTimer();
-      }
+      loadQuestion();
     }
     
     function startTimer() {
       const timerDisplay = document.getElementById('timer');
       timerDisplay.textContent = timeLeft;
+      timerDisplay.classList.remove('warning');
       
       timer = setInterval(() => {
         timeLeft--;
@@ -1270,12 +1531,16 @@
       const options = document.querySelectorAll('.option');
       
       options.forEach(opt => opt.onclick = null);
-      options[question.correct].classList.add('correct');
+      options[question.shuffledCorrect].classList.add('correct');
+      
+      const correctAnswerText = question.shuffledOptions[question.shuffledCorrect].text;
       
       userAnswers.push({
         question: question.question,
         selectedIndex: -1,
-        correctIndex: question.correct,
+        correctIndex: question.shuffledCorrect,
+        selectedAnswer: 'Sin respuesta (tiempo agotado)',
+        correctAnswer: correctAnswerText,
         isCorrect: false,
         points: 0,
         time: 30
@@ -1295,7 +1560,7 @@
       const avgTime = Math.round(totalTime / questionPool.length);
       
       document.getElementById('finalScore').textContent = score + ' pts';
-      document.getElementById('correctCount').textContent = correctCount;
+      document.getElementById('correctCount').textContent = correctCount + '/10';
       document.getElementById('accuracyPercent').textContent = accuracy + '%';
       document.getElementById('timeAverage').textContent = avgTime + 's';
       
@@ -1329,31 +1594,31 @@
       let feedback = '<h4 style="color: var(--primary); margin-bottom: 15px;">📊 Análisis Detallado</h4>';
       
       if (avgTime < 15) {
-        feedback += '<p>⚡ <strong>Velocidad impresionante</strong></p>';
+        feedback += '<p>⚡ <strong>Velocidad impresionante</strong> - Respondes rápidamente y con confianza</p>';
       } else if (avgTime < 25) {
-        feedback += '<p>⏱️ <strong>Ritmo adecuado</strong></p>';
+        feedback += '<p>⏱️ <strong>Ritmo adecuado</strong> - Te tomas el tiempo necesario para pensar</p>';
       } else {
-        feedback += '<p>🐢 <strong>Tómate tu tiempo</strong></p>';
+        feedback += '<p>🐢 <strong>Tómate tu tiempo</strong> - No hay prisa, la comprensión es lo importante</p>';
       }
       
       if (accuracy === 100) {
-        feedback += '<p>🎯 <strong>Precisión perfecta!</strong></p>';
+        feedback += '<p>🎯 <strong>Precisión perfecta!</strong> - Dominas completamente el tema</p>';
       } else if (accuracy >= 75) {
-        feedback += '<p>✅ <strong>Alta precisión</strong></p>';
+        feedback += '<p>✅ <strong>Alta precisión</strong> - Excelente comprensión de los conceptos</p>';
       } else if (accuracy >= 50) {
-        feedback += '<p>📈 <strong>En progreso</strong></p>';
+        feedback += '<p>📈 <strong>En progreso</strong> - Vas por buen camino, sigue practicando</p>';
       } else {
-        feedback += '<p>💡 <strong>Área de mejora</strong></p>';
+        feedback += '<p>💡 <strong>Área de mejora</strong> - Repasa los conceptos fundamentales</p>';
       }
       
       const weekTips = {
-        1: 'Practica identificar tipos de matrices 📐',
-        2: 'Domina multiplicación matricial ➕✖️',
-        3: 'Practica Gauss-Jordan 🔄',
-        4: 'Memoriza propiedades de determinantes 🎲'
+        1: 'Practica identificar tipos de matrices y sus propiedades 📐',
+        2: 'Domina la multiplicación matricial y sus propiedades ➕✖️',
+        3: 'Practica el método de Gauss-Jordan paso a paso 🔄',
+        4: 'Memoriza las propiedades de los determinantes 🎲'
       };
       
-      feedback += '<p>💭 <strong>Tip Semana ' + currentWeek + ':</strong> ' + weekTips[currentWeek] + '</p>';
+      feedback += '<p>💭 <strong>Tip para Semana ' + currentWeek + ':</strong> ' + weekTips[currentWeek] + '</p>';
       container.innerHTML = feedback;
     }
     
@@ -1400,7 +1665,7 @@
       const current = document.documentElement.getAttribute('data-theme');
       const newTheme = current === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme-algebra', newTheme);
+      localStorage.setItem('theme-algebra-quiz', newTheme);
     }
     
     function restartQuiz() {
@@ -1422,10 +1687,10 @@
         if (answer.selectedIndex === -1) {
           review += '⏰ Tiempo agotado\n';
         } else {
-          review += '📝 Tu respuesta: ' + question.options[answer.selectedIndex] + '\n';
+          review += '📝 Tu respuesta: ' + answer.selectedAnswer + '\n';
         }
         if (!answer.isCorrect) {
-          review += '✓ Correcta: ' + question.options[answer.correctIndex] + '\n';
+          review += '✓ Correcta: ' + answer.correctAnswer + '\n';
         }
         review += '\n';
       });
@@ -1435,12 +1700,12 @@
     function shareResults() {
       const correctCount = userAnswers.filter(a => a.isCorrect).length;
       const accuracy = Math.round((correctCount / questionPool.length) * 100);
-      const text = '🎯 ¡Quiz Álgebra Lineal!\n💎 ' + score + ' puntos\n✅ ' + correctCount + '/' + questionPool.length + '\n🎯 ' + accuracy + '%\n\n#ÁlgebraLineal';
+      const text = '🎯 ¡Quiz Álgebra Lineal!\n💎 ' + score + ' puntos\n✅ ' + correctCount + '/10\n🎯 ' + accuracy + '%\n\n#ÁlgebraLineal #SABES';
       
       if (navigator.share) {
         navigator.share({ title: 'Quiz Álgebra Lineal', text: text });
       } else {
-        navigator.clipboard.writeText(text).then(() => alert('✅ ¡Copiado!'));
+        navigator.clipboard.writeText(text).then(() => alert('✅ ¡Resultados copiados al portapapeles!'));
       }
     }
     
@@ -1453,7 +1718,7 @@
     }
     
     function showCredits() {
-      document.getElementById('resultsScreen').classList.remove('active');
+      document.getElementById('startScreen').classList.add('hidden');
       document.getElementById('creditsScreen').classList.add('active');
       window.scrollTo(0, 0);
     }
@@ -1464,6 +1729,7 @@
       window.scrollTo(0, 0);
     }
     
+    // Atajos de teclado
     document.addEventListener('keydown', function(event) {
       const questionScreen = document.getElementById('questionScreen');
       const modal = document.getElementById('privacyModal');
@@ -1488,10 +1754,11 @@
       }
     });
     
+    // Cargar tema guardado
     document.addEventListener('DOMContentLoaded', function() {
-      const savedTheme = localStorage.getItem('theme-algebra') || 'dark';
+      const savedTheme = localStorage.getItem('theme-algebra-quiz') || 'light';
       document.documentElement.setAttribute('data-theme', savedTheme);
-      console.log('🎯 Quiz cargado - ♿ WCAG 2.2 AA');
+      console.log('🎯 Quiz cargado - ♿ WCAG 2.2 AA compatible');
     });
   </script>
 </body>
