@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta name="description" content="Curso interactivo de Álgebra Lineal - Unidad II: Sistemas de Ecuaciones Lineales. Cumple con estándares WCAG 2.2 AA de accesibilidad."/>
-<meta name="keywords" content="álgebra lineal, sistemas de ecuaciones, Gauss, Gauss-Jordán, Cramer, educación, SABES, accesible, WCAG"/>
+<meta name="description" content="Curso interactivo de Álgebra Lineal - Unidad I: Matrices y Determinantes. Cumple con estándares WCAG 2.2 AA de accesibilidad."/>
+<meta name="keywords" content="álgebra lineal, matrices, determinantes, educación, SABES, accesible, WCAG"/>
 <meta name="author" content="Universidad del SABES"/>
-<title>Álgebra Lineal - Unidad III: Espacios Vectoriales | Universidad del SABES</title>
+<title>Álgebra Lineal - Unidad IV: Transformaciones Lineales | Universidad del SABES</title>
 
 <!-- MathJax Configuration -->
 <script>
@@ -1314,7 +1314,7 @@ p {
 <!-- ======= MODAL SABES ======= -->
 <div id="infoModal" class="modal" role="dialog" aria-labelledby="info-title" aria-modal="true">
   <h3 id="info-title">🎓 Información del Curso</h3>
-  <p><strong>Álgebra Lineal - Unidad II: Sistemas de Ecuaciones Lineales</strong></p>
+  <p><strong>Álgebra Lineal - Unidad I: Matrices y Determinantes</strong></p>
   <p>Este curso interactivo está organizado en 4 semanas de contenido principal más complementos educativos.</p>
   
   <h4>📚 Estructura del Curso:</h4>
@@ -1369,15 +1369,13 @@ p {
     <!-- Contenido principal -->
     <div style="position: relative; z-index: 2; width: 100%; max-width: 900px;">
       <h1 class="cover-title" id="slide-0-title">ÁLGEBRA LINEAL</h1>
-      <h2 class="cover-subtitle">UNIDAD III: ESPACIOS VECTORIALES</h2>
+      <h2 class="cover-subtitle">UNIDAD IV: TRANSFORMACIONES LINEALES</h2>
       
       <div class="learning-objectives">
         <h3>🎯 APRENDIZAJES ESPERADOS</h3>
         <p>
-          Comprender la definición de espacio vectorial como una abstracción matemática 
-          para relacionarlo con otras áreas de las matemáticas, la física, la ingeniería 
-          y las ciencias computacionales, aplicando conceptos de independencia lineal, 
-          base y dimensión.
+          Aplicar las matrices, los determinantes y operaciones entre ellas, para resolver 
+          problemas en las diferentes áreas de las matemáticas y de la ingeniería.
         </p>
       </div>
       
@@ -1391,85 +1389,261 @@ p {
 
   <!-- SLIDE 1: ÍNDICE DE SEMANAS -->
   <div class="slide" id="slide-1" role="region" aria-labelledby="slide-1-title">
-    <h2 class="section-title" id="slide-1-title">UNIDAD III: ESPACIOS VECTORIALES</h2>
+    <h2 class="section-title" id="slide-1-title">UNIDAD IV: TRANSFORMACIONES LINEALES</h2>
     <p style="text-align: center; color: var(--muted); margin-bottom: 40px; max-width: 800px;">
-      Selecciona una semana para explorar los contenidos de espacios vectoriales y sus aplicaciones
+      Selecciona una semana o complemento para explorar los contenidos específicos
     </p>
     
     <div class="week-grid" role="navigation" aria-label="Navegación por semanas">
-      <a class="week-card" onclick="goToSlide(2)" role="button" tabindex="0" aria-label="Ir a Semana 9" onkeypress="if(event.key==='Enter') goToSlide(2)">
-        <div class="week-number">09</div>
-        <div class="week-title">Semana 9: Fundamentos</div>
+      <a class="week-card" onclick="goToSlide(2)" role="button" tabindex="0" aria-label="Ir a Semana 9 Parte 1" onkeypress="if(event.key==='Enter') goToSlide(2)">
+        <div class="week-number">11</div>
+        <div class="week-title">Semana 11: Definiciones</div>
         <div class="week-topics">
-          • Definición de espacio vectorial<br>
-          • Subespacios vectoriales<br>
-          • Dependencia e independencia lineal<br>
-          • Base y dimensión
+          • Transformación lineal<br>
+          • Ejemplos geométricos<br>
+          • Ejemplos geométricos<br>
+          • Núcleo e imagen
         </div>
       </a>
       
-      <a class="week-card" onclick="goToSlide(3)" role="button" tabindex="0" aria-label="Ir a Semana 10" onkeypress="if(event.key==='Enter') goToSlide(3)">
-        <div class="week-number">10</div>
-        <div class="week-title">Semana 10: Aplicaciones</div>
+      <a class="week-card" onclick="goToSlide(3)" role="button" tabindex="0" aria-label="Ir a Semana 9 Parte 2" onkeypress="if(event.key==='Enter') goToSlide(3)">
+        <div class="week-number">11</div>
+        <div class="week-title">Semana 11: Representación</div>
         <div class="week-topics">
-          • Método de mínimos cuadrados<br>
-          • Proyecciones ortogonales<br>
-          • Bases ortogonales y ortonormales<br>
-          • Actividad 3: Foro (10 pts)
+          • Representación matricial<br>
+          • Construcción de matrices<br>
+          • Composición<br>
+          • Propiedades algebraicas
+        </div>
+      </a>
+      
+      <a class="week-card" onclick="goToSlide(4)">
+        <div class="week-number">12</div>
+        <div class="week-title">Semana 12: Gráficos e Imágenes</div>
+        <div class="week-topics">
+          • Gráficos por computadora<br>
+          • Procesamiento de imágenes<br>
+          • Transformaciones 2D y 3D<br>
+          • Filtros y efectos
+        </div>
+      </a>
+      
+      <a class="week-card" onclick="goToSlide(5)">
+        <div class="week-number">12</div>
+        <div class="week-title">Semana 12: PCA y ML</div>
+        <div class="week-topics">
+          • PCA (Análisis de componentes)<br>
+          • SVD (Valores singulares)<br>
+          • Redes neuronales<br>
+          • Aplicaciones en IA
+        </div>
+      </a>
+      
+      <a class="week-card" onclick="goToSlide(6)">
+        <div class="week-number">🎯</div>
+        <div class="week-title">Caso Práctico</div>
+        <div class="week-topics">
+          • Compresión de imágenes con SVD<br>
+          • Implementación práctica<br>
+          • Análisis de calidad<br>
+          • Optimización de tamaño
+        </div>
+      </a>
+      
+      <a class="week-card" onclick="goToSlide(7)">
+        <div class="week-number">📚</div>
+        <div class="week-title">Bibliografía y Recursos</div>
+        <div class="week-topics">
+          • Textos fundamentales<br>
+          • Recursos digitales<br>
+          • Software especializado<br>
+          • Guías de estudio
         </div>
       </a>
     </div>
   </div>
 
-  <!-- SLIDE 2: SEMANA 9 - FUNDAMENTOS DE ESPACIOS VECTORIALES -->
-  <div class="slide" id="slide-2">
-    <div class="content-container">
-      <div class="week-section">
-        <div class="week-badge">Semana 5</div>
-        <h2>2.1 Sistemas de Ecuaciones Lineales</h2>
-        
-        <h3>2.1.1 Definición y notación de un sistema de ecuaciones lineales</h3>
-        
-        <button class="info-btn" onclick="toggleInfo('info-sistema')">info ¿Qué es un sistema de ecuaciones?</button>
-        <div id="info-sistema" class="info-box">
-          <h4>💡 Concepto clave</h4>
-          <p><strong>Un sistema de ecuaciones lineales</strong> es un conjunto de ecuaciones que deben cumplirse simultáneamente.</p>
-          <p><strong>Ejemplo cotidiano:</strong> Si tienes 10 monedas entre pesos y dólares con un valor total de $50, tienes DOS ecuaciones con DOS incógnitas.</p>
-          <p>👉 El objetivo es encontrar valores que satisfagan TODAS las ecuaciones al mismo tiempo.</p>
-        </div>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición:</strong> Un sistema de $m$ ecuaciones lineales con $n$ incógnitas es un conjunto de ecuaciones de la forma:
-            $$\begin{cases}
-            a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1 \\
-            a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2 \\
-            \vdots \\
-            a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m
-            \end{cases}$$
-            donde $a_{ij}$ son los coeficientes, $x_j$ son las incógnitas y $b_i$ son los términos independientes.
-          </div>
-          
-          <div class="example-box">
-            <strong>Ejemplo 1:</strong> Sistema de $2 \times 2$ (2 ecuaciones, 2 incógnitas)<br>
-            $$\begin{cases}
-            2x + 3y = 8 \\
-            -x + 4y = 3
-            \end{cases}$$
-            <strong>Solución:</strong> $x = 1$, $y = 2$ (verifica ambas ecuaciones)
-          </div>
-          
-          <div class="example-box">
-            <strong>Ejemplo 2:</strong> Sistema de $3 \times 3$ (3 ecuaciones, 3 incógnitas)<br>
-            $$\begin{cases}
-            x + 2y - z = 4 \\
-            2x - y + 3z = 9 \\
-            -x + 3y + z = 5
-  <!-- SLIDE 2: SEMANA 9 - FUNDAMENTOS DE ESPACIOS VECTORIALES -->
+  <!-- SLIDE 2: SEMANA 9 PARTE 1 - ESPACIOS VECTORIALES -->
   <div class="slide" id="slide-2">
     <div class="content-container">
       <div class="week-section">
         <div class="week-badge">Semana 9</div>
+        <h2>3.1 Definición de Espacio Vectorial</h2>
+        
+        <div class="citation">
+          "Los espacios vectoriales son las estructuras fundamentales del álgebra lineal. Proporcionan un marco unificado para entender desde vectores geométricos hasta funciones, matrices y más." 
+          <strong>— Gilbert Strang (2016)</strong>
+        </div>
+        
+        <button class="info-btn" onclick="toggleInfo('info-espacio-vectorial')">info ¿Qué es un espacio vectorial?</button>
+        <div id="info-espacio-vectorial" class="info-box">
+          <h4>💡 Concepto clave</h4>
+          <p><strong>Un espacio vectorial</strong> es una colección de objetos (llamados vectores) que se pueden sumar y multiplicar por escalares, cumpliendo ciertas propiedades.</p>
+          <p><strong>Ejemplos de espacios vectoriales:</strong></p>
+          <ul style="text-align: left; line-height: 2;">
+            <li>🔢 Vectores en ℝ² y ℝ³ (flechas en el plano y espacio)</li>
+            <li>📊 Matrices de tamaño m×n</li>
+            <li>📈 Polinomios de grado ≤ n</li>
+            <li>∫ Funciones continuas en un intervalo</li>
+          </ul>
+          <p>👉 La abstracción permite aplicar los mismos conceptos en contextos muy diferentes.</p>
+        </div>
+        
+        <div class="card">
+          <div class="definition-box">
+            <strong>Definición formal:</strong><br>
+            Un espacio vectorial $V$ sobre un campo $\mathbb{F}$ (usualmente ℝ o ℂ) es un conjunto con dos operaciones:
+            <ol style="text-align: left; line-height: 2; margin-top: 10px;">
+              <li><strong>Suma de vectores:</strong> $\mathbf{u} + \mathbf{v} \in V$ para todo $\mathbf{u}, \mathbf{v} \in V$</li>
+              <li><strong>Multiplicación por escalar:</strong> $\alpha\mathbf{v} \in V$ para todo $\alpha \in \mathbb{F}$, $\mathbf{v} \in V$</li>
+            </ol>
+            que satisfacen los siguientes <strong>10 axiomas</strong>:
+          </div>
+        </div>
+
+        <h3>Axiomas de Espacio Vectorial</h3>
+        
+        <div class="two-col">
+          <div class="card">
+            <h4>📐 Axiomas de la Suma</h4>
+            <ol style="text-align: left; font-size: 0.95rem; line-height: 2;">
+              <li><strong>Cerradura:</strong> $\mathbf{u} + \mathbf{v} \in V$</li>
+              <li><strong>Conmutativa:</strong> $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$</li>
+              <li><strong>Asociativa:</strong> $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$</li>
+              <li><strong>Elemento neutro:</strong> Existe $\mathbf{0}$ tal que $\mathbf{v} + \mathbf{0} = \mathbf{v}$</li>
+              <li><strong>Inverso aditivo:</strong> Para cada $\mathbf{v}$ existe $-\mathbf{v}$ tal que $\mathbf{v} + (-\mathbf{v}) = \mathbf{0}$</li>
+            </ol>
+          </div>
+          
+          <div class="card">
+            <h4>⚖️ Axiomas del Producto por Escalar</h4>
+            <ol start="6" style="text-align: left; font-size: 0.95rem; line-height: 2;">
+              <li><strong>Cerradura:</strong> $\alpha\mathbf{v} \in V$</li>
+              <li><strong>Distributiva 1:</strong> $\alpha(\mathbf{u} + \mathbf{v}) = \alpha\mathbf{u} + \alpha\mathbf{v}$</li>
+              <li><strong>Distributiva 2:</strong> $(\alpha + \beta)\mathbf{v} = \alpha\mathbf{v} + \beta\mathbf{v}$</li>
+              <li><strong>Asociativa:</strong> $\alpha(\beta\mathbf{v}) = (\alpha\beta)\mathbf{v}$</li>
+              <li><strong>Elemento unitario:</strong> $1\mathbf{v} = \mathbf{v}$</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="example-box">
+            <strong>Ejemplo 1:</strong> ℝ³ es un espacio vectorial<br><br>
+            
+            $V = \mathbb{R}^3 = \{(x, y, z) : x, y, z \in \mathbb{R}\}$<br><br>
+            
+            <strong>Operaciones:</strong><br>
+            • Suma: $(x_1, y_1, z_1) + (x_2, y_2, z_2) = (x_1+x_2, y_1+y_2, z_1+z_2)$<br>
+            • Producto por escalar: $\alpha(x, y, z) = (\alpha x, \alpha y, \alpha z)$<br><br>
+            
+            <strong>Verificación:</strong> Se puede demostrar que cumple los 10 axiomas. Por ejemplo:<br>
+            • Vector cero: $\mathbf{0} = (0, 0, 0)$<br>
+            • Inverso de $(x, y, z)$ es $(-x, -y, -z)$<br>
+            • Conmutatividad: $(1,2,3) + (4,5,6) = (5,7,9) = (4,5,6) + (1,2,3)$ ✅
+          </div>
+        </div>
+
+        <h3>3.1.1 Definición de Subespacio Vectorial</h3>
+        
+        <button class="info-btn" onclick="toggleInfo('info-subespacio')">info ¿Qué es un subespacio?</button>
+        <div id="info-subespacio" class="info-box">
+          <h4>💡 Concepto clave</h4>
+          <p><strong>Un subespacio</strong> es un "espacio vectorial dentro de otro espacio vectorial".</p>
+          <p><strong>Ejemplo intuitivo:</strong> Las rectas y planos que pasan por el origen en ℝ³ son subespacios.</p>
+          <p>👉 No hace falta verificar los 10 axiomas, ¡solo 3 condiciones!</p>
+        </div>
+        
+        <div class="card">
+          <div class="definition-box">
+            <strong>Definición:</strong> Un subconjunto $W$ de un espacio vectorial $V$ es un <strong>subespacio vectorial</strong> si cumple:
+            <ol style="text-align: left; line-height: 2.2; margin-top: 10px;">
+              <li><strong>Contiene al vector cero:</strong> $\mathbf{0} \in W$</li>
+              <li><strong>Cerrado bajo suma:</strong> Si $\mathbf{u}, \mathbf{v} \in W$, entonces $\mathbf{u} + \mathbf{v} \in W$</li>
+              <li><strong>Cerrado bajo multiplicación por escalar:</strong> Si $\mathbf{v} \in W$ y $\alpha \in \mathbb{F}$, entonces $\alpha\mathbf{v} \in W$</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="example-box">
+              <strong>Ejemplo 2:</strong> Subespacio en ℝ³<br><br>
+              
+              $W = \{(x, y, 0) : x, y \in \mathbb{R}\}$<br>
+              (El plano XY en ℝ³)<br><br>
+              
+              <strong>Verificación:</strong><br>
+              1. ✅ $(0, 0, 0) \in W$<br>
+              2. ✅ $(x_1, y_1, 0) + (x_2, y_2, 0) = (x_1+x_2, y_1+y_2, 0) \in W$<br>
+              3. ✅ $\alpha(x, y, 0) = (\alpha x, \alpha y, 0) \in W$<br><br>
+              
+              Por lo tanto, $W$ es un subespacio de ℝ³
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="example-box">
+              <strong>Contraejemplo:</strong> NO es subespacio<br><br>
+              
+              $S = \{(x, y, 1) : x, y \in \mathbb{R}\}$<br>
+              (Plano paralelo a XY, pero z=1)<br><br>
+              
+              <strong>Falla en:</strong><br>
+              1. ❌ El vector cero $(0, 0, 0) \notin S$<br><br>
+              
+              Como falla la primera condición, $S$ NO es un subespacio.<br><br>
+              
+              <strong>Nota:</strong> Los subespacios SIEMPRE pasan por el origen.
+            </div>
+          </div>
+        </div>
+
+        <h3>3.1.2 Propiedades de Subespacios Vectoriales</h3>
+        
+        <div class="card">
+          <h4>📊 Propiedades Importantes</h4>
+          <ol style="text-align: left; line-height: 2; font-size: 0.95rem;">
+            <li><strong>Todo espacio vectorial es subespacio de sí mismo:</strong> $V \subseteq V$</li>
+            <li><strong>El conjunto {0} es un subespacio:</strong> El subespacio trivial</li>
+            <li><strong>La intersección de subespacios es un subespacio:</strong> Si $W_1$ y $W_2$ son subespacios, entonces $W_1 \cap W_2$ también lo es</li>
+            <li><strong>La unión generalmente NO es subespacio:</strong> $W_1 \cup W_2$ usualmente no es subespacio</li>
+          </ol>
+        </div>
+
+        <!-- Quiz interactivo -->
+        <div class="quiz-container">
+          <h3>🧠 Autoevaluación - Espacios Vectoriales</h3>
+          
+          <div class="quiz-question">
+            1. ¿Cuál de estos NO es un espacio vectorial?
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">ℝ³ con suma y producto por escalar usuales</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Matrices 2×2 con suma y producto por escalar</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Números naturales ℕ con suma usual</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Polinomios de grado ≤ 3</div>
+          </div>
+          
+          <div class="quiz-question">
+            2. Para que W sea subespacio de V, debe cumplir:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo contener el vector cero</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Ser cerrado bajo suma y multiplicación por escalar, y contener el cero</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Tener la misma dimensión que V</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Ser un conjunto finito</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: SEMANA 9 - FUNDAMENTOS DE ESPACIOS VECTORIALES -->
+  <div class="slide" id="slide-3">
+    <div class="content-container">
+      <div class="week-section">
+        <div class="week-badge">Semana 9 - Parte 2</div>
         <h2>3.1 Definición de Espacio Vectorial</h2>
         
         <div class="citation">
@@ -1857,7 +2031,7 @@ p {
 
         <!-- Quiz interactivo Semana 9 -->
         <div class="quiz-container">
-          <h3>🧠 Autoevaluación - Semana 9</h3>
+          <h3>🧠 Autoevaluación - Semana 9 - Parte 2</h3>
           
           <div class="quiz-question">
             1. ¿Cuál de estos NO es un espacio vectorial?
@@ -1902,8 +2076,141 @@ p {
       </div>
     </div>
   </div>
-  <!-- SLIDE 3: SEMANA 10 - APLICACIONES: MÉTODO DE MÍNIMOS CUADRADOS -->
-  <div class="slide" id="slide-3">
+  <!-- SLIDE 4: SEMANA 10 - BASES ORTOGONALES -->
+  <div class="slide" id="slide-4">
+    <div class="content-container">
+      <div class="week-section">
+        <div class="week-badge">Semana 10</div>
+        <h2>3.3.2 Bases Ortogonales y Ortonormales</h2>
+        
+        <button class="info-btn" onclick="toggleInfo('info-ortogonal')">info ¿Por qué bases ortogonales?</button>
+        <div id="info-ortogonal" class="info-box">
+          <h4>💡 Ventajas prácticas</h4>
+          <p><strong>Bases ortogonales</strong> = Vectores perpendiculares entre sí</p>
+          <p><strong>Bases ortonormales</strong> = Ortogonales + longitud 1</p>
+          <p><strong>Ventaja:</strong> Facilitan enormemente los cálculos. Encontrar coordenadas es mucho más simple.</p>
+          <p>👉 La base estándar de ℝⁿ es ortonormal.</p>
+        </div>
+        
+        <div class="card">
+          <div class="definition-box">
+            <strong>Producto interno (escalar) en ℝⁿ:</strong>
+            $$\langle \mathbf{u}, \mathbf{v} \rangle = \mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2 + \cdots + u_nv_n$$
+            
+            <p style="margin-top: 15px;"><strong>Ortogonalidad:</strong> $\mathbf{u}$ y $\mathbf{v}$ son ortogonales si $\langle \mathbf{u}, \mathbf{v} \rangle = 0$</p>
+            
+            <p style="margin-top: 15px;"><strong>Norma:</strong> $\|\mathbf{v}\| = \sqrt{\langle \mathbf{v}, \mathbf{v} \rangle}$</p>
+          </div>
+          
+          <div class="definition-box">
+            <strong>Base ortogonal:</strong> $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ es ortogonal si:
+            $$\langle \mathbf{v}_i, \mathbf{v}_j \rangle = 0 \text{ para todo } i \neq j$$
+            
+            <p style="margin-top: 15px;"><strong>Base ortonormal:</strong> Es ortogonal y además $\|\mathbf{v}_i\| = 1$ para todo $i$</p>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="example-box">
+              <strong>Ejemplo:</strong> Base ortonormal en ℝ³<br><br>
+              
+              $\mathbf{u}_1 = (1, 0, 0)$<br>
+              $\mathbf{u}_2 = (0, 1, 0)$<br>
+              $\mathbf{u}_3 = (0, 0, 1)$<br><br>
+              
+              <strong>Verificación:</strong><br>
+              • $\mathbf{u}_1 \cdot \mathbf{u}_2 = 0$ ✅<br>
+              • $\mathbf{u}_1 \cdot \mathbf{u}_3 = 0$ ✅<br>
+              • $\mathbf{u}_2 \cdot \mathbf{u}_3 = 0$ ✅<br>
+              • $\|\mathbf{u}_i\| = 1$ para todo $i$ ✅<br><br>
+              
+              Es una base ortonormal
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="example-box">
+              <strong>Ventaja de bases ortonormales:</strong><br><br>
+              
+              Si $\mathcal{B} = \{\mathbf{u}_1, \ldots, \mathbf{u}_n\}$ es ortonormal, entonces:<br><br>
+              
+              $$\mathbf{v} = \langle \mathbf{v}, \mathbf{u}_1 \rangle \mathbf{u}_1 + \cdots + \langle \mathbf{v}, \mathbf{u}_n \rangle \mathbf{u}_n$$<br><br>
+              
+              Es decir, las coordenadas son simplemente productos internos.<br><br>
+              
+              <strong>Ejemplo:</strong> $\mathbf{v} = (2, 3, 4)$ en base estándar<br>
+              Coordenadas: $(2, 3, 4)$ directamente ✅
+            </div>
+          </div>
+        </div>
+
+        <h3>Proceso de Gram-Schmidt</h3>
+        
+        <div class="card">
+          <div class="definition-box">
+            <strong>Algoritmo de ortonormalización de Gram-Schmidt:</strong><br><br>
+            
+            Dada una base $\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}$, construir una base ortonormal $\{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_n\}$:<br><br>
+            
+            <strong>Paso 1:</strong> $\mathbf{w}_1 = \mathbf{v}_1$, $\mathbf{u}_1 = \frac{\mathbf{w}_1}{\|\mathbf{w}_1\|}$<br><br>
+            
+            <strong>Paso 2:</strong> $\mathbf{w}_2 = \mathbf{v}_2 - \langle \mathbf{v}_2, \mathbf{u}_1 \rangle \mathbf{u}_1$, $\mathbf{u}_2 = \frac{\mathbf{w}_2}{\|\mathbf{w}_2\|}$<br><br>
+            
+            <strong>Paso k:</strong> $\mathbf{w}_k = \mathbf{v}_k - \sum_{i=1}^{k-1} \langle \mathbf{v}_k, \mathbf{u}_i \rangle \mathbf{u}_i$, $\mathbf{u}_k = \frac{\mathbf{w}_k}{\|\mathbf{w}_k\|}$
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="example-box">
+            <strong>Ejemplo completo:</strong> Ortonormalizar base en ℝ²<br><br>
+            
+            <strong>Base original:</strong> $\mathbf{v}_1 = (3, 1)$, $\mathbf{v}_2 = (2, 2)$<br><br>
+            
+            <strong>Paso 1:</strong><br>
+            $\mathbf{w}_1 = (3, 1)$<br>
+            $\|\mathbf{w}_1\| = \sqrt{9 + 1} = \sqrt{10}$<br>
+            $\mathbf{u}_1 = \frac{1}{\sqrt{10}}(3, 1) = (\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}})$<br><br>
+            
+            <strong>Paso 2:</strong><br>
+            $\langle \mathbf{v}_2, \mathbf{u}_1 \rangle = (2, 2) \cdot (\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}) = \frac{6+2}{\sqrt{10}} = \frac{8}{\sqrt{10}}$<br>
+            $\mathbf{w}_2 = (2, 2) - \frac{8}{\sqrt{10}}(\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}) = (2, 2) - (\frac{24}{10}, \frac{8}{10}) = (-0.4, 1.2)$<br>
+            $\|\mathbf{w}_2\| = \sqrt{0.16 + 1.44} = \sqrt{1.6} = 0.4\sqrt{10}$<br>
+            $\mathbf{u}_2 = \frac{1}{0.4\sqrt{10}}(-0.4, 1.2) = (\frac{-1}{\sqrt{10}}, \frac{3}{\sqrt{10}})$<br><br>
+            
+            <strong>Base ortonormal:</strong> $\{(\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}), (\frac{-1}{\sqrt{10}}, \frac{3}{\sqrt{10}})\}$
+          </div>
+        </div>
+
+        <div class="quiz-container">
+          <h3>🧠 Autoevaluación - Bases Ortogonales</h3>
+          
+          <div class="quiz-question">
+            1. Dos vectores son ortogonales si:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Tienen la misma longitud</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Su producto interno es cero</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Son linealmente dependientes</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Forman un ángulo de 45°</div>
+          </div>
+          
+          <div class="quiz-question">
+            2. El proceso de Gram-Schmidt se usa para:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Calcular determinantes</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Construir bases ortonormales</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Resolver sistemas de ecuaciones</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Encontrar eigenvalores</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: SEMANA 10 - APLICACIONES: MÉTODO DE MÍNIMOS CUADRADOS -->
+  <div class="slide" id="slide-5">
     <div class="content-container">
       <div class="week-section">
         <div class="week-badge">Semana 10</div>
@@ -2253,7 +2560,7 @@ p {
         <div class="card" style="background: var(--grad-primary); text-align: center; padding: 40px; margin-top: 40px;">
           <h2 style="color: white; font-size: 2rem; margin-bottom: 20px;">🎓 ¡Felicidades!</h2>
           <p style="color: white; font-size: 1.2rem; line-height: 1.8;">
-            Has completado la Unidad III: Espacios Vectoriales.<br>
+            Has completado la Unidad IV: Transformaciones Lineales.<br>
             Ahora comprendes las estructuras abstractas fundamentales<br>
             del álgebra lineal y sus aplicaciones prácticas.
           </p>
@@ -2266,28 +2573,300 @@ p {
   </div>
 
 </div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Eliminación gaussiana (Gauss)</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Método gráfico</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Sustitución manual</div>
+  <!-- SLIDE 6: CASO PRÁCTICO - ANÁLISIS PCA -->
+  <div class="slide" id="slide-6">
+    <div class="content-container">
+      <div class="week-section">
+        <div class="week-badge">Caso Práctico</div>
+        <h2>🎯 Análisis de Componentes Principales (PCA)</h2>
+        <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 30px;">
+          Aplicación práctica de espacios vectoriales en reducción de dimensionalidad
+        </p>
+
+        <h3>Contexto del Problema</h3>
+        <div class="card" style="background: linear-gradient(135deg, rgba(255, 214, 10, 0.1), rgba(0, 212, 170, 0.1));">
+          <p><strong>Escenario:</strong> Una empresa de tecnología tiene un dataset con las siguientes características de sus empleados:</p>
+          <ul style="text-align: left; line-height: 2;">
+            <li>Años de experiencia</li>
+            <li>Nivel educativo (1-5)</li>
+            <li>Salario anual (miles)</li>
+            <li>Horas de capacitación</li>
+            <li>Proyectos completados</li>
+          </ul>
+          <p style="margin-top: 15px;"><strong>Objetivo:</strong> Reducir las 5 dimensiones a 2 para visualización, preservando la máxima varianza posible.</p>
+        </div>
+
+        <h3>Datos del Problema</h3>
+        <div class="card">
+          <strong>Matriz de datos X (10 empleados × 5 variables):</strong>
+          $$X = \begin{pmatrix}
+          2 & 3 & 45 & 120 & 5 \\
+          5 & 4 & 65 & 180 & 12 \\
+          1 & 2 & 35 & 80 & 3 \\
+          8 & 5 & 95 & 250 & 20 \\
+          3 & 3 & 50 & 140 & 7 \\
+          6 & 4 & 75 & 200 & 15 \\
+          4 & 3 & 55 & 160 & 9 \\
+          7 & 5 & 85 & 220 & 18 \\
+          2 & 2 & 40 & 100 & 4 \\
+          9 & 5 & 105 & 280 & 25
+          \end{pmatrix}$$
+        </div>
+
+        <h3>Paso 1: Centrar los Datos</h3>
+        <div class="card">
+          <p><strong>Calcular medias de cada variable:</strong></p>
+          $$\bar{x}_j = \frac{1}{n}\sum_{i=1}^n x_{ij}$$
+          
+          <p style="margin-top: 15px;">Medias: $(4.7, 3.6, 65, 173, 11.8)$</p>
+          
+          <p style="margin-top: 15px;"><strong>Matriz centrada:</strong> Restar la media a cada columna</p>
+        </div>
+
+        <h3>Paso 2: Matriz de Covarianza</h3>
+        <div class="card">
+          <p><strong>Calcular:</strong></p>
+          $$C = \frac{1}{n-1}X_c^TX_c$$
+          
+          <p style="margin-top: 15px;">Donde $X_c$ es la matriz centrada</p>
+          
+          <p style="margin-top: 15px;"><strong>Resultado (simplificado):</strong></p>
+          $$C = \begin{pmatrix}
+          7.1 & 1.2 & 21.4 & 58.3 & 6.8 \\
+          1.2 & 1.2 & 6.3 & 17.2 & 2.1 \\
+          21.4 & 6.3 & 530 & 1445 & 168 \\
+          58.3 & 17.2 & 1445 & 3950 & 459 \\
+          6.8 & 2.1 & 168 & 459 & 53.5
+          \end{pmatrix}$$
+        </div>
+
+        <h3>Paso 3: Eigenvalores y Eigenvectores</h3>
+        <div class="card">
+          <p><strong>Resolver:</strong> $C\mathbf{v} = \lambda\mathbf{v}$</p>
+          
+          <p style="margin-top: 15px;"><strong>Eigenvalores (ordenados):</strong></p>
+          <ul style="text-align: left; line-height: 2;">
+            <li>$\lambda_1 = 4486$ (85% de la varianza)</li>
+            <li>$\lambda_2 = 97$ (10% de la varianza)</li>
+            <li>$\lambda_3 = 12$ (3% de la varianza)</li>
+            <li>$\lambda_4 = 1.8$ (1.5% de la varianza)</li>
+            <li>$\lambda_5 = 0.5$ (0.5% de la varianza)</li>
+          </ul>
+          
+          <p style="margin-top: 15px;"><strong>Varianza acumulada con 2 componentes:</strong> 95%</p>
+        </div>
+
+        <h3>Paso 4: Proyección</h3>
+        <div class="card">
+          <p><strong>Seleccionar los 2 primeros eigenvectores:</strong></p>
+          $$P = [\mathbf{v}_1 \quad \mathbf{v}_2]$$
+          
+          <p style="margin-top: 15px;"><strong>Datos proyectados:</strong></p>
+          $$Y = X_cP$$
+          
+          <p style="margin-top: 15px;">Ahora cada empleado se representa con solo 2 números en lugar de 5, preservando el 95% de la información.</p>
+        </div>
+
+        <h3>Interpretación de Resultados</h3>
+        <div class="two-col">
+          <div class="card">
+            <h4>📊 Componente Principal 1 (85%)</h4>
+            <p style="font-size: 0.9rem;">Representa principalmente: experiencia, salario y proyectos completados (correlacionados)</p>
+            <p style="margin-top: 10px; font-weight: bold;">Interpretación: "Nivel de Seniority"</p>
           </div>
           
-          <div class="quiz-question">
-            4. ¿Qué aplicación NO utiliza sistemas de ecuaciones lineales?
+          <div class="card">
+            <h4>📊 Componente Principal 2 (10%)</h4>
+            <p style="font-size: 0.9rem;">Representa: horas de capacitación (independiente del seniority)</p>
+            <p style="margin-top: 10px; font-weight: bold;">Interpretación: "Inversión en Desarrollo"</p>
           </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Análisis de circuitos eléctricos</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Redes neuronales artificiales</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Filosofía moral</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Balanceo de reacciones químicas</div>
+        </div>
+
+        <h3>Conclusiones</h3>
+        <div class="card" style="background: var(--grad-primary); color: white; padding: 25px;">
+          <h4 style="color: white;">✅ Resultados del Análisis</h4>
+          <ul style="text-align: left; line-height: 2;">
+            <li><strong>Reducción exitosa:</strong> De 5 a 2 dimensiones</li>
+            <li><strong>Información preservada:</strong> 95% de la varianza</li>
+            <li><strong>Visualización:</strong> Ahora se puede graficar en 2D</li>
+            <li><strong>Clustering:</strong> Se pueden identificar grupos de empleados similares</li>
+            <li><strong>Aplicación:</strong> Útil para planificación de recursos humanos</li>
+          </ul>
+        </div>
+
+        <h3>Aplicaciones Similares</h3>
+        <div class="three-col">
+          <div class="card">
+            <h4>🖼️ Compresión de Imágenes</h4>
+            <p style="font-size: 0.85rem;">Reducir dimensionalidad de imágenes manteniendo calidad visual</p>
+          </div>
+          
+          <div class="card">
+            <h4>🧬 Bioinformática</h4>
+            <p style="font-size: 0.85rem;">Análisis de expresión genética con miles de variables</p>
+          </div>
+          
+          <div class="card">
+            <h4>💰 Finanzas</h4>
+            <p style="font-size: 0.85rem;">Análisis de portafolios y reducción de riesgo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: BIBLIOGRAFÍA Y RECURSOS -->
+  <div class="slide" id="slide-7">
+    <div class="content-container">
+      <div class="week-section">
+        <div class="week-badge">Recursos</div>
+        <h2>📚 Bibliografía y Recursos Complementarios</h2>
+        
+        <h3>Textos Fundamentales</h3>
+        
+        <div class="card">
+          <h4>📖 Libro Principal</h4>
+          <p style="font-size: 1.05rem; line-height: 1.8;">
+            <strong>Strang, G. (2016).</strong> <em>Introduction to Linear Algebra</em> (5th ed.). Wellesley-Cambridge Press.<br>
+            <span style="color: var(--muted);">Capítulo 7: Transformaciones Lineales y SVD</span>
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h4>📘 Textos Complementarios</h4>
+            <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
+              <li><strong>Lay, D. C., Lay, S. R., & McDonald, J. (2015).</strong> <em>Linear Algebra and Its Applications</em> (5th ed.). Pearson.</li>
+              <li><strong>Anton, H., & Rorres, C. (2013).</strong> <em>Elementary Linear Algebra: Applications Version</em> (11th ed.). Wiley.</li>
+              <li><strong>Poole, D. (2014).</strong> <em>Linear Algebra: A Modern Introduction</em> (4th ed.). Cengage Learning.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>📕 Textos en Español</h4>
+            <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
+              <li><strong>Grossman, S. I. (2012).</strong> <em>Álgebra Lineal</em> (7ma ed.). McGraw-Hill.</li>
+              <li><strong>Kolman, B., & Hill, D. R. (2006).</strong> <em>Álgebra Lineal</em> (8va ed.). Pearson.</li>
+              <li><strong>Nakos, G., & Joyner, D. (1999).</strong> <em>Álgebra Lineal con Aplicaciones</em>. Thomson.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Recursos Digitales</h3>
+
+        <div class="three-col">
+          <div class="card">
+            <h4>🎥 Videos y Cursos</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>3Blue1Brown</strong><br>Essence of Linear Algebra<br><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" target="_blank" style="color: var(--primary);">Ver serie</a></li>
+              <li><strong>MIT OpenCourseWare</strong><br>18.06 Linear Algebra<br>Prof. Gilbert Strang</li>
+              <li><strong>Khan Academy</strong><br>Álgebra Lineal<br>Lecciones interactivas</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>💻 Software y Herramientas</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>MATLAB/Octave</strong><br>Cálculo numérico</li>
+              <li><strong>Python (NumPy, SciPy)</strong><br>Computación científica</li>
+              <li><strong>Mathematica/Wolfram Alpha</strong><br>Cálculo simbólico</li>
+              <li><strong>GeoGebra</strong><br>Visualización geométrica</li>
+              <li><strong>Desmos</strong><br>Gráficas 2D/3D interactivas</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>🌐 Sitios Web</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>Wolfram MathWorld</strong><br>Enciclopedia matemática</li>
+              <li><strong>Paul's Online Notes</strong><br>Tutoriales y ejemplos</li>
+              <li><strong>MIT OCW</strong><br>Materiales del curso</li>
+              <li><strong>Brilliant.org</strong><br>Problemas interactivos</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Aplicaciones y Casos de Estudio</h3>
+
+        <div class="two-col">
+          <div class="card">
+            <h4>🤖 Machine Learning & IA</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>Bishop, C. M. (2006).</strong> <em>Pattern Recognition and Machine Learning</em>. Springer.</li>
+              <li><strong>Goodfellow, I., et al. (2016).</strong> <em>Deep Learning</em>. MIT Press.</li>
+              <li>Capítulo 2: Álgebra Lineal para ML</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>🔬 Ciencias e Ingeniería</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>Strang, G. (2007).</strong> <em>Computational Science and Engineering</em>. Wellesley-Cambridge Press.</li>
+              <li><strong>Trefethen, L. N., & Bau III, D. (1997).</strong> <em>Numerical Linear Algebra</em>. SIAM.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Recursos para Práctica</h3>
+
+        <div class="card">
+          <h4>📝 Bancos de Problemas</h4>
+          <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
+            <li><strong>Schaum's Outline:</strong> 3000+ problemas resueltos de Álgebra Lineal</li>
+            <li><strong>MIT Problem Sets:</strong> Conjuntos de problemas del curso 18.06</li>
+            <li><strong>Linear Algebra Toolkit:</strong> Herramienta online para verificar soluciones</li>
+            <li><strong>Symbolab:</strong> Calculadora paso a paso de álgebra lineal</li>
+          </ul>
+        </div>
+
+        <h3>Recursos Específicos de la Unidad III</h3>
+
+        <div class="three-col">
+          <div class="card">
+            <h4>📐 Espacios Vectoriales</h4>
+            <p style="font-size: 0.9rem;">• Strang (Cap. 3)<br>• Lay (Cap. 4)<br>• Videos 3B1B (5-8)</p>
+          </div>
+
+          <div class="card">
+            <h4>⊥ Ortogonalidad</h4>
+            <p style="font-size: 0.9rem;">• Strang (Cap. 4)<br>• Gram-Schmidt interactivo<br>• GeoGebra proyecciones</p>
+          </div>
+
+          <div class="card">
+            <h4>📊 Mínimos Cuadrados</h4>
+            <p style="font-size: 0.9rem;">• Strang (Sec. 4.3)<br>• Python: sklearn<br>• Ejemplos prácticos</p>
+          </div>
+        </div>
+
+        <h3>Comunidades y Soporte</h3>
+
+        <div class="two-col">
+          <div class="card">
+            <h4>💬 Foros y Comunidades</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>Math Stack Exchange</strong><br>Preguntas y respuestas</li>
+              <li><strong>Reddit: r/learnmath</strong><br>Comunidad de aprendizaje</li>
+              <li><strong>Discord: Math & Physics</strong><br>Ayuda en tiempo real</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>👥 Grupos de Estudio</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li>Sesiones grupales SABES</li>
+              <li>Tutorías personalizadas</li>
+              <li>Grupos de WhatsApp del curso</li>
+              <li>Sesiones de repaso en línea</li>
+            </ul>
           </div>
         </div>
 
         <div class="card" style="background: var(--grad-primary); text-align: center; padding: 40px; margin-top: 40px;">
           <h2 style="color: white; font-size: 2rem; margin-bottom: 20px;">🎓 ¡Felicidades!</h2>
           <p style="color: white; font-size: 1.2rem; line-height: 1.8;">
-            Has completado la Unidad II: Sistemas de Ecuaciones Lineales.<br>
-            Ahora dominas los métodos fundamentales para resolver sistemas<br>
-            y sus aplicaciones en ingeniería, ciencia e inteligencia artificial.
+            Has completado la Unidad IV: Transformaciones Lineales.<br>
+            ¡Y con esto, el curso completo de Álgebra Lineal!<br>
+            Ahora tienes las bases para aplicar estos conceptos en IA, ML y más.
           </p>
           <p style="color: white; font-weight: bold; margin-top: 30px; font-size: 1.1rem;">
             Universidad del SABES - 2025
@@ -2297,22 +2876,6 @@ p {
     </div>
   </div>
 
-</div>
-
-<!-- ======= CONTROLES DE NAVEGACIÓN INFERIOR ======= -->
-<div class="nav-controls" role="navigation" aria-label="Navegación de diapositivas">
-  <button class="nav-btn" onclick="goToStart()" id="startBtn" aria-label="Ir al inicio">
-    <span aria-hidden="true">⏮</span> Inicio
-  </button>
-  <button class="nav-btn" onclick="previousSlide()" id="prevBtn" aria-label="Diapositiva anterior">
-    <span aria-hidden="true">◀</span> Atrás
-  </button>
-  <button class="nav-btn" onclick="nextSlide()" id="nextBtn" aria-label="Siguiente diapositiva">
-    Adelante <span aria-hidden="true">▶</span>
-  </button>
-  <button class="nav-btn" onclick="goToEnd()" id="endBtn" aria-label="Ir al final">
-    Fin <span aria-hidden="true">⏭</span>
-  </button>
 </div>
 
 <!-- ======= JAVASCRIPT ======= -->
@@ -2396,10 +2959,10 @@ function updateNavigationButtons() {
   const startBtn = document.getElementById('startBtn');
   const endBtn = document.getElementById('endBtn');
   
-  prevBtn.disabled = currentSlide === 0;
-  startBtn.disabled = currentSlide === 0;
-  nextBtn.disabled = currentSlide === totalSlides - 1;
-  endBtn.disabled = currentSlide === totalSlides - 1;
+  if (prevBtn) prevBtn.disabled = currentSlide === 0;
+  if (startBtn) startBtn.disabled = currentSlide === 0;
+  if (nextBtn) nextBtn.disabled = currentSlide === totalSlides - 1;
+  if (endBtn) endBtn.disabled = currentSlide === totalSlides - 1;
 }
 
 function updateProgress() {
@@ -2419,15 +2982,15 @@ function updateProgress() {
 }
 
 // ========== BARRAS LATERALES ==========
-document.getElementById('btn-home').onclick = () => goToStart();
-document.getElementById('btn-prev').onclick = () => previousSlide();
-document.getElementById('btn-next').onclick = () => nextSlide();
+const btnHome = document.getElementById('btn-home'); if (btnHome) btnHome.onclick = () => goToStart();
+const btnPrev2 = document.getElementById('btn-prev'); if (btnPrev2) btnPrev2.onclick = () => previousSlide();
+const btnNext2 = document.getElementById('btn-next'); if (btnNext2) btnNext2.onclick = () => nextSlide();
 
-document.getElementById('btn-access').onclick = () => {
+const btnAccess = document.getElementById('btn-access'); if (btnAccess) btnAccess.onclick = () => {
   document.getElementById('accessibilityModal').classList.add('active');
 };
 
-document.getElementById('btn-help').onclick = () => {
+const btnHelp = document.getElementById('btn-help'); if (btnHelp) btnHelp.onclick = () => {
   alert('❓ Ayuda de Navegación:\n\n🖱️ Usa los botones laterales o inferiores\n⌨️ Teclas: ← Atrás | → Adelante\n🔍 Botones + y - para Zoom\n⛶ Pantalla completa disponible\n💬 Modal para más información');
 };
 
@@ -2439,34 +3002,52 @@ const toggleTheme = () => {
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', newTheme);
   document.body.setAttribute('data-theme', newTheme);
-  themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  if (themeBtn) themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
 };
-themeBtn.onclick = toggleTheme;
+if (themeBtn) themeBtn.onclick = toggleTheme;
 
 // Zoom
-document.getElementById('btn-zoom-in').onclick = () => {
-  zoom = Math.min(2, zoom + 0.1);
-  document.body.style.transform = `scale(${zoom})`;
-  document.body.style.transformOrigin = 'center top';
-};
+const btnZoomIn = document.getElementById('btn-zoom-in');
+if (btnZoomIn) {
+  btnZoomIn.onclick = () => {
+    zoom = Math.min(2, zoom + 0.1);
+    document.body.style.transform = `scale(${zoom})`;
+    document.body.style.transformOrigin = 'center top';
+  };
+}
 
-document.getElementById('btn-zoom-out').onclick = () => {
-  zoom = Math.max(0.8, zoom - 0.1);
-  document.body.style.transform = `scale(${zoom})`;
-  document.body.style.transformOrigin = 'center top';
-};
+const btnZoomOut = document.getElementById('btn-zoom-out');
+if (btnZoomOut) {
+  btnZoomOut.onclick = () => {
+    zoom = Math.max(0.8, zoom - 0.1);
+    document.body.style.transform = `scale(${zoom})`;
+    document.body.style.transformOrigin = 'center top';
+  };
+}
+
+const btnZoomReset = document.getElementById('btn-zoom-reset');
+if (btnZoomReset) {
+  btnZoomReset.onclick = () => {
+    zoom = 1;
+    document.body.style.transform = `scale(1)`;
+    document.body.style.transformOrigin = 'center top';
+  };
+}
 
 // Pantalla completa
-document.getElementById('btn-fullscreen').onclick = () => {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
-  } else {
-    document.exitFullscreen();
-  }
-};
+const btnFullscreen = document.getElementById('btn-fullscreen');
+if (btnFullscreen) {
+  btnFullscreen.onclick = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  };
+}
 
 // Modal
-document.getElementById('btn-modal').onclick = () => {
+const btnModal = document.getElementById('btn-modal'); if (btnModal) btnModal.onclick = () => {
   document.getElementById('infoModal').classList.add('active');
 };
 
@@ -2478,11 +3059,11 @@ function cerrarModalAccesibilidad() {
   document.getElementById('accessibilityModal').classList.remove('active');
 }
 
-document.getElementById('btn-info').onclick = () => {
+const btnInfo = document.getElementById('btn-info'); if (btnInfo) btnInfo.onclick = () => {
   alert('ℹ️ Información del Curso:\n\n📚 Álgebra Lineal - Unidad I\n🎓 Universidad del SABES\n📅 2025\n\n✨ Proyecto educativo interactivo\n✅ Cumple WCAG 2.2 AA\n🌐 Diseño responsive');
 };
 
-document.getElementById('btn-exit').onclick = () => {
+const btnExit = document.getElementById('btn-exit'); if (btnExit) btnExit.onclick = () => {
   if (confirm('❌ ¿Deseas salir de la presentación?')) {
     window.close();
   }
