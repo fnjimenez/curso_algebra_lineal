@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta name="description" content="Curso interactivo de Álgebra Lineal - Unidad II: Sistemas de Ecuaciones Lineales. Cumple con estándares WCAG 2.2 AA de accesibilidad."/>
-<meta name="keywords" content="álgebra lineal, sistemas de ecuaciones, Gauss, Gauss-Jordán, Cramer, educación, SABES, accesible, WCAG"/>
+<meta name="description" content="Curso interactivo de Álgebra Lineal - Unidad I: Matrices y Determinantes. Cumple con estándares WCAG 2.2 AA de accesibilidad."/>
+<meta name="keywords" content="álgebra lineal, matrices, determinantes, educación, SABES, accesible, WCAG"/>
 <meta name="author" content="Universidad del SABES"/>
 <title>Álgebra Lineal - Unidad IV: Transformaciones Lineales | Universidad del SABES</title>
 
@@ -1314,7 +1314,7 @@ p {
 <!-- ======= MODAL SABES ======= -->
 <div id="infoModal" class="modal" role="dialog" aria-labelledby="info-title" aria-modal="true">
   <h3 id="info-title">🎓 Información del Curso</h3>
-  <p><strong>Álgebra Lineal - Unidad II: Sistemas de Ecuaciones Lineales</strong></p>
+  <p><strong>Álgebra Lineal - Unidad I: Matrices y Determinantes</strong></p>
   <p>Este curso interactivo está organizado en 4 semanas de contenido principal más complementos educativos.</p>
   
   <h4>📚 Estructura del Curso:</h4>
@@ -1374,9 +1374,8 @@ p {
       <div class="learning-objectives">
         <h3>🎯 APRENDIZAJES ESPERADOS</h3>
         <p>
-          Entender y utilizar la definición de transformación lineal y sus propiedades 
-          para representarla matricialmente y aplicarla en otras áreas de la ciencia, 
-          la ingeniería y el procesamiento de datos.
+          Aplicar las matrices, los determinantes y operaciones entre ellas, para resolver 
+          problemas en las diferentes áreas de las matemáticas y de la ingeniería.
         </p>
       </div>
       
@@ -1392,80 +1391,79 @@ p {
   <div class="slide" id="slide-1" role="region" aria-labelledby="slide-1-title">
     <h2 class="section-title" id="slide-1-title">UNIDAD IV: TRANSFORMACIONES LINEALES</h2>
     <p style="text-align: center; color: var(--muted); margin-bottom: 40px; max-width: 800px;">
-      Selecciona una semana para explorar los contenidos de transformaciones lineales
+      Selecciona una semana o complemento para explorar los contenidos específicos
     </p>
     
     <div class="week-grid" role="navigation" aria-label="Navegación por semanas">
-      <a class="week-card" onclick="goToSlide(2)" role="button" tabindex="0" aria-label="Ir a Semana 11" onkeypress="if(event.key==='Enter') goToSlide(2)">
+      <a class="week-card" onclick="goToSlide(2)" role="button" tabindex="0" aria-label="Ir a Semana 9 Parte 1" onkeypress="if(event.key==='Enter') goToSlide(2)">
         <div class="week-number">11</div>
-        <div class="week-title">Semana 11: Fundamentos</div>
+        <div class="week-title">Semana 11: Transformaciones Lineales</div>
         <div class="week-topics">
           • Definición de transformación lineal<br>
-          • Núcleo e imagen<br>
-          • Representación matricial<br>
-          • Propiedades fundamentales
+          • Teorema de linealidad<br>
+          • Teorema de linealidad<br>
+          • Ejemplos geométricos
         </div>
       </a>
       
-      <a class="week-card" onclick="goToSlide(3)" role="button" tabindex="0" aria-label="Ir a Semana 12" onkeypress="if(event.key==='Enter') goToSlide(3)">
+      <a class="week-card" onclick="goToSlide(3)" role="button" tabindex="0" aria-label="Ir a Semana 9 Parte 2" onkeypress="if(event.key==='Enter') goToSlide(3)">
+        <div class="week-number">11</div>
+        <div class="week-title">Semana 11: Núcleo e Imagen</div>
+        <div class="week-topics">
+          • Definición de núcleo (kernel)<br>
+          • Definición de imagen (rango)<br>
+          • Teorema dimensión<br>
+          • Inyectividad y sobreyectividad
+        </div>
+      </a>
+      
+      <a class="week-card" onclick="goToSlide(4)">
+        <div class="week-number">12</div>
+        <div class="week-title">Semana 12: Representación Matricial</div>
+        <div class="week-topics">
+          • Matriz de transformación<br>
+          • Construcción de la matriz<br>
+          • Cambio de base<br>
+          • Composición de transformaciones
+        </div>
+      </a>
+      
+      <a class="week-card" onclick="goToSlide(5)">
         <div class="week-number">12</div>
         <div class="week-title">Semana 12: Aplicaciones</div>
         <div class="week-topics">
+          • Rotaciones y reflexiones<br>
           • Gráficos por computadora<br>
           • Procesamiento de imágenes<br>
-          • Sistemas dinámicos<br>
-          • Actividad 4 (15 pts)
+          • Machine Learning y IA
+        </div>
+      </a>
+      
+      <a class="week-card" onclick="goToSlide(6)">
+        <div class="week-number">🎯</div>
+        <div class="week-title">Caso Práctico</div>
+        <div class="week-topics">
+          • Brazo Robótico Industrial<br>
+          • Optimización de movimientos<br>
+          • Análisis de trayectoria<br>
+          • Simulación con Python
+        </div>
+      </a>
+      
+      <a class="week-card" onclick="goToSlide(7)">
+        <div class="week-number">📚</div>
+        <div class="week-title">Bibliografía y Recursos</div>
+        <div class="week-topics">
+          • Textos fundamentales<br>
+          • Recursos digitales<br>
+          • Software especializado<br>
+          • Guías de estudio
         </div>
       </a>
     </div>
   </div>
 
-  <!-- SLIDE 2: SEMANA 11 - FUNDAMENTOS DE TRANSFORMACIONES LINEALES -->
-  <div class="slide" id="slide-2">
-    <div class="content-container">
-      <div class="week-section">
-        <div class="week-badge">Semana 5</div>
-        <h2>2.1 Sistemas de Ecuaciones Lineales</h2>
-        
-        <h3>2.1.1 Definición y notación de un sistema de ecuaciones lineales</h3>
-        
-        <button class="info-btn" onclick="toggleInfo('info-sistema')">info ¿Qué es un sistema de ecuaciones?</button>
-        <div id="info-sistema" class="info-box">
-          <h4>💡 Concepto clave</h4>
-          <p><strong>Un sistema de ecuaciones lineales</strong> es un conjunto de ecuaciones que deben cumplirse simultáneamente.</p>
-          <p><strong>Ejemplo cotidiano:</strong> Si tienes 10 monedas entre pesos y dólares con un valor total de $50, tienes DOS ecuaciones con DOS incógnitas.</p>
-          <p>👉 El objetivo es encontrar valores que satisfagan TODAS las ecuaciones al mismo tiempo.</p>
-        </div>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición:</strong> Un sistema de $m$ ecuaciones lineales con $n$ incógnitas es un conjunto de ecuaciones de la forma:
-            $$\begin{cases}
-            a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1 \\
-            a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2 \\
-            \vdots \\
-            a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m
-            \end{cases}$$
-            donde $a_{ij}$ son los coeficientes, $x_j$ son las incógnitas y $b_i$ son los términos independientes.
-          </div>
-          
-          <div class="example-box">
-            <strong>Ejemplo 1:</strong> Sistema de $2 \times 2$ (2 ecuaciones, 2 incógnitas)<br>
-            $$\begin{cases}
-            2x + 3y = 8 \\
-            -x + 4y = 3
-            \end{cases}$$
-            <strong>Solución:</strong> $x = 1$, $y = 2$ (verifica ambas ecuaciones)
-          </div>
-          
-          <div class="example-box">
-            <strong>Ejemplo 2:</strong> Sistema de $3 \times 3$ (3 ecuaciones, 3 incógnitas)<br>
-            $$\begin{cases}
-            x + 2y - z = 4 \\
-            2x - y + 3z = 9 \\
-            -x + 3y + z = 5
-  <!-- SLIDE 2: SEMANA 9 - FUNDAMENTOS DE ESPACIOS VECTORIALES -->
-  <!-- SLIDE 2: SEMANA 11 - FUNDAMENTOS DE TRANSFORMACIONES LINEALES -->
+  <!-- SLIDE 2: SEMANA 11 PARTE 1 - TRANSFORMACIONES LINEALES -->
   <div class="slide" id="slide-2">
     <div class="content-container">
       <div class="week-section">
@@ -1473,708 +1471,877 @@ p {
         <h2>4.1 Definición de Transformación Lineal</h2>
         
         <div class="citation">
-          "Las transformaciones lineales son el lenguaje mediante el cual los espacios vectoriales se comunican entre sí. Son fundamentales para entender desde rotaciones en el plano hasta operadores cuánticos en física." 
-          <strong>— Axler, S. (2015)</strong>
+          "Los espacios vectoriales son las estructuras fundamentales del álgebra lineal. Proporcionan un marco unificado para entender desde vectores geométricos hasta funciones, matrices y más." 
+          <strong>— Gilbert Strang (2016)</strong>
         </div>
         
-        <button class="info-btn" onclick="toggleInfo('info-transformacion')">info ¿Qué es una transformación lineal?</button>
-        <div id="info-transformacion" class="info-box">
+        <button class="info-btn" onclick="toggleInfo('info-espacio-vectorial')">info ¿Qué es un espacio vectorial?</button>
+        <div id="info-espacio-vectorial" class="info-box">
           <h4>💡 Concepto clave</h4>
-          <p><strong>Una transformación lineal</strong> es una función entre espacios vectoriales que preserva las operaciones de suma y multiplicación por escalar.</p>
-          <p><strong>Ejemplos intuitivos:</strong></p>
+          <p><strong>Un espacio vectorial</strong> es una colección de objetos (llamados vectores) que se pueden sumar y multiplicar por escalares, cumpliendo ciertas propiedades.</p>
+          <p><strong>Ejemplos de espacios vectoriales:</strong></p>
           <ul style="text-align: left; line-height: 2;">
-            <li>🔄 Rotaciones en el plano</li>
-            <li>🔍 Escalamientos (zoom in/out)</li>
-            <li>↔️ Reflexiones (espejos)</li>
-            <li>📐 Proyecciones (sombras)</li>
+            <li>🔢 Vectores en ℝ² y ℝ³ (flechas en el plano y espacio)</li>
+            <li>📊 Matrices de tamaño m×n</li>
+            <li>📈 Polinomios de grado ≤ n</li>
+            <li>∫ Funciones continuas en un intervalo</li>
           </ul>
-          <p>👉 Si sabemos cómo actúa en una base, conocemos su comportamiento completo.</p>
+          <p>👉 La abstracción permite aplicar los mismos conceptos en contextos muy diferentes.</p>
         </div>
         
         <div class="card">
           <div class="definition-box">
             <strong>Definición formal:</strong><br>
-            Sean $V$ y $W$ espacios vectoriales sobre el mismo campo $\mathbb{F}$. Una función $T: V \to W$ es una <strong>transformación lineal</strong> si para todos los vectores $\mathbf{u}, \mathbf{v} \in V$ y todo escalar $c \in \mathbb{F}$:
-            <ol style="text-align: left; line-height: 2.5; margin-top: 15px;">
-              <li><strong>Preserva la suma:</strong> $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$</li>
-              <li><strong>Preserva el producto por escalar:</strong> $T(c\mathbf{u}) = cT(\mathbf{u})$</li>
+            Un espacio vectorial $V$ sobre un campo $\mathbb{F}$ (usualmente ℝ o ℂ) es un conjunto con dos operaciones:
+            <ol style="text-align: left; line-height: 2; margin-top: 10px;">
+              <li><strong>Suma de vectores:</strong> $\mathbf{u} + \mathbf{v} \in V$ para todo $\mathbf{u}, \mathbf{v} \in V$</li>
+              <li><strong>Multiplicación por escalar:</strong> $\alpha\mathbf{v} \in V$ para todo $\alpha \in \mathbb{F}$, $\mathbf{v} \in V$</li>
             </ol>
-            <p style="margin-top: 15px;"><strong>Equivalentemente:</strong> $T(c_1\mathbf{u} + c_2\mathbf{v}) = c_1T(\mathbf{u}) + c_2T(\mathbf{v})$</p>
+            que satisfacen los siguientes <strong>10 axiomas</strong>:
           </div>
         </div>
 
-        <h3>Propiedades Fundamentales</h3>
+        <h3>Propiedades de las Transformaciones Lineales</h3>
+        
+        <div class="two-col">
+          <div class="card">
+            <h4>📐 Axiomas de la Suma</h4>
+            <ol style="text-align: left; font-size: 0.95rem; line-height: 2;">
+              <li><strong>Cerradura:</strong> $\mathbf{u} + \mathbf{v} \in V$</li>
+              <li><strong>Conmutativa:</strong> $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$</li>
+              <li><strong>Asociativa:</strong> $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$</li>
+              <li><strong>Elemento neutro:</strong> Existe $\mathbf{0}$ tal que $\mathbf{v} + \mathbf{0} = \mathbf{v}$</li>
+              <li><strong>Inverso aditivo:</strong> Para cada $\mathbf{v}$ existe $-\mathbf{v}$ tal que $\mathbf{v} + (-\mathbf{v}) = \mathbf{0}$</li>
+            </ol>
+          </div>
+          
+          <div class="card">
+            <h4>⚖️ Axiomas del Producto por Escalar</h4>
+            <ol start="6" style="text-align: left; font-size: 0.95rem; line-height: 2;">
+              <li><strong>Cerradura:</strong> $\alpha\mathbf{v} \in V$</li>
+              <li><strong>Distributiva 1:</strong> $\alpha(\mathbf{u} + \mathbf{v}) = \alpha\mathbf{u} + \alpha\mathbf{v}$</li>
+              <li><strong>Distributiva 2:</strong> $(\alpha + \beta)\mathbf{v} = \alpha\mathbf{v} + \beta\mathbf{v}$</li>
+              <li><strong>Asociativa:</strong> $\alpha(\beta\mathbf{v}) = (\alpha\beta)\mathbf{v}$</li>
+              <li><strong>Elemento unitario:</strong> $1\mathbf{v} = \mathbf{v}$</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="example-box">
+            <strong>Ejemplo 1:</strong> ℝ³ es un espacio vectorial<br><br>
+            
+            $V = \mathbb{R}^3 = \{(x, y, z) : x, y, z \in \mathbb{R}\}$<br><br>
+            
+            <strong>Operaciones:</strong><br>
+            • Suma: $(x_1, y_1, z_1) + (x_2, y_2, z_2) = (x_1+x_2, y_1+y_2, z_1+z_2)$<br>
+            • Producto por escalar: $\alpha(x, y, z) = (\alpha x, \alpha y, \alpha z)$<br><br>
+            
+            <strong>Verificación:</strong> Se puede demostrar que cumple los 10 axiomas. Por ejemplo:<br>
+            • Vector cero: $\mathbf{0} = (0, 0, 0)$<br>
+            • Inverso de $(x, y, z)$ es $(-x, -y, -z)$<br>
+            • Conmutatividad: $(1,2,3) + (4,5,6) = (5,7,9) = (4,5,6) + (1,2,3)$ ✅
+          </div>
+        </div>
+
+        <h3>4.1.1 Ejemplos de Transformaciones Lineales</h3>
+        
+        <button class="info-btn" onclick="toggleInfo('info-subespacio')">info ¿Qué es un subespacio?</button>
+        <div id="info-subespacio" class="info-box">
+          <h4>💡 Concepto clave</h4>
+          <p><strong>Un subespacio</strong> es un "espacio vectorial dentro de otro espacio vectorial".</p>
+          <p><strong>Ejemplo intuitivo:</strong> Las rectas y planos que pasan por el origen en ℝ³ son subespacios.</p>
+          <p>👉 No hace falta verificar los 10 axiomas, ¡solo 3 condiciones!</p>
+        </div>
         
         <div class="card">
-          <h4>📋 Consecuencias de la definición</h4>
-          <ol style="text-align: left; line-height: 2; font-size: 0.95rem;">
-            <li><strong>El cero se mapea al cero:</strong> $T(\mathbf{0}) = \mathbf{0}$</li>
-            <li><strong>Preserva combinaciones lineales:</strong> $T(c_1\mathbf{v}_1 + \cdots + c_n\mathbf{v}_n) = c_1T(\mathbf{v}_1) + \cdots + c_nT(\mathbf{v}_n)$</li>
-            <li><strong>Inverso aditivo:</strong> $T(-\mathbf{v}) = -T(\mathbf{v})$</li>
-          </ol>
+          <div class="definition-box">
+            <strong>Definición:</strong> Un subconjunto $W$ de un espacio vectorial $V$ es un <strong>subespacio vectorial</strong> si cumple:
+            <ol style="text-align: left; line-height: 2.2; margin-top: 10px;">
+              <li><strong>Contiene al vector cero:</strong> $\mathbf{0} \in W$</li>
+              <li><strong>Cerrado bajo suma:</strong> Si $\mathbf{u}, \mathbf{v} \in W$, entonces $\mathbf{u} + \mathbf{v} \in W$</li>
+              <li><strong>Cerrado bajo multiplicación por escalar:</strong> Si $\mathbf{v} \in W$ y $\alpha \in \mathbb{F}$, entonces $\alpha\mathbf{v} \in W$</li>
+            </ol>
+          </div>
         </div>
 
         <div class="two-col">
           <div class="card">
             <div class="example-box">
-              <strong>Ejemplo 1:</strong> Transformación lineal en ℝ²<br><br>
+              <strong>Ejemplo 2:</strong> Subespacio en ℝ³<br><br>
               
-              $T: \mathbb{R}^2 \to \mathbb{R}^2$ definida por:<br>
-              $T(x, y) = (2x + y, x - y)$<br><br>
+              $W = \{(x, y, 0) : x, y \in \mathbb{R}\}$<br>
+              (El plano XY en ℝ³)<br><br>
               
               <strong>Verificación:</strong><br>
-              Sean $\mathbf{u} = (x_1, y_1)$ y $\mathbf{v} = (x_2, y_2)$<br><br>
+              1. ✅ $(0, 0, 0) \in W$<br>
+              2. ✅ $(x_1, y_1, 0) + (x_2, y_2, 0) = (x_1+x_2, y_1+y_2, 0) \in W$<br>
+              3. ✅ $\alpha(x, y, 0) = (\alpha x, \alpha y, 0) \in W$<br><br>
               
-              1. $T(\mathbf{u} + \mathbf{v}) = T(x_1+x_2, y_1+y_2)$<br>
-              $= (2(x_1+x_2) + (y_1+y_2), (x_1+x_2) - (y_1+y_2))$<br>
-              $= (2x_1+y_1, x_1-y_1) + (2x_2+y_2, x_2-y_2)$<br>
-              $= T(\mathbf{u}) + T(\mathbf{v})$ ✅<br><br>
-              
-              2. $T(c\mathbf{u}) = T(cx_1, cy_1)$<br>
-              $= (2cx_1 + cy_1, cx_1 - cy_1)$<br>
-              $= c(2x_1+y_1, x_1-y_1) = cT(\mathbf{u})$ ✅
+              Por lo tanto, $W$ es un subespacio de ℝ³
             </div>
           </div>
           
           <div class="card">
             <div class="example-box">
-              <strong>Ejemplo 2:</strong> NO es transformación lineal<br><br>
+              <strong>Contraejemplo:</strong> NO es subespacio<br><br>
               
-              $F: \mathbb{R}^2 \to \mathbb{R}^2$ definida por:<br>
-              $F(x, y) = (x + 1, y)$<br><br>
+              $S = \{(x, y, 1) : x, y \in \mathbb{R}\}$<br>
+              (Plano paralelo a XY, pero z=1)<br><br>
               
               <strong>Falla en:</strong><br>
-              $F(\mathbf{0}) = F(0, 0) = (1, 0) \neq (0, 0)$<br><br>
+              1. ❌ El vector cero $(0, 0, 0) \notin S$<br><br>
               
-              Como no mapea el cero al cero, NO es lineal ❌<br><br>
+              Como falla la primera condición, $S$ NO es un subespacio.<br><br>
               
-              <strong>Nota:</strong> Esta es una traslación, que NO preserva el origen.
+              <strong>Nota:</strong> Los subespacios SIEMPRE pasan por el origen.
             </div>
           </div>
         </div>
 
-        <h3>Ejemplos Geométricos en ℝ²</h3>
-        
-        <div class="three-col">
-          <div class="card">
-            <h4>🔄 Rotación</h4>
-            <p style="font-size: 0.9rem;">Ángulo θ en sentido antihorario:</p>
-            $$T(x, y) = (x\cos\theta - y\sin\theta, x\sin\theta + y\cos\theta)$$
-          </div>
-          
-          <div class="card">
-            <h4>🔍 Escalamiento</h4>
-            <p style="font-size: 0.9rem;">Factor k en ambas direcciones:</p>
-            $$T(x, y) = (kx, ky)$$
-          </div>
-          
-          <div class="card">
-            <h4>↔️ Reflexión</h4>
-            <p style="font-size: 0.9rem;">Respecto al eje X:</p>
-            $$T(x, y) = (x, -y)$$
-          </div>
-        </div>
-
-        <h3>4.2 Núcleo e Imagen de una Transformación Lineal</h3>
-        
-        <button class="info-btn" onclick="toggleInfo('info-nucleo-imagen')">info ¿Para qué sirven?</button>
-        <div id="info-nucleo-imagen" class="info-box">
-          <h4>💡 Importancia práctica</h4>
-          <p><strong>Núcleo (Kernel):</strong> Mide qué tan "colapsada" es la transformación. Vectores que se van a cero.</p>
-          <p><strong>Imagen (Range):</strong> Muestra qué vectores son "alcanzables" después de la transformación.</p>
-          <p><strong>Teorema clave:</strong> dim(V) = dim(Ker(T)) + dim(Im(T))</p>
-          <p>👉 Son subespacios que caracterizan completamente la transformación.</p>
-        </div>
+        <h3>4.1.2 Composición de Transformaciones</h3>
         
         <div class="card">
-          <div class="definition-box">
-            <strong>Núcleo (Kernel):</strong><br>
-            $$\text{Ker}(T) = \{\mathbf{v} \in V : T(\mathbf{v}) = \mathbf{0}\}$$
-            <p style="margin-top: 10px;">El conjunto de todos los vectores que se mapean al vector cero.</p>
-            <p><strong>Propiedad:</strong> Ker(T) es un subespacio de $V$</p>
-          </div>
-          
-          <div class="definition-box">
-            <strong>Imagen (Range):</strong><br>
-            $$\text{Im}(T) = \{T(\mathbf{v}) : \mathbf{v} \in V\} = \{\mathbf{w} \in W : \exists \mathbf{v} \in V, T(\mathbf{v}) = \mathbf{w}\}$$
-            <p style="margin-top: 10px;">El conjunto de todos los vectores "alcanzados" por la transformación.</p>
-            <p><strong>Propiedad:</strong> Im(T) es un subespacio de $W$</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 3:</strong> Proyección sobre el eje X<br><br>
-            
-            $T: \mathbb{R}^2 \to \mathbb{R}^2$ definida por $T(x, y) = (x, 0)$<br><br>
-            
-            <strong>Núcleo:</strong><br>
-            $T(x, y) = (0, 0) \Rightarrow (x, 0) = (0, 0) \Rightarrow x = 0$<br>
-            Por lo tanto: $\text{Ker}(T) = \{(0, y) : y \in \mathbb{R}\}$ (el eje Y)<br>
-            dim(Ker(T)) = 1<br><br>
-            
-            <strong>Imagen:</strong><br>
-            Im(T) = $\{(x, 0) : x \in \mathbb{R}\}$ (el eje X)<br>
-            dim(Im(T)) = 1<br><br>
-            
-            <strong>Verificación:</strong> dim(ℝ²) = 2 = 1 + 1 = dim(Ker(T)) + dim(Im(T)) ✅
-          </div>
-        </div>
-
-        <div class="two-col">
-          <div class="card">
-            <h4>🎯 Inyectividad</h4>
-            <p style="font-size: 0.95rem; line-height: 1.8;">
-              $T$ es <strong>inyectiva</strong> (uno a uno) si:<br>
-              $T(\mathbf{u}) = T(\mathbf{v}) \Rightarrow \mathbf{u} = \mathbf{v}$
-            </p>
-            <p style="margin-top: 10px; font-size: 0.95rem;">
-              <strong>Equivalente:</strong> Ker(T) = {0}
-            </p>
-          </div>
-          
-          <div class="card">
-            <h4>🎯 Sobreyectividad</h4>
-            <p style="font-size: 0.95rem; line-height: 1.8;">
-              $T$ es <strong>sobreyectiva</strong> (onto) si:<br>
-              Im(T) = W
-            </p>
-            <p style="margin-top: 10px; font-size: 0.95rem;">
-              <strong>Equivalente:</strong> Todo vector en W es imagen de algún vector en V
-            </p>
-          </div>
-        </div>
-
-        <h3>4.3 Representación Matricial de una Transformación Lineal</h3>
-        
-        <button class="info-btn" onclick="toggleInfo('info-matriz')">info ¿Por qué matrices?</button>
-        <div id="info-matriz" class="info-box">
-          <h4>💡 Conexión fundamental</h4>
-          <p><strong>Toda transformación lineal</strong> entre espacios de dimensión finita se puede representar mediante una matriz.</p>
-          <p><strong>Ventaja:</strong> Convierte problemas abstractos en cálculos concretos con matrices.</p>
-          <p><strong>Aplicación:</strong> Computadoras trabajan con matrices, no con transformaciones abstractas.</p>
-          <p>👉 Una vez elegida una base, la transformación = matriz.</p>
-        </div>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Teorema de Representación Matricial:</strong><br>
-            Sea $T: V \to W$ una transformación lineal, donde dim(V) = n y dim(W) = m.<br>
-            Sean $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ base de V y $\mathcal{C} = \{\mathbf{w}_1, \ldots, \mathbf{w}_m\}$ base de W.<br><br>
-            
-            Entonces existe una única matriz $A$ de tamaño $m \times n$ tal que:
-            $$[T(\mathbf{v})]_{\mathcal{C}} = A[\mathbf{v}]_{\mathcal{B}}$$
-            
-            <p style="margin-top: 15px;"><strong>Construcción de A:</strong> Las columnas de A son las coordenadas de $T(\mathbf{v}_i)$ respecto a la base $\mathcal{C}$:</p>
-            $$A = [T(\mathbf{v}_1)]_{\mathcal{C}} \quad [T(\mathbf{v}_2)]_{\mathcal{C}} \quad \cdots \quad [T(\mathbf{v}_n)]_{\mathcal{C}}$$
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 4:</strong> Matriz de transformación en ℝ²<br><br>
-            
-            $T: \mathbb{R}^2 \to \mathbb{R}^2$ definida por $T(x, y) = (2x + y, x - y)$<br><br>
-            
-            <strong>Usando la base estándar:</strong> $\mathcal{B} = \{(1,0), (0,1)\}$<br><br>
-            
-            $T(1, 0) = (2, 1)$<br>
-            $T(0, 1) = (1, -1)$<br><br>
-            
-            <strong>Matriz:</strong><br>
-            $$A = \begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix}$$<br>
-            
-            <strong>Verificación:</strong><br>
-            $$\begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 2x + y \\ x - y \end{pmatrix} = T(x, y)$$ ✅
-          </div>
-        </div>
-
-        <h3>Propiedades de la Representación Matricial</h3>
-        
-        <div class="card">
-          <h4>🔗 Operaciones con transformaciones</h4>
-          <ol style="text-align: left; line-height: 2.2; font-size: 0.95rem;">
-            <li><strong>Composición:</strong> Si $T: U \to V$ y $S: V \to W$, entonces $[S \circ T] = [S][T]$</li>
-            <li><strong>Suma:</strong> $[T_1 + T_2] = [T_1] + [T_2]$</li>
-            <li><strong>Múltiplo escalar:</strong> $[cT] = c[T]$</li>
-            <li><strong>Identidad:</strong> La transformación identidad se representa por la matriz identidad</li>
-            <li><strong>Inversa:</strong> Si T es invertible, entonces $[T^{-1}] = [T]^{-1}$</li>
+          <h4>📊 Propiedades Importantes</h4>
+          <ol style="text-align: left; line-height: 2; font-size: 0.95rem;">
+            <li><strong>Todo espacio vectorial es subespacio de sí mismo:</strong> $V \subseteq V$</li>
+            <li><strong>El conjunto {0} es un subespacio:</strong> El subespacio trivial</li>
+            <li><strong>La intersección de subespacios es un subespacio:</strong> Si $W_1$ y $W_2$ son subespacios, entonces $W_1 \cap W_2$ también lo es</li>
+            <li><strong>La unión generalmente NO es subespacio:</strong> $W_1 \cup W_2$ usualmente no es subespacio</li>
           </ol>
         </div>
 
-        <div class="two-col">
-          <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo 5:</strong> Rotación 90°<br><br>
-              
-              Rotación antihoraria de 90° en ℝ²:<br><br>
-              
-              $T(1, 0) = (0, 1)$<br>
-              $T(0, 1) = (-1, 0)$<br><br>
-              
-              <strong>Matriz:</strong><br>
-              $$A = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$$<br>
-              
-              <strong>Prueba:</strong> $T(1, 1) = (0, 1) + (-1, 0) = (-1, 1)$ ✅
-            </div>
-          </div>
-          
-          <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo 6:</strong> Reflexión sobre eje X<br><br>
-              
-              Reflexión respecto al eje X:<br><br>
-              
-              $T(1, 0) = (1, 0)$<br>
-              $T(0, 1) = (0, -1)$<br><br>
-              
-              <strong>Matriz:</strong><br>
-              $$A = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$<br>
-              
-              <strong>Prueba:</strong> $T(3, 4) = (3, -4)$ ✅
-            </div>
-          </div>
-        </div>
-
-        <h3>Relación entre Núcleo/Imagen y Matriz</h3>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Para la matriz A de una transformación T:</strong>
-            <ul style="text-align: left; line-height: 2; margin-top: 10px;">
-              <li><strong>Núcleo:</strong> Ker(T) = espacio nulo de A = {x : Ax = 0}</li>
-              <li><strong>Imagen:</strong> Im(T) = espacio columna de A</li>
-              <li><strong>Rango:</strong> dim(Im(T)) = rango(A)</li>
-              <li><strong>Nulidad:</strong> dim(Ker(T)) = nulidad(A) = n - rango(A)</li>
-            </ul>
-            
-            <p style="margin-top: 15px; padding: 15px; background: rgba(255, 214, 10, 0.1); border-radius: 8px;">
-              <strong>Teorema del rango-nulidad:</strong><br>
-              dim(V) = dim(Ker(T)) + dim(Im(T)) = nulidad(A) + rango(A)
-            </p>
-          </div>
-        </div>
-
-        <!-- Quiz interactivo Semana 11 -->
+        <!-- Quiz interactivo -->
         <div class="quiz-container">
-          <h3>🧠 Autoevaluación - Semana 11</h3>
+          <h3>🧠 Autoevaluación - Transformaciones Lineales</h3>
           
           <div class="quiz-question">
-            1. Una transformación T es lineal si preserva:
+            1. ¿Cuál de estos NO es un espacio vectorial?
           </div>
           <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo la suma de vectores</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">La suma y el producto por escalar</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo el producto por escalar</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">El producto punto de vectores</div>
-          </div>
-          
-          <div class="quiz-question">
-            2. El núcleo de una transformación lineal T es:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">El conjunto de todos los vectores en el dominio</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">El conjunto de vectores que se mapean al vector cero</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">El conjunto de todos los vectores en el codominio</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">El conjunto de vectores ortogonales</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">ℝ³ con suma y producto por escalar usuales</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Matrices 2×2 con suma y producto por escalar</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Números naturales ℕ con suma usual</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Polinomios de grado ≤ 3</div>
           </div>
           
           <div class="quiz-question">
-            3. Si T: ℝ³ → ℝ², la matriz que representa a T tiene tamaño:
+            2. Para que W sea subespacio de V, debe cumplir:
           </div>
           <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">3×3</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">2×3</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">3×2</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">2×2</div>
-          </div>
-          
-          <div class="quiz-question">
-            4. Una transformación es inyectiva si y solo si:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Su imagen es todo el codominio</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Su núcleo contiene solo el vector cero</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Su matriz es diagonal</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Preserva productos internos</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo contener el vector cero</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Ser cerrado bajo suma y multiplicación por escalar, y contener el cero</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Tener la misma dimensión que V</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Ser un conjunto finito</div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- SLIDE 3: SEMANA 12 - APLICACIONES DE TRANSFORMACIONES LINEALES -->
+
+  <!-- SLIDE 3: SEMANA 11 PARTE 2 - NÚCLEO E IMAGEN -->
   <div class="slide" id="slide-3">
     <div class="content-container">
       <div class="week-section">
-        <div class="week-badge">Semana 12</div>
-        <h2>4.4 Aplicaciones de las Transformaciones Lineales</h2>
+        <div class="week-badge">Semana 11 - Parte 2</div>
+        <h2>4.2 Núcleo e Imagen de una Transformación Lineal</h2>
         
-        <div class="citation">
-          "Las transformaciones lineales son la base de prácticamente todas las aplicaciones modernas del álgebra lineal: desde la renderización 3D en videojuegos hasta el análisis de componentes principales en ciencia de datos." 
-          <strong>— Strang, G. (2019)</strong>
+        <button class="info-btn" onclick="toggleInfo('info-independencia')">info ¿Por qué es importante?</button>
+        <div id="info-independencia" class="info-box">
+          <h4>💡 Concepto clave</h4>
+          <p><strong>Independencia lineal</strong> es fundamental para entender:</p>
+          <ul style="text-align: left; line-height: 2;">
+            <li>🎯 Cuántos vectores necesitamos para describir un espacio</li>
+            <li>📊 Si un sistema de ecuaciones tiene solución única</li>
+            <li>🔢 La "dimensión" de un espacio vectorial</li>
+            <li>🧮 Optimización de recursos en algoritmos</li>
+          </ul>
         </div>
-
-        <h3>4.4.1 Gráficos por Computadora y Videojuegos</h3>
         
-        <button class="info-btn" onclick="toggleInfo('info-graficos')">info ¿Cómo funcionan los gráficos 3D?</button>
-        <div id="info-graficos" class="info-box">
-          <h4>💡 Transformaciones en videojuegos</h4>
-          <p><strong>Cada objeto 3D</strong> se representa como un conjunto de vectores (vértices).</p>
-          <p><strong>Para mover/rotar/escalar objetos:</strong> Se aplican transformaciones lineales mediante multiplicación de matrices.</p>
-          <p><strong>Pipeline gráfico:</strong> Modelo → Vista → Proyección (todas son transformaciones lineales)</p>
-          <p>👉 Los motores gráficos modernos (Unity, Unreal) usan estas matemáticas constantemente.</p>
-        </div>
+        <h3>4.2.1 Definición de Núcleo (Kernel)</h3>
         
         <div class="card">
-          <h4>🎮 Transformaciones Fundamentales en 3D</h4>
-          
-          <div class="two-col">
-            <div>
-              <strong>1. Traslación (afín, no lineal):</strong><br>
-              Se usa matriz homogénea 4×4:<br>
-              $$\begin{pmatrix} 1 & 0 & 0 & t_x \\ 0 & 1 & 0 & t_y \\ 0 & 0 & 1 & t_z \\ 0 & 0 & 0 & 1 \end{pmatrix}$$
-            </div>
-            
-            <div>
-              <strong>2. Escalamiento:</strong><br>
-              $$\begin{pmatrix} s_x & 0 & 0 \\ 0 & s_y & 0 \\ 0 & 0 & s_z \end{pmatrix}$$
-            </div>
-          </div>
-          
-          <div class="two-col">
-            <div>
-              <strong>3. Rotación alrededor del eje Z:</strong><br>
-              $$\begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
-            </div>
-            
-            <div>
-              <strong>4. Proyección perspectiva:</strong><br>
-              Convierte 3D → 2D para mostrar en pantalla<br>
-              (matriz compleja 4×4)
-            </div>
+          <div class="definition-box">
+            <strong>Combinación Lineal:</strong><br>
+            Un vector $\mathbf{v}$ es combinación lineal de vectores $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ si:
+            $$\mathbf{v} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\mathbf{v}_n$$
+            donde $c_1, c_2, \ldots, c_n$ son escalares.
           </div>
         </div>
 
         <div class="card">
           <div class="example-box">
-            <strong>Ejemplo práctico:</strong> Rotar un triángulo 45° en el plano<br><br>
+            <strong>Ejemplo:</strong> En ℝ³<br><br>
             
-            <strong>Vértices originales:</strong><br>
-            A = (1, 0), B = (0, 1), C = (1, 1)<br><br>
+            Sea $\mathbf{v}_1 = (1, 0, 0)$, $\mathbf{v}_2 = (0, 1, 0)$<br><br>
             
-            <strong>Matriz de rotación 45°:</strong><br>
-            $$R = \begin{pmatrix} \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{pmatrix}$$<br>
+            ¿Es $\mathbf{v} = (3, 2, 0)$ combinación lineal de $\mathbf{v}_1$ y $\mathbf{v}_2$?<br><br>
             
-            <strong>Nuevas posiciones:</strong><br>
-            $A' = R \cdot A = (\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}) \approx (0.71, 0.71)$<br>
-            $B' = R \cdot B = (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}) \approx (-0.71, 0.71)$<br>
-            $C' = R \cdot C = (0, \sqrt{2}) \approx (0, 1.41)$
+            $$\mathbf{v} = 3\mathbf{v}_1 + 2\mathbf{v}_2 = 3(1,0,0) + 2(0,1,0) = (3, 2, 0)$$
+            
+            ✅ Sí, con coeficientes $c_1 = 3$ y $c_2 = 2$
           </div>
         </div>
 
-        <h3>4.4.2 Procesamiento de Imágenes Digitales</h3>
-        
-        <button class="info-btn" onclick="toggleInfo('info-imagenes')">info ¿Las imágenes son matrices?</button>
-        <div id="info-imagenes" class="info-box">
-          <h4>💡 Imágenes como matrices</h4>
-          <p><strong>Una imagen digital</strong> es una matriz donde cada elemento es la intensidad de un píxel.</p>
-          <p><strong>Operaciones comunes:</strong></p>
-          <ul style="text-align: left; line-height: 1.8;">
-            <li>Filtros (blur, sharpen) = convolución (transformación lineal)</li>
-            <li>Rotación de imagen = transformación de coordenadas</li>
-            <li>Compresión (JPEG) = transformadas (DCT, wavelets)</li>
-          </ul>
-          <p>👉 Instagram, Photoshop, cámaras: TODO usa álgebra lineal.</p>
-        </div>
-        
-        <div class="three-col">
-          <div class="card">
-            <h4>📸 Filtro de Desenfoque</h4>
-            <p style="font-size: 0.9rem;">Matriz de convolución 3×3:</p>
-            $$\frac{1}{9}\begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{pmatrix}$$
-            <p style="font-size: 0.85rem; margin-top: 10px;">Promedia cada píxel con sus vecinos</p>
-          </div>
-          
-          <div class="card">
-            <h4>🔍 Detección de Bordes</h4>
-            <p style="font-size: 0.9rem;">Operador Sobel:</p>
-            $$\begin{pmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{pmatrix}$$
-            <p style="font-size: 0.85rem; margin-top: 10px;">Detecta cambios bruscos de intensidad</p>
-          </div>
-          
-          <div class="card">
-            <h4>✨ Afilado (Sharpen)</h4>
-            <p style="font-size: 0.9rem;">Matriz de afilado:</p>
-            $$\begin{pmatrix} 0 & -1 & 0 \\ -1 & 5 & -1 \\ 0 & -1 & 0 \end{pmatrix}$$
-            <p style="font-size: 0.85rem; margin-top: 10px;">Resalta detalles finos</p>
-          </div>
-        </div>
-
-        <h3>4.4.3 Compresión de Imágenes: SVD</h3>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Descomposición en Valores Singulares (SVD):</strong><br>
-            Toda matriz $A$ de tamaño $m \times n$ se puede descomponer como:
-            $$A = U\Sigma V^T$$
-            donde:
-            <ul style="text-align: left; line-height: 2; margin-top: 10px;">
-              <li>$U$ es $m \times m$ ortogonal</li>
-              <li>$\Sigma$ es $m \times n$ diagonal (valores singulares)</li>
-              <li>$V$ es $n \times n$ ortogonal</li>
-            </ul>
-            
-            <p style="margin-top: 15px;"><strong>Aplicación en compresión:</strong> Usar solo los $k$ mayores valores singulares para aproximar A:<br>
-            $A_k = U_k\Sigma_kV_k^T$ (mucho más compacto si k << min(m,n))</p>
-          </div>
-        </div>
-
-        <h3>4.4.4 Análisis de Componentes Principales (PCA)</h3>
-        
-        <button class="info-btn" onclick="toggleInfo('info-pca')">info ¿Qué es PCA?</button>
-        <div id="info-pca" class="info-box">
-          <h4>💡 Reducción de dimensionalidad</h4>
-          <p><strong>Problema:</strong> Tienes datos con muchas variables (alta dimensión) y quieres visualizarlos o procesarlos más fácilmente.</p>
-          <p><strong>Solución PCA:</strong> Encontrar las direcciones de máxima varianza y proyectar los datos ahí.</p>
-          <p><strong>Aplicaciones:</strong></p>
-          <ul style="text-align: left; line-height: 1.8;">
-            <li>Reconocimiento facial (eigenfaces)</li>
-            <li>Análisis de datos genómicos</li>
-            <li>Compresión de datos</li>
-            <li>Machine learning (preprocesamiento)</li>
-          </ul>
-          <p>👉 Es una transformación lineal óptima para reducir dimensión preservando información.</p>
-        </div>
-        
-        <div class="card">
-          <h4>🔬 Algoritmo PCA (simplificado)</h4>
-          <ol style="text-align: left; line-height: 2.2; font-size: 0.95rem;">
-            <li><strong>Centrar los datos:</strong> Restar la media a cada variable</li>
-            <li><strong>Matriz de covarianza:</strong> $C = \frac{1}{n}X^TX$</li>
-            <li><strong>Calcular eigenvectores:</strong> Resolver $C\mathbf{v} = \lambda\mathbf{v}$</li>
-            <li><strong>Ordenar por eigenvalor:</strong> Los mayores representan más varianza</li>
-            <li><strong>Proyectar:</strong> $Y = XP$ donde $P$ contiene los $k$ principales eigenvectores</li>
-          </ol>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo:</strong> Datos 3D → 2D con PCA<br><br>
-            
-            Supongamos que tienes puntos en ℝ³ distribuidos principalmente en un plano.<br><br>
-            
-            <strong>PCA encuentra:</strong><br>
-            • Componente principal 1: Dirección de mayor varianza en el plano<br>
-            • Componente principal 2: Segunda dirección (perpendicular a la primera)<br>
-            • Componente principal 3: Perpendicular al plano (varianza casi cero)<br><br>
-            
-            <strong>Reducción:</strong> Proyectar sobre los 2 primeros componentes pierde poca información.<br>
-            Resultado: Visualización 2D que captura la esencia de los datos 3D.
-          </div>
-        </div>
-
-        <h3>4.4.5 Sistemas Dinámicos Discretos</h3>
-        
         <div class="card">
           <div class="definition-box">
-            <strong>Modelo:</strong> $\mathbf{x}_{n+1} = A\mathbf{x}_n$<br><br>
+            <strong>Independencia Lineal:</strong><br>
+            Un conjunto de vectores $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ es <strong>linealmente independiente</strong> si:
+            $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\mathbf{v}_n = \mathbf{0}$$
+            implica que $c_1 = c_2 = \cdots = c_n = 0$ (solución trivial única).<br><br>
             
-            Donde $\mathbf{x}_n$ es el estado del sistema en el tiempo $n$.<br><br>
-            
-            <strong>Solución general:</strong> $\mathbf{x}_n = A^n\mathbf{x}_0$<br><br>
-            
-            <strong>Comportamiento a largo plazo:</strong> Determinado por los eigenvalores de $A$:
-            <ul style="text-align: left; line-height: 2; margin-top: 10px;">
-              <li>Si $|\lambda_{\max}| < 1$: El sistema tiende a cero (estable)</li>
-              <li>Si $|\lambda_{\max}| = 1$: Estado estacionario o periódico</li>
-              <li>Si $|\lambda_{\max}| > 1$: El sistema crece sin límite (inestable)</li>
-            </ul>
+            Si existen escalares no todos cero que satisfacen la ecuación, los vectores son <strong>linealmente dependientes</strong>.
           </div>
         </div>
 
         <div class="two-col">
           <div class="card">
             <div class="example-box">
-              <strong>Aplicación:</strong> Modelo depredador-presa<br><br>
+              <strong>Ejemplo:</strong> Independientes<br><br>
               
-              $x_n$ = población de conejos<br>
-              $y_n$ = población de zorros<br><br>
+              $\mathbf{v}_1 = (1, 0)$, $\mathbf{v}_2 = (0, 1)$ en ℝ²<br><br>
               
-              $$\begin{pmatrix} x_{n+1} \\ y_{n+1} \end{pmatrix} = \begin{pmatrix} 1.1 & -0.2 \\ 0.1 & 0.9 \end{pmatrix} \begin{pmatrix} x_n \\ y_n \end{pmatrix}$$<br>
+              $$c_1(1,0) + c_2(0,1) = (0,0)$$
+              $$\Rightarrow (c_1, c_2) = (0, 0)$$
               
-              El análisis de eigenvalores predice oscilaciones periódicas.
+              Solo solución trivial → <strong>Independientes</strong> ✅
             </div>
           </div>
           
           <div class="card">
             <div class="example-box">
-              <strong>Aplicación:</strong> Cadenas de Markov<br><br>
+              <strong>Ejemplo:</strong> Dependientes<br><br>
               
-              Modela sistemas con estados discretos y transiciones probabilísticas.<br><br>
+              $\mathbf{v}_1 = (1, 2)$, $\mathbf{v}_2 = (2, 4)$ en ℝ²<br><br>
               
-              <strong>Ejemplo:</strong> Clima (soleado/nublado)<br>
-              Matriz de transición describe probabilidades de cambio.<br><br>
+              $$c_1(1,2) + c_2(2,4) = (0,0)$$
               
-              Estado estacionario = eigenvector con eigenvalor 1.
+              Solución: $c_1 = 2, c_2 = -1$ (no trivial)<br>
+              $2(1,2) - 1(2,4) = (0,0)$ ✓<br><br>
+              
+              → <strong>Dependientes</strong> ❌
             </div>
           </div>
         </div>
 
-        <h3>4.4.6 Redes Neuronales y Deep Learning</h3>
+        <h3>4.2.2 Definición de Imagen (Rango)</h3>
         
         <div class="card">
-          <h4>🤖 Transformaciones en cada capa</h4>
-          <p style="font-size: 0.95rem; line-height: 1.8;">
-            Cada capa de una red neuronal aplica una transformación <strong>casi lineal</strong>:
-          </p>
-          $$\mathbf{y} = \sigma(W\mathbf{x} + \mathbf{b})$$
-          <p style="margin-top: 15px; font-size: 0.95rem;">
-            Donde:<br>
-            • $W$ es la matriz de pesos (transformación lineal)<br>
-            • $\mathbf{b}$ es el sesgo (traslación)<br>
-            • $\sigma$ es la función de activación no lineal (ReLU, sigmoid, etc.)
-          </p>
-          
-          <p style="margin-top: 20px; padding: 15px; background: rgba(100, 150, 250, 0.1); border-radius: 8px; font-size: 0.95rem;">
-            <strong>Clave:</strong> El "aprendizaje profundo" consiste en optimizar las matrices $W$ de múltiples capas para aproximar funciones complejas mediante composición de transformaciones lineales y no lineales.
-          </p>
+          <div class="definition-box">
+            <strong>Base:</strong> Un conjunto $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ es una <strong>base</strong> de un espacio vectorial $V$ si:
+            <ol style="text-align: left; line-height: 2.2; margin-top: 10px;">
+              <li>$\mathcal{B}$ es linealmente independiente</li>
+              <li>$\mathcal{B}$ genera a $V$ (cualquier vector de $V$ es combinación lineal de $\mathcal{B}$)</li>
+            </ol>
+            
+            <p style="margin-top: 15px;"><strong>Dimensión:</strong> El número de vectores en una base de $V$ se llama <strong>dimensión</strong> de $V$, denotada $\dim(V)$.</p>
+          </div>
         </div>
 
-        <h3>📊 Otras Aplicaciones Importantes</h3>
+        <div class="card">
+          <div class="example-box">
+            <strong>Ejemplo:</strong> Base estándar de ℝ³<br><br>
+            
+            $$\mathcal{B} = \{(1,0,0), (0,1,0), (0,0,1)\}$$
+            
+            <strong>Verificación:</strong><br>
+            1. ✅ Son linealmente independientes<br>
+            2. ✅ Cualquier $(x,y,z) = x(1,0,0) + y(0,1,0) + z(0,0,1)$<br><br>
+            
+            Por lo tanto, $\mathcal{B}$ es una base y $\dim(\mathbb{R}^3) = 3$
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>🎯 Propiedades importantes de bases</h4>
+          <ul style="text-align: left; line-height: 2;">
+            <li>Todas las bases de un espacio vectorial tienen el <strong>mismo número</strong> de vectores</li>
+            <li>Si $\dim(V) = n$, entonces cualquier conjunto de $n$ vectores independientes es una base</li>
+            <li>Si $\dim(V) = n$, entonces cualquier conjunto que genere $V$ con $n$ vectores es una base</li>
+            <li>En ℝⁿ, el número máximo de vectores linealmente independientes es $n$</li>
+          </ul>
+        </div>
+
+        <h3>4.2.3 Teorema de la Dimensión</h3>
+        
+        <div class="card">
+          <p><strong>Representación de un vector en diferentes bases:</strong></p>
+          <p style="margin-top: 10px;">Si $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ es una base de $V$, entonces cualquier vector $\mathbf{w} \in V$ se puede escribir de forma única como:</p>
+          
+          $$\mathbf{w} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\mathbf{v}_n$$
+          
+          <p style="margin-top: 15px;">Los coeficientes $(c_1, c_2, \ldots, c_n)$ son las <strong>coordenadas de $\mathbf{w}$ en la base $\mathcal{B}$</strong>:</p>
+          $$[\mathbf{w}]_\mathcal{B} = \begin{pmatrix} c_1 \\ c_2 \\ \vdots \\ c_n \end{pmatrix}$$
+        </div>
+
+        <div class="card">
+          <div class="example-box">
+            <strong>Ejemplo:</strong> Cambio de base en ℝ²<br><br>
+            
+            <strong>Base estándar:</strong> $\mathcal{E} = \{(1,0), (0,1)\}$<br>
+            <strong>Nueva base:</strong> $\mathcal{B} = \{(1,1), (1,-1)\}$<br><br>
+            
+            Vector: $\mathbf{w} = (3, 1)$<br><br>
+            
+            <strong>En base estándar:</strong> $[\mathbf{w}]_\mathcal{E} = \begin{pmatrix} 3 \\ 1 \end{pmatrix}$<br><br>
+            
+            <strong>En base $\mathcal{B}$:</strong> Resolver $\mathbf{w} = c_1(1,1) + c_2(1,-1)$<br>
+            $(3,1) = (c_1 + c_2, c_1 - c_2)$<br>
+            Sistema: $c_1 + c_2 = 3$ y $c_1 - c_2 = 1$<br>
+            Solución: $c_1 = 2, c_2 = 1$<br><br>
+            
+            $[\mathbf{w}]_\mathcal{B} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$
+          </div>
+        </div>
+
+        <h3>Actividad 4: Transformaciones Lineales (15 puntos)</h3>
+        
+        <div class="card" style="background: linear-gradient(135deg, rgba(255,214,10,0.1), rgba(0,212,170,0.1));">
+          <h4>💬 Tema: Aplicaciones de Independencia Lineal</h4>
+          
+          <p style="margin-top: 15px;"><strong>Instrucciones:</strong></p>
+          <ol style="text-align: left; line-height: 2;">
+            <li>Investiga una aplicación práctica de independencia lineal en ingeniería, IA o ciencias</li>
+            <li>Participa en el foro con un post de 200-300 palabras explicando:
+              <ul style="margin-top: 10px;">
+                <li>La aplicación elegida</li>
+                <li>Cómo se usa la independencia lineal</li>
+                <li>Por qué es importante en ese contexto</li>
+              </ul>
+            </li>
+            <li>Comenta en al menos 2 posts de compañeros</li>
+          </ol>
+          
+          <p style="margin-top: 20px; font-weight: bold;">📅 Participación continua durante la semana</p>
+          <p style="font-weight: bold;">🎯 Valor: 10 puntos</p>
+        </div>
+
+        <!-- Quiz interactivo Semana 9 - Parte 2 -->
+        <div class="quiz-container">
+          <h3>🧠 Autoevaluación - Núcleo e Imagen</h3>
+          
+          <div class="quiz-question">
+            1. Los vectores (1,2) y (2,4) en ℝ² son:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Linealmente independientes</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Linealmente dependientes</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Ortogonales</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Forman una base</div>
+          </div>
+          
+          <div class="quiz-question">
+            2. La dimensión de ℝⁿ es:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Infinita</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">n</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">n-1</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">2n</div>
+          </div>
+          
+          <div class="quiz-question">
+            3. Una base de un espacio vectorial debe:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Ser ortogonal</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Ser linealmente independiente y generar el espacio</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Tener vectores unitarios</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Ser única</div>
+          </div>
+          
+          <div class="quiz-question">
+            4. Si dim(V) = 5, cualquier conjunto de 6 vectores en V es:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Una base</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Linealmente independiente</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Linealmente dependiente</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Imposible en ese espacio</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: SEMANA 12 PARTE 1 - REPRESENTACIÓN MATRICIAL -->
+  <div class="slide" id="slide-4">
+    <div class="content-container">
+      <div class="week-section">
+        <div class="week-badge">Semana 12</div>
+        <h2>4.3 Representación Matricial de una Transformación Lineal</h2>
+        
+        <button class="info-btn" onclick="toggleInfo('info-ortogonal')">info ¿Por qué bases ortogonales?</button>
+        <div id="info-ortogonal" class="info-box">
+          <h4>💡 Ventajas prácticas</h4>
+          <p><strong>Bases ortogonales</strong> = Vectores perpendiculares entre sí</p>
+          <p><strong>Bases ortonormales</strong> = Ortogonales + longitud 1</p>
+          <p><strong>Ventaja:</strong> Facilitan enormemente los cálculos. Encontrar coordenadas es mucho más simple.</p>
+          <p>👉 La base estándar de ℝⁿ es ortonormal.</p>
+        </div>
+        
+        <div class="card">
+          <div class="definition-box">
+            <strong>Producto interno (escalar) en ℝⁿ:</strong>
+            $$\langle \mathbf{u}, \mathbf{v} \rangle = \mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2 + \cdots + u_nv_n$$
+            
+            <p style="margin-top: 15px;"><strong>Ortogonalidad:</strong> $\mathbf{u}$ y $\mathbf{v}$ son ortogonales si $\langle \mathbf{u}, \mathbf{v} \rangle = 0$</p>
+            
+            <p style="margin-top: 15px;"><strong>Norma:</strong> $\|\mathbf{v}\| = \sqrt{\langle \mathbf{v}, \mathbf{v} \rangle}$</p>
+          </div>
+          
+          <div class="definition-box">
+            <strong>Base ortogonal:</strong> $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ es ortogonal si:
+            $$\langle \mathbf{v}_i, \mathbf{v}_j \rangle = 0 \text{ para todo } i \neq j$$
+            
+            <p style="margin-top: 15px;"><strong>Base ortonormal:</strong> Es ortogonal y además $\|\mathbf{v}_i\| = 1$ para todo $i$</p>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="example-box">
+              <strong>Ejemplo:</strong> Base ortonormal en ℝ³<br><br>
+              
+              $\mathbf{u}_1 = (1, 0, 0)$<br>
+              $\mathbf{u}_2 = (0, 1, 0)$<br>
+              $\mathbf{u}_3 = (0, 0, 1)$<br><br>
+              
+              <strong>Verificación:</strong><br>
+              • $\mathbf{u}_1 \cdot \mathbf{u}_2 = 0$ ✅<br>
+              • $\mathbf{u}_1 \cdot \mathbf{u}_3 = 0$ ✅<br>
+              • $\mathbf{u}_2 \cdot \mathbf{u}_3 = 0$ ✅<br>
+              • $\|\mathbf{u}_i\| = 1$ para todo $i$ ✅<br><br>
+              
+              Es una base ortonormal
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="example-box">
+              <strong>Ventaja de bases ortonormales:</strong><br><br>
+              
+              Si $\mathcal{B} = \{\mathbf{u}_1, \ldots, \mathbf{u}_n\}$ es ortonormal, entonces:<br><br>
+              
+              $$\mathbf{v} = \langle \mathbf{v}, \mathbf{u}_1 \rangle \mathbf{u}_1 + \cdots + \langle \mathbf{v}, \mathbf{u}_n \rangle \mathbf{u}_n$$<br><br>
+              
+              Es decir, las coordenadas son simplemente productos internos.<br><br>
+              
+              <strong>Ejemplo:</strong> $\mathbf{v} = (2, 3, 4)$ en base estándar<br>
+              Coordenadas: $(2, 3, 4)$ directamente ✅
+            </div>
+          </div>
+        </div>
+
+        <h3>Proceso de Gram-Schmidt</h3>
+        
+        <div class="card">
+          <div class="definition-box">
+            <strong>Algoritmo de ortonormalización de Gram-Schmidt:</strong><br><br>
+            
+            Dada una base $\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}$, construir una base ortonormal $\{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_n\}$:<br><br>
+            
+            <strong>Paso 1:</strong> $\mathbf{w}_1 = \mathbf{v}_1$, $\mathbf{u}_1 = \frac{\mathbf{w}_1}{\|\mathbf{w}_1\|}$<br><br>
+            
+            <strong>Paso 2:</strong> $\mathbf{w}_2 = \mathbf{v}_2 - \langle \mathbf{v}_2, \mathbf{u}_1 \rangle \mathbf{u}_1$, $\mathbf{u}_2 = \frac{\mathbf{w}_2}{\|\mathbf{w}_2\|}$<br><br>
+            
+            <strong>Paso k:</strong> $\mathbf{w}_k = \mathbf{v}_k - \sum_{i=1}^{k-1} \langle \mathbf{v}_k, \mathbf{u}_i \rangle \mathbf{u}_i$, $\mathbf{u}_k = \frac{\mathbf{w}_k}{\|\mathbf{w}_k\|}$
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="example-box">
+            <strong>Ejemplo completo:</strong> Ortonormalizar base en ℝ²<br><br>
+            
+            <strong>Base original:</strong> $\mathbf{v}_1 = (3, 1)$, $\mathbf{v}_2 = (2, 2)$<br><br>
+            
+            <strong>Paso 1:</strong><br>
+            $\mathbf{w}_1 = (3, 1)$<br>
+            $\|\mathbf{w}_1\| = \sqrt{9 + 1} = \sqrt{10}$<br>
+            $\mathbf{u}_1 = \frac{1}{\sqrt{10}}(3, 1) = (\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}})$<br><br>
+            
+            <strong>Paso 2:</strong><br>
+            $\langle \mathbf{v}_2, \mathbf{u}_1 \rangle = (2, 2) \cdot (\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}) = \frac{6+2}{\sqrt{10}} = \frac{8}{\sqrt{10}}$<br>
+            $\mathbf{w}_2 = (2, 2) - \frac{8}{\sqrt{10}}(\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}) = (2, 2) - (\frac{24}{10}, \frac{8}{10}) = (-0.4, 1.2)$<br>
+            $\|\mathbf{w}_2\| = \sqrt{0.16 + 1.44} = \sqrt{1.6} = 0.4\sqrt{10}$<br>
+            $\mathbf{u}_2 = \frac{1}{0.4\sqrt{10}}(-0.4, 1.2) = (\frac{-1}{\sqrt{10}}, \frac{3}{\sqrt{10}})$<br><br>
+            
+            <strong>Base ortonormal:</strong> $\{(\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}), (\frac{-1}{\sqrt{10}}, \frac{3}{\sqrt{10}})\}$
+          </div>
+        </div>
+
+        <div class="quiz-container">
+          <h3>🧠 Autoevaluación - Representación Matricial</h3>
+          
+          <div class="quiz-question">
+            1. Dos vectores son ortogonales si:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Tienen la misma longitud</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Su producto interno es cero</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Son linealmente dependientes</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Forman un ángulo de 45°</div>
+          </div>
+          
+          <div class="quiz-question">
+            2. El proceso de Gram-Schmidt se usa para:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Calcular determinantes</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Construir bases ortonormales</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Resolver sistemas de ecuaciones</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Encontrar eigenvalores</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: SEMANA 10 - APLICACIONES: MÉTODO DE MÍNIMOS CUADRADOS -->
+  <div class="slide" id="slide-5">
+    <div class="content-container">
+      <div class="week-section">
+        <div class="week-badge">Semana 12</div>
+        <h2>3.4 Aplicaciones: Método de Mínimos Cuadrados</h2>
+        
+        <div class="citation">
+          "El método de mínimos cuadrados es una de las herramientas matemáticas más utilizadas en ciencia e ingeniería. Desde ajustar curvas a datos experimentales hasta entrenar modelos de machine learning, sus aplicaciones son omnipresentes." 
+          <strong>— Strang, G. (2016)</strong>
+        </div>
+        
+        <button class="info-btn" onclick="toggleInfo('info-minimos-cuadrados')">info ¿Qué es mínimos cuadrados?</button>
+        <div id="info-minimos-cuadrados" class="info-box">
+          <h4>💡 Concepto clave</h4>
+          <p><strong>Problema:</strong> Tienes datos experimentales y quieres encontrar la mejor línea (o curva) que se ajuste a ellos.</p>
+          <p><strong>Solución:</strong> Minimizar la suma de los cuadrados de las distancias verticales entre los datos y la curva.</p>
+          <p><strong>Ejemplo cotidiano:</strong> Graficar la relación entre horas de estudio y calificación, y encontrar la recta que mejor predice.</p>
+          <p>👉 Es la base matemática de la regresión lineal en estadística y machine learning.</p>
+        </div>
+
+        <h3>El Problema de Ajuste de Datos</h3>
+        
+        <div class="card">
+          <div class="definition-box">
+            <strong>Planteamiento:</strong><br>
+            Dados $m$ puntos de datos $(x_1, y_1), (x_2, y_2), \ldots, (x_m, y_m)$, queremos encontrar una función $f(x)$ que "mejor" se ajuste a los datos.<br><br>
+            
+            <strong>Para una recta:</strong> $f(x) = a + bx$<br>
+            <strong>Para una parábola:</strong> $f(x) = a + bx + cx^2$<br><br>
+            
+            <strong>Sistema de ecuaciones:</strong> Si sustituimos cada punto $(x_i, y_i)$:<br>
+            $$\begin{cases}
+            a + bx_1 = y_1 \\
+            a + bx_2 = y_2 \\
+            \vdots \\
+            a + bx_m = y_m
+            \end{cases}$$
+            
+            <p style="margin-top: 15px; color: #ef4444;"><strong>Problema:</strong> Si $m > 2$ (más puntos que incógnitas), el sistema típicamente NO tiene solución exacta (es sobredeterminado).</p>
+          </div>
+        </div>
+
+        <h3>Formulación Matricial</h3>
+        
+        <div class="card">
+          <div class="example-box">
+            <strong>Sistema matricial:</strong> $A\mathbf{x} = \mathbf{b}$<br><br>
+            
+            Para ajustar una recta $y = a + bx$ a $m$ puntos:<br><br>
+            
+            $$\begin{pmatrix}
+            1 & x_1 \\
+            1 & x_2 \\
+            \vdots & \vdots \\
+            1 & x_m
+            \end{pmatrix}
+            \begin{pmatrix}
+            a \\
+            b
+            \end{pmatrix} =
+            \begin{pmatrix}
+            y_1 \\
+            y_2 \\
+            \vdots \\
+            y_m
+            \end{pmatrix}$$<br>
+            
+            <p style="margin-top: 15px;"><strong>Nota:</strong> Si $m > 2$, generalmente no existe solución exacta.</p>
+          </div>
+        </div>
+
+        <h3>Solución por Mínimos Cuadrados</h3>
+        
+        <button class="info-btn" onclick="toggleInfo('info-solucion-mc')">info ¿Cómo funciona?</button>
+        <div id="info-solucion-mc" class="info-box">
+          <h4>💡 Idea central</h4>
+          <p><strong>No podemos hacer que todos los errores sean cero.</strong></p>
+          <p><strong>Entonces minimizamos la suma de los cuadrados de los errores:</strong></p>
+          <p>$$E = \sum_{i=1}^m (y_i - f(x_i))^2$$</p>
+          <p>👉 Esto lleva a las <strong>ecuaciones normales</strong>, que SÍ tienen solución.</p>
+        </div>
+        
+        <div class="card">
+          <div class="definition-box">
+            <strong>Teorema (Ecuaciones Normales):</strong><br>
+            La solución de mínimos cuadrados a $A\mathbf{x} = \mathbf{b}$ se obtiene resolviendo:
+            $$A^TA\mathbf{x} = A^T\mathbf{b}$$
+            
+            <p style="margin-top: 15px;">Si las columnas de $A$ son linealmente independientes, entonces $A^TA$ es invertible y:</p>
+            $$\mathbf{x} = (A^TA)^{-1}A^T\mathbf{b}$$
+            
+            <p style="margin-top: 15px;"><strong>Nota:</strong> La matriz $(A^TA)^{-1}A^T$ se llama la <em>pseudoinversa</em> de $A$.</p>
+          </div>
+        </div>
+
+        <h3>Ejemplo Completo: Ajuste Lineal</h3>
+        
+        <div class="card">
+          <div class="example-box">
+            <strong>Problema:</strong> Encontrar la recta $y = a + bx$ que mejor se ajusta a los puntos:<br>
+            $(1, 1.5)$, $(2, 3.1)$, $(3, 4.8)$, $(4, 7.2)$<br><br>
+            
+            <strong>Paso 1:</strong> Formar la matriz $A$ y el vector $\mathbf{b}$<br>
+            $$A = \begin{pmatrix}
+            1 & 1 \\
+            1 & 2 \\
+            1 & 3 \\
+            1 & 4
+            \end{pmatrix}, \quad
+            \mathbf{b} = \begin{pmatrix}
+            1.5 \\
+            3.1 \\
+            4.8 \\
+            7.2
+            \end{pmatrix}$$<br>
+            
+            <strong>Paso 2:</strong> Calcular $A^TA$ y $A^T\mathbf{b}$<br>
+            $$A^TA = \begin{pmatrix}
+            1 & 1 & 1 & 1 \\
+            1 & 2 & 3 & 4
+            \end{pmatrix}
+            \begin{pmatrix}
+            1 & 1 \\
+            1 & 2 \\
+            1 & 3 \\
+            1 & 4
+            \end{pmatrix} =
+            \begin{pmatrix}
+            4 & 10 \\
+            10 & 30
+            \end{pmatrix}$$<br>
+            
+            $$A^T\mathbf{b} = \begin{pmatrix}
+            1 & 1 & 1 & 1 \\
+            1 & 2 & 3 & 4
+            \end{pmatrix}
+            \begin{pmatrix}
+            1.5 \\
+            3.1 \\
+            4.8 \\
+            7.2
+            \end{pmatrix} =
+            \begin{pmatrix}
+            16.6 \\
+            53.4
+            \end{pmatrix}$$<br>
+            
+            <strong>Paso 3:</strong> Resolver $(A^TA)\mathbf{x} = A^T\mathbf{b}$<br>
+            $$\begin{pmatrix}
+            4 & 10 \\
+            10 & 30
+            \end{pmatrix}
+            \begin{pmatrix}
+            a \\
+            b
+            \end{pmatrix} =
+            \begin{pmatrix}
+            16.6 \\
+            53.4
+            \end{pmatrix}$$<br>
+            
+            Resolviendo: $a = -0.35$, $b = 1.93$<br><br>
+            
+            <strong>Solución:</strong> La recta de mejor ajuste es:<br>
+            $$y = -0.35 + 1.93x$$
+          </div>
+        </div>
+
+        <h3>Interpretación Geométrica</h3>
+        
+        <div class="two-col">
+          <div class="card">
+            <h4>📐 Proyección Ortogonal</h4>
+            <p style="font-size: 0.95rem; line-height: 1.8;">
+              La solución de mínimos cuadrados $\hat{\mathbf{x}}$ es tal que $A\hat{\mathbf{x}}$ es la <strong>proyección ortogonal</strong> de $\mathbf{b}$ sobre el espacio columna de $A$.
+            </p>
+            <p style="margin-top: 15px; font-size: 0.95rem;">
+              <strong>Vector de error:</strong><br>
+              $\mathbf{e} = \mathbf{b} - A\hat{\mathbf{x}}$<br><br>
+              Este vector es ortogonal a todas las columnas de $A$.
+            </p>
+          </div>
+          
+          <div class="card">
+            <h4>📊 Error Cuadrático</h4>
+            <p style="font-size: 0.95rem; line-height: 1.8;">
+              El error total (suma de cuadrados de residuos) es:
+            </p>
+            $$E = \|\mathbf{e}\|^2 = \|\mathbf{b} - A\hat{\mathbf{x}}\|^2$$
+            <p style="margin-top: 15px; font-size: 0.95rem;">
+              <strong>Coeficiente de determinación $R^2$:</strong><br>
+              Mide qué tan bien se ajusta el modelo (0 ≤ $R^2$ ≤ 1)<br>
+              $R^2$ = 1 indica ajuste perfecto
+            </p>
+          </div>
+        </div>
+
+        <h3>Aplicaciones en Ciencia e Ingeniería</h3>
         
         <div class="three-col">
           <div class="card">
-            <h4>📡 Procesamiento de Señales</h4>
-            <p style="font-size: 0.9rem;">Transformada de Fourier (lineal) para análisis de frecuencias</p>
+            <h4>🔬 Física Experimental</h4>
+            <p style="font-size: 0.9rem;">Ajuste de datos experimentales a modelos teóricos (ley de Hooke, caída libre, etc.)</p>
           </div>
           
           <div class="card">
-            <h4>🏗️ Ingeniería Estructural</h4>
-            <p style="font-size: 0.9rem;">Análisis de esfuerzos y deformaciones mediante matrices de rigidez</p>
+            <h4>📈 Economía</h4>
+            <p style="font-size: 0.9rem;">Análisis de regresión para predecir variables económicas basadas en datos históricos</p>
           </div>
           
           <div class="card">
-            <h4>💰 Economía</h4>
-            <p style="font-size: 0.9rem;">Modelos input-output de Leontief para analizar economías</p>
+            <h4>🤖 Machine Learning</h4>
+            <p style="font-size: 0.9rem;">Regresión lineal, base de muchos algoritmos de aprendizaje supervisado</p>
           </div>
         </div>
 
         <div class="three-col">
           <div class="card">
-            <h4>🔬 Química Cuántica</h4>
-            <p style="font-size: 0.9rem;">Operadores cuánticos son transformaciones lineales en espacios de Hilbert</p>
+            <h4>🏗️ Ingeniería Civil</h4>
+            <p style="font-size: 0.9rem;">Análisis de datos de esfuerzos y deformaciones en estructuras</p>
           </div>
           
           <div class="card">
-            <h4>🌐 PageRank de Google</h4>
-            <p style="font-size: 0.9rem;">Ranking de páginas web basado en eigenvectores de matriz de enlaces</p>
+            <h4>📡 Procesamiento de Señales</h4>
+            <p style="font-size: 0.9rem;">Filtrado y estimación de señales con ruido</p>
           </div>
           
           <div class="card">
-            <h4>🎵 Compresión de Audio</h4>
-            <p style="font-size: 0.9rem;">MP3 usa transformadas (lineales) para comprimir sin pérdida perceptible</p>
+            <h4>🌡️ Ciencias Ambientales</h4>
+            <p style="font-size: 0.9rem;">Modelado de tendencias climáticas y predicción</p>
           </div>
         </div>
 
-        <div style="background: linear-gradient(135deg, rgba(255, 214, 10, 0.1), rgba(100, 150, 250, 0.1)); padding: 20px; border-radius: 12px; border-left: 4px solid var(--primary); margin: 30px 0;">
-          <h3 style="color: var(--primary); margin-bottom: 15px;">🎯 Actividad 4 - Transformaciones Lineales (15 puntos)</h3>
-          <p><strong>Tipo:</strong> Proyecto aplicado individual</p>
+        <h3>Ajuste Polinomial</h3>
+        
+        <div class="card">
+          <div class="example-box">
+            <strong>Generalización:</strong> Ajustar un polinomio de grado $n$:<br>
+            $$p(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$$<br><br>
+            
+            <strong>Matriz de diseño:</strong><br>
+            $$A = \begin{pmatrix}
+            1 & x_1 & x_1^2 & \cdots & x_1^n \\
+            1 & x_2 & x_2^2 & \cdots & x_2^n \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            1 & x_m & x_m^2 & \cdots & x_m^n
+            \end{pmatrix}$$<br>
+            
+            La solución sigue siendo: $\mathbf{x} = (A^TA)^{-1}A^T\mathbf{b}$<br><br>
+            
+            <strong>Advertencia:</strong> Polinomios de grado muy alto pueden causar <em>sobreajuste</em> (overfitting).
+          </div>
+        </div>
+
+        <h3>Conexión con Proyecciones Ortogonales</h3>
+        
+        <div class="card">
+          <div class="definition-box">
+            <strong>Teorema de Proyección:</strong><br>
+            La proyección ortogonal de un vector $\mathbf{b}$ sobre el subespacio generado por las columnas de $A$ está dada por:
+            $$\text{proj}_A(\mathbf{b}) = A(A^TA)^{-1}A^T\mathbf{b}$$
+            
+            <p style="margin-top: 15px;">La matriz $P = A(A^TA)^{-1}A^T$ se llama <strong>matriz de proyección</strong>.</p>
+            
+            <p style="margin-top: 15px;"><strong>Propiedades:</strong></p>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.95rem;">
+              <li>$P^2 = P$ (idempotente)</li>
+              <li>$P^T = P$ (simétrica)</li>
+              <li>$\text{rango}(P)$ = dimensión del subespacio</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(255, 214, 10, 0.1), rgba(0, 212, 170, 0.1)); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent); margin: 30px 0;">
+          <h3 style="color: var(--accent); margin-bottom: 15px;">💬 Actividad 3 - Foro Espacios Vectoriales (10 puntos)</h3>
+          <p><strong>Tipo:</strong> Foro de discusión colaborativo</p>
+          <p style="margin-top: 10px;"><strong>Objetivo:</strong> Reflexionar y discutir sobre las aplicaciones de los espacios vectoriales en tu área de interés.</p>
           
-          <p><strong>Objetivo:</strong> Implementar y aplicar transformaciones lineales en un contexto práctico.</p>
-          
-          <p><strong>Opciones de proyecto (elige UNA):</strong></p>
-          <ol style="text-align: left; line-height: 2;">
-            <li><strong>Opción A - Gráficos:</strong> Crear un programa que aplique rotaciones, escalamientos y reflexiones a figuras 2D
+          <p><strong>Instrucciones:</strong></p>
+          <ol style="text-align: left; line-height: 1.8;">
+            <li><strong>Publicación inicial (5 pts):</strong> Describe una aplicación real de espacios vectoriales en ingeniería, física, computación o ciencias. Incluye:
               <ul style="margin-top: 8px;">
-                <li>Visualización gráfica de las transformaciones</li>
-                <li>Implementación de composición de transformaciones</li>
-                <li>Al menos 5 transformaciones diferentes</li>
+                <li>Descripción del contexto</li>
+                <li>Cómo se usan los conceptos de espacio vectorial</li>
+                <li>Importancia en el área</li>
+                <li>Al menos una fuente bibliográfica</li>
               </ul>
             </li>
-            <li><strong>Opción B - Procesamiento de imágenes:</strong> Aplicar filtros lineales a imágenes digitales
-              <ul style="margin-top: 8px;">
-                <li>Implementar al menos 3 filtros (blur, sharpen, edge detection)</li>
-                <li>Comparación visual antes/después</li>
-                <li>Análisis del efecto de cada filtro</li>
-              </ul>
-            </li>
-            <li><strong>Opción C - PCA:</strong> Análisis de componentes principales en un dataset real
-              <ul style="margin-top: 8px;">
-                <li>Dataset con al menos 5 variables</li>
-                <li>Reducción de dimensionalidad</li>
-                <li>Visualización 2D de los resultados</li>
-                <li>Interpretación de componentes principales</li>
-              </ul>
-            </li>
+            <li><strong>Comentarios (5 pts):</strong> Responde a al menos 2 compañeros de forma constructiva y fundamentada</li>
           </ol>
-          
-          <p style="margin-top: 15px;"><strong>Entregables:</strong></p>
-          <ul style="text-align: left; line-height: 1.8;">
-            <li>Código fuente (Python, MATLAB o similar)</li>
-            <li>Reporte técnico (máx. 8 páginas) incluyendo:
-              <ul>
-                <li>Marco teórico de las transformaciones usadas</li>
-                <li>Descripción de la implementación</li>
-                <li>Resultados y visualizaciones</li>
-                <li>Análisis y conclusiones</li>
-              </ul>
-            </li>
-            <li>README con instrucciones de ejecución</li>
-          </ul>
           
           <p style="margin-top: 15px;"><strong>Criterios de evaluación:</strong></p>
           <ul style="text-align: left; line-height: 1.8;">
-            <li>Correctitud matemática de las transformaciones (5 pts)</li>
-            <li>Calidad del código y documentación (4 pts)</li>
-            <li>Análisis y conclusiones en el reporte (4 pts)</li>
-            <li>Claridad de visualizaciones (2 pts)</li>
+            <li>Claridad y profundidad del análisis (3 pts)</li>
+            <li>Uso correcto de terminología (2 pts)</li>
+            <li>Calidad de los comentarios (3 pts)</li>
+            <li>Referencias bibliográficas (2 pts)</li>
           </ul>
           
           <p style="margin-top: 15px; font-weight: bold;">📅 Consulta el aula virtual para la fecha límite de entrega</p>
         </div>
 
-        <!-- Quiz interactivo Semana 12 -->
+        <!-- Quiz interactivo Semana 10 -->
         <div class="quiz-container">
-          <h3>🧠 Autoevaluación - Semana 12</h3>
+          <h3>🧠 Autoevaluación - Semana 10</h3>
           
           <div class="quiz-question">
-            1. En gráficos por computadora, las transformaciones geométricas se implementan mediante:
+            1. El método de mínimos cuadrados se usa para:
           </div>
           <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Funciones trigonométricas complejas</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Multiplicación de matrices</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Operaciones con vectores solamente</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Algoritmos de búsqueda</div>
-          </div>
-          
-          <div class="quiz-question">
-            2. PCA (Análisis de Componentes Principales) se basa en:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Regresión lineal múltiple</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Eigenvalores y eigenvectores de la matriz de covarianza</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Determinantes de matrices</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Sistemas de ecuaciones lineales</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Resolver sistemas con solución única</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Encontrar la mejor solución aproximada a un sistema sobredeterminado</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Calcular determinantes de matrices grandes</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Encontrar valores propios</div>
           </div>
           
           <div class="quiz-question">
-            3. Los filtros de procesamiento de imágenes (blur, sharpen) son ejemplos de:
+            2. Las ecuaciones normales para el problema $A\mathbf{x} = \mathbf{b}$ son:
           </div>
           <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Transformaciones no lineales</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Convoluciones (transformaciones lineales)</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Operaciones lógicas</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Algoritmos de compresión</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$AA^T\mathbf{x} = \mathbf{b}$</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">$A^TA\mathbf{x} = A^T\mathbf{b}$</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$A\mathbf{x} = A^T\mathbf{b}$</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$A^T\mathbf{x} = \mathbf{b}$</div>
           </div>
           
           <div class="quiz-question">
-            4. En redes neuronales, la multiplicación Wx + b representa:
+            3. La solución de mínimos cuadrados minimiza:
           </div>
           <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Una función de pérdida</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Un algoritmo de backpropagation</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Una transformación afín (lineal + traslación)</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Una función de activación</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">El valor absoluto del error</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">La suma de los cuadrados de los errores</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">El máximo error individual</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">El número de ecuaciones</div>
+          </div>
+          
+          <div class="quiz-question">
+            4. En regresión lineal con machine learning, las ecuaciones normales se usan para:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Clasificar datos categóricos</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Encontrar los parámetros óptimos del modelo</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Calcular la precisión del modelo</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Normalizar los datos de entrada</div>
           </div>
         </div>
 
@@ -2182,14 +2349,11 @@ p {
           <h2 style="color: white; font-size: 2rem; margin-bottom: 20px;">🎓 ¡Felicidades!</h2>
           <p style="color: white; font-size: 1.2rem; line-height: 1.8;">
             Has completado la Unidad IV: Transformaciones Lineales.<br>
-            Ahora comprendes cómo el álgebra lineal impulsa la tecnología moderna:<br>
-            desde videojuegos hasta inteligencia artificial.
+            Ahora comprendes las estructuras abstractas fundamentales<br>
+            del álgebra lineal y sus aplicaciones prácticas.
           </p>
           <p style="color: white; font-weight: bold; margin-top: 30px; font-size: 1.1rem;">
             Universidad del SABES - 2025
-          </p>
-          <p style="color: white; margin-top: 20px; font-size: 1rem;">
-            🎉 ¡Has completado el curso completo de Álgebra Lineal! 🎉
           </p>
         </div>
       </div>
@@ -2197,28 +2361,300 @@ p {
   </div>
 
 </div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Eliminación gaussiana (Gauss)</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Método gráfico</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Sustitución manual</div>
+  <!-- SLIDE 6: CASO PRÁCTICO - ANÁLISIS PCA -->
+  <div class="slide" id="slide-6">
+    <div class="content-container">
+      <div class="week-section">
+        <div class="week-badge">Caso Práctico</div>
+        <h2>🎯 Análisis de Componentes Principales (PCA)</h2>
+        <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 30px;">
+          Aplicación práctica de espacios vectoriales en reducción de dimensionalidad
+        </p>
+
+        <h3>Contexto del Problema</h3>
+        <div class="card" style="background: linear-gradient(135deg, rgba(255, 214, 10, 0.1), rgba(0, 212, 170, 0.1));">
+          <p><strong>Escenario:</strong> Una empresa de tecnología tiene un dataset con las siguientes características de sus empleados:</p>
+          <ul style="text-align: left; line-height: 2;">
+            <li>Años de experiencia</li>
+            <li>Nivel educativo (1-5)</li>
+            <li>Salario anual (miles)</li>
+            <li>Horas de capacitación</li>
+            <li>Proyectos completados</li>
+          </ul>
+          <p style="margin-top: 15px;"><strong>Objetivo:</strong> Reducir las 5 dimensiones a 2 para visualización, preservando la máxima varianza posible.</p>
+        </div>
+
+        <h3>Datos del Problema</h3>
+        <div class="card">
+          <strong>Matriz de datos X (10 empleados × 5 variables):</strong>
+          $$X = \begin{pmatrix}
+          2 & 3 & 45 & 120 & 5 \\
+          5 & 4 & 65 & 180 & 12 \\
+          1 & 2 & 35 & 80 & 3 \\
+          8 & 5 & 95 & 250 & 20 \\
+          3 & 3 & 50 & 140 & 7 \\
+          6 & 4 & 75 & 200 & 15 \\
+          4 & 3 & 55 & 160 & 9 \\
+          7 & 5 & 85 & 220 & 18 \\
+          2 & 2 & 40 & 100 & 4 \\
+          9 & 5 & 105 & 280 & 25
+          \end{pmatrix}$$
+        </div>
+
+        <h3>Paso 1: Centrar los Datos</h3>
+        <div class="card">
+          <p><strong>Calcular medias de cada variable:</strong></p>
+          $$\bar{x}_j = \frac{1}{n}\sum_{i=1}^n x_{ij}$$
+          
+          <p style="margin-top: 15px;">Medias: $(4.7, 3.6, 65, 173, 11.8)$</p>
+          
+          <p style="margin-top: 15px;"><strong>Matriz centrada:</strong> Restar la media a cada columna</p>
+        </div>
+
+        <h3>Paso 2: Matriz de Covarianza</h3>
+        <div class="card">
+          <p><strong>Calcular:</strong></p>
+          $$C = \frac{1}{n-1}X_c^TX_c$$
+          
+          <p style="margin-top: 15px;">Donde $X_c$ es la matriz centrada</p>
+          
+          <p style="margin-top: 15px;"><strong>Resultado (simplificado):</strong></p>
+          $$C = \begin{pmatrix}
+          7.1 & 1.2 & 21.4 & 58.3 & 6.8 \\
+          1.2 & 1.2 & 6.3 & 17.2 & 2.1 \\
+          21.4 & 6.3 & 530 & 1445 & 168 \\
+          58.3 & 17.2 & 1445 & 3950 & 459 \\
+          6.8 & 2.1 & 168 & 459 & 53.5
+          \end{pmatrix}$$
+        </div>
+
+        <h3>Paso 3: Eigenvalores y Eigenvectores</h3>
+        <div class="card">
+          <p><strong>Resolver:</strong> $C\mathbf{v} = \lambda\mathbf{v}$</p>
+          
+          <p style="margin-top: 15px;"><strong>Eigenvalores (ordenados):</strong></p>
+          <ul style="text-align: left; line-height: 2;">
+            <li>$\lambda_1 = 4486$ (85% de la varianza)</li>
+            <li>$\lambda_2 = 97$ (10% de la varianza)</li>
+            <li>$\lambda_3 = 12$ (3% de la varianza)</li>
+            <li>$\lambda_4 = 1.8$ (1.5% de la varianza)</li>
+            <li>$\lambda_5 = 0.5$ (0.5% de la varianza)</li>
+          </ul>
+          
+          <p style="margin-top: 15px;"><strong>Varianza acumulada con 2 componentes:</strong> 95%</p>
+        </div>
+
+        <h3>Paso 4: Proyección</h3>
+        <div class="card">
+          <p><strong>Seleccionar los 2 primeros eigenvectores:</strong></p>
+          $$P = [\mathbf{v}_1 \quad \mathbf{v}_2]$$
+          
+          <p style="margin-top: 15px;"><strong>Datos proyectados:</strong></p>
+          $$Y = X_cP$$
+          
+          <p style="margin-top: 15px;">Ahora cada empleado se representa con solo 2 números en lugar de 5, preservando el 95% de la información.</p>
+        </div>
+
+        <h3>Interpretación de Resultados</h3>
+        <div class="two-col">
+          <div class="card">
+            <h4>📊 Componente Principal 1 (85%)</h4>
+            <p style="font-size: 0.9rem;">Representa principalmente: experiencia, salario y proyectos completados (correlacionados)</p>
+            <p style="margin-top: 10px; font-weight: bold;">Interpretación: "Nivel de Seniority"</p>
           </div>
           
-          <div class="quiz-question">
-            4. ¿Qué aplicación NO utiliza sistemas de ecuaciones lineales?
+          <div class="card">
+            <h4>📊 Componente Principal 2 (10%)</h4>
+            <p style="font-size: 0.9rem;">Representa: horas de capacitación (independiente del seniority)</p>
+            <p style="margin-top: 10px; font-weight: bold;">Interpretación: "Inversión en Desarrollo"</p>
           </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Análisis de circuitos eléctricos</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Redes neuronales artificiales</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Filosofía moral</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Balanceo de reacciones químicas</div>
+        </div>
+
+        <h3>Conclusiones</h3>
+        <div class="card" style="background: var(--grad-primary); color: white; padding: 25px;">
+          <h4 style="color: white;">✅ Resultados del Análisis</h4>
+          <ul style="text-align: left; line-height: 2;">
+            <li><strong>Reducción exitosa:</strong> De 5 a 2 dimensiones</li>
+            <li><strong>Información preservada:</strong> 95% de la varianza</li>
+            <li><strong>Visualización:</strong> Ahora se puede graficar en 2D</li>
+            <li><strong>Clustering:</strong> Se pueden identificar grupos de empleados similares</li>
+            <li><strong>Aplicación:</strong> Útil para planificación de recursos humanos</li>
+          </ul>
+        </div>
+
+        <h3>Aplicaciones Similares</h3>
+        <div class="three-col">
+          <div class="card">
+            <h4>🖼️ Compresión de Imágenes</h4>
+            <p style="font-size: 0.85rem;">Reducir dimensionalidad de imágenes manteniendo calidad visual</p>
+          </div>
+          
+          <div class="card">
+            <h4>🧬 Bioinformática</h4>
+            <p style="font-size: 0.85rem;">Análisis de expresión genética con miles de variables</p>
+          </div>
+          
+          <div class="card">
+            <h4>💰 Finanzas</h4>
+            <p style="font-size: 0.85rem;">Análisis de portafolios y reducción de riesgo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: BIBLIOGRAFÍA Y RECURSOS -->
+  <div class="slide" id="slide-7">
+    <div class="content-container">
+      <div class="week-section">
+        <div class="week-badge">Recursos</div>
+        <h2>📚 Bibliografía y Recursos Complementarios</h2>
+        
+        <h3>Textos Fundamentales</h3>
+        
+        <div class="card">
+          <h4>📖 Libro Principal</h4>
+          <p style="font-size: 1.05rem; line-height: 1.8;">
+            <strong>Strang, G. (2016).</strong> <em>Introduction to Linear Algebra</em> (5th ed.). Wellesley-Cambridge Press.<br>
+            <span style="color: var(--muted);">Capítulo 7: Transformaciones Lineales y Aplicaciones</span>
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h4>📘 Textos Complementarios</h4>
+            <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
+              <li><strong>Lay, D. C., Lay, S. R., & McDonald, J. (2015).</strong> <em>Linear Algebra and Its Applications</em> (5th ed.). Pearson.</li>
+              <li><strong>Anton, H., & Rorres, C. (2013).</strong> <em>Elementary Linear Algebra: Applications Version</em> (11th ed.). Wiley.</li>
+              <li><strong>Poole, D. (2014).</strong> <em>Linear Algebra: A Modern Introduction</em> (4th ed.). Cengage Learning.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>📕 Textos en Español</h4>
+            <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
+              <li><strong>Grossman, S. I. (2012).</strong> <em>Álgebra Lineal</em> (7ma ed.). McGraw-Hill.</li>
+              <li><strong>Kolman, B., & Hill, D. R. (2006).</strong> <em>Álgebra Lineal</em> (8va ed.). Pearson.</li>
+              <li><strong>Nakos, G., & Joyner, D. (1999).</strong> <em>Álgebra Lineal con Aplicaciones</em>. Thomson.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Recursos Digitales</h3>
+
+        <div class="three-col">
+          <div class="card">
+            <h4>🎥 Videos y Cursos</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>3Blue1Brown</strong><br>Essence of Linear Algebra<br><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" target="_blank" style="color: var(--primary);">Ver serie</a></li>
+              <li><strong>MIT OpenCourseWare</strong><br>18.06 Linear Algebra<br>Prof. Gilbert Strang</li>
+              <li><strong>Khan Academy</strong><br>Álgebra Lineal<br>Lecciones interactivas</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>💻 Software y Herramientas</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>MATLAB/Octave</strong><br>Cálculo numérico</li>
+              <li><strong>Python (NumPy, SciPy)</strong><br>Computación científica</li>
+              <li><strong>Mathematica/Wolfram Alpha</strong><br>Cálculo simbólico</li>
+              <li><strong>GeoGebra</strong><br>Visualización geométrica</li>
+              <li><strong>Desmos</strong><br>Gráficas 2D/3D interactivas</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>🌐 Sitios Web</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>Wolfram MathWorld</strong><br>Enciclopedia matemática</li>
+              <li><strong>Paul's Online Notes</strong><br>Tutoriales y ejemplos</li>
+              <li><strong>MIT OCW</strong><br>Materiales del curso</li>
+              <li><strong>Brilliant.org</strong><br>Problemas interactivos</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Aplicaciones y Casos de Estudio</h3>
+
+        <div class="two-col">
+          <div class="card">
+            <h4>🤖 Machine Learning & IA</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>Bishop, C. M. (2006).</strong> <em>Pattern Recognition and Machine Learning</em>. Springer.</li>
+              <li><strong>Goodfellow, I., et al. (2016).</strong> <em>Deep Learning</em>. MIT Press.</li>
+              <li>Capítulo 2: Álgebra Lineal para ML</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>🔬 Ciencias e Ingeniería</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>Strang, G. (2007).</strong> <em>Computational Science and Engineering</em>. Wellesley-Cambridge Press.</li>
+              <li><strong>Trefethen, L. N., & Bau III, D. (1997).</strong> <em>Numerical Linear Algebra</em>. SIAM.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Recursos para Práctica</h3>
+
+        <div class="card">
+          <h4>📝 Bancos de Problemas</h4>
+          <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
+            <li><strong>Schaum's Outline:</strong> 3000+ problemas resueltos de Álgebra Lineal</li>
+            <li><strong>MIT Problem Sets:</strong> Conjuntos de problemas del curso 18.06</li>
+            <li><strong>Linear Algebra Toolkit:</strong> Herramienta online para verificar soluciones</li>
+            <li><strong>Symbolab:</strong> Calculadora paso a paso de álgebra lineal</li>
+          </ul>
+        </div>
+
+        <h3>Recursos Específicos de la Unidad III</h3>
+
+        <div class="three-col">
+          <div class="card">
+            <h4>📐 Espacios Vectoriales</h4>
+            <p style="font-size: 0.9rem;">• Strang (Cap. 3)<br>• Lay (Cap. 4)<br>• Videos 3B1B (5-8)</p>
+          </div>
+
+          <div class="card">
+            <h4>⊥ Ortogonalidad</h4>
+            <p style="font-size: 0.9rem;">• Strang (Cap. 4)<br>• Gram-Schmidt interactivo<br>• GeoGebra proyecciones</p>
+          </div>
+
+          <div class="card">
+            <h4>📊 Mínimos Cuadrados</h4>
+            <p style="font-size: 0.9rem;">• Strang (Sec. 4.3)<br>• Python: sklearn<br>• Ejemplos prácticos</p>
+          </div>
+        </div>
+
+        <h3>Comunidades y Soporte</h3>
+
+        <div class="two-col">
+          <div class="card">
+            <h4>💬 Foros y Comunidades</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li><strong>Math Stack Exchange</strong><br>Preguntas y respuestas</li>
+              <li><strong>Reddit: r/learnmath</strong><br>Comunidad de aprendizaje</li>
+              <li><strong>Discord: Math & Physics</strong><br>Ayuda en tiempo real</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>👥 Grupos de Estudio</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li>Sesiones grupales SABES</li>
+              <li>Tutorías personalizadas</li>
+              <li>Grupos de WhatsApp del curso</li>
+              <li>Sesiones de repaso en línea</li>
+            </ul>
           </div>
         </div>
 
         <div class="card" style="background: var(--grad-primary); text-align: center; padding: 40px; margin-top: 40px;">
           <h2 style="color: white; font-size: 2rem; margin-bottom: 20px;">🎓 ¡Felicidades!</h2>
           <p style="color: white; font-size: 1.2rem; line-height: 1.8;">
-            Has completado la Unidad II: Sistemas de Ecuaciones Lineales.<br>
-            Ahora dominas los métodos fundamentales para resolver sistemas<br>
-            y sus aplicaciones en ingeniería, ciencia e inteligencia artificial.
+            Has completado la Unidad IV: Transformaciones Lineales.<br>
+            Ahora dominas los conceptos fundamentales de espacios vectoriales,<br>
+            transformaciones lineales, representación matricial y aplicaciones en ciencia.
           </p>
           <p style="color: white; font-weight: bold; margin-top: 30px; font-size: 1.1rem;">
             Universidad del SABES - 2025
@@ -2228,22 +2664,6 @@ p {
     </div>
   </div>
 
-</div>
-
-<!-- ======= CONTROLES DE NAVEGACIÓN INFERIOR ======= -->
-<div class="nav-controls" role="navigation" aria-label="Navegación de diapositivas">
-  <button class="nav-btn" onclick="goToStart()" id="startBtn" aria-label="Ir al inicio">
-    <span aria-hidden="true">⏮</span> Inicio
-  </button>
-  <button class="nav-btn" onclick="previousSlide()" id="prevBtn" aria-label="Diapositiva anterior">
-    <span aria-hidden="true">◀</span> Atrás
-  </button>
-  <button class="nav-btn" onclick="nextSlide()" id="nextBtn" aria-label="Siguiente diapositiva">
-    Adelante <span aria-hidden="true">▶</span>
-  </button>
-  <button class="nav-btn" onclick="goToEnd()" id="endBtn" aria-label="Ir al final">
-    Fin <span aria-hidden="true">⏭</span>
-  </button>
 </div>
 
 <!-- ======= JAVASCRIPT ======= -->
@@ -2327,10 +2747,10 @@ function updateNavigationButtons() {
   const startBtn = document.getElementById('startBtn');
   const endBtn = document.getElementById('endBtn');
   
-  prevBtn.disabled = currentSlide === 0;
-  startBtn.disabled = currentSlide === 0;
-  nextBtn.disabled = currentSlide === totalSlides - 1;
-  endBtn.disabled = currentSlide === totalSlides - 1;
+  if (prevBtn) prevBtn.disabled = currentSlide === 0;
+  if (startBtn) startBtn.disabled = currentSlide === 0;
+  if (nextBtn) nextBtn.disabled = currentSlide === totalSlides - 1;
+  if (endBtn) endBtn.disabled = currentSlide === totalSlides - 1;
 }
 
 function updateProgress() {
@@ -2350,15 +2770,15 @@ function updateProgress() {
 }
 
 // ========== BARRAS LATERALES ==========
-document.getElementById('btn-home').onclick = () => goToStart();
-document.getElementById('btn-prev').onclick = () => previousSlide();
-document.getElementById('btn-next').onclick = () => nextSlide();
+const btnHome = document.getElementById('btn-home'); if (btnHome) btnHome.onclick = () => goToStart();
+const btnPrev2 = document.getElementById('btn-prev'); if (btnPrev2) btnPrev2.onclick = () => previousSlide();
+const btnNext2 = document.getElementById('btn-next'); if (btnNext2) btnNext2.onclick = () => nextSlide();
 
-document.getElementById('btn-access').onclick = () => {
+const btnAccess = document.getElementById('btn-access'); if (btnAccess) btnAccess.onclick = () => {
   document.getElementById('accessibilityModal').classList.add('active');
 };
 
-document.getElementById('btn-help').onclick = () => {
+const btnHelp = document.getElementById('btn-help'); if (btnHelp) btnHelp.onclick = () => {
   alert('❓ Ayuda de Navegación:\n\n🖱️ Usa los botones laterales o inferiores\n⌨️ Teclas: ← Atrás | → Adelante\n🔍 Botones + y - para Zoom\n⛶ Pantalla completa disponible\n💬 Modal para más información');
 };
 
@@ -2370,34 +2790,52 @@ const toggleTheme = () => {
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', newTheme);
   document.body.setAttribute('data-theme', newTheme);
-  themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  if (themeBtn) themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
 };
-themeBtn.onclick = toggleTheme;
+if (themeBtn) themeBtn.onclick = toggleTheme;
 
 // Zoom
-document.getElementById('btn-zoom-in').onclick = () => {
-  zoom = Math.min(2, zoom + 0.1);
-  document.body.style.transform = `scale(${zoom})`;
-  document.body.style.transformOrigin = 'center top';
-};
+const btnZoomIn = document.getElementById('btn-zoom-in');
+if (btnZoomIn) {
+  btnZoomIn.onclick = () => {
+    zoom = Math.min(2, zoom + 0.1);
+    document.body.style.transform = `scale(${zoom})`;
+    document.body.style.transformOrigin = 'center top';
+  };
+}
 
-document.getElementById('btn-zoom-out').onclick = () => {
-  zoom = Math.max(0.8, zoom - 0.1);
-  document.body.style.transform = `scale(${zoom})`;
-  document.body.style.transformOrigin = 'center top';
-};
+const btnZoomOut = document.getElementById('btn-zoom-out');
+if (btnZoomOut) {
+  btnZoomOut.onclick = () => {
+    zoom = Math.max(0.8, zoom - 0.1);
+    document.body.style.transform = `scale(${zoom})`;
+    document.body.style.transformOrigin = 'center top';
+  };
+}
+
+const btnZoomReset = document.getElementById('btn-zoom-reset');
+if (btnZoomReset) {
+  btnZoomReset.onclick = () => {
+    zoom = 1;
+    document.body.style.transform = `scale(1)`;
+    document.body.style.transformOrigin = 'center top';
+  };
+}
 
 // Pantalla completa
-document.getElementById('btn-fullscreen').onclick = () => {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
-  } else {
-    document.exitFullscreen();
-  }
-};
+const btnFullscreen = document.getElementById('btn-fullscreen');
+if (btnFullscreen) {
+  btnFullscreen.onclick = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  };
+}
 
 // Modal
-document.getElementById('btn-modal').onclick = () => {
+const btnModal = document.getElementById('btn-modal'); if (btnModal) btnModal.onclick = () => {
   document.getElementById('infoModal').classList.add('active');
 };
 
@@ -2409,11 +2847,11 @@ function cerrarModalAccesibilidad() {
   document.getElementById('accessibilityModal').classList.remove('active');
 }
 
-document.getElementById('btn-info').onclick = () => {
+const btnInfo = document.getElementById('btn-info'); if (btnInfo) btnInfo.onclick = () => {
   alert('ℹ️ Información del Curso:\n\n📚 Álgebra Lineal - Unidad I\n🎓 Universidad del SABES\n📅 2025\n\n✨ Proyecto educativo interactivo\n✅ Cumple WCAG 2.2 AA\n🌐 Diseño responsive');
 };
 
-document.getElementById('btn-exit').onclick = () => {
+const btnExit = document.getElementById('btn-exit'); if (btnExit) btnExit.onclick = () => {
   if (confirm('❌ ¿Deseas salir de la presentación?')) {
     window.close();
   }
