@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📊 Quiz U4 - Transformaciones Lineales | Timeline</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+    
+    /* ======= VARIABLES CSS DEL SABES ======= */
+    :root {
+      --primary: #3b82f6;
+      --secondary: #10b981;
+      --accent: #f59e0b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --success: #10b981;
+      --danger: #ef4444;
+      --grad-primary: linear-gradient(120deg, 
+        #b56c13 0%,      /* Café/dorado oficial SABES */
+        #e39a27 25%,     /* Dorado */
+        #5ca8eb 70%,     /* Azul claro */
+        #a7d3f9 100%     /* Azul muy claro */
+      );
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: clamp(10px, 3vw, 20px);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: min(950px, 95vw);
+      margin: 0 auto;
+    }
+    
+    /* ======= HEADER ======= */
+    .header {
+      background: var(--grad-primary);
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      padding: clamp(20px, 4vh, 40px);
+      border-radius: 20px;
+      margin-bottom: clamp(20px, 4vh, 30px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: clamp(1.4rem, 4.5vw, 2.2rem);
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      margin-bottom: 8px;
+    }
+    
+    .header p {
+      font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+      color: rgba(255,255,255,0.9);
+    }
+    
+    /* ======= CHALLENGE SELECTOR ======= */
+    .challenge-selector {
+      background: var(--card);
+      border-radius: 15px;
+      padding: clamp(15px, 3vw, 20px);
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    
+    .challenge-selector h3 {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .challenge-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    
+    .challenge-btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: clamp(12px, 2vh, 16px);
+      border-radius: 12px;
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-height: 44px;
+    }
+    
+    .challenge-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    }
+    
+    /* ======= TIMELINE CONTAINER ======= */
+    .timeline-container {
+      display: none;
+    }
+    
+    .timeline-container.active {
+      display: block;
+    }
+    
+    .challenge-title {
+      background: var(--card);
+      padding: clamp(15px, 3vw, 20px);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--accent);
+    }
+    
+    .challenge-title h3 {
+      font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    
+    .challenge-title p {
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+      color: var(--muted);
+    }
+    
+    /* ======= TIMELINE SLOTS ======= */
+    .timeline {
+      background: var(--card);
+      border-radius: 15px;
+      padding: clamp(15px, 3vw, 25px);
+      margin-bottom: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    
+    .timeline h4 {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--primary);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .timeline-slot {
+      background: linear-gradient(135deg, 
+        rgba(181, 108, 19, 0.08) 0%,
+        rgba(227, 154, 39, 0.12) 25%,
+        rgba(92, 168, 235, 0.15) 70%,
+        rgba(167, 211, 249, 0.18) 100%
+      );
+      border: 3px dashed var(--primary);
+      border-radius: 12px;
+      padding: clamp(15px, 3vw, 20px);
+      min-height: clamp(80px, 12vh, 120px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .timeline-slot:hover {
+      background: linear-gradient(135deg, 
+        rgba(181, 108, 19, 0.15) 0%,
+        rgba(227, 154, 39, 0.2) 25%,
+        rgba(92, 168, 235, 0.25) 70%,
+        rgba(167, 211, 249, 0.3) 100%
+      );
+      border-color: var(--accent);
+      transform: scale(1.02);
+    }
+    
+    .timeline-slot.occupied {
+      background: linear-gradient(135deg, 
+        rgba(181, 108, 19, 0.2) 0%,
+        rgba(227, 154, 39, 0.25) 25%,
+        rgba(92, 168, 235, 0.3) 70%,
+        rgba(167, 211, 249, 0.35) 100%
+      );
+      border-style: solid;
+      border-color: var(--primary);
+    }
+    
+    .timeline-slot.correct {
+      background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.25),
+        rgba(16, 185, 129, 0.15)
+      );
+      border-color: var(--success);
+      border-style: solid;
+    }
+    
+    .timeline-slot.incorrect {
+      background: linear-gradient(135deg, 
+        rgba(239, 68, 68, 0.25),
+        rgba(239, 68, 68, 0.15)
+      );
+      border-color: var(--danger);
+      border-style: solid;
+    }
+    
+    .timeline-slot.drag-over {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: var(--secondary);
+      transform: scale(1.02);
+    }
+    
+    .slot-number {
+      font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+      font-weight: 700;
+      color: var(--primary);
+      text-align: center;
+    }
+    
+    .dropped-step {
+      background: linear-gradient(135deg, var(--success), var(--secondary));
+      color: white;
+      padding: clamp(10px, 2vw, 14px);
+      border-radius: 10px;
+      font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: dropIn 0.3s ease;
+    }
+    
+    @keyframes dropIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .remove-btn {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+      font-weight: 700;
+      min-width: 32px;
+    }
+    
+    .remove-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    
+    /* ======= STEPS POOL ======= */
+    .steps-pool {
+      background: var(--card);
+      border-radius: 15px;
+      padding: clamp(15px, 3vw, 20px);
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    
+    .steps-pool h4 {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--accent);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    
+    .step-item {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: clamp(10px, 2.5vw, 14px);
+      margin-bottom: 10px;
+      border-radius: 10px;
+      cursor: grab;
+      font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .step-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.5);
+    }
+    
+    .step-item:active {
+      cursor: grabbing;
+    }
+    
+    .step-item.dragging {
+      opacity: 0.5;
+    }
+    
+    /* ======= CONTROLS ======= */
+    .controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: clamp(12px, 2vh, 14px) clamp(20px, 4vw, 32px);
+      border: none;
+      border-radius: 10px;
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      min-height: 44px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .btn-primary {
+      background: var(--grad-primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+    }
+    
+    .btn-secondary {
+      background: linear-gradient(135deg, #6b7280, #4b5563);
+      color: white;
+    }
+    
+    /* ======= FEEDBACK ======= */
+    .feedback {
+      background: var(--card);
+      border-radius: 15px;
+      padding: clamp(15px, 3vw, 20px);
+      margin-top: 20px;
+      display: none;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    
+    .feedback.show {
+      display: block;
+      animation: slideUp 0.5s ease;
+    }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .feedback h3 {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      margin-bottom: 12px;
+    }
+    
+    .feedback.correct {
+      border: 3px solid var(--success);
+    }
+    
+    .feedback.correct h3 {
+      color: var(--success);
+    }
+    
+    .feedback.incorrect {
+      border: 3px solid var(--danger);
+    }
+    
+    .feedback.incorrect h3 {
+      color: var(--danger);
+    }
+    
+    .feedback-text {
+      font-size: clamp(0.9rem, 1.9vw, 1.05rem);
+      line-height: 1.7;
+      color: var(--text);
+    }
+    
+    /* ======= STATS ======= */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      background: var(--card);
+      padding: clamp(15px, 3vw, 25px);
+      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      border: 2px solid var(--primary);
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 900;
+      color: var(--primary);
+    }
+    
+    .stat-label {
+      font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    
+    @media (max-width: 480px) {
+      .challenge-options {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>📊 Timeline: Transformaciones Lineales</h1>
+      <p>Ordena los pasos en la secuencia correcta</p>
+    </div>
+    
+    <!-- Challenge Selector -->
+    <div class="challenge-selector" id="challengeSelector">
+      <h3>Elige un desafío:</h3>
+      <div class="challenge-options">
+        <button class="challenge-btn" onclick="loadChallenge(1)">
+          🎯 Verificar Linealidad
+        </button>
+        <button class="challenge-btn" onclick="loadChallenge(2)">
+          🔍 Encontrar Ker(T)
+        </button>
+        <button class="challenge-btn" onclick="loadChallenge(3)">
+          📐 Matriz Asociada
+        </button>
+      </div>
+    </div>
+    
+    <!-- Timeline Container -->
+    <div class="timeline-container" id="timelineContainer">
+      <!-- Challenge Title -->
+      <div class="challenge-title" id="challengeTitle"></div>
+      
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value" id="attempts">0</div>
+          <div class="stat-label">Intentos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="accuracy">0%</div>
+          <div class="stat-label">Precisión</div>
+        </div>
+      </div>
+      
+      <!-- Timeline Slots -->
+      <div class="timeline">
+        <h4>⏱️ Secuencia Correcta</h4>
+        <div id="timelineSlots"></div>
+      </div>
+      
+      <!-- Steps Pool -->
+      <div class="steps-pool">
+        <h4>📦 Pasos Disponibles</h4>
+        <div id="stepsPool"></div>
+      </div>
+      
+      <!-- Controls -->
+      <div class="controls">
+        <button class="btn btn-primary" onclick="checkSequence()">✅ Verificar</button>
+        <button class="btn btn-secondary" onclick="resetChallenge()">🔄 Reiniciar</button>
+        <button class="btn btn-secondary" onclick="backToMenu()">⬅️ Menú</button>
+      </div>
+      
+      <!-- Feedback -->
+      <div class="feedback" id="feedback"></div>
+    </div>
+  </div>
+
+  <script>
+    // ======= CHALLENGES DATA =======
+    const challenges = {
+      1: {
+        title: "Verificar si T es Lineal",
+        description: "Ordena los pasos para verificar linealidad de una transformación",
+        steps: [
+          { id: 1, text: "Verificar T(u + v) = T(u) + T(v) para todo u, v", order: 1 },
+          { id: 2, text: "Calcular T(u + v) aplicando la definición de T", order: 2 },
+          { id: 3, text: "Calcular T(u) + T(v) por separado", order: 3 },
+          { id: 4, text: "Comparar si T(u + v) = T(u) + T(v)", order: 4 },
+          { id: 5, text: "Verificar T(cu) = cT(u) para todo escalar c", order: 5 }
+        ]
+      },
+      2: {
+        title: "Encontrar Ker(T)",
+        description: "Pasos para calcular el núcleo de una transformación",
+        steps: [
+          { id: 1, text: "Plantear T(v) = 0", order: 1 },
+          { id: 2, text: "Sustituir la definición de T", order: 2 },
+          { id: 3, text: "Resolver el sistema de ecuaciones", order: 3 },
+          { id: 4, text: "Expresar solución en forma paramétrica", order: 4 },
+          { id: 5, text: "Ker(T) es el conjunto de soluciones", order: 5 }
+        ]
+      },
+      3: {
+        title: "Construir Matriz Asociada [T]",
+        description: "Pasos para obtener la representación matricial",
+        steps: [
+          { id: 1, text: "Identificar base del dominio V", order: 1 },
+          { id: 2, text: "Aplicar T a cada vector de la base", order: 2 },
+          { id: 3, text: "Expresar T(v₁), T(v₂),... en la base del codominio", order: 3 },
+          { id: 4, text: "Formar columnas con las coordenadas", order: 4 },
+          { id: 5, text: "La matriz [T] tiene esas columnas", order: 5 }
+        ]
+      }
+    };
+    
+    let currentChallenge = null;
+    let draggedElement = null;
+    let attempts = 0;
+    let correctAttempts = 0;
+    
+    // ======= LOAD CHALLENGE =======
+    function loadChallenge(challengeId) {
+      currentChallenge = challenges[challengeId];
+      attempts = 0;
+      correctAttempts = 0;
+      
+      // Show timeline container
+      document.getElementById('challengeSelector').style.display = 'none';
+      document.getElementById('timelineContainer').classList.add('active');
+      
+      // Set title
+      const titleDiv = document.getElementById('challengeTitle');
+      titleDiv.innerHTML = `
+        <h3>${currentChallenge.title}</h3>
+        <p>${currentChallenge.description}</p>
+      `;
+      
+      // Render slots
+      renderTimelineSlots();
+      
+      // Shuffle and render steps
+      const shuffledSteps = shuffleArray([...currentChallenge.steps]);
+      renderStepsPool(shuffledSteps);
+      
+      // Update stats
+      updateStats();
+    }
+    
+    function shuffleArray(array) {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    }
+    
+    function renderTimelineSlots() {
+      const container = document.getElementById('timelineSlots');
+      container.innerHTML = '';
+      
+      currentChallenge.steps.forEach((_, index) => {
+        const slot = document.createElement('div');
+        slot.className = 'timeline-slot';
+        slot.dataset.position = index + 1;
+        slot.innerHTML = `<div class="slot-number">Paso ${index + 1}</div>`;
+        
+        slot.addEventListener('dragover', handleDragOver);
+        slot.addEventListener('drop', handleDrop);
+        slot.addEventListener('dragleave', handleDragLeave);
+        
+        container.appendChild(slot);
+      });
+    }
+    
+    function renderStepsPool(steps) {
+      const pool = document.getElementById('stepsPool');
+      pool.innerHTML = '';
+      
+      steps.forEach(step => {
+        const div = document.createElement('div');
+        div.className = 'step-item';
+        div.draggable = true;
+        div.dataset.id = step.id;
+        div.dataset.order = step.order;
+        div.textContent = step.text;
+        
+        div.addEventListener('dragstart', handleDragStart);
+        div.addEventListener('dragend', handleDragEnd);
+        
+        pool.appendChild(div);
+      });
+    }
+    
+    // ======= DRAG & DROP =======
+    function handleDragStart(e) {
+      draggedElement = e.target;
+      e.target.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    }
+    
+    function handleDragEnd(e) {
+      e.target.classList.remove('dragging');
+    }
+    
+    function handleDragOver(e) {
+      if (e.preventDefault) e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      e.target.closest('.timeline-slot').classList.add('drag-over');
+      return false;
+    }
+    
+    function handleDragLeave(e) {
+      e.target.closest('.timeline-slot').classList.remove('drag-over');
+    }
+    
+    function handleDrop(e) {
+      if (e.stopPropagation) e.stopPropagation();
+      
+      const slot = e.target.closest('.timeline-slot');
+      slot.classList.remove('drag-over');
+      
+      if (draggedElement) {
+        // Create dropped step
+        const dropped = document.createElement('div');
+        dropped.className = 'dropped-step';
+        dropped.dataset.id = draggedElement.dataset.id;
+        dropped.dataset.order = draggedElement.dataset.order;
+        dropped.innerHTML = `
+          <span>${draggedElement.textContent}</span>
+          <button class="remove-btn" onclick="removeStep(this)">✕</button>
+        `;
+        
+        slot.appendChild(dropped);
+        draggedElement.remove();
+        draggedElement = null;
+      }
+      
+      return false;
+    }
+    
+    function removeStep(btn) {
+      const dropped = btn.closest('.dropped-step');
+      const id = dropped.dataset.id;
+      const step = currentChallenge.steps.find(s => s.id == id);
+      
+      // Add back to pool
+      const pool = document.getElementById('stepsPool');
+      const div = document.createElement('div');
+      div.className = 'step-item';
+      div.draggable = true;
+      div.dataset.id = step.id;
+      div.dataset.order = step.order;
+      div.textContent = step.text;
+      
+      div.addEventListener('dragstart', handleDragStart);
+      div.addEventListener('dragend', handleDragEnd);
+      
+      pool.appendChild(div);
+      dropped.remove();
+    }
+    
+    // ======= CHECK SEQUENCE =======
+    function checkSequence() {
+      attempts++;
+      
+      const slots = document.querySelectorAll('.timeline-slot');
+      let allCorrect = true;
+      let correctCount = 0;
+      
+      slots.forEach((slot, index) => {
+        const dropped = slot.querySelector('.dropped-step');
+        const expectedOrder = index + 1;
+        
+        if (!dropped) {
+          allCorrect = false;
+        } else {
+          const actualOrder = parseInt(dropped.dataset.order);
+          if (actualOrder === expectedOrder) {
+            dropped.style.background = 'linear-gradient(135deg, var(--success), var(--secondary))';
+            correctCount++;
+          } else {
+            dropped.style.background = 'linear-gradient(135deg, var(--danger), #dc2626)';
+            allCorrect = false;
+          }
+        }
+      });
+      
+      // Show feedback
+      const feedback = document.getElementById('feedback');
+      feedback.className = 'feedback show';
+      
+      if (allCorrect) {
+        registrarDesafio(Object.keys(challenges).find(k => challenges[k] === currentChallenge), true);
+        feedback.classList.add('correct');
+        feedback.innerHTML = `
+          <h3>🎉 ¡Perfecto!</h3>
+          <p class="feedback-text">Has ordenado correctamente todos los pasos. ¡Excelente comprensión del proceso!</p>
+        ` + generarInformeDesafio();
+        correctAttempts++;
+      } else {
+        feedback.classList.add('incorrect');
+        registrarDesafio(Object.keys(challenges).find(k => challenges[k] === currentChallenge), false);
+        feedback.innerHTML = `
+          <h3>❌ Intenta de nuevo</h3>
+          <p class="feedback-text">Tienes ${correctCount} de ${currentChallenge.steps.length} pasos correctos. Los pasos en rojo están mal posicionados.</p>
+        ` + generarInformeDesafio();
+      }
+      
+      updateStats();
+      
+      // Reset colors after delay
+      if (!allCorrect) {
+        setTimeout(() => {
+          slots.forEach(slot => {
+            const dropped = slot.querySelector('.dropped-step');
+            if (dropped) {
+              dropped.style.background = 'linear-gradient(135deg, var(--success), var(--secondary))';
+            }
+          });
+        }, 3000);
+      }
+    }
+    
+    function updateStats() {
+      document.getElementById('attempts').textContent = attempts;
+      const accuracy = attempts > 0 ? Math.round((correctAttempts / attempts) * 100) : 0;
+      document.getElementById('accuracy').textContent = accuracy + '%';
+    }
+    
+    function resetChallenge() {
+      // Clear slots
+      document.querySelectorAll('.timeline-slot').forEach(slot => {
+        const dropped = slot.querySelector('.dropped-step');
+        if (dropped) dropped.remove();
+      });
+      
+      // Re-render pool
+      const shuffled = shuffleArray([...currentChallenge.steps]);
+      renderStepsPool(shuffled);
+      
+      // Hide feedback
+      document.getElementById('feedback').className = 'feedback';
+    }
+    
+    function backToMenu() {
+      document.getElementById('timelineContainer').classList.remove('active');
+      document.getElementById('challengeSelector').style.display = 'block';
+      document.getElementById('feedback').className = 'feedback';
+    }
+  
+    
+    // ======= SISTEMA DE RETROALIMENTACIÓN POR DESAFÍO =======
+    const explicacionesDetalladas = {
+      1: { // Verificar Linealidad
+        nombre: "Verificar si T es Lineal",
+        pasos: {
+          1: {
+            titulo: "Verificar T(u + v) = T(u) + T(v)",
+            porque: "Primera propiedad fundamental de linealidad",
+            error_comun: "Olvidar verificar AMBAS propiedades"
+          },
+          2: {
+            titulo: "Calcular T(u + v)",
+            porque: "Necesitas el lado izquierdo de la igualdad",
+            error_comun: "Calcular antes de plantear la propiedad"
+          },
+          3: {
+            titulo: "Calcular T(u) + T(v) por separado",
+            porque: "Necesitas el lado derecho para comparar",
+            error_comun: "Confundir con T(u + v)"
+          },
+          4: {
+            titulo: "Comparar resultados",
+            porque: "Verificar si son iguales",
+            error_comun: "Asumir sin calcular"
+          },
+          5: {
+            titulo: "Verificar T(cu) = cT(u)",
+            porque: "Segunda propiedad de linealidad",
+            error_comun: "Olvidar esta segunda parte"
+          }
+        }
+      },
+      2: { // Ker(T)
+        nombre: "Encontrar Ker(T)",
+        pasos: {
+          1: {
+            titulo: "Plantear T(v) = 0",
+            porque: "Definición de núcleo: vectores que van a cero",
+            error_comun: "Plantear T(v) = v"
+          },
+          2: {
+            titulo: "Sustituir definición de T",
+            porque: "Convertir en sistema de ecuaciones",
+            error_comun: "No sustituir correctamente"
+          },
+          3: {
+            titulo: "Resolver el sistema",
+            porque: "Encontrar todos los vectores que cumplen",
+            error_comun: "Resolver incorrectamente"
+          },
+          4: {
+            titulo: "Expresar en forma paramétrica",
+            porque: "Mostrar todas las soluciones",
+            error_comun: "Dar solo una solución particular"
+          },
+          5: {
+            titulo: "Ker(T) es el conjunto solución",
+            porque: "La respuesta final",
+            error_comun: "Olvidar escribir como conjunto"
+          }
+        }
+      },
+      3: { // Matriz Asociada
+        nombre: "Construir Matriz Asociada [T]",
+        pasos: {
+          1: {
+            titulo: "Identificar base del dominio",
+            porque: "Necesitas saber qué vectores usar",
+            error_comun: "No identificar la base correcta"
+          },
+          2: {
+            titulo: "Aplicar T a cada vector base",
+            porque: "Ver qué hace T con cada vector",
+            error_comun: "Aplicar a vectores incorrectos"
+          },
+          3: {
+            titulo: "Expresar en base del codominio",
+            porque: "Convertir a coordenadas",
+            error_comun: "No expresar correctamente"
+          },
+          4: {
+            titulo: "Formar columnas con coordenadas",
+            porque: "Cada columna es T aplicado a un vector base",
+            error_comun: "Poner coordenadas en filas"
+          },
+          5: {
+            titulo: "Matriz [T] con esas columnas",
+            porque: "Resultado final",
+            error_comun: "Transponer la matriz"
+          }
+        }
+      }
+    };
+    
+    let historialDesafios = {};
+    
+    function registrarDesafio(desafioId, correcto) {
+      if (!historialDesafios[desafioId]) {
+        historialDesafios[desafioId] = {
+          intentos: 0,
+          correctos: 0,
+          erroresPorPaso: {}
+        };
+      }
+      
+      historialDesafios[desafioId].intentos++;
+      if (correcto) {
+        historialDesafios[desafioId].correctos++;
+      }
+    }
+    
+    function generarInformeDesafio() {
+      const desafioActual = Object.keys(challenges).find(key => 
+        challenges[key] === currentChallenge
+      );
+      
+      if (!desafioActual) return '';
+      
+      const info = explicacionesDetalladas[desafioActual];
+      const historial = historialDesafios[desafioActual] || { intentos: 0, correctos: 0 };
+      
+      if (historial.intentos === 0) return '';
+      
+      const precision = historial.intentos > 0 
+        ? Math.round((historial.correctos / historial.intentos) * 100) 
+        : 0;
+      
+      // Detectar errores en pasos
+      const slots = document.querySelectorAll('.timeline-slot');
+      let pasosErrados = [];
+      
+      slots.forEach((slot, index) => {
+        const dropped = slot.querySelector('.dropped-step');
+        if (dropped) {
+          const actualOrder = parseInt(dropped.dataset.order);
+          const expectedOrder = index + 1;
+          if (actualOrder !== expectedOrder) {
+            pasosErrados.push({
+              paso: actualOrder,
+              posicionActual: index + 1,
+              posicionCorrecta: actualOrder
+            });
+          }
+        }
+      });
+      
+      let nivel = precision >= 80 ? "EXCELENTE" : 
+                  precision >= 60 ? "BUENO" : "NECESITA REFUERZO";
+      let color = precision >= 80 ? "var(--success)" : 
+                  precision >= 60 ? "var(--warning)" : "var(--danger)";
+      
+      let html = `
+        <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1)); 
+                    padding: 20px; border-radius: 15px; border: 3px solid var(--primary); margin-top: 20px;">
+          <h3 style="color: var(--primary); margin-bottom: 15px;">📊 ANÁLISIS: ${info.nombre}</h3>
+          
+          <div style="background: var(--card); padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; text-align: center;">
+              <div>
+                <p style="font-size: 1.5rem; font-weight: 900; color: ${color};">${historial.intentos}</p>
+                <p style="font-size: 0.85rem; color: var(--muted);">Intentos</p>
+              </div>
+              <div>
+                <p style="font-size: 1.5rem; font-weight: 900; color: ${color};">${precision}%</p>
+                <p style="font-size: 0.85rem; color: var(--muted);">Precisión</p>
+              </div>
+              <div>
+                <p style="font-size: 1.5rem; font-weight: 900; color: ${color};">${nivel}</p>
+                <p style="font-size: 0.85rem; color: var(--muted);">Nivel</p>
+              </div>
+            </div>
+          </div>
+      `;
+      
+      if (pasosErrados.length > 0) {
+        html += `
+          <div style="background: var(--bg); padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+            <h4 style="color: var(--danger); margin-bottom: 12px;">❌ Pasos con errores:</h4>
+        `;
+        
+        pasosErrados.forEach(error => {
+          const pasoInfo = info.pasos[error.paso];
+          html += `
+            <div style="background: var(--card); padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid var(--danger);">
+              <p style="margin: 5px 0; font-weight: 700; font-size: 0.9rem;">
+                Paso ${error.paso}: ${pasoInfo.titulo}
+              </p>
+              <p style="margin: 5px 0; font-size: 0.85rem; color: var(--muted);">
+                📍 Tu posición: ${error.posicionActual} → Debe ir en: ${error.posicionCorrecta}
+              </p>
+              <p style="margin: 8px 0; font-size: 0.85rem; padding: 8px; background: var(--bg); border-radius: 6px;">
+                💡 <strong>Por qué va ahí:</strong> ${pasoInfo.porque}
+              </p>
+              <p style="margin: 5px 0; font-size: 0.8rem; color: var(--warning);">
+                ⚠️ <strong>Error común:</strong> ${pasoInfo.error_comun}
+              </p>
+            </div>
+          `;
+        });
+        
+        html += `</div>`;
+      } else {
+        html += `
+          <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1)); 
+                      padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 2px solid var(--success);">
+            <h4 style="color: var(--success); margin-bottom: 8px;">✅ ¡Todos los pasos correctos!</h4>
+            <p style="font-size: 0.9rem;">Demuestras excelente comprensión del proceso.</p>
+          </div>
+        `;
+      }
+      
+      // Secuencia correcta siempre visible
+      html += `
+          <div style="background: var(--card); padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+            <h4 style="color: var(--primary); margin-bottom: 10px;">✅ Secuencia Correcta</h4>
+            <ol style="text-align: left; font-size: 0.85rem; line-height: 2; color: var(--text);">
+      `;
+      
+      for (let i = 1; i <= 5; i++) {
+        const pasoInfo = info.pasos[i];
+        html += `<li><strong>${pasoInfo.titulo}</strong> - ${pasoInfo.porque}</li>`;
+      }
+      
+      html += `
+            </ol>
+          </div>
+          
+          <div style="background: var(--bg); padding: 15px; border-radius: 10px;">
+            <h4 style="color: var(--accent); margin-bottom: 10px;">💡 RECOMENDACIONES</h4>
+      `;
+      
+      if (precision < 60) {
+        html += `
+            <p style="margin-bottom: 10px; font-size: 0.9rem;">
+              Te recomendamos revisar el tema completo antes de continuar.
+            </p>
+            <ul style="text-align: left; font-size: 0.85rem; line-height: 2; color: var(--text);">
+              <li>📖 Revisa la Slide 4.1 completa con ejemplos</li>
+              <li>✏️ Practica 2-3 ejercicios del libro (pág. 78-82)</li>
+              <li>🎥 Ve el video tutorial del tema</li>
+              <li>👥 Pregunta al profesor en clase</li>
+            </ul>
+        `;
+      } else if (precision < 80) {
+        html += `
+            <p style="margin-bottom: 10px; font-size: 0.9rem;">
+              Vas bien, solo necesitas reforzar algunos detalles.
+            </p>
+            <ul style="text-align: left; font-size: 0.85rem; line-height: 2; color: var(--text);">
+              <li>📖 Repasa los pasos donde tuviste errores</li>
+              <li>✏️ Practica 1 ejercicio más del mismo tipo</li>
+              <li>🔄 Intenta este desafío una vez más</li>
+            </ul>
+        `;
+      } else {
+        html += `
+            <p style="margin-bottom: 10px; font-size: 0.9rem;">
+              ¡Excelente! Estás listo para el siguiente nivel.
+            </p>
+            <ul style="text-align: left; font-size: 0.85rem; line-height: 2; color: var(--text);">
+              <li>🎯 Intenta otro desafío de esta unidad</li>
+              <li>📈 Practica con ejercicios más complejos</li>
+              <li>👥 Ayuda a un compañero a entender el proceso</li>
+            </ul>
+        `;
+      }
+      
+      html += `
+            <div style="background: var(--card); padding: 12px; border-radius: 8px; margin-top: 15px;">
+              <p style="font-size: 0.8rem; color: var(--muted);">
+                📖 <strong>Material de apoyo:</strong> Slide 4.1, Ejemplos 1-3<br>
+                📚 <strong>Libro:</strong> Capítulo 4, páginas 78-85<br>
+                🎯 <strong>Siguiente tema:</strong> ${desafioActual == 3 ? 'Composición de transformaciones' : 'Otro desafío'}
+              </p>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      return html;
+    }
+
+  </script>
+
+  <!-- ========================================= -->
+  <!-- COPYRIGHT FOOTER -->
+  <!-- ========================================= -->
+  <!-- ========================================= -->
+  <!-- COPYRIGHT FOOTER -->
+  <!-- ========================================= -->
+  <footer style="text-align: center; padding: clamp(15px, 3vw, 25px); margin-top: clamp(20px, 4vh, 40px); color: var(--muted); font-size: clamp(0.75rem, 1.5vw, 0.9rem); border-top: 2px solid var(--card); background: var(--card); border-radius: 15px; box-shadow: 0 -4px 16px rgba(0,0,0,0.1); max-width: min(900px, 95vw); margin-left: auto; margin-right: auto;">
+    <p style="font-weight: 700; margin-bottom: 8px; color: var(--text);">© 2025 Universidad del SABES</p>
+    <p style="font-size: clamp(0.7rem, 1.3vw, 0.85rem); line-height: 1.6; color: var(--text);">
+      Material educativo de uso exclusivo para estudiantes de Álgebra Lineal
+    </p>
+  </footer>
+
+  </body>
+</html>

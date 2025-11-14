@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎴 Quiz U3 - Espacios Vectoriales | Memory Game</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+    
+    /* ======= VARIABLES CSS DEL SABES ======= */
+    :root {
+      --primary: #3b82f6;
+      --secondary: #10b981;
+      --accent: #f59e0b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --success: #10b981;
+      --danger: #ef4444;
+      --grad-primary: linear-gradient(120deg, 
+        #b56c13 0%,      /* Café/dorado oficial SABES */
+        #e39a27 25%,     /* Dorado */
+        #5ca8eb 70%,     /* Azul claro */
+        #a7d3f9 100%     /* Azul muy claro */
+      );
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: clamp(10px, 3vw, 20px);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: min(900px, 95vw);
+      margin: 0 auto;
+    }
+    
+    /* ======= HEADER ======= */
+    .header {
+      background: var(--grad-primary);
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      padding: clamp(20px, 4vh, 40px);
+      border-radius: 20px;
+      margin-bottom: clamp(20px, 4vh, 30px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+    
+    .header h1 {
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      margin-bottom: 8px;
+    }
+    
+    .header p {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.9);
+    }
+    
+    /* ======= STATS ======= */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      background: var(--card);
+      padding: clamp(12px, 2.5vw, 20px);
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 900;
+      color: var(--primary);
+    }
+    
+    .stat-label {
+      font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    
+    /* ======= MEMORY GRID ======= */
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: clamp(10px, 2vw, 15px);
+      margin-bottom: 20px;
+      perspective: 1000px;
+    }
+    
+    @media (max-width: 480px) {
+      .memory-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (min-width: 481px) and (max-width: 768px) {
+      .memory-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    .memory-card {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      background: linear-gradient(135deg, 
+        rgba(181, 108, 19, 0.1) 0%,
+        rgba(227, 154, 39, 0.15) 25%,
+        rgba(92, 168, 235, 0.2) 70%,
+        rgba(167, 211, 249, 0.25) 100%
+      );
+      border: 3px solid var(--primary);
+      border-radius: 15px;
+      padding: clamp(15px, 3vw, 20px);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      min-height: clamp(120px, 20vh, 180px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .memory-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+      border-color: var(--accent);
+    }
+    
+    .memory-card.flipped .card-front {
+      transform: rotateY(180deg);
+    }
+    
+    .memory-card.flipped .card-back {
+      transform: rotateY(0deg);
+    }
+    
+    .card-content {
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+      padding: 10px;
+      line-height: 1.5;
+      word-wrap: break-word;
+      hyphens: auto;
+    }
+    
+    .memory-card.matched {
+      background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.3),
+        rgba(16, 185, 129, 0.2)
+      );
+      border-color: var(--success);
+      cursor: default;
+      opacity: 0.8;
+    }
+    
+    .memory-card.flipped .card-front {
+      transform: rotateY(180deg);
+    }
+    
+    .memory-card.flipped .card-back {
+      transform: rotateY(0deg);
+    }
+    
+    .card-content {
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+      padding: 10px;
+      line-height: 1.5;
+      word-wrap: break-word;
+      hyphens: auto;
+    }
+    
+    .memory-card.matched {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: hidden;
+      transition: transform 0.6s;
+      padding: 15px;
+      border-radius: 12px;
+    }
+    
+    .card-front {
+      font-size: clamp(3rem, 8vw, 5rem);
+      background: linear-gradient(135deg, 
+        rgba(181, 108, 19, 0.15) 0%,
+        rgba(227, 154, 39, 0.2) 25%,
+        rgba(92, 168, 235, 0.25) 70%,
+        rgba(167, 211, 249, 0.3) 100%
+      );
+    }
+    
+    .card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, 
+        rgba(181, 108, 19, 0.25) 0%,
+        rgba(227, 154, 39, 0.3) 25%,
+        rgba(92, 168, 235, 0.35) 70%,
+        rgba(167, 211, 249, 0.4) 100%
+      );
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+      line-height: 1.4;
+      overflow-y: auto;
+      word-wrap: break-word;
+    }
+    
+    .card-content {
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+      padding: 10px;
+      line-height: 1.5;
+      word-wrap: break-word;
+      hyphens: auto;
+    }
+    
+    /* ======= CONTROLS ======= */
+    .controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: clamp(12px, 2vh, 14px) clamp(20px, 4vw, 32px);
+      border: none;
+      border-radius: 10px;
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      min-height: 44px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .btn-primary {
+      background: var(--grad-primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+    }
+    
+    .btn-secondary {
+      background: linear-gradient(135deg, #6b7280, #4b5563);
+      color: white;
+    }
+    
+    /* ======= RESULTS ======= */
+    .results {
+      display: none;
+      text-align: center;
+      background: var(--card);
+      border-radius: 20px;
+      padding: clamp(25px, 4vw, 40px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      margin-top: 20px;
+    }
+    
+    .results.show {
+      display: block;
+      animation: slideUp 0.5s ease;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .trophy {
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      margin-bottom: 15px;
+    }
+    
+    .results h2 {
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      background: var(--grad-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+    
+    .results p {
+      font-size: clamp(0.95rem, 2vw, 1.2rem);
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>🎴 Memory: Espacios Vectoriales</h1>
+
+  <!-- ========================================= -->
+  <!-- INSTRUCCIONES DEL JUEGO -->
+  <!-- ========================================= -->
+  <div class="instructions" style="background: linear-gradient(135deg, var(--card), var(--bg)); 
+       padding: clamp(15px, 3vw, 25px); border-radius: 15px; margin-bottom: clamp(20px, 4vh, 30px); 
+       border: 2px solid var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <h3 style="color: var(--primary); margin-bottom: 12px; font-size: clamp(1rem, 2.5vw, 1.2rem); 
+               display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 1.5rem;">ℹ️</span> ¿Cómo jugar?
+    </h3>
+    <ol style="text-align: left; color: var(--text); font-size: clamp(0.85rem, 1.8vw, 0.95rem); 
+               line-height: 1.8; padding-left: 20px; margin: 0;">
+      <li><strong>Haz clic</strong> en una carta para voltearla</li>
+      <li><strong>Busca su pareja:</strong> concepto + definición</li>
+      <li><strong>Si coinciden:</strong> quedan descubiertas ✅</li>
+      <li><strong>Si no coinciden:</strong> se voltean de nuevo ❌</li>
+      <li><strong>Objetivo:</strong> Encontrar todas las parejas en el menor tiempo</li>
+    </ol>
+    <p style="margin-top: 12px; padding: 10px; background: var(--bg); border-radius: 8px; 
+              font-size: clamp(0.8rem, 1.6vw, 0.9rem); color: var(--muted); text-align: center;">
+      💡 <strong>Tip:</strong> Memoriza las posiciones para encontrar parejas más rápido
+    </p>
+  </div>
+
+      <p>Empareja conceptos con sus definiciones</p>
+    </div>
+    
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value" id="moves">0</div>
+        <div class="stat-label">Movimientos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="pairs">0/8</div>
+        <div class="stat-label">Pares</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="timer">0:00</div>
+        <div class="stat-label">Tiempo</div>
+      </div>
+    </div>
+    
+    <!-- Memory Grid -->
+    <div class="memory-grid" id="memoryGrid"></div>
+    
+    <!-- Controls -->
+    <div class="controls">
+      <button class="btn btn-primary" onclick="resetGame()">🔄 Nueva Partida</button>
+    </div>
+    
+    <!-- Results -->
+    <div class="results" id="results"></div>
+  </div>
+
+  <script>
+    // ======= DATOS DEL JUEGO =======
+    const pairs = [
+      { id: 1, concept: "Espacio Vectorial", definition: "Conjunto V con suma y mult. por escalar que cumple 10 axiomas" },
+      { id: 2, concept: "Subespacio", definition: "Subconjunto de V cerrado bajo suma y mult. por escalar" },
+      { id: 3, concept: "Independencia Lineal", definition: "Vectores donde ninguno es combinación de otros" },
+      { id: 4, concept: "Base", definition: "Conjunto linealmente independiente que genera V" },
+      { id: 5, concept: "Dimensión", definition: "Número de vectores en una base de V" },
+      { id: 6, concept: "Ker(T)", definition: "Vectores que T envía al vector cero" },
+      { id: 7, concept: "Im(T)", definition: "Conjunto de todos los vectores alcanzables por T" },
+      { id: 8, concept: "Combinación Lineal", definition: "Suma de vectores multiplicados por escalares" }
+    ];
+    
+    let cards = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let moves = 0;
+    let timer = 0;
+    let timerInterval = null;
+    let canFlip = true;
+    
+    // ======= INICIALIZACIÓN =======
+    function initGame() {
+      // Crear pares de cartas
+      cards = [];
+      pairs.forEach(pair => {
+        cards.push({ type: 'concept', value: pair.concept, pairId: pair.id });
+        cards.push({ type: 'definition', value: pair.definition, pairId: pair.id });
+      });
+      
+      // Shuffle
+      cards = shuffleArray(cards);
+      
+      // Render
+      renderCards();
+      
+      // Reset stats
+      matchedPairs = 0;
+      moves = 0;
+      timer = 0;
+      updateStats();
+      
+      // Start timer
+      startTimer();
+    }
+    
+    function shuffleArray(array) {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    }
+    
+    function renderCards() {
+      const grid = document.getElementById('memoryGrid');
+      grid.innerHTML = '';
+      
+      cards.forEach((card, index) => {
+        const cardElement = document.createElement('div');
+        cardElement.className = 'memory-card';
+        cardElement.dataset.index = index;
+        cardElement.dataset.pairId = card.pairId;
+        
+        cardElement.innerHTML = `
+          <div class="card-face card-front">🎴</div>
+          <div class="card-face card-back">${card.value}</div>
+        `;
+        
+        cardElement.addEventListener('click', () => flipCard(index));
+        grid.appendChild(cardElement);
+      });
+    }
+    
+    // ======= GAME LOGIC =======
+    function flipCard(index) {
+      if (!canFlip) return;
+      
+      const cardElement = document.querySelectorAll('.memory-card')[index];
+      
+      // No voltear si ya está volteada o emparejada
+      if (cardElement.classList.contains('flipped') || cardElement.classList.contains('matched')) {
+        return;
+      }
+      
+      // Voltear carta
+      cardElement.classList.add('flipped');
+      flippedCards.push(index);
+      
+      // Si hay 2 cartas volteadas
+      if (flippedCards.length === 2) {
+        canFlip = false;
+        moves++;
+        updateStats();
+        
+        setTimeout(() => checkMatch(), 800);
+      }
+    }
+    
+    function checkMatch() {
+      registrarIntento(flippedCards[0], flippedCards[1]);
+      const [index1, index2] = flippedCards;
+      const card1 = cards[index1];
+      const card2 = cards[index2];
+      
+      const cardElements = document.querySelectorAll('.memory-card');
+      
+      if (card1.pairId === card2.pairId) {
+        // Match!
+        cardElements[index1].classList.add('matched');
+        cardElements[index2].classList.add('matched');
+        matchedPairs++;
+        
+        // Confetti effect (opcional)
+        playSound('match');
+        
+        // Check if game completed
+        if (matchedPairs === pairs.length) {
+          setTimeout(showResults, 500);
+        }
+      } else {
+        // No match - voltear de regreso
+        setTimeout(() => {
+          cardElements[index1].classList.remove('flipped');
+          cardElements[index2].classList.remove('flipped');
+        }, 400);
+      }
+      
+      flippedCards = [];
+      canFlip = true;
+      updateStats();
+    }
+    
+    function playSound(type) {
+      // Placeholder para efectos de sonido
+      // Puedes agregar Web Audio API aquí
+    }
+    
+    // ======= TIMER =======
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      
+      timerInterval = setInterval(() => {
+        timer++;
+        updateStats();
+      }, 1000);
+    }
+    
+    function stopTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+    }
+    
+    // ======= STATS =======
+    function updateStats() {
+      document.getElementById('moves').textContent = moves;
+      document.getElementById('pairs').textContent = `${matchedPairs}/${pairs.length}`;
+      
+      const minutes = Math.floor(timer / 60);
+      const seconds = timer % 60;
+      document.getElementById('timer').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+    
+    // ======= RESULTS =======
+    function showResults() {
+      stopTimer();
+      
+      const results = document.getElementById('results');
+      
+      let trophy = '🏆';
+      let message = '';
+      
+      if (moves <= pairs.length + 2) {
+        trophy = '🌟';
+        message = '¡INCREÍBLE! Memoria perfecta';
+      } else if (moves <= pairs.length * 1.5) {
+        trophy = '🏆';
+        message = '¡Excelente! Gran memoria';
+      } else if (moves <= pairs.length * 2) {
+        trophy = '🥈';
+        message = '¡Muy bien! Buen trabajo';
+      } else {
+        trophy = '🥉';
+        message = '¡Completado! Sigue practicando';
+      }
+      
+      const minutes = Math.floor(timer / 60);
+      const seconds = timer % 60;
+      const timeStr = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+      
+      results.innerHTML = `
+        <div class="trophy">${trophy}</div>
+        <h2>${message}</h2>
+        <p>Completado en ${moves} movimientos | Tiempo: ${timeStr}</p>
+        <div class="controls">
+          <button class="btn btn-primary" onclick="resetGame()">🔄 Jugar de Nuevo</button>
+        </div>
+      ` + generarInformeConfusiones();
+      
+      results.classList.add('show');
+      
+      // Hide game
+      document.getElementById('memoryGrid').style.display = 'none';
+      document.querySelector('.stats').style.display = 'none';
+      document.querySelector('.controls').style.display = 'none';
+    }
+    
+    function resetGame() {
+      // Reset UI
+      document.getElementById('memoryGrid').style.display = 'grid';
+      document.querySelector('.stats').style.display = 'flex';
+      document.querySelector('.controls').style.display = 'flex';
+      document.getElementById('results').className = 'results';
+      
+      // Reset game
+      flippedCards = [];
+      canFlip = true;
+      stopTimer();
+      initGame();
+    }
+    
+    // ======= START GAME =======
+    initGame();
+  
+    
+    // ======= SISTEMA DE ANÁLISIS DE CONFUSIONES =======
+    let historialIntentos = [];
+    let confusiones = {};
+    
+    function registrarIntento(card1Idx, card2Idx) {
+      const card1 = cards[card1Idx];
+      const card2 = cards[card2Idx];
+      
+      if (card1.pairId !== card2.pairId) {
+        // No fue match - registrar confusión
+        const concepto1 = card1.type === 'concept' ? card1.value : card2.value;
+        const concepto2 = card2.type === 'concept' ? card2.value : card1.value;
+        const definicion1 = card1.type === 'definition' ? card1.value : card2.value;
+        const definicion2 = card2.type === 'definition' ? card2.value : card1.value;
+        
+        const key = `${concepto1}|${concepto2}`;
+        if (!confusiones[key]) {
+          confusiones[key] = {
+            concepto1: concepto1,
+            concepto2: concepto2,
+            veces: 0
+          };
+        }
+        confusiones[key].veces++;
+      }
+      
+      historialIntentos.push({
+        card1: card1.value,
+        card2: card2.value,
+        match: card1.pairId === card2.pairId
+      });
+    }
+    
+    // Información de conceptos para explicaciones
+    const conceptosInfo = {
+      "Espacio Vectorial": {
+        explicacion: "Conjunto con operaciones de suma y multiplicación que cumplen 10 axiomas",
+        slide: "3.1",
+        analogia: "Como los números reales ℝ, pero generalizado"
+      },
+      "Subespacio": {
+        explicacion: "Subconjunto cerrado bajo suma y multiplicación por escalar",
+        slide: "3.1.1",
+        analogia: "Como un plano dentro del espacio 3D"
+      },
+      "Independencia Lineal": {
+        explicacion: "Vectores donde ninguno es combinación de otros",
+        slide: "3.2",
+        analogia: "Ningún vector es 'redundante'"
+      },
+      "Base": {
+        explicacion: "Conjunto independiente que genera todo el espacio",
+        slide: "3.3",
+        analogia: "Como los ejes X, Y, Z en 3D"
+      },
+      "Dimensión": {
+        explicacion: "NÚMERO de vectores en una base",
+        slide: "3.3",
+        analogia: "ℝ³ tiene dimensión 3 (3 ejes)"
+      },
+      "Ker(T)": {
+        explicacion: "Vectores que T envía al vector CERO",
+        slide: "3.2",
+        analogia: "Ingredientes que desaparecen en la licuadora"
+      },
+      "Im(T)": {
+        explicacion: "Todos los vectores ALCANZABLES por T",
+        slide: "3.2",
+        analogia: "Todos los smoothies que puedes hacer"
+      },
+      "Combinación Lineal": {
+        explicacion: "Suma de vectores multiplicados por escalares",
+        slide: "3.2",
+        analogia: "Mezclar vectores con diferentes proporciones"
+      }
+    };
+    
+    function generarInformeConfusiones() {
+      const confusionesArray = Object.values(confusiones).filter(c => c.veces > 0);
+      
+      if (confusionesArray.length === 0) {
+        return `
+          <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1)); 
+                      padding: 20px; border-radius: 15px; border: 3px solid var(--success); margin-top: 20px;">
+            <h3 style="color: var(--success); margin-bottom: 12px;">🌟 ¡Memoria Excelente!</h3>
+            <p style="font-size: 1rem;">
+              No confundiste ningún concepto. Tienes clara la diferencia entre todos los términos.
+            </p>
+          </div>
+        `;
+      }
+      
+      // Ordenar por frecuencia
+      confusionesArray.sort((a, b) => b.veces - a.veces);
+      
+      let html = `
+        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1)); 
+                    padding: 20px; border-radius: 15px; border: 3px solid var(--warning); margin-top: 20px;">
+          <h3 style="color: var(--warning); margin-bottom: 15px;">📊 ANÁLISIS DE CONFUSIONES</h3>
+          
+          <p style="margin-bottom: 15px; font-size: 0.95rem;">
+            Detectamos que confundiste estos conceptos. Aquí está la diferencia clave:
+          </p>
+      `;
+      
+      confusionesArray.slice(0, 3).forEach(conf => {
+        const info1 = conceptosInfo[conf.concepto1] || {};
+        const info2 = conceptosInfo[conf.concepto2] || {};
+        
+        html += `
+          <div style="background: var(--card); padding: 15px; border-radius: 12px; margin-bottom: 15px; border-left: 4px solid var(--primary);">
+            <h4 style="color: var(--danger); margin-bottom: 10px; font-size: 1rem;">
+              🔄 ${conf.concepto1} ↔ ${conf.concepto2} <span style="font-size: 0.85rem; color: var(--muted);">(${conf.veces} ${conf.veces === 1 ? 'vez' : 'veces'})</span>
+            </h4>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px;">
+              <div style="background: var(--bg); padding: 10px; border-radius: 8px;">
+                <p style="font-weight: 700; color: var(--primary); margin-bottom: 5px; font-size: 0.9rem;">${conf.concepto1}</p>
+                <p style="font-size: 0.8rem; color: var(--text);">${info1.explicacion || ''}</p>
+                ${info1.analogia ? `<p style="font-size: 0.75rem; color: var(--muted); margin-top: 5px;">💡 ${info1.analogia}</p>` : ''}
+              </div>
+              
+              <div style="background: var(--bg); padding: 10px; border-radius: 8px;">
+                <p style="font-weight: 700; color: var(--secondary); margin-bottom: 5px; font-size: 0.9rem;">${conf.concepto2}</p>
+                <p style="font-size: 0.8rem; color: var(--text);">${info2.explicacion || ''}</p>
+                ${info2.analogia ? `<p style="font-size: 0.75rem; color: var(--muted); margin-top: 5px;">💡 ${info2.analogia}</p>` : ''}
+              </div>
+            </div>
+            
+            <div style="background: var(--bg); padding: 10px; border-radius: 8px; margin-top: 10px;">
+              <p style="font-size: 0.8rem; color: var(--accent);">
+                📖 <strong>Material:</strong> Revisa Slides ${info1.slide || ''} y ${info2.slide || ''}
+              </p>
+            </div>
+          </div>
+        `;
+      });
+      
+      html += `
+          <div style="background: var(--card); padding: 15px; border-radius: 10px; margin-top: 15px;">
+            <h4 style="color: var(--primary); margin-bottom: 10px;">💡 ESTRATEGIAS PARA RECORDAR</h4>
+            <ul style="text-align: left; font-size: 0.85rem; line-height: 2; color: var(--text);">
+              <li>📝 Crea <strong>flashcards físicas</strong> con estos conceptos</li>
+              <li>🗣️ Explica cada definición <strong>en voz alta</strong> a un compañero</li>
+              <li>✏️ Escribe cada concepto con <strong>tus propias palabras</strong></li>
+              <li>🎯 Practica con <strong>ejemplos concretos</strong> de cada uno</li>
+              <li>🔄 Vuelve a jugar este memory hasta dominarlo</li>
+            </ul>
+          </div>
+          
+          <div style="background: var(--bg); padding: 12px; border-radius: 8px; margin-top: 15px;">
+            <p style="font-size: 0.85rem; color: var(--muted);">
+              📚 <strong>Recomendación general:</strong> Estos conceptos son fundamentales para Álgebra Lineal. 
+              Dedica 15 minutos diarios a repasar sus definiciones hasta que las tengas automáticas.
+            </p>
+          </div>
+        </div>
+      `;
+      
+      return html;
+    }
+
+  </script>
+
+  <!-- ========================================= -->
+  <!-- COPYRIGHT FOOTER -->
+  <!-- ========================================= -->
+  <!-- ========================================= -->
+  <!-- COPYRIGHT FOOTER -->
+  <!-- ========================================= -->
+  <footer style="text-align: center; padding: clamp(15px, 3vw, 25px); margin-top: clamp(20px, 4vh, 40px); color: var(--muted); font-size: clamp(0.75rem, 1.5vw, 0.9rem); border-top: 2px solid var(--card); background: var(--card); border-radius: 15px; box-shadow: 0 -4px 16px rgba(0,0,0,0.1); max-width: min(900px, 95vw); margin-left: auto; margin-right: auto;">
+    <p style="font-weight: 700; margin-bottom: 8px; color: var(--text);">© 2025 Universidad del SABES</p>
+    <p style="font-size: clamp(0.7rem, 1.3vw, 0.85rem); line-height: 1.6; color: var(--text);">
+      Material educativo de uso exclusivo para estudiantes de Álgebra Lineal
+    </p>
+  </footer>
+
+  </body>
+</html>

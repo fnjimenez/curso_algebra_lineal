@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧩 Quiz U2 - Sistemas de Ecuaciones | Drag & Drop</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+    
+    /* ======= VARIABLES CSS DEL SABES ======= */
+    :root {
+      --primary: #3b82f6;
+      --secondary: #10b981;
+      --accent: #f59e0b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --success: #10b981;
+      --danger: #ef4444;
+      --grad-primary: linear-gradient(120deg, 
+        #b56c13 0%,      /* Café/dorado oficial SABES */
+        #e39a27 25%,     /* Dorado */
+        #5ca8eb 70%,     /* Azul claro */
+        #a7d3f9 100%     /* Azul muy claro */
+      );
+    }
+    
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #475569;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(10px, 3vw, 20px);
+      line-height: 1.6;
+    }
+    
+    /* ======= HEADER ======= */
+    .header {
+      text-align: center;
+      margin-bottom: clamp(20px, 4vh, 40px);
+      padding: clamp(15px, 3vw, 30px);
+      background: var(--grad-primary);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    
+    .header h1 {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.9);
+    }
+    
+    /* ======= CONTAINER ======= */
+    .container {
+      max-width: min(1000px, 95vw);
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    /* ======= GAME AREA ======= */
+    .game-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(15px, 3vw, 30px);
+      margin-bottom: clamp(20px, 4vh, 30px);
+    }
+    
+    @media (max-width: 768px) {
+      .game-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* ======= DRAGGABLE ITEMS ======= */
+    .items-container {
+      background: var(--card);
+      border-radius: 15px;
+      padding: clamp(15px, 3vw, 25px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    
+    .items-container h2 {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    .draggable-item {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: clamp(12px, 2.5vw, 18px);
+      margin-bottom: 12px;
+      border-radius: 12px;
+      cursor: grab;
+      user-select: none;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+    
+    .draggable-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    }
+    
+    .draggable-item:active {
+      cursor: grabbing;
+      transform: scale(0.98);
+    }
+    
+    .draggable-item.dragging {
+      opacity: 0.5;
+      cursor: grabbing;
+    }
+    
+    /* ======= DROP ZONES ======= */
+    .drop-zones {
+      background: var(--card);
+      border-radius: 15px;
+      padding: clamp(15px, 3vw, 25px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    
+    .drop-zones h2 {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+    
+    .drop-zone {
+      background: rgba(59, 130, 246, 0.1);
+      border: 3px dashed var(--primary);
+      border-radius: 12px;
+      min-height: clamp(80px, 15vh, 120px);
+      margin-bottom: 15px;
+      padding: clamp(10px, 2vw, 15px);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .drop-zone.drag-over {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: var(--secondary);
+      transform: scale(1.02);
+    }
+    
+    .drop-zone-label {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    
+    .dropped-item {
+      background: linear-gradient(135deg, var(--success), var(--secondary));
+      color: white;
+      padding: clamp(10px, 2vw, 14px);
+      border-radius: 10px;
+      font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: dropIn 0.3s ease;
+      min-height: 40px;
+    }
+    
+    @keyframes dropIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .remove-btn {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      font-weight: 700;
+    }
+    
+    .remove-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+    }
+    
+    /* ======= CONTROLS ======= */
+    .controls {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    
+    .btn {
+      padding: clamp(12px, 2vh, 16px) clamp(24px, 4vw, 40px);
+      border: none;
+      border-radius: 12px;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      min-height: 44px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .btn-primary {
+      background: var(--grad-primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    }
+    
+    .btn-secondary {
+      background: linear-gradient(135deg, #6b7280, #4b5563);
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(107, 114, 128, 0.4);
+    }
+    
+    /* ======= STATS ======= */
+    .stats {
+      background: var(--card);
+      border-radius: 15px;
+      padding: clamp(15px, 3vw, 20px);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 15px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 900;
+      color: var(--primary);
+    }
+    
+    .stat-label {
+      font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    /* ======= FEEDBACK ======= */
+    .feedback {
+      background: var(--card);
+      border-radius: 15px;
+      padding: clamp(15px, 3vw, 25px);
+      margin-top: 20px;
+      display: none;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    
+    .feedback.show {
+      display: block;
+      animation: slideUp 0.5s ease;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .feedback h3 {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      margin-bottom: 15px;
+    }
+    
+    .feedback.correct {
+      border: 3px solid var(--success);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+    }
+    
+    .feedback.correct h3 {
+      color: var(--success);
+    }
+    
+    .feedback.incorrect {
+      border: 3px solid var(--danger);
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+    }
+    
+    .feedback.incorrect h3 {
+      color: var(--danger);
+    }
+    
+    .feedback-text {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      line-height: 1.8;
+      color: var(--text);
+    }
+    
+    /* ======= RESULTS ======= */
+    .results {
+      display: none;
+      text-align: center;
+      background: var(--card);
+      border-radius: 20px;
+      padding: clamp(30px, 5vw, 50px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    
+    .results.show {
+      display: block;
+      animation: slideUp 0.5s ease;
+    }
+    
+    .trophy {
+      font-size: clamp(3rem, 10vw, 5rem);
+      margin-bottom: 20px;
+      animation: bounce 1s ease infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .results h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      background: var(--grad-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+    }
+    
+    .results p {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+    
+    /* ======= INSTRUCTIONS ======= */
+    .instructions {
+      background: var(--card);
+      border-radius: 15px;
+      padding: clamp(15px, 3vw, 20px);
+      margin-bottom: 20px;
+      border-left: 4px solid var(--accent);
+    }
+    
+    .instructions h3 {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    
+    .instructions p {
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+      color: var(--muted);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>🧩 Método de Gauss-Jordan</h1>
+      <p>Arrastra los pasos en el orden correcto</p>
+    </div>
+    
+    <!-- Instructions -->
+    <div class="instructions">
+      <h3>📋 Instrucciones</h3>
+      <p>Ordena los pasos del método de Gauss-Jordan en la secuencia correcta. Arrastra cada paso desde la izquierda hacia el área correspondiente de la derecha.</p>
+    </div>
+    
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value" id="correctCount">0</div>
+        <div class="stat-label">Correctos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="attempts">0</div>
+        <div class="stat-label">Intentos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="accuracy">0%</div>
+        <div class="stat-label">Precisión</div>
+      </div>
+    </div>
+    
+    <!-- Game Area -->
+    <div class="game-container">
+      <!-- Draggable Items -->
+      <div class="items-container">
+        <h2>🎯 Pasos Disponibles</h2>
+        <div id="itemsPool"></div>
+      </div>
+      
+      <!-- Drop Zones -->
+      <div class="drop-zones">
+        <h2>📝 Secuencia Correcta</h2>
+        <div class="drop-zone" data-step="1">
+          <div class="drop-zone-label">Paso 1</div>
+        </div>
+        <div class="drop-zone" data-step="2">
+          <div class="drop-zone-label">Paso 2</div>
+        </div>
+        <div class="drop-zone" data-step="3">
+          <div class="drop-zone-label">Paso 3</div>
+        </div>
+        <div class="drop-zone" data-step="4">
+          <div class="drop-zone-label">Paso 4</div>
+        </div>
+        <div class="drop-zone" data-step="5">
+          <div class="drop-zone-label">Paso 5</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Controls -->
+    <div class="controls">
+      <button class="btn btn-primary" onclick="checkAnswer()">✅ Verificar</button>
+      <button class="btn btn-secondary" onclick="reset()">🔄 Reiniciar</button>
+    </div>
+    
+    <!-- Feedback -->
+    <div class="feedback" id="feedback"></div>
+    
+    <!-- Results -->
+    <div class="results" id="results"></div>
+  </div>
+
+  <script>
+    // ======= DATOS DEL JUEGO =======
+    const steps = [
+      { id: 1, text: "Escribir la matriz aumentada del sistema", order: 1 },
+      { id: 2, text: "Hacer pivote 1 en la primera columna", order: 2 },
+      { id: 3, text: "Hacer ceros debajo del primer pivote", order: 3 },
+      { id: 4, text: "Repetir para columnas siguientes (forma escalonada)", order: 4 },
+      { id: 5, text: "Hacer ceros arriba de cada pivote (forma reducida)", order: 5 }
+    ];
+    
+    let currentItems = [];
+    let attempts = 0;
+    let correctCount = 0;
+    
+    // ======= INICIALIZACIÓN =======
+    function init() {
+      currentItems = shuffleArray([...steps]);
+      renderItems();
+      updateStats();
+    }
+    
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+    
+    function renderItems() {
+      const pool = document.getElementById('itemsPool');
+      pool.innerHTML = '';
+      
+      currentItems.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'draggable-item';
+        div.draggable = true;
+        div.dataset.id = item.id;
+        div.dataset.order = item.order;
+        div.textContent = item.text;
+        
+        div.addEventListener('dragstart', handleDragStart);
+        div.addEventListener('dragend', handleDragEnd);
+        
+        pool.appendChild(div);
+      });
+    }
+    
+    // ======= DRAG & DROP =======
+    let draggedElement = null;
+    
+    function handleDragStart(e) {
+      draggedElement = e.target;
+      e.target.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', e.target.innerHTML);
+    }
+    
+    function handleDragEnd(e) {
+      e.target.classList.remove('dragging');
+    }
+    
+    // Drop zones
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+      zone.addEventListener('dragover', handleDragOver);
+      zone.addEventListener('drop', handleDrop);
+      zone.addEventListener('dragleave', handleDragLeave);
+    });
+    
+    function handleDragOver(e) {
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+      e.dataTransfer.dropEffect = 'move';
+      e.target.closest('.drop-zone').classList.add('drag-over');
+      return false;
+    }
+    
+    function handleDragLeave(e) {
+      e.target.closest('.drop-zone').classList.remove('drag-over');
+    }
+    
+    function handleDrop(e) {
+      if (e.stopPropagation) {
+        e.stopPropagation();
+      }
+      
+      const zone = e.target.closest('.drop-zone');
+      zone.classList.remove('drag-over');
+      
+      if (draggedElement) {
+        // Crear elemento dropped
+        const droppedItem = document.createElement('div');
+        droppedItem.className = 'dropped-item';
+        droppedItem.dataset.id = draggedElement.dataset.id;
+        droppedItem.dataset.order = draggedElement.dataset.order;
+        droppedItem.innerHTML = `
+          <span>${draggedElement.textContent}</span>
+          <button class="remove-btn" onclick="removeItem(this)">✕</button>
+        `;
+        
+        zone.appendChild(droppedItem);
+        draggedElement.remove();
+        draggedElement = null;
+      }
+      
+      return false;
+    }
+    
+    function removeItem(btn) {
+      const item = btn.closest('.dropped-item');
+      const id = item.dataset.id;
+      const step = steps.find(s => s.id == id);
+      
+      // Regresar al pool
+      const pool = document.getElementById('itemsPool');
+      const div = document.createElement('div');
+      div.className = 'draggable-item';
+      div.draggable = true;
+      div.dataset.id = step.id;
+      div.dataset.order = step.order;
+      div.textContent = step.text;
+      
+      div.addEventListener('dragstart', handleDragStart);
+      div.addEventListener('dragend', handleDragEnd);
+      
+      pool.appendChild(div);
+      item.remove();
+    }
+    
+    // ======= VERIFICACIÓN =======
+    function checkAnswer() {
+      attempts++;
+      
+      const zones = document.querySelectorAll('.drop-zone');
+      let allCorrect = true;
+      let correctInThisAttempt = 0;
+      
+      zones.forEach((zone, index) => {
+        const droppedItem = zone.querySelector('.dropped-item');
+        const expectedOrder = index + 1;
+        
+        if (!droppedItem) {
+          allCorrect = false;
+        } else {
+          const actualOrder = parseInt(droppedItem.dataset.order);
+          if (actualOrder === expectedOrder) {
+            droppedItem.style.background = 'linear-gradient(135deg, var(--success), var(--secondary))';
+            correctInThisAttempt++;
+          } else {
+            droppedItem.style.background = 'linear-gradient(135deg, var(--danger), #dc2626)';
+            allCorrect = false;
+          }
+        }
+      });
+      
+      // Feedback
+      const feedback = document.getElementById('feedback');
+      feedback.className = 'feedback show';
+      
+      if (allCorrect) {
+        feedback.classList.add('correct');
+        feedback.innerHTML = `
+          <h3>🎉 ¡Excelente!</h3>
+          <p class="feedback-text">Has ordenado correctamente todos los pasos del método de Gauss-Jordan.</p>
+        ` + generarInforme();
+        correctCount++;
+        
+        setTimeout(() => {
+          showResults();
+        }, 2000);
+      } else {
+        feedback.classList.add('incorrect');
+        feedback.innerHTML = `
+          <h3>❌ Revisa el orden</h3>
+          <p class="feedback-text">Tienes ${correctInThisAttempt} de 5 pasos correctos. Los pasos en rojo están mal posicionados.</p>
+        ` + generarInforme();
+        
+        setTimeout(() => {
+          // Quitar colores después de 3 segundos
+          zones.forEach(zone => {
+            const item = zone.querySelector('.dropped-item');
+            if (item) {
+              item.style.background = 'linear-gradient(135deg, var(--success), var(--secondary))';
+            }
+          });
+        }, 3000);
+      }
+      
+      updateStats();
+    }
+    
+    function updateStats() {
+      document.getElementById('correctCount').textContent = correctCount;
+      document.getElementById('attempts').textContent = attempts;
+      
+      const accuracy = attempts > 0 ? Math.round((correctCount / attempts) * 100) : 0;
+      document.getElementById('accuracy').textContent = accuracy + '%';
+    }
+    
+    function showResults() {
+      document.querySelector('.game-container').style.display = 'none';
+      document.querySelector('.controls').style.display = 'none';
+      document.querySelector('.stats').style.display = 'none';
+      document.getElementById('feedback').style.display = 'none';
+      
+      const results = document.getElementById('results');
+      const accuracy = Math.round((correctCount / attempts) * 100);
+      
+      let trophy = '🏆';
+      let message = '';
+      
+      if (attempts === 1) {
+        trophy = '🌟';
+        message = '¡PERFECTO! Lo lograste en el primer intento.';
+      } else if (attempts <= 2) {
+        trophy = '🏆';
+        message = '¡Excelente! Dominaste el método rápidamente.';
+      } else if (attempts <= 4) {
+        trophy = '🥈';
+        message = '¡Muy bien! Has comprendido la secuencia.';
+      } else {
+        trophy = '🥉';
+        message = '¡Lo lograste! La práctica hace al maestro.';
+      }
+      
+      results.innerHTML = `
+        <div class="trophy">${trophy}</div>
+        <h2>${message}</h2>
+        <p>Completado en ${attempts} intentos | Precisión: ${accuracy}%</p>
+        <div class="controls">
+          <button class="btn btn-primary" onclick="reset()">🔄 Jugar de Nuevo</button>
+        </div>
+      `;
+      
+      results.classList.add('show');
+    }
+    
+    function reset() {
+      // Limpiar drop zones
+      document.querySelectorAll('.drop-zone').forEach(zone => {
+        zone.querySelectorAll('.dropped-item').forEach(item => item.remove());
+      });
+      
+      // Reset stats
+      attempts = 0;
+      correctCount = 0;
+      
+      // Reset UI
+      document.querySelector('.game-container').style.display = 'grid';
+      document.querySelector('.controls').style.display = 'flex';
+      document.querySelector('.stats').style.display = 'flex';
+      document.getElementById('feedback').className = 'feedback';
+      document.getElementById('results').className = 'results';
+      
+      // Reinicializar
+      init();
+    }
+    
+    // ======= INICIAR JUEGO =======
+    init();
+  
+    
+    // ======= SISTEMA DE RETROALIMENTACIÓN MEJORADA =======
+    const explicacionesPasos = {
+      1: {
+        titulo: "Matriz Aumentada",
+        explicacion: "Siempre comenzamos escribiendo el sistema como matriz aumentada [A|b]",
+        porque: "Esto nos permite trabajar con coeficientes de forma sistemática",
+        ejemplo: "Si tienes 2x + 3y = 5, escribes [2 3 | 5]"
+      },
+      2: {
+        titulo: "Primer Pivote = 1",
+        explicacion: "El elemento de la esquina superior izquierda debe ser 1",
+        porque: "Facilita las operaciones de eliminación posteriores",
+        tip: "Si no es 1, divide toda la fila por ese número"
+      },
+      3: {
+        titulo: "Ceros Debajo del Pivote",
+        explicacion: "Hacer que todos los elementos bajo el pivote sean 0",
+        porque: "Es la esencia del método de eliminación gaussiana",
+        tip: "Usa operaciones fila: F2 - k*F1 → F2"
+      },
+      4: {
+        titulo: "Forma Escalonada",
+        explicacion: "Repetir el proceso para cada columna (pivote → ceros abajo)",
+        porque: "Obtenemos una matriz triangular superior",
+        tip: "Trabaja de izquierda a derecha, columna por columna"
+      },
+      5: {
+        titulo: "Forma Reducida (Ceros Arriba)",
+        explicacion: "Hacer ceros ARRIBA de cada pivote también",
+        porque: "Nos da directamente la solución del sistema",
+        tip: "Ahora trabajas de abajo hacia arriba"
+      }
+    };
+    
+    function explicarPaso(pasoId, posicionActual, posicionCorrecta) {
+      const info = explicacionesPasos[pasoId];
+      return `
+        <div style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05)); 
+                    padding: 15px; border-radius: 12px; margin: 10px 0; border-left: 4px solid var(--danger);">
+          <h4 style="color: var(--danger); margin-bottom: 10px;">❌ Paso mal posicionado</h4>
+          
+          <div style="background: var(--card); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+            <p style="margin: 5px 0;"><strong>Tu posición:</strong> Paso ${posicionActual}</p>
+            <p style="margin: 5px 0;"><strong>Posición correcta:</strong> Paso ${posicionCorrecta}</p>
+          </div>
+          
+          <div style="background: var(--bg); padding: 12px; border-radius: 8px;">
+            <h5 style="color: var(--primary); margin-bottom: 8px;">📚 ${info.titulo}</h5>
+            <p style="margin: 5px 0; font-size: 0.9rem;"><strong>Qué es:</strong> ${info.explicacion}</p>
+            <p style="margin: 5px 0; font-size: 0.9rem;"><strong>Por qué va ahí:</strong> ${info.porque}</p>
+            <p style="margin: 8px 0; font-size: 0.85rem; color: var(--accent);">💡 <strong>Tip:</strong> ${info.tip || info.ejemplo}</p>
+          </div>
+        </div>
+      `;
+    }
+    
+    // ======= INFORME DE DESEMPEÑO =======
+    function generarInforme() {
+      const totalPasos = 5;
+      let erroresComunes = [];
+      
+      // Analizar errores
+      document.querySelectorAll('.timeline-slot').forEach((slot, index) => {
+        const dropped = slot.querySelector('.dropped-item');
+        if (dropped) {
+          const actualOrder = parseInt(dropped.dataset.order);
+          const expectedOrder = index + 1;
+          if (actualOrder !== expectedOrder) {
+            erroresComunes.push({
+              paso: actualOrder,
+              posicion: expectedOrder
+            });
+          }
+        }
+      });
+      
+      if (erroresComunes.length === 0) {
+        return `
+          <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1)); 
+                      padding: 20px; border-radius: 15px; border: 3px solid var(--success); margin-top: 20px;">
+            <h3 style="color: var(--success); margin-bottom: 12px;">🌟 ¡Excelente comprensión!</h3>
+            <p style="font-size: 1rem; margin-bottom: 10px;">
+              Has demostrado un dominio completo del método de Gauss-Jordan.
+            </p>
+            <div style="background: var(--card); padding: 15px; border-radius: 10px; margin-top: 15px;">
+              <p style="font-size: 0.9rem; color: var(--muted);">
+                ✅ Entiendes el orden sistemático<br>
+                ✅ Comprendes cada paso del proceso<br>
+                ✅ Puedes aplicarlo a cualquier sistema
+              </p>
+            </div>
+          </div>
+        `;
+      }
+      
+      // Hay errores - generar informe
+      const precision = Math.round(((totalPasos - erroresComunes.length) / totalPasos) * 100);
+      
+      let nivel = "";
+      let recomendacion = "";
+      
+      if (precision >= 80) {
+        nivel = "BUENA";
+        recomendacion = "Solo necesitas reforzar algunos detalles del orden.";
+      } else if (precision >= 60) {
+        nivel = "MEDIA";
+        recomendacion = "Revisa la secuencia completa paso a paso.";
+      } else {
+        nivel = "NECESITA REFUERZO";
+        recomendacion = "Es importante que veas ejemplos completos del método.";
+      }
+      
+      let html = `
+        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1)); 
+                    padding: 20px; border-radius: 15px; border: 3px solid var(--warning); margin-top: 20px;">
+          <h3 style="color: var(--warning); margin-bottom: 15px;">📊 ANÁLISIS DE DESEMPEÑO</h3>
+          
+          <div style="background: var(--card); padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+            <p style="font-size: 1.1rem; margin-bottom: 10px;">
+              <strong>Comprensión general:</strong> <span style="color: var(--primary);">${nivel}</span>
+            </p>
+            <p style="font-size: 0.95rem;">
+              Pasos correctos: ${totalPasos - erroresComunes.length}/${totalPasos} (${precision}%)
+            </p>
+          </div>
+          
+          <div style="background: var(--bg); padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+            <h4 style="color: var(--danger); margin-bottom: 10px;">❌ Errores detectados:</h4>
+      `;
+      
+      erroresComunes.forEach(error => {
+        const info = explicacionesPasos[error.paso];
+        html += `
+          <div style="padding: 10px; margin: 8px 0; background: var(--card); border-radius: 8px; border-left: 3px solid var(--danger);">
+            <p style="margin: 3px 0; font-size: 0.9rem;">
+              <strong>Paso ${error.paso}:</strong> ${info.titulo}
+            </p>
+            <p style="margin: 3px 0; font-size: 0.85rem; color: var(--muted);">
+              ${info.porque}
+            </p>
+          </div>
+        `;
+      });
+      
+      html += `
+          </div>
+          
+          <div style="background: var(--card); padding: 15px; border-radius: 10px;">
+            <h4 style="color: var(--primary); margin-bottom: 10px;">💡 RECOMENDACIÓN</h4>
+            <p style="margin-bottom: 10px; font-size: 0.95rem;">${recomendacion}</p>
+            
+            <div style="background: var(--bg); padding: 12px; border-radius: 8px; margin-top: 10px;">
+              <p style="font-size: 0.9rem; margin-bottom: 8px;"><strong>El orden correcto es:</strong></p>
+              <ol style="text-align: left; font-size: 0.85rem; line-height: 2; color: var(--muted);">
+                <li>Matriz aumentada [A|b]</li>
+                <li>Hacer pivote = 1 (primera columna)</li>
+                <li>Hacer ceros DEBAJO del pivote</li>
+                <li>Repetir para siguientes columnas (forma escalonada)</li>
+                <li>Hacer ceros ARRIBA de pivotes (forma reducida)</li>
+              </ol>
+            </div>
+            
+            <p style="margin-top: 15px; font-size: 0.85rem; padding: 10px; background: var(--bg); border-radius: 8px;">
+              📖 <strong>Material de apoyo:</strong> Revisa la Slide 2.2 de la Unidad II<br>
+              🎥 Ve el ejemplo completo con la matriz de 3×3<br>
+              ✏️ Practica con ejercicios adicionales del libro (pág. 45-50)
+            </p>
+          </div>
+        </div>
+      `;
+      
+      return html;
+    }
+
+  </script>
+
+  <!-- ========================================= -->
+  <!-- COPYRIGHT FOOTER -->
+  <!-- ========================================= -->
+  <!-- ========================================= -->
+  <!-- COPYRIGHT FOOTER -->
+  <!-- ========================================= -->
+  <footer style="text-align: center; padding: clamp(15px, 3vw, 25px); margin-top: clamp(20px, 4vh, 40px); color: var(--muted); font-size: clamp(0.75rem, 1.5vw, 0.9rem); border-top: 2px solid var(--card); background: var(--card); border-radius: 15px; box-shadow: 0 -4px 16px rgba(0,0,0,0.1); max-width: min(900px, 95vw); margin-left: auto; margin-right: auto;">
+    <p style="font-weight: 700; margin-bottom: 8px; color: var(--text);">© 2025 Universidad del SABES</p>
+    <p style="font-size: clamp(0.7rem, 1.3vw, 0.85rem); line-height: 1.6; color: var(--text);">
+      Material educativo de uso exclusivo para estudiantes de Álgebra Lineal
+    </p>
+  </footer>
+
+  </body>
+</html>
