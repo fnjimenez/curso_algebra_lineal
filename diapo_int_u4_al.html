@@ -435,18 +435,19 @@ body{
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateX(100%) scale(1);
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overflow-y: auto;
+  transform-origin: center center;
 }
 
 .slide.active {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(0) scale(1);
 }
 
 .slide.previous {
-  transform: translateX(-100%);
+  transform: translateX(-100%) scale(1);
 }
 
 /* ======= PORTADA MEJORADA ======= */
@@ -1871,13 +1872,15 @@ html {
 <!-- ======= MODAL SABES ======= -->
 <div id="infoModal" class="modal" role="dialog" aria-labelledby="info-title" aria-modal="true">
   <h3 id="info-title">🎓 Información del Curso</h3>
-  <p><strong>Álgebra Lineal - Unidad IV: Transformaciones Lineales</strong></p>
+  <p><strong>Álgebra Lineal - Unidad I: Matrices y Determinantes</strong></p>
   <p>Este curso interactivo está organizado en 4 semanas de contenido principal más complementos educativos.</p>
   
   <h4>📚 Estructura del Curso:</h4>
   <ul style="text-align: left; line-height: 2;">
-    <li><strong>Semana 11:</strong>Transformaciones lineales / Núcleo e Imagen</li>
-    <li><strong>Semana 12:</strong> Representación matricial / Aplicaciones</li>
+    <li><strong>Semana 1:</strong> Introducción a Matrices</li>
+    <li><strong>Semana 2:</strong> Operaciones con Matrices</li>
+    <li><strong>Semana 3:</strong> Determinantes y Transformaciones</li>
+    <li><strong>Semana 4:</strong> Aplicaciones y Regla de Cramer</li>
     <li><strong>🎯 Complemento:</strong> Caso Práctico Industrial</li>
     <li><strong>📚 Complemento:</strong> Bibliografía y Recursos</li>
   </ul>
@@ -1928,7 +1931,9 @@ html {
       
       <div class="learning-objectives">
         <h3>🎯 APRENDIZAJES ESPERADOS</h3>
-        <p> Analizar y aplicar transformaciones lineales, su núcleo e imagen, y su representación matricial para modelar y resolver problemas en ingeniería y ciencias.
+        <p>
+          Aplicar las matrices, los determinantes y operaciones entre ellas, para resolver 
+          problemas en las diferentes áreas de las matemáticas y de la ingeniería.
         </p>
       </div>
       
@@ -1948,17 +1953,18 @@ html {
     </p>
     
     <div class="week-grid" role="navigation" aria-label="Navegación por semanas">
-      <a class="week-card" onclick="goToSlide(2)" role="button" tabindex="0" aria-label="Ir a Semana 11 Parte 1" onkeypress="if(event.key==='Enter') goToSlide(2)">
+      <a class="week-card" onclick="goToSlide(2)" role="button" tabindex="0" aria-label="Ir a Semana 9 Parte 1" onkeypress="if(event.key==='Enter') goToSlide(2)">
         <div class="week-number">11</div>
         <div class="week-title">Semana 11: Transformaciones Lineales</div>
         <div class="week-topics">
           • Definición de transformación lineal<br>
           • Teorema de linealidad<br>
+          • Teorema de linealidad<br>
           • Ejemplos geométricos
         </div>
       </a>
       
-      <a class="week-card" onclick="goToSlide(3)" role="button" tabindex="0" aria-label="Ir a Semana 11 Parte 2" onkeypress="if(event.key==='Enter') goToSlide(3)">
+      <a class="week-card" onclick="goToSlide(3)" role="button" tabindex="0" aria-label="Ir a Semana 9 Parte 2" onkeypress="if(event.key==='Enter') goToSlide(3)">
         <div class="week-number">11</div>
         <div class="week-title">Semana 11: Núcleo e Imagen</div>
         <div class="week-topics">
@@ -3533,9 +3539,20 @@ function showSlide(index) {
     if (i < currentSlide) {
       slide.classList.add('previous');
     }
+    // Preservar el zoom actual
+    if (zoom !== 1) {
+      slide.style.transform = slide.classList.contains('active') ? 
+        `translateX(0) scale(${zoom})` : 
+        (i < currentSlide ? `translateX(-100%) scale(${zoom})` : `translateX(100%) scale(${zoom})`);
+    }
   });
   
   slides[currentSlide].classList.add('active');
+  
+  // Aplicar el zoom al slide activo
+  if (zoom !== 1) {
+    slides[currentSlide].style.transform = `translateX(0) scale(${zoom})`;
+  }
   
   updateNavigationButtons();
   updateProgress();
@@ -3628,8 +3645,16 @@ const btnZoomIn = document.getElementById('btn-zoom-in');
 if (btnZoomIn) {
   btnZoomIn.onclick = () => {
     zoom = Math.min(2, zoom + 0.1);
-    document.body.style.transform = `scale(${zoom})`;
-    document.body.style.transformOrigin = 'center top';
+    const slides = document.querySelectorAll('.slide');
+    slides.forEach((slide, i) => {
+      if (slide.classList.contains('active')) {
+        slide.style.transform = `translateX(0) scale(${zoom})`;
+      } else if (slide.classList.contains('previous')) {
+        slide.style.transform = `translateX(-100%) scale(${zoom})`;
+      } else {
+        slide.style.transform = `translateX(100%) scale(${zoom})`;
+      }
+    });
   };
 }
 
@@ -3637,8 +3662,16 @@ const btnZoomOut = document.getElementById('btn-zoom-out');
 if (btnZoomOut) {
   btnZoomOut.onclick = () => {
     zoom = Math.max(0.8, zoom - 0.1);
-    document.body.style.transform = `scale(${zoom})`;
-    document.body.style.transformOrigin = 'center top';
+    const slides = document.querySelectorAll('.slide');
+    slides.forEach((slide, i) => {
+      if (slide.classList.contains('active')) {
+        slide.style.transform = `translateX(0) scale(${zoom})`;
+      } else if (slide.classList.contains('previous')) {
+        slide.style.transform = `translateX(-100%) scale(${zoom})`;
+      } else {
+        slide.style.transform = `translateX(100%) scale(${zoom})`;
+      }
+    });
   };
 }
 
