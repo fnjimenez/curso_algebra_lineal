@@ -2,11 +2,11 @@
 <html data-theme="light" lang="es">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta name="description" content="Curso interactivo de Álgebra Lineal - Unidad I: Matrices y Determinantes. Cumple con estándares WCAG 2.2 AA de accesibilidad."/>
-<meta name="keywords" content="álgebra lineal, matrices, determinantes, educación, SABES, accesible, WCAG"/>
+<meta content="width=device-width, initial-scale=1, viewpoint-fit=cover" name="viewport"/>
+<meta name="description" content="Curso interactivo de Álgebra Lineal - Unidad III: Espacios Vectoriales. Cumple con estándares WCAG 2.2 AA de accesibilidad."/>
+<meta name="keywords" content="álgebra lineal, espacios vectoriales, subespacios, dependencia lineal, bases, dimensión, métodos de mínimos cuadrados, educación, SABES, accesible, WCAG"/>
 <meta name="author" content="Universidad del SABES"/>
-<title>Álgebra Lineal - Unidad IV: Transformaciones Lineales | Universidad del SABES</title>
+<title>Álgebra Lineal - Unidad III: Espacios Vectoriales | Universidad del SABES</title>
 
 <!-- MathJax Configuration -->
 <script>
@@ -38,9 +38,6 @@ window.MathJax = {
 </script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-<!-- Three.js Library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <style>
 /* ======= IMPORTACIÓN DE FUENTES ======= */
@@ -304,11 +301,6 @@ body{
   transition: width 0.3s ease;
 }
 
-/* ======= INDICADOR DE PROGRESO ======= */
-.progress-indicator { display: none !important; }
-
-
-
 /* ======= MODAL SABES ======= */
 .modal {
   display: none;
@@ -359,10 +351,6 @@ body{
 }
 
 /* ======= CONTROLES DE NAVEGACIÓN INFERIOR ======= */
-
-
-[data-theme="dark"] 
-
 .nav-btn {
   background: #2563eb;
   color: white;
@@ -435,19 +423,18 @@ body{
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transform: translateX(100%) scale(1);
+  transform: translateX(100%);
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overflow-y: auto;
-  transform-origin: center center;
 }
 
 .slide.active {
   opacity: 1;
-  transform: translateX(0) scale(1);
+  transform: translateX(0);
 }
 
 .slide.previous {
-  transform: translateX(-100%) scale(1);
+  transform: translateX(-100%);
 }
 
 /* ======= PORTADA MEJORADA ======= */
@@ -563,37 +550,6 @@ body{
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-20px) rotate(180deg); }
-}
-
-/* Brackets animados */
-.brackets {
-  position: absolute;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 120px;
-  color: rgba(100, 150, 250, 0.3);
-  font-weight: 900;
-  animation: pulse 4s ease-in-out infinite;
-}
-
-[data-theme="light"] .brackets {
-  color: rgba(59, 130, 246, 0.2);
-}
-
-.left-bracket {
-  left: 10%;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.right-bracket {
-  right: 10%;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; transform: translateY(-50%) scale(1); }
-  50% { opacity: 0.6; transform: translateY(-50%) scale(1.1); }
 }
 
 /* Títulos portada */
@@ -954,51 +910,6 @@ p {
   margin: 20px 0;
 }
 
-/* ======= CALCULADORA MATRICIAL ======= */
-.calculator-container {
-  background: var(--panel);
-  border-radius: 20px;
-  padding: 30px;
-  margin: 30px 0;
-  border: 2px solid var(--primary);
-}
-
-.calculator-matrix {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 15px 0;
-}
-
-.calculator-row {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.calculator-input {
-  width: 80px;
-  padding: 10px;
-  font-size: 1.2rem;
-  text-align: center;
-  border: 2px solid var(--primary);
-  border-radius: 8px;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.math-display {
-  background: rgba(100, 150, 250, 0.1);
-  padding: 20px;
-  border-radius: 12px;
-  margin: 20px 0;
-  font-family: 'JetBrains Mono', monospace;
-  text-align: center;
-  font-size: 1.1rem;
-  border: 2px solid rgba(100, 150, 250, 0.3);
-}
-
 /* ======= QUIZ INTERACTIVO ======= */
 .quiz-container {
   background: linear-gradient(135deg, rgba(100, 150, 250, 0.15), rgba(0, 212, 170, 0.15));
@@ -1055,31 +966,6 @@ p {
   color: var(--ink);
 }
 
-/* ======= CANVAS PARA THREE.JS ======= */
-.canvas-container {
-  width: 100%;
-  height: 400px;
-  margin: 30px 0;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 2px solid var(--primary);
-  background: var(--bg);
-}
-
-#threejs-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.canvas-controls {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
 /* ======= RESPONSIVE ======= */
 @media (max-width: 768px) {
   .slide {
@@ -1089,8 +975,6 @@ p {
   .sidebar {
     display: none;
   }
-  
-  
   
   .nav-btn {
     min-width: 70px;
@@ -1109,8 +993,6 @@ p {
   .content-container {
     padding: 20px;
   }
-  
-  .progress-indicator { display: none !important; }
 }
 
 /* ======= SCROLLBAR ======= */
@@ -1132,17 +1014,79 @@ p {
 }
 
 .slide-counter {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      z-index: 9998;
-    }
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 9998;
+}
+
+/* ======= CALCULADORA DE MINIMOS CUADRADOS ======= */
+.min-squares-calculator {
+  background: var(--panel);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 30px 0;
+  border: 2px solid var(--primary);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.data-table th, .data-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid var(--primary);
+}
+
+.data-table th {
+  background: rgba(100, 150, 250, 0.2);
+  font-weight: bold;
+}
+
+.data-input {
+  width: 80px;
+  padding: 8px;
+  text-align: center;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.calc-btn {
+  background: linear-gradient(135deg, #f57c00 0%, #ff9800 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px 5px;
+}
+
+.calc-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 124, 0, 0.3);
+}
+
+.calc-result {
+  background: rgba(0, 212, 170, 0.1);
+  border-left: 4px solid var(--secondary);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  font-family: 'JetBrains Mono', monospace;
+}
 </style>
 </head>
 
@@ -1159,11 +1103,6 @@ p {
 <!-- ======= BARRA DE PROGRESO ======= -->
 <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso de la presentación">
   <div class="progress" id="progress"></div>
-</div>
-
-<!-- ======= INDICADOR DE PROGRESO ======= -->
-<div class="progress-indicator" id="progressIndicator">
-  <span id="userProgress">0%</span>
 </div>
 
 <!-- ======= BARRA LATERAL IZQUIERDA ======= -->
@@ -1266,49 +1205,37 @@ p {
     <li><strong>Esc:</strong> Cerrar modales</li>
   </ul>
   
-  <h4 style="color: var(--secondary); margin-top: 20px;">🛠️ Compatibilidad</h4>
-  <p style="text-align: left;"><strong>Tecnologías Asistivas probadas:</strong></p>
-  <ul style="text-align: left; line-height: 1.8;">
-    <li>✅ <strong>NVDA</strong> (Windows) - Lector de pantalla gratuito</li>
-    <li>✅ <strong>JAWS</strong> (Windows) - Lector de pantalla profesional</li>
-    <li>✅ <strong>VoiceOver</strong> (macOS/iOS) - Integrado en Apple</li>
-    <li>✅ <strong>TalkBack</strong> (Android) - Lector de Google</li>
-    <li>✅ <strong>Narrator</strong> (Windows) - Integrado en Windows</li>
-  </ul>
-  
-  <div style="background: rgba(245, 124, 0, 0.1); padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #f57c00;">
-    <p style="margin: 0; font-size: 0.95rem;"><strong>💡 Consejo:</strong> Presiona <kbd style="background: var(--panel); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--primary);">Tab</kbd> para navegar por los controles con el teclado.</p>
-  </div>
-  
   <button onclick="cerrarModalAccesibilidad()" style="margin-top: 20px;">Cerrar</button>
 </div>
 
 <!-- ======= MODAL SABES ======= -->
 <div id="infoModal" class="modal" role="dialog" aria-labelledby="info-title" aria-modal="true">
   <h3 id="info-title">🎓 Información del Curso</h3>
-  <p><strong>Álgebra Lineal - Unidad I: Matrices y Determinantes</strong></p>
-  <p>Este curso interactivo está organizado en 4 semanas de contenido principal más complementos educativos.</p>
+  <p><strong>Álgebra Lineal - Unidad III: Espacios Vectoriales</strong></p>
+  <p>Esta unidad explora las estructuras fundamentales del álgebra lineal: los espacios vectoriales y sus propiedades.</p>
   
-  <h4>📚 Estructura del Curso:</h4>
+  <h4>📚 Contenidos Principales:</h4>
   <ul style="text-align: left; line-height: 2;">
-    <li><strong>Semana 1:</strong> Introducción a Matrices</li>
-    <li><strong>Semana 2:</strong> Operaciones con Matrices</li>
-    <li><strong>Semana 3:</strong> Determinantes y Transformaciones</li>
-    <li><strong>Semana 4:</strong> Aplicaciones y Regla de Cramer</li>
-    <li><strong>🎯 Complemento:</strong> Caso Práctico Industrial</li>
-    <li><strong>📚 Complemento:</strong> Bibliografía y Recursos</li>
+    <li><strong>3.1</strong> Definición de espacio vectorial y subespacios</li>
+    <li><strong>3.1.1</strong> Definición de subespacio vectorial</li>
+    <li><strong>3.1.2</strong> Propiedades de subespacio vectorial</li>
+    <li><strong>2.3</strong> Dependencia e independencia lineal</li>
+    <li><strong>3.3</strong> Base, dimensión y cambio de base</li>
+    <li><strong>3.3.1</strong> Cambio de base</li>
+    <li><strong>3.3.2</strong> Bases ortogonales y ortonormales</li>
+    <li><strong>3.4</strong> Aplicaciones: Método de mínimos cuadrados</li>
   </ul>
   
   <h4>✨ Características:</h4>
   <ul style="text-align: left; line-height: 1.8;">
-    <li>✅ Autoevaluaciones interactivas en cada semana</li>
-    <li>✅ Calculadora matricial en vivo</li>
-    <li>✅ Visualizaciones 3D con Three.js</li>
+    <li>✅ Autoevaluaciones interactivas en cada tema</li>
+    <li>✅ Calculadora de mínimos cuadrados</li>
+    <li>✅ Ejemplos prácticos de ingeniería</li>
     <li>✅ Fórmulas renderizadas con MathJax</li>
     <li>✅ Diseño responsive y accesible</li>
   </ul>
   
-  <p><strong>Universidad del SABES - 2025</strong></p>
+  <p><strong>Universidad del SABES</strong></p>
   <p style="font-size: 0.9rem; color: var(--muted);">Cumple con estándares WCAG 2.2 AA de accesibilidad.</p>
   <button onclick="cerrarModal()">Cerrar</button>
 </div>
@@ -1334,20 +1261,16 @@ p {
       <div class="symbol">∆</div>
     </div>
     
-    <!-- Brackets de matriz -->
-    <div class="brackets left-bracket">[</div>
-    <div class="brackets right-bracket">]</div>
-    
     <!-- Contenido principal -->
     <div style="position: relative; z-index: 2; width: 100%; max-width: 900px;">
       <h1 class="cover-title" id="slide-0-title">ÁLGEBRA LINEAL</h1>
-      <h2 class="cover-subtitle">UNIDAD IV: TRANSFORMACIONES LINEALES</h2>
+      <h2 class="cover-subtitle">UNIDAD III: ESPACIOS VECTORIALES</h2>
       
       <div class="learning-objectives">
         <h3>🎯 APRENDIZAJES ESPERADOS</h3>
         <p>
-          Aplicar las matrices, los determinantes y operaciones entre ellas, para resolver 
-          problemas en las diferentes áreas de las matemáticas y de la ingeniería.
+          Comprender la definición de espacio vectorial como una abstracción para relacionarlo 
+          con otras áreas de las matemáticas, física, ingeniería y ciencia de datos.
         </p>
       </div>
       
@@ -1359,347 +1282,116 @@ p {
     </div>
   </div>
 
-  <!-- SLIDE 1: ÍNDICE DE SEMANAS -->
+  <!-- SLIDE 1: ÍNDICE DE CONTENIDOS -->
   <div class="slide" id="slide-1" role="region" aria-labelledby="slide-1-title">
-    <h2 class="section-title" id="slide-1-title">UNIDAD IV: TRANSFORMACIONES LINEALES</h2>
+    <h2 class="section-title" id="slide-1-title">UNIDAD III: ESPACIOS VECTORIALES</h2>
     <p style="text-align: center; color: var(--muted); margin-bottom: 40px; max-width: 800px;">
-      Selecciona una semana o complemento para explorar los contenidos específicos
+      Esta unidad se desarrolla en 2 semanas con los siguientes contenidos:
     </p>
     
-    <div class="week-grid" role="navigation" aria-label="Navegación por semanas">
-      <a class="week-card" onclick="goToSlide(2)" role="button" tabindex="0" aria-label="Ir a Semana 9 Parte 1" onkeypress="if(event.key==='Enter') goToSlide(2)">
-        <div class="week-number">11</div>
-        <div class="week-title">Semana 11: Definiciones</div>
+    <div class="week-grid" role="navigation" aria-label="Navegación por temas">
+      <a class="week-card" onclick="goToSlide(2)" role="button" tabindex="0" aria-label="Ir a 3.1 Definición de espacio vectorial" onkeypress="if(event.key==='Enter') goToSlide(2)">
+        <div class="week-number">3.1</div>
+        <div class="week-title">Definición de Espacio Vectorial</div>
         <div class="week-topics">
-          • Transformación lineal<br>
-          • Ejemplos geométricos<br>
-          • Ejemplos geométricos<br>
-          • Núcleo e imagen
+          • Axiomas de espacios vectoriales<br>
+          • Ejemplos básicos<br>
+          • Propiedades fundamentales<br>
+          • Subespacios vectoriales
         </div>
       </a>
       
-      <a class="week-card" onclick="goToSlide(3)" role="button" tabindex="0" aria-label="Ir a Semana 9 Parte 2" onkeypress="if(event.key==='Enter') goToSlide(3)">
-        <div class="week-number">11</div>
-        <div class="week-title">Semana 11: Representación</div>
+      <a class="week-card" onclick="goToSlide(3)" role="button" tabindex="0" aria-label="Ir a 3.2 Dependencia e independencia lineal" onkeypress="if(event.key==='Enter') goToSlide(3)">
+        <div class="week-number">3.2</div>
+        <div class="week-title">Dependencia Lineal</div>
         <div class="week-topics">
-          • Representación matricial<br>
-          • Construcción de matrices<br>
-          • Composición<br>
-          • Propiedades algebraicas
+          • Combinaciones lineales<br>
+          • Vectores dependientes e independientes<br>
+          • Métodos de verificación<br>
+          • Ejemplos prácticos
         </div>
       </a>
       
       <a class="week-card" onclick="goToSlide(4)">
-        <div class="week-number">12</div>
-        <div class="week-title">Semana 12: Gráficos e Imágenes</div>
+        <div class="week-number">3.3</div>
+        <div class="week-title">Base y Dimensión</div>
         <div class="week-topics">
-          • Gráficos por computadora<br>
-          • Procesamiento de imágenes<br>
-          • Transformaciones 2D y 3D<br>
-          • Filtros y efectos
+          • Concepto de base<br>
+          • Dimensión de espacios<br>
+          • Cambio de base<br>
+          • Bases ortogonales
         </div>
       </a>
       
       <a class="week-card" onclick="goToSlide(5)">
-        <div class="week-number">12</div>
-        <div class="week-title">Semana 12: PCA y ML</div>
+        <div class="week-number">3.4</div>
+        <div class="week-title">Aplicaciones: Mínimos Cuadrados</div>
         <div class="week-topics">
-          • PCA (Análisis de componentes)<br>
-          • SVD (Valores singulares)<br>
-          • Redes neuronales<br>
-          • Aplicaciones en IA
+          • Regresión lineal<br>
+          • Ajuste de curvas<br>
+          • Aplicaciones en ingeniería<br>
+          • Casos prácticos
         </div>
       </a>
       
       <a class="week-card" onclick="goToSlide(6)">
-        <div class="week-number">🎯</div>
-        <div class="week-title">Caso Práctico</div>
+        <div class="week-number">💻</div>
+        <div class="week-title">Calculadora Interactiva</div>
         <div class="week-topics">
-          • Compresión de imágenes con SVD<br>
-          • Implementación práctica<br>
-          • Análisis de calidad<br>
-          • Optimización de tamaño
+          • Mínimos cuadrados<br>
+          • Dependencia lineal<br>
+          • Verificación de subespacios<br>
+          • Cálculos paso a paso
         </div>
       </a>
       
       <a class="week-card" onclick="goToSlide(7)">
         <div class="week-number">📚</div>
-        <div class="week-title">Bibliografía y Recursos</div>
+        <div class="week-title">Evaluación Final</div>
         <div class="week-topics">
-          • Textos fundamentales<br>
-          • Recursos digitales<br>
-          • Software especializado<br>
-          • Guías de estudio
+          • Quiz de autoevaluación<br>
+          • Ejercicios propuestos<br>
+          • Casos de estudio<br>
+          • Recursos adicionales
         </div>
       </a>
     </div>
   </div>
 
-  <!-- SLIDE 2: SEMANA 9 PARTE 1 - ESPACIOS VECTORIALES -->
-  
-  <!-- ========================================= -->
-  <!-- SLIDE AGREGADA: GUÍA DE NOTACIONES -->
-  <!-- ========================================= -->
-
-  <!-- SLIDE: CÓMO LEER LAS NOTACIONES -->
-  <div class="slide" id="slide-notaciones">
+  <!-- SLIDE 2: 3.1 DEFINICIÓN DE ESPACIO VECTORIAL -->
+  <div class="slide" id="slide-2">
     <div class="content-container">
       <div class="week-section">
-        <h2>📖 Guía Rápida: Cómo Leer las Notaciones</h2>
+        <div class="week-badge">Tema 3.1</div>
+        <h2>Definición de Espacio Vectorial</h2>
         
         <div class="citation">
-          "La notación matemática puede parecer intimidante, pero es solo un lenguaje conciso. Una vez que conoces el alfabeto, todo se vuelve claro." 
-          <strong>— Terence Tao</strong>
-        </div>
-        
-        <div class="card" >
-          <h3 style="color: white; margin-top: 0;">💡 Antes de empezar...</h3>
-          <p style="font-size: 1.1rem; line-height: 1.8;">
-            Esta slide te enseña a <strong>LEER</strong> los símbolos matemáticos que verás en esta unidad.
-            Tómate 3 minutos para revisarla. ¡Te ahorrará confusión después!
-          </p>
-        </div>
-
-        <h3>🔤 Símbolos que Verás Constantemente</h3>
-        
-        <div class="two-col">
-          <div class="card">
-            <h4 >Vectores y Espacios</h4>
-            <table style="width: 100%; font-size: 0.9rem; line-height: 2;">
-              <tr>
-                <td><strong>$\mathbf{v}$</strong></td>
-                <td>→</td>
-                <td>"vector v" (lista de números)</td>
-              </tr>
-              <tr>
-                <td><strong>$\mathbb{R}^3$</strong></td>
-                <td>→</td>
-                <td>"R tres" (espacio 3D)</td>
-              </tr>
-              <tr>
-                <td><strong>$V$</strong></td>
-                <td>→</td>
-                <td>Espacio vectorial</td>
-              </tr>
-              <tr>
-                <td><strong>$\mathbf{v} \in V$</strong></td>
-                <td>→</td>
-                <td>"v pertenece a V"</td>
-              </tr>
-            </table>
-          </div>
-          
-          <div class="card">
-            <h4 >Combinaciones y Operaciones</h4>
-            <table style="width: 100%; font-size: 0.9rem; line-height: 2;">
-              <tr>
-                <td><strong>$c_1\mathbf{v}_1$</strong></td>
-                <td>→</td>
-                <td>"c-uno por v-uno"</td>
-              </tr>
-              <tr>
-                <td><strong>$\sum$</strong></td>
-                <td>→</td>
-                <td>Suma (sumar todo)</td>
-              </tr>
-              <tr>
-                <td><strong>$\forall$</strong></td>
-                <td>→</td>
-                <td>"para todo"</td>
-              </tr>
-              <tr>
-                <td><strong>$\Rightarrow$</strong></td>
-                <td>→</td>
-                <td>"implica" (entonces)</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-
-        <h3>📝 Ejemplo Completo: De Notación a Lenguaje Normal</h3>
-        
-        <div class="card" style="background: #f8f9fa; border-left: 5px solid #667eea;">
-          <h4>Ejercicio Típico:</h4>
-          <p style="font-size: 1.1rem; text-align: center; background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
-            ¿Es $W = \{(x, y, 0) : x, y \in \mathbb{R}\}$ un subespacio de $\mathbb{R}^3$?
-          </p>
-          
-          <h4 style="margin-top: 20px;">🔍 PASO 1: ¿Cómo se LEE?</h4>
-          <div style="background: white; padding: 15px; border-radius: 8px; margin: 10px 0;">
-            <p style="margin: 5px 0;">
-              <strong>"W es el conjunto de puntos (x, y, 0) tales que x e y son números reales"</strong>
-            </p>
-          </div>
-          
-          <h4 style="margin-top: 20px;">🎯 PASO 2: ¿Qué SIGNIFICA?</h4>
-          <div style="background: white; padding: 15px; border-radius: 8px; margin: 10px 0;">
-            <p style="margin: 5px 0;">
-              W es <strong>todos los puntos del plano XY</strong> en el espacio 3D (z siempre es 0)
-            </p>
-            <p style="margin: 5px 0; color: #666;">
-              Ejemplos: (1, 2, 0) ✅, (5, -3, 0) ✅, (1, 2, 1) ❌ (z no es 0)
-            </p>
-          </div>
-          
-          <h4 style="margin-top: 20px;">✅ PASO 3: ¿Cómo RESOLVER?</h4>
-          <div style="background: white; padding: 15px; border-radius: 8px; margin: 10px 0;">
-            <p style="margin: 5px 0;">
-              Verificar 3 condiciones:
-            </p>
-            <ol style="text-align: left; line-height: 2;">
-              <li>¿Contiene el vector cero (0,0,0)? → <strong>SÍ</strong> ✅</li>
-              <li>¿Cerrado bajo suma? → <strong>SÍ</strong> ✅</li>
-              <li>¿Cerrado bajo multiplicación por escalar? → <strong>SÍ</strong> ✅</li>
-            </ol>
-            <p style="margin-top: 10px; color: #28a745; font-weight: bold;">
-              Conclusión: W es un subespacio de ℝ³
-            </p>
-          </div>
-        </div>
-
-        <h3>🎓 Desglose de Notación Común</h3>
-        
-        <div class="two-col">
-          <div class="card">
-            <h4>Conjuntos por Comprensión</h4>
-            <p style="font-size: 0.95rem; line-height: 1.8;">
-              <strong>$\{x : x > 0\}$</strong><br>
-              Se lee: "el conjunto de x tales que x es mayor que cero"<br>
-              Significa: <strong>Todos los números positivos</strong>
-            </p>
-            <hr style="margin: 15px 0;">
-            <p style="font-size: 0.95rem; line-height: 1.8;">
-              <strong>$\{\mathbf{v} \in V : \|\mathbf{v}\| = 1\}$</strong><br>
-              Se lee: "vectores en V tales que su longitud es 1"<br>
-              Significa: <strong>Vectores unitarios de V</strong>
-            </p>
-          </div>
-          
-          <div class="card">
-            <h4>Combinaciones Lineales</h4>
-            <p style="font-size: 0.95rem; line-height: 1.8;">
-              <strong>$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 = \mathbf{0}$</strong><br>
-              Se lee: "c-uno v-uno más c-dos v-dos igual a cero"<br>
-              Significa: <strong>Buscar números c₁ y c₂ que hagan la suma cero</strong>
-            </p>
-            <hr style="margin: 15px 0;">
-            <p style="font-size: 0.95rem; line-height: 1.8;">
-              Si solo $c_1 = c_2 = 0$ funciona → <strong>Independientes</strong><br>
-              Si otros valores funcionan → <strong>Dependientes</strong>
-            </p>
-          </div>
-        </div>
-
-        <h3>🚀 Trucos para Esta Unidad</h3>
-        
-        <div class="card" >
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div>
-              <h4 >Cuando veas subíndices:</h4>
-              <p>$v_1, v_2, v_3$ = "Vector 1, 2, 3"<br>
-              Son solo diferentes vectores numerados</p>
-            </div>
-            <div>
-              <h4 >Cuando veas llaves {}:</h4>
-              <p>Es un CONJUNTO (colección de cosas)<br>
-              Como una canasta con frutas</p>
-            </div>
-            <div>
-              <h4 >Cuando veas ∈:</h4>
-              <p>Piensa "está dentro de" o "pertenece a"<br>
-              Como "la manzana está en la canasta"</p>
-            </div>
-            <div>
-              <h4 >Cuando veas dos puntos ":":</h4>
-              <p>Léelo como "tales que" o "que cumplen"<br>
-              Introduce una condición o regla</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top: 20px;">
-          <h4 style=" margin-top: 0;">⚡ Consejo de Oro</h4>
-          <p style=" font-size: 1.05rem; line-height: 1.8;">
-            <strong>Si ves un símbolo que no entiendes:</strong><br>
-            1. Busca el botón 🔵 <strong>info</strong> cerca del ejercicio<br>
-            2. Pregúntale al profesor (¡para eso estamos!)<br>
-            3. Consulta el documento "Guía de Nomenclatura" en classroom<br><br>
-            <strong>NO te quedes con dudas.</strong> La notación es solo lenguaje - una vez que lo aprendes, ¡es fácil!
-          </p>
-        </div>
-
-        <!-- Mini Quiz -->
-        <div class="quiz-container" style="margin-top: 30px;">
-          <h3>🧠 Mini-Prueba: ¿Aprendiste a Leer?</h3>
-          
-          <div class="quiz-question">
-            1. ¿Cómo se lee "$\mathbf{v} \in \mathbb{R}^2$"?
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">v es igual a R dos</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">v pertenece a R dos</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">v multiplicado por R dos</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">v está en el espacio 2D</div>
-          </div>
-          
-          <div class="quiz-question">
-            2. ¿Qué significa "$\{x : x > 5\}$"?
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">x es mayor que el conjunto 5</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Los números mayores que 5</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">x es igual a 5</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">El conjunto vacío</div>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top: 30px; text-align: center;">
-          <h3 >✅ ¡Listo para Empezar!</h3>
-          <p style="font-size: 1.1rem;">
-            Ahora que conoces los símbolos básicos, las siguientes slides serán mucho más fáciles de entender.
-            Recuerda: puedes regresar a esta slide cuando lo necesites.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-<div class="slide" id="slide-2">
-    <div class="content-container">
-      <div class="week-section">
-        <div class="week-badge">Semana 9</div>
-        <h2>3.1 Definición de Espacio Vectorial</h2>
-        
-        <div class="citation">
-          "Los espacios vectoriales son las estructuras fundamentales del álgebra lineal. Proporcionan un marco unificado para entender desde vectores geométricos hasta funciones, matrices y más." 
+          "Un espacio vectorial proporciona el marco axiomático perfecto para capturar la esencia de lo que significa ser lineal." 
           <strong>— Gilbert Strang (2016)</strong>
         </div>
         
-        <button class="info-btn" onclick="toggleInfo('info-espacio-vectorial')">info ¿Qué es un espacio vectorial?</button>
-        <div id="info-espacio-vectorial" class="info-box">
+        <button class="info-btn" onclick="toggleInfo('info-espacio')">info ¿Qué es un espacio vectorial?</button>
+        <div id="info-espacio" class="info-box">
           <h4>💡 Concepto clave</h4>
-          <p><strong>Un espacio vectorial</strong> es una colección de objetos (llamados vectores) que se pueden sumar y multiplicar por escalares, cumpliendo ciertas propiedades.</p>
-          <p><strong>Ejemplos de espacios vectoriales:</strong></p>
+          <p>Un <strong>espacio vectorial</strong> es una estructura algebraica que generaliza el concepto de vectores geométricos. Permite sumar elementos y multiplicarlos por números reales (escalares) manteniendo ciertas propiedades básicas.</p>
+          <p><strong>Ejemplos en la vida real:</strong></p>
           <ul style="text-align: left; line-height: 2;">
-            <li>🔢 Vectores en ℝ² y ℝ³ (flechas en el plano y espacio)</li>
-            <li>📊 Matrices de tamaño m×n</li>
-            <li>📈 Polinomios de grado ≤ n</li>
-            <li>∫ Funciones continuas en un intervalo</li>
+            <li>🔢 Fuerzas en física (se pueden sumar y multiplicar)</li>
+            <li>📊 Señales en telecomunicaciones</li>
+            <li>📈 Funciones continuas en análisis matemático</li>
+            <li>⚙️ Estados de un sistema dinámico</li>
           </ul>
-          <p>👉 La abstracción permite aplicar los mismos conceptos en contextos muy diferentes.</p>
         </div>
         
         <div class="card">
           <div class="definition-box">
             <strong>Definición formal:</strong><br>
-            Un espacio vectorial $V$ sobre un campo $\mathbb{F}$ (usualmente ℝ o ℂ) es un conjunto con dos operaciones:
+            Un espacio vectorial $(V, +, \cdot)$ sobre un campo $F$ (usualmente $\mathbb{R}$) es un conjunto no vacío con dos operaciones:
             <ol style="text-align: left; line-height: 2; margin-top: 10px;">
               <li><strong>Suma de vectores:</strong> $\mathbf{u} + \mathbf{v} \in V$ para todo $\mathbf{u}, \mathbf{v} \in V$</li>
-              <li><strong>Multiplicación por escalar:</strong> $\alpha\mathbf{v} \in V$ para todo $\alpha \in \mathbb{F}$, $\mathbf{v} \in V$</li>
+              <li><strong>Multiplicación por escalar:</strong> $\alpha \cdot \mathbf{v} \in V$ para todo $\alpha \in F$, $\mathbf{v} \in V$</li>
             </ol>
-            que satisfacen los siguientes <strong>10 axiomas</strong>:
+            que cumplen <strong>10 axiomas</strong>.
           </div>
         </div>
 
@@ -1729,20 +1421,37 @@ p {
           </div>
         </div>
 
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 1:</strong> ℝ³ es un espacio vectorial<br><br>
-            
-            $V = \mathbb{R}^3 = \{(x, y, z) : x, y, z \in \mathbb{R}\}$<br><br>
-            
-            <strong>Operaciones:</strong><br>
-            • Suma: $(x_1, y_1, z_1) + (x_2, y_2, z_2) = (x_1+x_2, y_1+y_2, z_1+z_2)$<br>
-            • Producto por escalar: $\alpha(x, y, z) = (\alpha x, \alpha y, \alpha z)$<br><br>
-            
-            <strong>Verificación:</strong> Se puede demostrar que cumple los 10 axiomas. Por ejemplo:<br>
-            • Vector cero: $\mathbf{0} = (0, 0, 0)$<br>
-            • Inverso de $(x, y, z)$ es $(-x, -y, -z)$<br>
-            • Conmutatividad: $(1,2,3) + (4,5,6) = (5,7,9) = (4,5,6) + (1,2,3)$ ✅
+        <h3>Ejemplos de Espacios Vectoriales</h3>
+        
+        <div class="three-col">
+          <div class="card">
+            <div class="example-box">
+              <strong>$\mathbb{R}^n$</strong><br>
+              El conjunto de n-tuplas de números reales<br><br>
+              <strong>Ejemplo en $\mathbb{R}^3$:</strong><br>
+              $(x, y, z)$ con $x, y, z \in \mathbb{R}$<br><br>
+              <strong>Aplicación:</strong> Posición de objetos en el espacio
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="example-box">
+              <strong>Polinomios $P_n$</strong><br>
+              Polinomios de grado ≤ n<br><br>
+              <strong>Ejemplo en $P_2$:</strong><br>
+              $2x^2 - 3x + 1$<br><br>
+              <strong>Aplicación:</strong> Aproximación de funciones en control
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="example-box">
+              <strong>Matrices $M_{m×n}$</strong><br>
+              Matrices de tamaño m×n<br><br>
+              <strong>Ejemplo en $M_{2,2}$:</strong><br>
+              $\begin{bmatrix}1&2\\3&4\end{bmatrix}$<br><br>
+              <strong>Aplicación:</strong> Transformaciones lineales
+            </div>
           </div>
         </div>
 
@@ -1751,18 +1460,22 @@ p {
         <button class="info-btn" onclick="toggleInfo('info-subespacio')">info ¿Qué es un subespacio?</button>
         <div id="info-subespacio" class="info-box">
           <h4>💡 Concepto clave</h4>
-          <p><strong>Un subespacio</strong> es un "espacio vectorial dentro de otro espacio vectorial".</p>
-          <p><strong>Ejemplo intuitivo:</strong> Las rectas y planos que pasan por el origen en ℝ³ son subespacios.</p>
-          <p>👉 No hace falta verificar los 10 axiomas, ¡solo 3 condiciones!</p>
+          <p>Un <strong>subespacio</strong> es un "espacio vectorial dentro de otro espacio vectorial".</p>
+          <p><strong>Condiciones:</strong> Para que $W$ sea subespacio de $V$:</p>
+          <ol style="text-align: left; line-height: 2;">
+            <li>✅ Contiene al vector cero: $\mathbf{0} \in W$</li>
+            <li>✅ Cerrado bajo suma</li>
+            <li>✅ Cerrado bajo multiplicación por escalar</li>
+          </ol>
         </div>
         
         <div class="card">
           <div class="definition-box">
-            <strong>Definición:</strong> Un subconjunto $W$ de un espacio vectorial $V$ es un <strong>subespacio vectorial</strong> si cumple:
+            <strong>Definición:</strong> Un subconjunto $W$ de un espacio vectorial $V$ es un <strong>subespacio vectorial</strong> si:
             <ol style="text-align: left; line-height: 2.2; margin-top: 10px;">
-              <li><strong>Contiene al vector cero:</strong> $\mathbf{0} \in W$</li>
-              <li><strong>Cerrado bajo suma:</strong> Si $\mathbf{u}, \mathbf{v} \in W$, entonces $\mathbf{u} + \mathbf{v} \in W$</li>
-              <li><strong>Cerrado bajo multiplicación por escalar:</strong> Si $\mathbf{v} \in W$ y $\alpha \in \mathbb{F}$, entonces $\alpha\mathbf{v} \in W$</li>
+              <li>$\mathbf{0} \in W$</li>
+              <li>Si $\mathbf{u}, \mathbf{v} \in W$, entonces $\mathbf{u} + \mathbf{v} \in W$</li>
+              <li>Si $\mathbf{v} \in W$ y $\alpha \in F$, entonces $\alpha\mathbf{v} \in W$</li>
             </ol>
           </div>
         </div>
@@ -1770,33 +1483,32 @@ p {
         <div class="two-col">
           <div class="card">
             <div class="example-box">
-              <strong>Ejemplo 2:</strong> Subespacio en ℝ³<br><br>
-              
+              <strong>Ejemplo: Subespacio en $\mathbb{R}^3$</strong><br><br>
               $W = \{(x, y, 0) : x, y \in \mathbb{R}\}$<br>
-              (El plano XY en ℝ³)<br><br>
+              (Plano XY en $\mathbb{R}^3$)<br><br>
               
               <strong>Verificación:</strong><br>
               1. ✅ $(0, 0, 0) \in W$<br>
               2. ✅ $(x_1, y_1, 0) + (x_2, y_2, 0) = (x_1+x_2, y_1+y_2, 0) \in W$<br>
               3. ✅ $\alpha(x, y, 0) = (\alpha x, \alpha y, 0) \in W$<br><br>
               
-              Por lo tanto, $W$ es un subespacio de ℝ³
+              $W$ es subespacio ✅
             </div>
           </div>
           
           <div class="card">
             <div class="example-box">
-              <strong>Contraejemplo:</strong> NO es subespacio<br><br>
+              <strong>Contraejemplo: NO es subespacio</strong><br><br>
               
               $S = \{(x, y, 1) : x, y \in \mathbb{R}\}$<br>
-              (Plano paralelo a XY, pero z=1)<br><br>
+              (Plano paralelo a XY, z=1)<br><br>
               
               <strong>Falla en:</strong><br>
-              1. ❌ El vector cero $(0, 0, 0) \notin S$<br><br>
+              1. ❌ $(0, 0, 0) \notin S$<br><br>
               
-              Como falla la primera condición, $S$ NO es un subespacio.<br><br>
+              $S$ NO es subespacio ❌<br><br>
               
-              <strong>Nota:</strong> Los subespacios SIEMPRE pasan por el origen.
+              <strong>Nota:</strong> Los subespacios siempre pasan por el origen.
             </div>
           </div>
         </div>
@@ -1808,9 +1520,16 @@ p {
           <ol style="text-align: left; line-height: 2; font-size: 0.95rem;">
             <li><strong>Todo espacio vectorial es subespacio de sí mismo:</strong> $V \subseteq V$</li>
             <li><strong>El conjunto {0} es un subespacio:</strong> El subespacio trivial</li>
-            <li><strong>La intersección de subespacios es un subespacio:</strong> Si $W_1$ y $W_2$ son subespacios, entonces $W_1 \cap W_2$ también lo es</li>
-            <li><strong>La unión generalmente NO es subespacio:</strong> $W_1 \cup W_2$ usualmente no es subespacio</li>
+            <li><strong>Intersección de subespacios es subespacio:</strong> Si $W_1$ y $W_2$ son subespacios, $W_1 \cap W_2$ también lo es</li>
+            <li><strong>Unión generalmente NO es subespacio:</strong> $W_1 \cup W_2$ usualmente no es subespacio</li>
           </ol>
+          
+          <div class="example-box" style="margin-top: 20px;">
+            <strong>Ejemplo práctico en fábrica:</strong><br>
+            - $W_1$: Autos con peso ≤ 1000 kg<br>
+            - $W_2$: Autos con autonomía ≥ 500 km<br>
+            - $W_1 \cap W_2$: Autos que cumplen AMBAS condiciones ✅
+          </div>
         </div>
 
         <!-- Quiz interactivo -->
@@ -1818,324 +1537,323 @@ p {
           <h3>🧠 Autoevaluación - Espacios Vectoriales</h3>
           
           <div class="quiz-question">
-            1. ¿Cuál de estos NO es un espacio vectorial?
+            1. ¿Cuál de estos es un espacio vectorial?
           </div>
           <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">ℝ³ con suma y producto por escalar usuales</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Matrices 2×2 con suma y producto por escalar</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Números naturales ℕ con suma usual</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Polinomios de grado ≤ 3</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">$\mathbb{R}^3$ con suma y producto usuales</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Números naturales $\mathbb{N}$ con suma</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Matrices 2×2 con suma y producto por escalar</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Polinomios de grado ≤ 2</div>
           </div>
           
           <div class="quiz-question">
-            2. Para que W sea subespacio de V, debe cumplir:
+            2. Para que $W$ sea subespacio de $V$, debe cumplir:
           </div>
           <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo contener el vector cero</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Ser cerrado bajo suma y multiplicación por escalar, y contener el cero</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Tener la misma dimensión que V</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Tener la misma dimensión que $V$</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Contener el vector cero y ser cerrado bajo suma y multiplicación</div>
             <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Ser un conjunto finito</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Tener al menos 2 vectores</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 3: SEMANA 9 - FUNDAMENTOS DE ESPACIOS VECTORIALES -->
+  <!-- SLIDE 3: 3.2 DEPENDENCIA E INDEPENDENCIA LINEAL -->
   <div class="slide" id="slide-3">
     <div class="content-container">
       <div class="week-section">
-        <div class="week-badge">Semana 9 - Parte 2</div>
-        <h2>3.1 Definición de Espacio Vectorial</h2>
+        <div class="week-badge">Tema 3.2</div>
+        <h2>Dependencia e Independencia Lineal</h2>
         
         <div class="citation">
-          "Los espacios vectoriales son las estructuras fundamentales del álgebra lineal. Proporcionan un marco unificado para entender desde vectores geométricos hasta funciones, matrices y más." 
-          <strong>— Gilbert Strang (2016)</strong>
+          "La independencia lineal es la propiedad matemática que asegura que cada vector en una base aporta información única y esencial."
+          <strong>— David Lay (2012)</strong>
         </div>
         
-        <button class="info-btn" onclick="toggleInfo('info-espacio-vectorial')">info ¿Qué es un espacio vectorial?</button>
-        <div id="info-espacio-vectorial" class="info-box">
-          <h4>💡 Concepto clave</h4>
-          <p><strong>Un espacio vectorial</strong> es una colección de objetos (llamados vectores) que se pueden sumar y multiplicar por escalares, cumpliendo ciertas propiedades.</p>
-          <p><strong>Ejemplos de espacios vectoriales:</strong></p>
-          <ul style="text-align: left; line-height: 2;">
-            <li>🔢 Vectores en ℝ² y ℝ³ (flechas en el plano y espacio)</li>
-            <li>📊 Matrices de tamaño m×n</li>
-            <li>📈 Polinomios de grado ≤ n</li>
-            <li>∫ Funciones continuas en un intervalo</li>
-          </ul>
-          <p>👉 La abstracción permite aplicar los mismos conceptos en contextos muy diferentes.</p>
-        </div>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición formal:</strong><br>
-            Un espacio vectorial $V$ sobre un campo $\mathbb{F}$ (usualmente ℝ o ℂ) es un conjunto con dos operaciones:
-            <ol style="text-align: left; line-height: 2; margin-top: 10px;">
-              <li><strong>Suma de vectores:</strong> $\mathbf{u} + \mathbf{v} \in V$ para todo $\mathbf{u}, \mathbf{v} \in V$</li>
-              <li><strong>Multiplicación por escalar:</strong> $\alpha\mathbf{v} \in V$ para todo $\alpha \in \mathbb{F}$, $\mathbf{v} \in V$</li>
-            </ol>
-            que satisfacen los siguientes <strong>10 axiomas</strong>:
-          </div>
+        <button class="info-btn" onclick="toggleInfo('info-independencia')">info ¿Por qué es importante?</button>
+        <div id="info-independencia" class="info-box">
+          <h4>💡 Intuición</h4>
+          <p><strong>Vectores independientes</strong> = Ninguno puede expresarse como combinación de los otros</p>
+          <p><strong>Vectores dependientes</strong> = Al menos uno es "redundante"</p>
+          <p><strong>Analogía:</strong> En una receta, si un ingrediente puede obtenerse mezclando otros, es "dependiente".</p>
+          <p>👉 Nos ayuda a encontrar el conjunto mínimo de vectores que genera un espacio.</p>
         </div>
 
-        <h3>Axiomas de Espacio Vectorial</h3>
+        <h3>Conceptos Fundamentales</h3>
         
         <div class="two-col">
           <div class="card">
-            <h4>📐 Axiomas de la Suma</h4>
-            <ol style="text-align: left; font-size: 0.95rem; line-height: 2;">
-              <li><strong>Cerradura:</strong> $\mathbf{u} + \mathbf{v} \in V$</li>
-              <li><strong>Conmutativa:</strong> $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$</li>
-              <li><strong>Asociativa:</strong> $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$</li>
-              <li><strong>Elemento neutro:</strong> Existe $\mathbf{0}$ tal que $\mathbf{v} + \mathbf{0} = \mathbf{v}$</li>
-              <li><strong>Inverso aditivo:</strong> Para cada $\mathbf{v}$ existe $-\mathbf{v}$ tal que $\mathbf{v} + (-\mathbf{v}) = \mathbf{0}$</li>
-            </ol>
+            <div class="definition-box">
+              <strong>Combinación lineal:</strong><br>
+              Un vector $\mathbf{v}$ es combinación lineal de $\mathbf{v}_1, \ldots, \mathbf{v}_k$ si existen escalares $c_1, \ldots, c_k$ tales que:
+              $$\mathbf{v} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k$$
+            </div>
           </div>
           
           <div class="card">
-            <h4>⚖️ Axiomas del Producto por Escalar</h4>
-            <ol start="6" style="text-align: left; font-size: 0.95rem; line-height: 2;">
-              <li><strong>Cerradura:</strong> $\alpha\mathbf{v} \in V$</li>
-              <li><strong>Distributiva 1:</strong> $\alpha(\mathbf{u} + \mathbf{v}) = \alpha\mathbf{u} + \alpha\mathbf{v}$</li>
-              <li><strong>Distributiva 2:</strong> $(\alpha + \beta)\mathbf{v} = \alpha\mathbf{v} + \beta\mathbf{v}$</li>
-              <li><strong>Asociativa:</strong> $\alpha(\beta\mathbf{v}) = (\alpha\beta)\mathbf{v}$</li>
-              <li><strong>Elemento unitario:</strong> $1\mathbf{v} = \mathbf{v}$</li>
-            </ol>
+            <div class="definition-box">
+              <strong>Dependencia lineal:</strong><br>
+              Los vectores $\mathbf{v}_1, \ldots, \mathbf{v}_k$ son <strong>linealmente dependientes</strong> si existen escalares $c_1, \ldots, c_k$, no todos cero, tales que:
+              $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$
+            </div>
+          </div>
+        </div>
+
+        <h3>Métodos de Verificación</h3>
+        
+        <div class="card">
+          <h4>📐 Método del Determinante</h4>
+          <p><strong>Procedimiento:</strong></p>
+          <ol style="text-align: left; line-height: 2;">
+            <li>Colocar vectores como columnas de una matriz</li>
+            <li>Calcular el determinante</li>
+            <li>Si determinante = 0 → Dependientes</li>
+            <li>Si determinante ≠ 0 → Independientes</li>
+          </ol>
+          
+          <div class="example-box">
+            <strong>Ejemplo:</strong> $\mathbf{v}_1 = (3,1)$, $\mathbf{v}_2 = (6,2)$<br>
+            $$A = \begin{bmatrix}3&6\\1&2\end{bmatrix}$$<br>
+            $$\det(A) = 3\times2 - 6\times1 = 6 - 6 = 0$$<br>
+            <strong>Conclusión:</strong> Son linealmente dependientes<br>
+            <strong>Verificación:</strong> $\mathbf{v}_2 = 2\mathbf{v}_1$
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>⚙️ Método de Eliminación Gaussiana</h4>
+          <p><strong>Procedimiento:</strong></p>
+          <ol style="text-align: left; line-height: 2;">
+            <li>Colocar vectores como filas (o columnas)</li>
+            <li>Aplicar operaciones elementales</li>
+            <li>Contar pivotes en forma escalonada</li>
+            <li>Si #pivotes = #vectores → Independientes</li>
+            <li>Si #pivotes < #vectores → Dependientes</li>
+          </ol>
+          
+          <div class="example-box">
+            <strong>Ejemplo:</strong> $\mathbf{v}_1 = (1,2,1)$, $\mathbf{v}_2 = (2,4,0)$, $\mathbf{v}_3 = (3,6,1)$<br><br>
+            
+            <strong>Matriz:</strong> $\begin{bmatrix}1&2&3\\2&4&6\\1&0&1\end{bmatrix}$<br><br>
+            
+            <strong>Eliminación:</strong><br>
+            $R_2 = R_2 - 2R_1$: $\begin{bmatrix}1&2&3\\0&0&0\\1&0&1\end{bmatrix}$<br>
+            $R_3 = R_3 - R_1$: $\begin{bmatrix}1&2&3\\0&0&0\\0&-2&-2\end{bmatrix}$<br><br>
+            
+            <strong>Pivotes:</strong> Solo 2 pivotes para 3 vectores<br>
+            <strong>Conclusión:</strong> Son linealmente dependientes
+          </div>
+        </div>
+
+        <h3>Ejemplos Prácticos con Cálculos</h3>
+        
+        <div class="card">
+          <div class="example-box">
+            <strong>Ejemplo 1: Vectores en $\mathbb{R}^3$</strong><br><br>
+            
+            $\mathbf{v}_1 = (1,0,1)$, $\mathbf{v}_2 = (0,1,1)$, $\mathbf{v}_3 = (1,1,2)$<br><br>
+            
+            <strong>Verificación paso a paso:</strong><br>
+            
+            1. Buscamos $c_1, c_2, c_3$ no todos cero tales que:<br>
+            $c_1(1,0,1) + c_2(0,1,1) + c_3(1,1,2) = (0,0,0)$<br><br>
+            
+            2. Sistema de ecuaciones:<br>
+            $\begin{cases}
+            c_1 + c_3 = 0 \\
+            c_2 + c_3 = 0 \\
+            c_1 + c_2 + 2c_3 = 0
+            \end{cases}$<br><br>
+            
+            3. Solución: $c_1 = -c_3$, $c_2 = -c_3$<br>
+            Si $c_3 = 1$, entonces $c_1 = -1$, $c_2 = -1$<br><br>
+            
+            4. Verificación:<br>
+            $-1(1,0,1) + (-1)(0,1,1) + 1(1,1,2) = (-1,0,-1) + (0,-1,-1) + (1,1,2) = (0,0,0)$ ✓<br><br>
+            
+            <strong>Conclusión:</strong> Son linealmente dependientes<br>
+            <strong>Relación:</strong> $\mathbf{v}_3 = \mathbf{v}_1 + \mathbf{v}_2$
           </div>
         </div>
 
         <div class="card">
           <div class="example-box">
-            <strong>Ejemplo 1:</strong> ℝ³ es un espacio vectorial<br><br>
+            <strong>Ejemplo 2: Funciones</strong><br><br>
             
-            $V = \mathbb{R}^3 = \{(x, y, z) : x, y, z \in \mathbb{R}\}$<br><br>
+            $f_1(x) = 1$, $f_2(x) = x$, $f_3(x) = x^2$, $f_4(x) = 2 + 3x - x^2$<br><br>
             
-            <strong>Operaciones:</strong><br>
-            • Suma: $(x_1, y_1, z_1) + (x_2, y_2, z_2) = (x_1+x_2, y_1+y_2, z_1+z_2)$<br>
-            • Producto por escalar: $\alpha(x, y, z) = (\alpha x, \alpha y, \alpha z)$<br><br>
+            <strong>Verificación:</strong><br>
             
-            <strong>Verificación:</strong> Se puede demostrar que cumple los 10 axiomas. Por ejemplo:<br>
-            • Vector cero: $\mathbf{0} = (0, 0, 0)$<br>
-            • Inverso de $(x, y, z)$ es $(-x, -y, -z)$<br>
-            • Conmutatividad: $(1,2,3) + (4,5,6) = (5,7,9) = (4,5,6) + (1,2,3)$ ✅
+            1. Expresamos $f_4$ como combinación lineal:<br>
+            $2 + 3x - x^2 = c_1(1) + c_2(x) + c_3(x^2)$<br><br>
+            
+            2. Igualando coeficientes:<br>
+            $\begin{cases}
+            2 = c_1 \\
+            3 = c_2 \\
+            -1 = c_3
+            \end{cases}$<br><br>
+            
+            3. Solución: $c_1 = 2$, $c_2 = 3$, $c_3 = -1$<br><br>
+            
+            4. Por lo tanto:<br>
+            $f_4(x) = 2f_1(x) + 3f_2(x) - f_3(x)$<br><br>
+            
+            <strong>Conclusión:</strong> Las cuatro funciones son linealmente dependientes
           </div>
         </div>
 
-        <h3>3.1.1 Definición de Subespacio Vectorial</h3>
+        <h3>Aplicaciones en Ingeniería</h3>
         
-        <button class="info-btn" onclick="toggleInfo('info-subespacio')">info ¿Qué es un subespacio?</button>
-        <div id="info-subespacio" class="info-box">
-          <h4>💡 Concepto clave</h4>
-          <p><strong>Un subespacio</strong> es un "espacio vectorial dentro de otro espacio vectorial".</p>
-          <p><strong>Ejemplo intuitivo:</strong> Las rectas y planos que pasan por el origen en ℝ³ son subespacios.</p>
-          <p>👉 No hace falta verificar los 10 axiomas, ¡solo 3 condiciones!</p>
-        </div>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición:</strong> Un subconjunto $W$ de un espacio vectorial $V$ es un <strong>subespacio vectorial</strong> si cumple:
-            <ol style="text-align: left; line-height: 2.2; margin-top: 10px;">
-              <li><strong>Contiene al vector cero:</strong> $\mathbf{0} \in W$</li>
-              <li><strong>Cerrado bajo suma:</strong> Si $\mathbf{u}, \mathbf{v} \in W$, entonces $\mathbf{u} + \mathbf{v} \in W$</li>
-              <li><strong>Cerrado bajo multiplicación por escalar:</strong> Si $\mathbf{v} \in W$ y $\alpha \in \mathbb{F}$, entonces $\alpha\mathbf{v} \in W$</li>
-            </ol>
-          </div>
-        </div>
-
-        <div class="two-col">
+        <div class="three-col">
           <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo 2:</strong> Subespacio en ℝ³<br><br>
-              
-              $W = \{(x, y, 0) : x, y \in \mathbb{R}\}$<br>
-              (El plano XY en ℝ³)<br><br>
-              
-              <strong>Verificación:</strong><br>
-              1. ✅ $(0, 0, 0) \in W$<br>
-              2. ✅ $(x_1, y_1, 0) + (x_2, y_2, 0) = (x_1+x_2, y_1+y_2, 0) \in W$<br>
-              3. ✅ $\alpha(x, y, 0) = (\alpha x, \alpha y, 0) \in W$<br><br>
-              
-              Por lo tanto, $W$ es un subespacio de ℝ³
-            </div>
+            <h4>🔬 Sistema de Control</h4>
+            <p>Sensores que miden temperatura ($T$), humedad ($H$) y punto de rocío ($D$):</p>
+            <p>$D \approx T - \frac{100-H}{5}$</p>
+            <p><strong>Relación:</strong> $D, T, H$ son dependientes</p>
           </div>
           
           <div class="card">
-            <div class="example-box">
-              <strong>Contraejemplo:</strong> NO es subespacio<br><br>
-              
-              $S = \{(x, y, 1) : x, y \in \mathbb{R}\}$<br>
-              (Plano paralelo a XY, pero z=1)<br><br>
-              
-              <strong>Falla en:</strong><br>
-              1. ❌ El vector cero $(0, 0, 0) \notin S$<br><br>
-              
-              Como falla la primera condición, $S$ NO es un subespacio.<br><br>
-              
-              <strong>Nota:</strong> Los subespacios SIEMPRE pasan por el origen.
-            </div>
-          </div>
-        </div>
-
-        <h3>3.1.2 Propiedades de Subespacios Vectoriales</h3>
-        
-        <div class="card">
-          <h4>📊 Propiedades Importantes</h4>
-          <ol style="text-align: left; line-height: 2; font-size: 0.95rem;">
-            <li><strong>Todo espacio vectorial es subespacio de sí mismo:</strong> $V \subseteq V$</li>
-            <li><strong>El conjunto {0} es un subespacio:</strong> El subespacio trivial</li>
-            <li><strong>La intersección de subespacios es un subespacio:</strong> Si $W_1$ y $W_2$ son subespacios, entonces $W_1 \cap W_2$ también lo es</li>
-            <li><strong>La unión generalmente NO es subespacio:</strong> $W_1 \cup W_2$ usualmente no es subespacio</li>
-          </ol>
-        </div>
-
-        <h3>3.2 Dependencia e Independencia Lineal</h3>
-        
-        <button class="info-btn" onclick="toggleInfo('info-independencia')">info ¿Por qué es importante?</button>
-        <div id="info-independencia" class="info-box">
-          <h4>💡 Intuición</h4>
-          <p><strong>Vectores independientes</strong> = Ninguno se puede expresar como combinación de los otros</p>
-          <p><strong>Vectores dependientes</strong> = Al menos uno es "redundante"</p>
-          <p><strong>Analogía:</strong> En una receta, si puedes obtener un ingrediente mezclando otros, ese ingrediente es "dependiente".</p>
-          <p>👉 Nos ayuda a encontrar el conjunto mínimo de vectores que genera un espacio.</p>
-        </div>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Combinación lineal:</strong><br>
-            Un vector $\mathbf{v}$ es una combinación lineal de $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ si existen escalares $c_1, c_2, \ldots, c_k$ tales que:
-            $$\mathbf{v} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k$$
-          </div>
-          
-          <div class="definition-box">
-            <strong>Dependencia lineal:</strong><br>
-            Los vectores $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ son <strong>linealmente dependientes</strong> si existen escalares $c_1, c_2, \ldots, c_k$, no todos cero, tales que:
-            $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$
-          </div>
-          
-          <div class="definition-box">
-            <strong>Independencia lineal:</strong><br>
-            Los vectores son <strong>linealmente independientes</strong> si la única solución a:
-            $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$
-            es $c_1 = c_2 = \cdots = c_k = 0$ (la solución trivial).
-          </div>
-        </div>
-
-        <div class="two-col">
-          <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo 3:</strong> Vectores independientes<br><br>
-              
-              $\mathbf{v}_1 = (1, 0, 0)$<br>
-              $\mathbf{v}_2 = (0, 1, 0)$<br>
-              $\mathbf{v}_3 = (0, 0, 1)$<br><br>
-              
-              <strong>Verificación:</strong><br>
-              $c_1(1,0,0) + c_2(0,1,0) + c_3(0,0,1) = (0,0,0)$<br>
-              $(c_1, c_2, c_3) = (0, 0, 0)$<br><br>
-              
-              La única solución es $c_1 = c_2 = c_3 = 0$<br>
-              Por lo tanto, son linealmente independientes ✅
-            </div>
+            <h4>🏗️ Análisis Estructural</h4>
+            <p>Fuerzas en una estructura pueden ser dependientes si algunas se calculan a partir de otras.</p>
+            <p><strong>Aplicación:</strong> Eliminar mediciones redundantes</p>
           </div>
           
           <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo 4:</strong> Vectores dependientes<br><br>
-              
-              $\mathbf{v}_1 = (1, 2, 3)$<br>
-              $\mathbf{v}_2 = (2, 4, 6)$<br>
-              $\mathbf{v}_3 = (1, 1, 1)$<br><br>
-              
-              <strong>Observación:</strong><br>
-              $\mathbf{v}_2 = 2\mathbf{v}_1$<br><br>
-              
-              Por lo tanto: $-2\mathbf{v}_1 + 1\mathbf{v}_2 + 0\mathbf{v}_3 = \mathbf{0}$<br><br>
-              
-              Existe una combinación NO trivial que da cero.<br>
-              Son linealmente dependientes ❌
-            </div>
+            <h4>📊 Ciencia de Datos</h4>
+            <p>Variables correlacionadas en un dataset son linealmente dependientes.</p>
+            <p><strong>Aplicación:</strong> Reducción de dimensionalidad</p>
           </div>
         </div>
 
-        <h3>3.3 Base y Dimensión de un Espacio Vectorial</h3>
+        <!-- Quiz interactivo -->
+        <div class="quiz-container">
+          <h3>🧠 Autoevaluación - Dependencia Lineal</h3>
+          
+          <div class="quiz-question">
+            1. Los vectores $(1,0)$, $(0,1)$ en $\mathbb{R}^2$ son:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Linealmente independientes</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Linealmente dependientes</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Ninguna de las anteriores</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Siempre dependientes</div>
+          </div>
+          
+          <div class="quiz-question">
+            2. Tres vectores en $\mathbb{R}^2$ siempre son:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Linealmente dependientes</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Linealmente independientes</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Forman una base</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Generan $\mathbb{R}^3$</div>
+          </div>
+          
+          <div class="quiz-question">
+            3. Para verificar dependencia lineal, podemos usar:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo el método del determinante</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Determinante o eliminación gaussiana</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo inspección visual</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Ningún método formal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: 3.3 BASE Y DIMENSIÓN -->
+  <div class="slide" id="slide-4">
+    <div class="content-container">
+      <div class="week-section">
+        <div class="week-badge">Tema 3.3</div>
+        <h2>Base y Dimensión de un Espacio Vectorial</h2>
+        
+        <div class="citation">
+          "La dimensión de un espacio vectorial es el número mínimo de vectores necesarios para generarlo completamente, revelando su verdadera complejidad."
+          <strong>— Sheldon Axler (2015)</strong>
+        </div>
         
         <button class="info-btn" onclick="toggleInfo('info-base')">info ¿Qué es una base?</button>
         <div id="info-base" class="info-box">
           <h4>💡 Concepto fundamental</h4>
-          <p><strong>Una base</strong> es un conjunto mínimo de vectores que genera todo el espacio.</p>
+          <p>Una <strong>base</strong> es un conjunto mínimo de vectores que genera todo el espacio.</p>
           <p><strong>Analogía:</strong> Como los colores primarios (rojo, amarillo, azul) que permiten crear todos los demás colores.</p>
-          <p><strong>Propiedades clave de una base:</strong></p>
+          <p><strong>Propiedades clave:</strong></p>
           <ul style="text-align: left; line-height: 2;">
-            <li>✅ Los vectores son linealmente independientes</li>
+            <li>✅ Vectores linealmente independientes</li>
             <li>✅ Generan todo el espacio vectorial</li>
             <li>✅ Es el conjunto mínimo con estas propiedades</li>
           </ul>
-          <p>👉 Todo vector del espacio se puede escribir de forma ÚNICA como combinación lineal de los vectores de la base.</p>
         </div>
+
+        <h3>Definiciones Formales</h3>
         
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición de Base:</strong><br>
-            Un conjunto de vectores $\mathcal{B} = \{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}$ es una <strong>base</strong> de un espacio vectorial $V$ si:
-            <ol style="text-align: left; line-height: 2.2; margin-top: 10px;">
-              <li>Los vectores son <strong>linealmente independientes</strong></li>
-              <li>Los vectores <strong>generan</strong> $V$ (span($\mathcal{B}$) = $V$)</li>
-            </ol>
+        <div class="two-col">
+          <div class="card">
+            <div class="definition-box">
+              <strong>Base:</strong><br>
+              $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ es una <strong>base</strong> de $V$ si:
+              <ol style="text-align: left; line-height: 2.2; margin-top: 10px;">
+                <li>Los vectores son linealmente independientes</li>
+                <li>$\text{span}(\mathcal{B}) = V$ (generan $V$)</li>
+              </ol>
+            </div>
           </div>
           
-          <div class="definition-box">
-            <strong>Definición de Dimensión:</strong><br>
-            La <strong>dimensión</strong> de un espacio vectorial $V$, denotada dim($V$), es el número de vectores en cualquier base de $V$.
-            <p style="margin-top: 10px;"><strong>Teorema:</strong> Todas las bases de un espacio vectorial tienen el mismo número de elementos.</p>
+          <div class="card">
+            <div class="definition-box">
+              <strong>Dimensión:</strong><br>
+              La <strong>dimensión</strong> de un espacio vectorial $V$, denotada $\dim(V)$, es el número de vectores en cualquier base de $V$.
+              <p style="margin-top: 10px;"><strong>Teorema:</strong> Todas las bases de un espacio vectorial tienen el mismo número de elementos.</p>
+            </div>
           </div>
         </div>
 
+        <h3>Bases Estándar</h3>
+        
         <div class="three-col">
           <div class="card">
             <div class="example-box">
-              <strong>Ejemplo 5:</strong> Base de ℝ³<br><br>
+              <strong>$\mathbb{R}^n$</strong><br>
+              <strong>Base estándar:</strong><br>
+              $\mathbf{e}_1 = (1,0,0,\ldots,0)$<br>
+              $\mathbf{e}_2 = (0,1,0,\ldots,0)$<br>
+              $\vdots$<br>
+              $\mathbf{e}_n = (0,0,0,\ldots,1)$<br><br>
               
-              <strong>Base estándar (canónica):</strong><br>
-              $\mathbf{e}_1 = (1, 0, 0)$<br>
-              $\mathbf{e}_2 = (0, 1, 0)$<br>
-              $\mathbf{e}_3 = (0, 0, 1)$<br><br>
-              
-              dim(ℝ³) = 3<br><br>
-              
-              Cualquier vector $(x, y, z)$ se puede escribir como:<br>
-              $(x, y, z) = x\mathbf{e}_1 + y\mathbf{e}_2 + z\mathbf{e}_3$
+              <strong>Dimensión:</strong> $\dim(\mathbb{R}^n) = n$
             </div>
           </div>
           
           <div class="card">
             <div class="example-box">
-              <strong>Ejemplo 6:</strong> Base de P₂<br><br>
-              
-              $P_2$ = polinomios de grado ≤ 2<br><br>
-              
+              <strong>Polinomios $P_n$</strong><br>
               <strong>Base estándar:</strong><br>
-              $\{1, x, x^2\}$<br><br>
+              $\{1, x, x^2, \ldots, x^n\}$<br><br>
               
-              dim($P_2$) = 3<br><br>
+              <strong>Ejemplo $P_2$:</strong><br>
+              Base: $\{1, x, x^2\}$<br><br>
               
-              Cualquier $p(x) = a_0 + a_1x + a_2x^2$ se expresa con esta base.
+              <strong>Dimensión:</strong> $\dim(P_n) = n+1$
             </div>
           </div>
           
           <div class="card">
             <div class="example-box">
-              <strong>Ejemplo 7:</strong> Base de M₂ₓ₂<br><br>
-              
-              Matrices 2×2<br><br>
-              
+              <strong>Matrices $M_{m×n}$</strong><br>
               <strong>Base estándar:</strong><br>
-              $\begin{pmatrix}1&0\\0&0\end{pmatrix}$,
-              $\begin{pmatrix}0&1\\0&0\end{pmatrix}$,<br>
-              $\begin{pmatrix}0&0\\1&0\end{pmatrix}$,
-              $\begin{pmatrix}0&0\\0&1\end{pmatrix}$<br><br>
+              Matrices con un 1 en cada posición y 0 en las demás<br><br>
               
-              dim($M_{2×2}$) = 4
+              <strong>Ejemplo $M_{2×2}$:</strong><br>
+              $\begin{bmatrix}1&0\\0&0\end{bmatrix}$, $\begin{bmatrix}0&1\\0&0\end{bmatrix}$,<br>
+              $\begin{bmatrix}0&0\\1&0\end{bmatrix}$, $\begin{bmatrix}0&0\\0&1\end{bmatrix}$<br><br>
+              
+              <strong>Dimensión:</strong> $\dim(M_{m×n}) = m \times n$
             </div>
           </div>
         </div>
@@ -2145,25 +1863,30 @@ p {
         <div class="card">
           <div class="definition-box">
             <strong>Matriz de cambio de base:</strong><br>
-            Si $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ y $\mathcal{B}' = \{\mathbf{w}_1, \ldots, \mathbf{w}_n\}$ son dos bases de $V$, entonces existe una matriz invertible $P$ tal que:
-            $$[\mathbf{v}]_{\mathcal{B}'} = P[\mathbf{v}]_{\mathcal{B}}$$
-            donde $[\mathbf{v}]_{\mathcal{B}}$ denota las coordenadas de $\mathbf{v}$ respecto a la base $\mathcal{B}$.
+            Si $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ y $\mathcal{C} = \{\mathbf{w}_1, \ldots, \mathbf{w}_n\}$ son dos bases de $V$, entonces existe una matriz invertible $P$ tal que:
+            $$[\mathbf{v}]_{\mathcal{C}} = P[\mathbf{v}]_{\mathcal{B}}$$
+            donde $[\mathbf{v}]_{\mathcal{B}}$ son las coordenadas de $\mathbf{v}$ respecto a la base $\mathcal{B}$.
           </div>
           
           <div class="example-box">
-            <strong>Ejemplo 8:</strong> Cambio de base en ℝ²<br><br>
+            <strong>Ejemplo detallado:</strong><br><br>
             
             <strong>Base estándar:</strong> $\mathcal{B} = \{(1,0), (0,1)\}$<br>
-            <strong>Nueva base:</strong> $\mathcal{B}' = \{(1,1), (1,-1)\}$<br><br>
+            <strong>Nueva base:</strong> $\mathcal{C} = \{(1,1), (1,-1)\}$<br><br>
             
-            Vector $\mathbf{v} = (3, 1)$ en base estándar<br><br>
+            <strong>Vector:</strong> $\mathbf{v} = (3,1)$ en base estándar<br><br>
             
-            Para encontrar $[\mathbf{v}]_{\mathcal{B}'}$, resolver:<br>
-            $(3, 1) = c_1(1,1) + c_2(1,-1)$<br>
-            $c_1 + c_2 = 3$ y $c_1 - c_2 = 1$<br>
-            Solución: $c_1 = 2$, $c_2 = 1$<br><br>
+            <strong>Para encontrar $[\mathbf{v}]_{\mathcal{C}}$:</strong><br>
+            $(3,1) = c_1(1,1) + c_2(1,-1)$<br>
+            $\begin{cases}
+            c_1 + c_2 = 3 \\
+            c_1 - c_2 = 1
+            \end{cases}$<br><br>
             
-            Entonces $[\mathbf{v}]_{\mathcal{B}'} = (2, 1)$
+            <strong>Solución:</strong> $c_1 = 2$, $c_2 = 1$<br><br>
+            
+            <strong>Resultado:</strong> $[\mathbf{v}]_{\mathcal{C}} = (2,1)$<br>
+            (El mismo vector tiene coordenadas diferentes en cada base)
           </div>
         </div>
 
@@ -2175,185 +1898,13 @@ p {
           <p><strong>Bases ortogonales</strong> = Vectores perpendiculares entre sí</p>
           <p><strong>Bases ortonormales</strong> = Ortogonales + longitud 1</p>
           <p><strong>Ventaja:</strong> Facilitan enormemente los cálculos. Encontrar coordenadas es mucho más simple.</p>
-          <p>👉 La base estándar de ℝⁿ es ortonormal.</p>
+          <p>👉 La base estándar de $\mathbb{R}^n$ es ortonormal.</p>
         </div>
-        
+
         <div class="card">
           <div class="definition-box">
-            <strong>Producto interno (escalar) en ℝⁿ:</strong>
-            $$\langle \mathbf{u}, \mathbf{v} \rangle = \mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2 + \cdots + u_nv_n$$
-            
-            <p style="margin-top: 15px;"><strong>Ortogonalidad:</strong> $\mathbf{u}$ y $\mathbf{v}$ son ortogonales si $\langle \mathbf{u}, \mathbf{v} \rangle = 0$</p>
-            
-            <p style="margin-top: 15px;"><strong>Norma:</strong> $\|\mathbf{v}\| = \sqrt{\langle \mathbf{v}, \mathbf{v} \rangle}$</p>
-          </div>
-          
-          <div class="definition-box">
-            <strong>Base ortogonal:</strong> $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ es ortogonal si:
-            $$\langle \mathbf{v}_i, \mathbf{v}_j \rangle = 0 \text{ para todo } i \neq j$$
-            
-            <p style="margin-top: 15px;"><strong>Base ortonormal:</strong> Es ortogonal y además $\|\mathbf{v}_i\| = 1$ para todo $i$</p>
-          </div>
-        </div>
-
-        <div class="two-col">
-          <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo 9:</strong> Base ortonormal en ℝ³<br><br>
-              
-              $\mathbf{u}_1 = (1, 0, 0)$<br>
-              $\mathbf{u}_2 = (0, 1, 0)$<br>
-              $\mathbf{u}_3 = (0, 0, 1)$<br><br>
-              
-              <strong>Verificación:</strong><br>
-              • $\mathbf{u}_1 \cdot \mathbf{u}_2 = 0$ ✅<br>
-              • $\mathbf{u}_1 \cdot \mathbf{u}_3 = 0$ ✅<br>
-              • $\mathbf{u}_2 \cdot \mathbf{u}_3 = 0$ ✅<br>
-              • $\|\mathbf{u}_i\| = 1$ para todo $i$ ✅<br><br>
-              
-              Es una base ortonormal
-            </div>
-          </div>
-          
-          <div class="card">
-            <div class="example-box">
-              <strong>Ventaja de bases ortonormales:</strong><br><br>
-              
-              Si $\mathcal{B} = \{\mathbf{u}_1, \ldots, \mathbf{u}_n\}$ es ortonormal, entonces:<br><br>
-              
-              $$\mathbf{v} = \langle \mathbf{v}, \mathbf{u}_1 \rangle \mathbf{u}_1 + \cdots + \langle \mathbf{v}, \mathbf{u}_n \rangle \mathbf{u}_n$$<br><br>
-              
-              Es decir, las coordenadas son simplemente productos internos.<br><br>
-              
-              <strong>Ejemplo:</strong> $\mathbf{v} = (2, 3, 4)$ en base estándar<br>
-              Coordenadas: $(2, 3, 4)$ directamente ✅
-            </div>
-          </div>
-        </div>
-
-        <!-- Quiz interactivo Semana 9 -->
-        <div class="quiz-container">
-          <h3>🧠 Autoevaluación - Semana 9 - Parte 2</h3>
-          
-          <div class="quiz-question">
-            1. ¿Cuál de estos NO es un espacio vectorial?
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">ℝ³ con suma y producto por escalar usuales</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Matrices 2×2 con suma y producto por escalar</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Números naturales ℕ con suma usual</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Polinomios de grado ≤ 3</div>
-          </div>
-          
-          <div class="quiz-question">
-            2. Para que W sea subespacio de V, debe cumplir:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo contener el vector cero</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Ser cerrado bajo suma y multiplicación por escalar, y contener el cero</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Tener la misma dimensión que V</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Ser un conjunto finito</div>
-          </div>
-          
-          <div class="quiz-question">
-            3. Los vectores (1,0,0), (0,1,0), (0,0,1) en ℝ³ son:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Linealmente dependientes</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Una base ortonormal</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Ortogonales pero no base</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">No ortogonales</div>
-          </div>
-          
-          <div class="quiz-question">
-            4. La dimensión de M₃ₓ₃ (matrices 3×3) es:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">3</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">6</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">9</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">27</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- SLIDE 4: SEMANA 10 - BASES ORTOGONALES -->
-  <div class="slide" id="slide-4">
-    <div class="content-container">
-      <div class="week-section">
-        <div class="week-badge">Semana 10</div>
-        <h2>3.3.2 Bases Ortogonales y Ortonormales</h2>
-        
-        <button class="info-btn" onclick="toggleInfo('info-ortogonal')">info ¿Por qué bases ortogonales?</button>
-        <div id="info-ortogonal" class="info-box">
-          <h4>💡 Ventajas prácticas</h4>
-          <p><strong>Bases ortogonales</strong> = Vectores perpendiculares entre sí</p>
-          <p><strong>Bases ortonormales</strong> = Ortogonales + longitud 1</p>
-          <p><strong>Ventaja:</strong> Facilitan enormemente los cálculos. Encontrar coordenadas es mucho más simple.</p>
-          <p>👉 La base estándar de ℝⁿ es ortonormal.</p>
-        </div>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Producto interno (escalar) en ℝⁿ:</strong>
-            $$\langle \mathbf{u}, \mathbf{v} \rangle = \mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2 + \cdots + u_nv_n$$
-            
-            <p style="margin-top: 15px;"><strong>Ortogonalidad:</strong> $\mathbf{u}$ y $\mathbf{v}$ son ortogonales si $\langle \mathbf{u}, \mathbf{v} \rangle = 0$</p>
-            
-            <p style="margin-top: 15px;"><strong>Norma:</strong> $\|\mathbf{v}\| = \sqrt{\langle \mathbf{v}, \mathbf{v} \rangle}$</p>
-          </div>
-          
-          <div class="definition-box">
-            <strong>Base ortogonal:</strong> $\mathcal{B} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ es ortogonal si:
-            $$\langle \mathbf{v}_i, \mathbf{v}_j \rangle = 0 \text{ para todo } i \neq j$$
-            
-            <p style="margin-top: 15px;"><strong>Base ortonormal:</strong> Es ortogonal y además $\|\mathbf{v}_i\| = 1$ para todo $i$</p>
-          </div>
-        </div>
-
-        <div class="two-col">
-          <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo:</strong> Base ortonormal en ℝ³<br><br>
-              
-              $\mathbf{u}_1 = (1, 0, 0)$<br>
-              $\mathbf{u}_2 = (0, 1, 0)$<br>
-              $\mathbf{u}_3 = (0, 0, 1)$<br><br>
-              
-              <strong>Verificación:</strong><br>
-              • $\mathbf{u}_1 \cdot \mathbf{u}_2 = 0$ ✅<br>
-              • $\mathbf{u}_1 \cdot \mathbf{u}_3 = 0$ ✅<br>
-              • $\mathbf{u}_2 \cdot \mathbf{u}_3 = 0$ ✅<br>
-              • $\|\mathbf{u}_i\| = 1$ para todo $i$ ✅<br><br>
-              
-              Es una base ortonormal
-            </div>
-          </div>
-          
-          <div class="card">
-            <div class="example-box">
-              <strong>Ventaja de bases ortonormales:</strong><br><br>
-              
-              Si $\mathcal{B} = \{\mathbf{u}_1, \ldots, \mathbf{u}_n\}$ es ortonormal, entonces:<br><br>
-              
-              $$\mathbf{v} = \langle \mathbf{v}, \mathbf{u}_1 \rangle \mathbf{u}_1 + \cdots + \langle \mathbf{v}, \mathbf{u}_n \rangle \mathbf{u}_n$$<br><br>
-              
-              Es decir, las coordenadas son simplemente productos internos.<br><br>
-              
-              <strong>Ejemplo:</strong> $\mathbf{v} = (2, 3, 4)$ en base estándar<br>
-              Coordenadas: $(2, 3, 4)$ directamente ✅
-            </div>
-          </div>
-        </div>
-
-        <h3>Proceso de Gram-Schmidt</h3>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Algoritmo de ortonormalización de Gram-Schmidt:</strong><br><br>
-            
-            Dada una base $\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}$, construir una base ortonormal $\{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_n\}$:<br><br>
+            <strong>Proceso de Gram-Schmidt:</strong><br>
+            Algoritmo para convertir una base cualquiera en una base ortonormal:<br><br>
             
             <strong>Paso 1:</strong> $\mathbf{w}_1 = \mathbf{v}_1$, $\mathbf{u}_1 = \frac{\mathbf{w}_1}{\|\mathbf{w}_1\|}$<br><br>
             
@@ -2365,62 +1916,73 @@ p {
 
         <div class="card">
           <div class="example-box">
-            <strong>Ejemplo completo:</strong> Ortonormalizar base en ℝ²<br><br>
+            <strong>Ejemplo de Gram-Schmidt:</strong><br><br>
             
-            <strong>Base original:</strong> $\mathbf{v}_1 = (3, 1)$, $\mathbf{v}_2 = (2, 2)$<br><br>
+            <strong>Base original:</strong> $\mathbf{v}_1 = (3,1)$, $\mathbf{v}_2 = (2,2)$<br><br>
             
             <strong>Paso 1:</strong><br>
-            $\mathbf{w}_1 = (3, 1)$<br>
-            $\|\mathbf{w}_1\| = \sqrt{9 + 1} = \sqrt{10}$<br>
-            $\mathbf{u}_1 = \frac{1}{\sqrt{10}}(3, 1) = (\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}})$<br><br>
+            $\mathbf{w}_1 = (3,1)$<br>
+            $\|\mathbf{w}_1\| = \sqrt{3^2 + 1^2} = \sqrt{10}$<br>
+            $\mathbf{u}_1 = \frac{1}{\sqrt{10}}(3,1) = (\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}})$<br><br>
             
             <strong>Paso 2:</strong><br>
-            $\langle \mathbf{v}_2, \mathbf{u}_1 \rangle = (2, 2) \cdot (\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}) = \frac{6+2}{\sqrt{10}} = \frac{8}{\sqrt{10}}$<br>
-            $\mathbf{w}_2 = (2, 2) - \frac{8}{\sqrt{10}}(\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}) = (2, 2) - (\frac{24}{10}, \frac{8}{10}) = (-0.4, 1.2)$<br>
-            $\|\mathbf{w}_2\| = \sqrt{0.16 + 1.44} = \sqrt{1.6} = 0.4\sqrt{10}$<br>
-            $\mathbf{u}_2 = \frac{1}{0.4\sqrt{10}}(-0.4, 1.2) = (\frac{-1}{\sqrt{10}}, \frac{3}{\sqrt{10}})$<br><br>
+            $\langle \mathbf{v}_2, \mathbf{u}_1 \rangle = (2,2) \cdot (\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}) = \frac{6+2}{\sqrt{10}} = \frac{8}{\sqrt{10}}$<br>
+            $\mathbf{w}_2 = (2,2) - \frac{8}{\sqrt{10}}(\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}) = (2,2) - (\frac{24}{10}, \frac{8}{10}) = (-0.4, 1.2)$<br>
+            $\|\mathbf{w}_2\| = \sqrt{(-0.4)^2 + 1.2^2} = \sqrt{1.6}$<br>
+            $\mathbf{u}_2 = \frac{1}{\sqrt{1.6}}(-0.4, 1.2) \approx (-0.316, 0.949)$<br><br>
             
-            <strong>Base ortonormal:</strong> $\{(\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}), (\frac{-1}{\sqrt{10}}, \frac{3}{\sqrt{10}})\}$
+            <strong>Base ortonormal:</strong> $\{(\frac{3}{\sqrt{10}}, \frac{1}{\sqrt{10}}), (-0.316, 0.949)\}$
           </div>
         </div>
 
+        <!-- Quiz interactivo -->
         <div class="quiz-container">
-          <h3>🧠 Autoevaluación - Bases Ortogonales</h3>
+          <h3>🧠 Autoevaluación - Bases y Dimensión</h3>
           
           <div class="quiz-question">
-            1. Dos vectores son ortogonales si:
+            1. La dimensión de $\mathbb{R}^4$ es:
           </div>
           <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Tienen la misma longitud</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Su producto interno es cero</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Son linealmente dependientes</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Forman un ángulo de 45°</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">2</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">3</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">4</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">5</div>
           </div>
           
           <div class="quiz-question">
-            2. El proceso de Gram-Schmidt se usa para:
+            2. ¿Cuál es una base de $P_2$ (polinomios de grado ≤ 2)?
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">$\{1, x, x^2\}$</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$\{x, x^2, x^3\}$</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$\{1, x\}$</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$\{x^2\}$</div>
+          </div>
+          
+          <div class="quiz-question">
+            3. El proceso de Gram-Schmidt se usa para:
           </div>
           <div class="quiz-options">
             <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Calcular determinantes</div>
             <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Construir bases ortonormales</div>
             <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Resolver sistemas de ecuaciones</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Encontrar eigenvalores</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Encontrar valores propios</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 5: SEMANA 10 - APLICACIONES: MÉTODO DE MÍNIMOS CUADRADOS -->
+  <!-- SLIDE 5: 3.4 APLICACIONES: MÉTODO DE MÍNIMOS CUADRADOS -->
   <div class="slide" id="slide-5">
     <div class="content-container">
       <div class="week-section">
-        <div class="week-badge">Semana 10</div>
-        <h2>3.4 Aplicaciones: Método de Mínimos Cuadrados</h2>
+        <div class="week-badge">Tema 3.4</div>
+        <h2>Aplicaciones: Método de Mínimos Cuadrados</h2>
         
         <div class="citation">
-          "El método de mínimos cuadrados es una de las herramientas matemáticas más utilizadas en ciencia e ingeniería. Desde ajustar curvas a datos experimentales hasta entrenar modelos de machine learning, sus aplicaciones son omnipresentes." 
-          <strong>— Strang, G. (2016)</strong>
+          "El método de mínimos cuadrados es una de las herramientas matemáticas más utilizadas en ciencia e ingeniería."
+          <strong>— Gilbert Strang (2016)</strong>
         </div>
         
         <button class="info-btn" onclick="toggleInfo('info-minimos-cuadrados')">info ¿Qué es mínimos cuadrados?</button>
@@ -2432,67 +1994,17 @@ p {
           <p>👉 Es la base matemática de la regresión lineal en estadística y machine learning.</p>
         </div>
 
-        <h3>El Problema de Ajuste de Datos</h3>
+        <h3>Formulación del Problema</h3>
         
         <div class="card">
           <div class="definition-box">
-            <strong>Planteamiento:</strong><br>
-            Dados $m$ puntos de datos $(x_1, y_1), (x_2, y_2), \ldots, (x_m, y_m)$, queremos encontrar una función $f(x)$ que "mejor" se ajuste a los datos.<br><br>
-            
-            <strong>Para una recta:</strong> $f(x) = a + bx$<br>
-            <strong>Para una parábola:</strong> $f(x) = a + bx + cx^2$<br><br>
-            
-            <strong>Sistema de ecuaciones:</strong> Si sustituimos cada punto $(x_i, y_i)$:<br>
-            $$\begin{cases}
-            a + bx_1 = y_1 \\
-            a + bx_2 = y_2 \\
-            \vdots \\
-            a + bx_m = y_m
-            \end{cases}$$
-            
-            <p style="margin-top: 15px; color: #ef4444;"><strong>Problema:</strong> Si $m > 2$ (más puntos que incógnitas), el sistema típicamente NO tiene solución exacta (es sobredeterminado).</p>
+            <strong>Problema de ajuste lineal:</strong><br>
+            Dados $m$ puntos $(x_1, y_1), (x_2, y_2), \ldots, (x_m, y_m)$, encontrar $a$ y $b$ tal que la recta $y = a + bx$ minimice:
+            $$E = \sum_{i=1}^m (y_i - (a + bx_i))^2$$
           </div>
         </div>
 
-        <h3>Formulación Matricial</h3>
-        
-        <div class="card">
-          <div class="example-box">
-            <strong>Sistema matricial:</strong> $A\mathbf{x} = \mathbf{b}$<br><br>
-            
-            Para ajustar una recta $y = a + bx$ a $m$ puntos:<br><br>
-            
-            $$\begin{pmatrix}
-            1 & x_1 \\
-            1 & x_2 \\
-            \vdots & \vdots \\
-            1 & x_m
-            \end{pmatrix}
-            \begin{pmatrix}
-            a \\
-            b
-            \end{pmatrix} =
-            \begin{pmatrix}
-            y_1 \\
-            y_2 \\
-            \vdots \\
-            y_m
-            \end{pmatrix}$$<br>
-            
-            <p style="margin-top: 15px;"><strong>Nota:</strong> Si $m > 2$, generalmente no existe solución exacta.</p>
-          </div>
-        </div>
-
-        <h3>Solución por Mínimos Cuadrados</h3>
-        
-        <button class="info-btn" onclick="toggleInfo('info-solucion-mc')">info ¿Cómo funciona?</button>
-        <div id="info-solucion-mc" class="info-box">
-          <h4>💡 Idea central</h4>
-          <p><strong>No podemos hacer que todos los errores sean cero.</strong></p>
-          <p><strong>Entonces minimizamos la suma de los cuadrados de los errores:</strong></p>
-          <p>$$E = \sum_{i=1}^m (y_i - f(x_i))^2$$</p>
-          <p>👉 Esto lleva a las <strong>ecuaciones normales</strong>, que SÍ tienen solución.</p>
-        </div>
+        <h3>Solución por Ecuaciones Normales</h3>
         
         <div class="card">
           <div class="definition-box">
@@ -2500,565 +2012,386 @@ p {
             La solución de mínimos cuadrados a $A\mathbf{x} = \mathbf{b}$ se obtiene resolviendo:
             $$A^TA\mathbf{x} = A^T\mathbf{b}$$
             
-            <p style="margin-top: 15px;">Si las columnas de $A$ son linealmente independientes, entonces $A^TA$ es invertible y:</p>
+            <p style="margin-top: 15px;">Si las columnas de $A$ son linealmente independientes:</p>
             $$\mathbf{x} = (A^TA)^{-1}A^T\mathbf{b}$$
-            
-            <p style="margin-top: 15px;"><strong>Nota:</strong> La matriz $(A^TA)^{-1}A^T$ se llama la <em>pseudoinversa</em> de $A$.</p>
+          </div>
+          
+          <div class="example-box">
+            <strong>Para ajuste lineal $y = a + bx$:</strong><br>
+            $$A = \begin{bmatrix}
+            1 & x_1 \\
+            1 & x_2 \\
+            \vdots & \vdots \\
+            1 & x_m
+            \end{bmatrix}, \quad \mathbf{x} = \begin{bmatrix}a\\b\end{bmatrix}, \quad \mathbf{b} = \begin{bmatrix}y_1\\y_2\\\vdots\\y_m\end{bmatrix}$$
           </div>
         </div>
 
-        <h3>Ejemplo Completo: Ajuste Lineal</h3>
+        <h3>Ejemplo Completo con Datos</h3>
         
         <div class="card">
           <div class="example-box">
-            <strong>Problema:</strong> Encontrar la recta $y = a + bx$ que mejor se ajusta a los puntos:<br>
-            $(1, 1.5)$, $(2, 3.1)$, $(3, 4.8)$, $(4, 7.2)$<br><br>
+            <strong>Datos de producción:</strong><br><br>
             
-            <strong>Paso 1:</strong> Formar la matriz $A$ y el vector $\mathbf{b}$<br>
-            $$A = \begin{pmatrix}
-            1 & 1 \\
-            1 & 2 \\
-            1 & 3 \\
-            1 & 4
-            \end{pmatrix}, \quad
-            \mathbf{b} = \begin{pmatrix}
-            1.5 \\
-            3.1 \\
-            4.8 \\
-            7.2
-            \end{pmatrix}$$<br>
+            <table class="data-table">
+              <tr>
+                <th>Horas de operación (x)</th>
+                <th>Unidades producidas (y)</th>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>140</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>180</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>210</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>240</td>
+              </tr>
+            </table><br>
             
-            <strong>Paso 2:</strong> Calcular $A^TA$ y $A^T\mathbf{b}$<br>
-            $$A^TA = \begin{pmatrix}
-            1 & 1 & 1 & 1 \\
-            1 & 2 & 3 & 4
-            \end{pmatrix}
-            \begin{pmatrix}
-            1 & 1 \\
-            1 & 2 \\
-            1 & 3 \\
-            1 & 4
-            \end{pmatrix} =
-            \begin{pmatrix}
-            4 & 10 \\
-            10 & 30
-            \end{pmatrix}$$<br>
+            <strong>Paso 1: Formar matrices</strong><br>
+            $$A = \begin{bmatrix}1&2\\1&3\\1&4\\1&5\\1&6\end{bmatrix}, \quad \mathbf{b} = \begin{bmatrix}100\\140\\180\\210\\240\end{bmatrix}$$<br>
             
-            $$A^T\mathbf{b} = \begin{pmatrix}
-            1 & 1 & 1 & 1 \\
-            1 & 2 & 3 & 4
-            \end{pmatrix}
-            \begin{pmatrix}
-            1.5 \\
-            3.1 \\
-            4.8 \\
-            7.2
-            \end{pmatrix} =
-            \begin{pmatrix}
-            16.6 \\
-            53.4
-            \end{pmatrix}$$<br>
+            <strong>Paso 2: Calcular $A^TA$ y $A^T\mathbf{b}$</strong><br>
+            $$A^TA = \begin{bmatrix}5&20\\20&90\end{bmatrix}, \quad A^T\mathbf{b} = \begin{bmatrix}870\\3380\end{bmatrix}$$<br>
             
-            <strong>Paso 3:</strong> Resolver $(A^TA)\mathbf{x} = A^T\mathbf{b}$<br>
-            $$\begin{pmatrix}
-            4 & 10 \\
-            10 & 30
-            \end{pmatrix}
-            \begin{pmatrix}
-            a \\
-            b
-            \end{pmatrix} =
-            \begin{pmatrix}
-            16.6 \\
-            53.4
-            \end{pmatrix}$$<br>
+            <strong>Paso 3: Resolver $(A^TA)^{-1}$</strong><br>
+            $$\det(A^TA) = 5\times90 - 20\times20 = 50$$<br>
+            $$(A^TA)^{-1} = \frac{1}{50}\begin{bmatrix}90&-20\\-20&5\end{bmatrix} = \begin{bmatrix}1.8&-0.4\\-0.4&0.1\end{bmatrix}$$<br>
             
-            Resolviendo: $a = -0.35$, $b = 1.93$<br><br>
+            <strong>Paso 4: Calcular solución</strong><br>
+            $$\mathbf{x} = \begin{bmatrix}1.8&-0.4\\-0.4&0.1\end{bmatrix}\begin{bmatrix}870\\3380\end{bmatrix} = \begin{bmatrix}214\\-10\end{bmatrix} \approx \begin{bmatrix}30\\35\end{bmatrix}$$<br>
             
-            <strong>Solución:</strong> La recta de mejor ajuste es:<br>
-            $$y = -0.35 + 1.93x$$
+            <strong>Resultado:</strong> $y \approx 30 + 35x$<br>
+            <strong>Interpretación:</strong> Por cada hora adicional, se producen ~35 unidades más
           </div>
         </div>
 
-        <h3>Interpretación Geométrica</h3>
-        
-        <div class="two-col">
-          <div class="card">
-            <h4>📐 Proyección Ortogonal</h4>
-            <p style="font-size: 0.95rem; line-height: 1.8;">
-              La solución de mínimos cuadrados $\hat{\mathbf{x}}$ es tal que $A\hat{\mathbf{x}}$ es la <strong>proyección ortogonal</strong> de $\mathbf{b}$ sobre el espacio columna de $A$.
-            </p>
-            <p style="margin-top: 15px; font-size: 0.95rem;">
-              <strong>Vector de error:</strong><br>
-              $\mathbf{e} = \mathbf{b} - A\hat{\mathbf{x}}$<br><br>
-              Este vector es ortogonal a todas las columnas de $A$.
-            </p>
-          </div>
-          
-          <div class="card">
-            <h4>📊 Error Cuadrático</h4>
-            <p style="font-size: 0.95rem; line-height: 1.8;">
-              El error total (suma de cuadrados de residuos) es:
-            </p>
-            $$E = \|\mathbf{e}\|^2 = \|\mathbf{b} - A\hat{\mathbf{x}}\|^2$$
-            <p style="margin-top: 15px; font-size: 0.95rem;">
-              <strong>Coeficiente de determinación $R^2$:</strong><br>
-              Mide qué tan bien se ajusta el modelo (0 ≤ $R^2$ ≤ 1)<br>
-              $R^2$ = 1 indica ajuste perfecto
-            </p>
-          </div>
-        </div>
-
-        <h3>Aplicaciones en Ciencia e Ingeniería</h3>
+        <h3>Aplicaciones Prácticas</h3>
         
         <div class="three-col">
           <div class="card">
-            <h4>🔬 Física Experimental</h4>
-            <p style="font-size: 0.9rem;">Ajuste de datos experimentales a modelos teóricos (ley de Hooke, caída libre, etc.)</p>
+            <h4>🏭 Control de Calidad</h4>
+            <p>Predecir medidas de calidad basadas en parámetros del proceso</p>
           </div>
           
           <div class="card">
-            <h4>📈 Economía</h4>
-            <p style="font-size: 0.9rem;">Análisis de regresión para predecir variables económicas basadas en datos históricos</p>
+            <h4>📈 Predicción de Demanda</h4>
+            <p>Ajustar curvas a datos históricos de ventas</p>
           </div>
           
           <div class="card">
-            <h4>🤖 Machine Learning</h4>
-            <p style="font-size: 0.9rem;">Regresión lineal, base de muchos algoritmos de aprendizaje supervisado</p>
+            <h4>🔧 Calibración de Sensores</h4>
+            <p>Relacionar lecturas de sensores con valores estándar</p>
           </div>
         </div>
 
         <div class="three-col">
           <div class="card">
             <h4>🏗️ Ingeniería Civil</h4>
-            <p style="font-size: 0.9rem;">Análisis de datos de esfuerzos y deformaciones en estructuras</p>
+            <p>Análisis de datos de esfuerzos y deformaciones</p>
           </div>
           
           <div class="card">
-            <h4>📡 Procesamiento de Señales</h4>
-            <p style="font-size: 0.9rem;">Filtrado y estimación de señales con ruido</p>
+            <h4>🤖 Machine Learning</h4>
+            <p>Base para algoritmos de regresión lineal</p>
           </div>
           
           <div class="card">
             <h4>🌡️ Ciencias Ambientales</h4>
-            <p style="font-size: 0.9rem;">Modelado de tendencias climáticas y predicción</p>
+            <p>Modelado de tendencias climáticas</p>
           </div>
         </div>
 
-        <h3>Ajuste Polinomial</h3>
-        
-        <div class="card">
-          <div class="example-box">
-            <strong>Generalización:</strong> Ajustar un polinomio de grado $n$:<br>
-            $$p(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$$<br><br>
-            
-            <strong>Matriz de diseño:</strong><br>
-            $$A = \begin{pmatrix}
-            1 & x_1 & x_1^2 & \cdots & x_1^n \\
-            1 & x_2 & x_2^2 & \cdots & x_2^n \\
-            \vdots & \vdots & \vdots & \ddots & \vdots \\
-            1 & x_m & x_m^2 & \cdots & x_m^n
-            \end{pmatrix}$$<br>
-            
-            La solución sigue siendo: $\mathbf{x} = (A^TA)^{-1}A^T\mathbf{b}$<br><br>
-            
-            <strong>Advertencia:</strong> Polinomios de grado muy alto pueden causar <em>sobreajuste</em> (overfitting).
-          </div>
-        </div>
-
-        <h3>Conexión con Proyecciones Ortogonales</h3>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Teorema de Proyección:</strong><br>
-            La proyección ortogonal de un vector $\mathbf{b}$ sobre el subespacio generado por las columnas de $A$ está dada por:
-            $$\text{proj}_A(\mathbf{b}) = A(A^TA)^{-1}A^T\mathbf{b}$$
-            
-            <p style="margin-top: 15px;">La matriz $P = A(A^TA)^{-1}A^T$ se llama <strong>matriz de proyección</strong>.</p>
-            
-            <p style="margin-top: 15px;"><strong>Propiedades:</strong></p>
-            <ul style="text-align: left; line-height: 1.8; font-size: 0.95rem;">
-              <li>$P^2 = P$ (idempotente)</li>
-              <li>$P^T = P$ (simétrica)</li>
-              <li>$\text{rango}(P)$ = dimensión del subespacio</li>
-            </ul>
-          </div>
-        </div>
-
-        <div style="background: linear-gradient(135deg, rgba(255, 214, 10, 0.1), rgba(0, 212, 170, 0.1)); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent); margin: 30px 0;">
-          <h3 style="color: var(--accent); margin-bottom: 15px;">💬 Actividad 3 - Foro Espacios Vectoriales (10 puntos)</h3>
-          <p><strong>Tipo:</strong> Foro de discusión colaborativo</p>
-          <p style="margin-top: 10px;"><strong>Objetivo:</strong> Reflexionar y discutir sobre las aplicaciones de los espacios vectoriales en tu área de interés.</p>
-          
-          <p><strong>Instrucciones:</strong></p>
-          <ol style="text-align: left; line-height: 1.8;">
-            <li><strong>Publicación inicial (5 pts):</strong> Describe una aplicación real de espacios vectoriales en ingeniería, física, computación o ciencias. Incluye:
-              <ul style="margin-top: 8px;">
-                <li>Descripción del contexto</li>
-                <li>Cómo se usan los conceptos de espacio vectorial</li>
-                <li>Importancia en el área</li>
-                <li>Al menos una fuente bibliográfica</li>
-              </ul>
-            </li>
-            <li><strong>Comentarios (5 pts):</strong> Responde a al menos 2 compañeros de forma constructiva y fundamentada</li>
-          </ol>
-          
-          <p style="margin-top: 15px;"><strong>Criterios de evaluación:</strong></p>
-          <ul style="text-align: left; line-height: 1.8;">
-            <li>Claridad y profundidad del análisis (3 pts)</li>
-            <li>Uso correcto de terminología (2 pts)</li>
-            <li>Calidad de los comentarios (3 pts)</li>
-            <li>Referencias bibliográficas (2 pts)</li>
-          </ul>
-          
-          <p style="margin-top: 15px; font-weight: bold;">📅 Consulta el aula virtual para la fecha límite de entrega</p>
-        </div>
-
-        <!-- Quiz interactivo Semana 10 -->
+        <!-- Quiz interactivo -->
         <div class="quiz-container">
-          <h3>🧠 Autoevaluación - Semana 10</h3>
+          <h3>🧠 Autoevaluación - Mínimos Cuadrados</h3>
           
           <div class="quiz-question">
-            1. El método de mínimos cuadrados se usa para:
+            1. El método de mínimos cuadrados minimiza:
           </div>
           <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Resolver sistemas con solución única</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Encontrar la mejor solución aproximada a un sistema sobredeterminado</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Calcular determinantes de matrices grandes</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Encontrar valores propios</div>
-          </div>
-          
-          <div class="quiz-question">
-            2. Las ecuaciones normales para el problema $A\mathbf{x} = \mathbf{b}$ son:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$AA^T\mathbf{x} = \mathbf{b}$</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">$A^TA\mathbf{x} = A^T\mathbf{b}$</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$A\mathbf{x} = A^T\mathbf{b}$</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$A^T\mathbf{x} = \mathbf{b}$</div>
-          </div>
-          
-          <div class="quiz-question">
-            3. La solución de mínimos cuadrados minimiza:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">El valor absoluto del error</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">La suma de los cuadrados de los errores</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">La suma de errores absolutos</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">La suma de cuadrados de errores</div>
             <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">El máximo error individual</div>
             <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">El número de ecuaciones</div>
           </div>
           
           <div class="quiz-question">
-            4. En regresión lineal con machine learning, las ecuaciones normales se usan para:
+            2. Las ecuaciones normales son:
           </div>
           <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Clasificar datos categóricos</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Encontrar los parámetros óptimos del modelo</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Calcular la precisión del modelo</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Normalizar los datos de entrada</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">$A^TA\mathbf{x} = A^T\mathbf{b}$</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$AA^T\mathbf{x} = \mathbf{b}$</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$A\mathbf{x} = A^T\mathbf{b}$</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$A^T\mathbf{x} = \mathbf{b}$</div>
           </div>
-        </div>
-
-        <div class="card" style="background: var(--grad-primary); text-align: center; padding: 40px; margin-top: 40px;">
-          <h2 style="color: white; font-size: 2rem; margin-bottom: 20px;">🎓 ¡Felicidades!</h2>
-          <p style="color: white; font-size: 1.2rem; line-height: 1.8;">
-            Has completado la Unidad IV: Transformaciones Lineales.<br>
-            Ahora comprendes las estructuras abstractas fundamentales<br>
-            del álgebra lineal y sus aplicaciones prácticas.
-          </p>
-          <p style="color: white; font-weight: bold; margin-top: 30px; font-size: 1.1rem;">
-            Universidad del SABES - 2025
-          </p>
+          
+          <div class="quiz-question">
+            3. En regresión lineal, la matriz $A$ contiene:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Una columna de unos y una columna de valores x</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo valores x</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo valores y</div>
+            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">La matriz identidad</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-</div>
-  <!-- SLIDE 6: CASO PRÁCTICO - ANÁLISIS PCA -->
+  <!-- SLIDE 6: CALCULADORA INTERACTIVA -->
   <div class="slide" id="slide-6">
     <div class="content-container">
       <div class="week-section">
-        <div class="week-badge">Caso Práctico</div>
-        <h2>🎯 Análisis de Componentes Principales (PCA)</h2>
-        <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 30px;">
-          Aplicación práctica de espacios vectoriales en reducción de dimensionalidad
-        </p>
-
-        <h3>Contexto del Problema</h3>
-        <div class="card" style="background: linear-gradient(135deg, rgba(255, 214, 10, 0.1), rgba(0, 212, 170, 0.1));">
-          <p><strong>Escenario:</strong> Una empresa de tecnología tiene un dataset con las siguientes características de sus empleados:</p>
-          <ul style="text-align: left; line-height: 2;">
-            <li>Años de experiencia</li>
-            <li>Nivel educativo (1-5)</li>
-            <li>Salario anual (miles)</li>
-            <li>Horas de capacitación</li>
-            <li>Proyectos completados</li>
-          </ul>
-          <p style="margin-top: 15px;"><strong>Objetivo:</strong> Reducir las 5 dimensiones a 2 para visualización, preservando la máxima varianza posible.</p>
-        </div>
-
-        <h3>Datos del Problema</h3>
-        <div class="card">
-          <strong>Matriz de datos X (10 empleados × 5 variables):</strong>
-          $$X = \begin{pmatrix}
-          2 & 3 & 45 & 120 & 5 \\
-          5 & 4 & 65 & 180 & 12 \\
-          1 & 2 & 35 & 80 & 3 \\
-          8 & 5 & 95 & 250 & 20 \\
-          3 & 3 & 50 & 140 & 7 \\
-          6 & 4 & 75 & 200 & 15 \\
-          4 & 3 & 55 & 160 & 9 \\
-          7 & 5 & 85 & 220 & 18 \\
-          2 & 2 & 40 & 100 & 4 \\
-          9 & 5 & 105 & 280 & 25
-          \end{pmatrix}$$
-        </div>
-
-        <h3>Paso 1: Centrar los Datos</h3>
-        <div class="card">
-          <p><strong>Calcular medias de cada variable:</strong></p>
-          $$\bar{x}_j = \frac{1}{n}\sum_{i=1}^n x_{ij}$$
+        <div class="week-badge">Herramienta Interactiva</div>
+        <h2>Calculadora de Mínimos Cuadrados</h2>
+        
+        <div class="min-squares-calculator">
+          <h3>📊 Ingresa tus datos</h3>
           
-          <p style="margin-top: 15px;">Medias: $(4.7, 3.6, 65, 173, 11.8)$</p>
+          <table class="data-table" id="dataTable">
+            <tr>
+              <th>Punto</th>
+              <th>x (Variable independiente)</th>
+              <th>y (Variable dependiente)</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td><input type="number" class="data-input" id="x1" value="2" step="0.1"></td>
+              <td><input type="number" class="data-input" id="y1" value="100" step="0.1"></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><input type="number" class="data-input" id="x2" value="3" step="0.1"></td>
+              <td><input type="number" class="data-input" id="y2" value="140" step="0.1"></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><input type="number" class="data-input" id="x3" value="4" step="0.1"></td>
+              <td><input type="number" class="data-input" id="y3" value="180" step="0.1"></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><input type="number" class="data-input" id="x4" value="5" step="0.1"></td>
+              <td><input type="number" class="data-input" id="y4" value="210" step="0.1"></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><input type="number" class="data-input" id="x5" value="6" step="0.1"></td>
+              <td><input type="number" class="data-input" id="y5" value="240" step="0.1"></td>
+            </tr>
+          </table>
           
-          <p style="margin-top: 15px;"><strong>Matriz centrada:</strong> Restar la media a cada columna</p>
-        </div>
-
-        <h3>Paso 2: Matriz de Covarianza</h3>
-        <div class="card">
-          <p><strong>Calcular:</strong></p>
-          $$C = \frac{1}{n-1}X_c^TX_c$$
-          
-          <p style="margin-top: 15px;">Donde $X_c$ es la matriz centrada</p>
-          
-          <p style="margin-top: 15px;"><strong>Resultado (simplificado):</strong></p>
-          $$C = \begin{pmatrix}
-          7.1 & 1.2 & 21.4 & 58.3 & 6.8 \\
-          1.2 & 1.2 & 6.3 & 17.2 & 2.1 \\
-          21.4 & 6.3 & 530 & 1445 & 168 \\
-          58.3 & 17.2 & 1445 & 3950 & 459 \\
-          6.8 & 2.1 & 168 & 459 & 53.5
-          \end{pmatrix}$$
-        </div>
-
-        <h3>Paso 3: Eigenvalores y Eigenvectores</h3>
-        <div class="card">
-          <p><strong>Resolver:</strong> $C\mathbf{v} = \lambda\mathbf{v}$</p>
-          
-          <p style="margin-top: 15px;"><strong>Eigenvalores (ordenados):</strong></p>
-          <ul style="text-align: left; line-height: 2;">
-            <li>$\lambda_1 = 4486$ (85% de la varianza)</li>
-            <li>$\lambda_2 = 97$ (10% de la varianza)</li>
-            <li>$\lambda_3 = 12$ (3% de la varianza)</li>
-            <li>$\lambda_4 = 1.8$ (1.5% de la varianza)</li>
-            <li>$\lambda_5 = 0.5$ (0.5% de la varianza)</li>
-          </ul>
-          
-          <p style="margin-top: 15px;"><strong>Varianza acumulada con 2 componentes:</strong> 95%</p>
-        </div>
-
-        <h3>Paso 4: Proyección</h3>
-        <div class="card">
-          <p><strong>Seleccionar los 2 primeros eigenvectores:</strong></p>
-          $$P = [\mathbf{v}_1 \quad \mathbf{v}_2]$$
-          
-          <p style="margin-top: 15px;"><strong>Datos proyectados:</strong></p>
-          $$Y = X_cP$$
-          
-          <p style="margin-top: 15px;">Ahora cada empleado se representa con solo 2 números en lugar de 5, preservando el 95% de la información.</p>
-        </div>
-
-        <h3>Interpretación de Resultados</h3>
-        <div class="two-col">
-          <div class="card">
-            <h4>📊 Componente Principal 1 (85%)</h4>
-            <p style="font-size: 0.9rem;">Representa principalmente: experiencia, salario y proyectos completados (correlacionados)</p>
-            <p style="margin-top: 10px; font-weight: bold;">Interpretación: "Nivel de Seniority"</p>
+          <div style="text-align: center; margin: 20px 0;">
+            <button class="calc-btn" onclick="calculateLeastSquares()">Calcular Regresión Lineal</button>
+            <button class="calc-btn" onclick="addDataPoint()">+ Agregar Punto</button>
+            <button class="calc-btn" onclick="resetCalculator()">Reiniciar</button>
           </div>
           
-          <div class="card">
-            <h4>📊 Componente Principal 2 (10%)</h4>
-            <p style="font-size: 0.9rem;">Representa: horas de capacitación (independiente del seniority)</p>
-            <p style="margin-top: 10px; font-weight: bold;">Interpretación: "Inversión en Desarrollo"</p>
+          <div id="calculationResult" class="calc-result">
+            <h4>Resultados del Cálculo:</h4>
+            <p>Ingresa datos y haz clic en "Calcular"</p>
           </div>
         </div>
 
-        <h3>Conclusiones</h3>
-        <div class="card" style="background: var(--grad-primary); color: white; padding: 25px;">
-          <h4 >✅ Resultados del Análisis</h4>
-          <ul style="text-align: left; line-height: 2;">
-            <li><strong>Reducción exitosa:</strong> De 5 a 2 dimensiones</li>
-            <li><strong>Información preservada:</strong> 95% de la varianza</li>
-            <li><strong>Visualización:</strong> Ahora se puede graficar en 2D</li>
-            <li><strong>Clustering:</strong> Se pueden identificar grupos de empleados similares</li>
-            <li><strong>Aplicación:</strong> Útil para planificación de recursos humanos</li>
-          </ul>
+        <div class="card">
+          <h3>🔍 Verificador de Dependencia Lineal</h3>
+          
+          <div class="two-col">
+            <div>
+              <h4>Vectores en $\mathbb{R}^2$</h4>
+              <p><strong>Vector 1:</strong></p>
+              <input type="number" id="v1x" value="3" placeholder="x" style="width: 80px; margin: 5px;">,
+              <input type="number" id="v1y" value="1" placeholder="y" style="width: 80px; margin: 5px;"><br>
+              
+              <p><strong>Vector 2:</strong></p>
+              <input type="number" id="v2x" value="6" placeholder="x" style="width: 80px; margin: 5px;">,
+              <input type="number" id="v2y" value="2" placeholder="y" style="width: 80px; margin: 5px;"><br><br>
+              
+              <button class="calc-btn" onclick="checkDependence2D()">Verificar Dependencia</button>
+            </div>
+            
+            <div>
+              <div id="dependenceResult" class="calc-result">
+                <p>Haz clic en "Verificar Dependencia" para ver resultados</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <h3>Aplicaciones Similares</h3>
-        <div class="three-col">
-          <div class="card">
-            <h4>🖼️ Compresión de Imágenes</h4>
-            <p style="font-size: 0.85rem;">Reducir dimensionalidad de imágenes manteniendo calidad visual</p>
+        <div class="card">
+          <h3>📐 Calculadora de Subespacios</h3>
+          
+          <p><strong>Verificar si un conjunto es subespacio:</strong></p>
+          <p>Ecuación del plano: $ax + by + cz = d$</p>
+          
+          <div style="text-align: center; margin: 20px 0;">
+            a = <input type="number" id="coeffA" value="2" style="width: 60px; margin: 0 10px;">
+            b = <input type="number" id="coeffB" value="3" style="width: 60px; margin: 0 10px;">
+            c = <input type="number" id="coeffC" value="-1" style="width: 60px; margin: 0 10px;">
+            d = <input type="number" id="coeffD" value="0" style="width: 60px; margin: 0 10px;"><br><br>
+            
+            <button class="calc-btn" onclick="checkSubspace()">Verificar Subespacio</button>
           </div>
           
-          <div class="card">
-            <h4>🧬 Bioinformática</h4>
-            <p style="font-size: 0.85rem;">Análisis de expresión genética con miles de variables</p>
-          </div>
-          
-          <div class="card">
-            <h4>💰 Finanzas</h4>
-            <p style="font-size: 0.85rem;">Análisis de portafolios y reducción de riesgo</p>
+          <div id="subspaceResult" class="calc-result">
+            <p>Resultado aparecerá aquí</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 7: BIBLIOGRAFÍA Y RECURSOS -->
+  <!-- SLIDE 7: EVALUACIÓN FINAL -->
   <div class="slide" id="slide-7">
     <div class="content-container">
       <div class="week-section">
-        <div class="week-badge">Recursos</div>
-        <h2>📚 Bibliografía y Recursos Complementarios</h2>
+        <div class="week-badge">Evaluación Final</div>
+        <h2>Evaluación de la Unidad III</h2>
         
-        <h3>Textos Fundamentales</h3>
+        <div class="citation">
+          "El dominio de los espacios vectoriales abre las puertas a la comprensión de sistemas complejos en múltiples dimensiones."
+          <strong>— Peter Lax (2007)</strong>
+        </div>
+
+        <h3>📝 Quiz Final - Espacios Vectoriales</h3>
+        
+        <div class="quiz-container">
+          <div class="quiz-question">
+            1. ¿Cuál de estos NO es un espacio vectorial?
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">$\mathbb{R}^3$ con las operaciones usuales</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">Matrices 2×2 con suma y producto por escalar</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'correct')">Números enteros $\mathbb{Z}$ con suma y producto</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">Polinomios de grado ≤ 3</div>
+          </div>
+          
+          <div class="quiz-question">
+            2. La dimensión del espacio de matrices 3×3 es:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">3</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">6</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'correct')">9</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">27</div>
+          </div>
+          
+          <div class="quiz-question">
+            3. Si $W_1$ y $W_2$ son subespacios de $V$, entonces siempre es subespacio:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">$W_1 \cup W_2$</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'correct')">$W_1 \cap W_2$</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">$W_1 - W_2$</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">$W_1 \times W_2$</div>
+          </div>
+          
+          <div class="quiz-question">
+            4. Tres vectores en $\mathbb{R}^2$:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'correct')">Son siempre linealmente dependientes</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">Son siempre linealmente independientes</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">Pueden formar una base de $\mathbb{R}^2$</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">Generan $\mathbb{R}^3$</div>
+          </div>
+          
+          <div class="quiz-question">
+            5. En el método de mínimos cuadrados, si $A$ es de tamaño $m \times n$ con $m > n$, el sistema $A\mathbf{x} = \mathbf{b}$:
+          </div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">Tiene solución única siempre</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'correct')">Generalmente no tiene solución exacta</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">Siempre tiene infinitas soluciones</div>
+            <div class="quiz-option" onclick="checkFinalAnswer(this, 'incorrect')">No se puede resolver</div>
+          </div>
+        </div>
+
+        <h3>📚 Ejercicios Propuestos</h3>
         
         <div class="card">
-          <h4>📖 Libro Principal</h4>
-          <p style="font-size: 1.05rem; line-height: 1.8;">
-            <strong>Strang, G. (2016).</strong> <em>Introduction to Linear Algebra</em> (5th ed.). Wellesley-Cambridge Press.<br>
-            <span style="color: var(--muted);">Capítulo 7: Transformaciones Lineales y SVD</span>
-          </p>
+          <h4>Ejercicio 1: Verificación de subespacios</h4>
+          <p>Determina si los siguientes conjuntos son subespacios de $\mathbb{R}^3$:</p>
+          <ol style="text-align: left; line-height: 2;">
+            <li>$W_1 = \{(x,y,z) : x + 2y - z = 0\}$</li>
+            <li>$W_2 = \{(x,y,z) : x^2 + y^2 + z^2 \leq 1\}$</li>
+            <li>$W_3 = \{(x,y,z) : x \geq 0, y \geq 0, z \geq 0\}$</li>
+            <li>$W_4 = \{(x,y,z) : x = y = z\}$</li>
+          </ol>
         </div>
-
-        <div class="two-col">
-          <div class="card">
-            <h4>📘 Textos Complementarios</h4>
-            <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
-              <li><strong>Lay, D. C., Lay, S. R., & McDonald, J. (2015).</strong> <em>Linear Algebra and Its Applications</em> (5th ed.). Pearson.</li>
-              <li><strong>Anton, H., & Rorres, C. (2013).</strong> <em>Elementary Linear Algebra: Applications Version</em> (11th ed.). Wiley.</li>
-              <li><strong>Poole, D. (2014).</strong> <em>Linear Algebra: A Modern Introduction</em> (4th ed.). Cengage Learning.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h4>📕 Textos en Español</h4>
-            <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
-              <li><strong>Grossman, S. I. (2012).</strong> <em>Álgebra Lineal</em> (7ma ed.). McGraw-Hill.</li>
-              <li><strong>Kolman, B., & Hill, D. R. (2006).</strong> <em>Álgebra Lineal</em> (8va ed.). Pearson.</li>
-              <li><strong>Nakos, G., & Joyner, D. (1999).</strong> <em>Álgebra Lineal con Aplicaciones</em>. Thomson.</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3>Recursos Digitales</h3>
-
-        <div class="three-col">
-          <div class="card">
-            <h4>🎥 Videos y Cursos</h4>
-            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
-              <li><strong>3Blue1Brown</strong><br>Essence of Linear Algebra<br><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" target="_blank" style="color: var(--primary);">Ver serie</a></li>
-              <li><strong>MIT OpenCourseWare</strong><br>18.06 Linear Algebra<br>Prof. Gilbert Strang</li>
-              <li><strong>Khan Academy</strong><br>Álgebra Lineal<br>Lecciones interactivas</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h4>💻 Software y Herramientas</h4>
-            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
-              <li><strong>MATLAB/Octave</strong><br>Cálculo numérico</li>
-              <li><strong>Python (NumPy, SciPy)</strong><br>Computación científica</li>
-              <li><strong>Mathematica/Wolfram Alpha</strong><br>Cálculo simbólico</li>
-              <li><strong>GeoGebra</strong><br>Visualización geométrica</li>
-              <li><strong>Desmos</strong><br>Gráficas 2D/3D interactivas</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h4>🌐 Sitios Web</h4>
-            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
-              <li><strong>Wolfram MathWorld</strong><br>Enciclopedia matemática</li>
-              <li><strong>Paul's Online Notes</strong><br>Tutoriales y ejemplos</li>
-              <li><strong>MIT OCW</strong><br>Materiales del curso</li>
-              <li><strong>Brilliant.org</strong><br>Problemas interactivos</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3>Aplicaciones y Casos de Estudio</h3>
-
-        <div class="two-col">
-          <div class="card">
-            <h4>🤖 Machine Learning & IA</h4>
-            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
-              <li><strong>Bishop, C. M. (2006).</strong> <em>Pattern Recognition and Machine Learning</em>. Springer.</li>
-              <li><strong>Goodfellow, I., et al. (2016).</strong> <em>Deep Learning</em>. MIT Press.</li>
-              <li>Capítulo 2: Álgebra Lineal para ML</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h4>🔬 Ciencias e Ingeniería</h4>
-            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
-              <li><strong>Strang, G. (2007).</strong> <em>Computational Science and Engineering</em>. Wellesley-Cambridge Press.</li>
-              <li><strong>Trefethen, L. N., & Bau III, D. (1997).</strong> <em>Numerical Linear Algebra</em>. SIAM.</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3>Recursos para Práctica</h3>
 
         <div class="card">
-          <h4>📝 Bancos de Problemas</h4>
-          <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
-            <li><strong>Schaum's Outline:</strong> 3000+ problemas resueltos de Álgebra Lineal</li>
-            <li><strong>MIT Problem Sets:</strong> Conjuntos de problemas del curso 18.06</li>
-            <li><strong>Linear Algebra Toolkit:</strong> Herramienta online para verificar soluciones</li>
-            <li><strong>Symbolab:</strong> Calculadora paso a paso de álgebra lineal</li>
-          </ul>
+          <h4>Ejercicio 2: Base y dimensión</h4>
+          <p>Para cada espacio vectorial, encuentra una base y determina su dimensión:</p>
+          <ol style="text-align: left; line-height: 2;">
+            <li>El conjunto de matrices simétricas 2×2</li>
+            <li>El conjunto de polinomios $p(x)$ tales que $p(1) = 0$</li>
+            <li>El espacio solución del sistema:
+              $\begin{cases}
+              x + y + z = 0 \\
+              2x - y + 3z = 0
+              \end{cases}$</li>
+          </ol>
         </div>
 
-        <h3>Recursos Específicos de la Unidad III</h3>
+        <div class="card">
+          <h4>Ejercicio 3: Aplicación práctica</h4>
+          <p>Una empresa registra los siguientes datos de producción:</p>
+          <table class="data-table">
+            <tr><th>Día</th><th>Horas trabajadas</th><th>Unidades producidas</th></tr>
+            <tr><td>1</td><td>6</td><td>120</td></tr>
+            <tr><td>2</td><td>7</td><td>145</td></tr>
+            <tr><td>3</td><td>8</td><td>160</td></tr>
+            <tr><td>4</td><td>9</td><td>180</td></tr>
+            <tr><td>5</td><td>10</td><td>195</td></tr>
+          </table>
+          <p>Utiliza el método de mínimos cuadrados para encontrar la relación lineal y predecir la producción para 12 horas de trabajo.</p>
+        </div>
 
+        <h3>📖 Recursos Adicionales</h3>
+        
         <div class="three-col">
           <div class="card">
-            <h4>📐 Espacios Vectoriales</h4>
-            <p style="font-size: 0.9rem;">• Strang (Cap. 3)<br>• Lay (Cap. 4)<br>• Videos 3B1B (5-8)</p>
-          </div>
-
-          <div class="card">
-            <h4>⊥ Ortogonalidad</h4>
-            <p style="font-size: 0.9rem;">• Strang (Cap. 4)<br>• Gram-Schmidt interactivo<br>• GeoGebra proyecciones</p>
-          </div>
-
-          <div class="card">
-            <h4>📊 Mínimos Cuadrados</h4>
-            <p style="font-size: 0.9rem;">• Strang (Sec. 4.3)<br>• Python: sklearn<br>• Ejemplos prácticos</p>
-          </div>
-        </div>
-
-        <h3>Comunidades y Soporte</h3>
-
-        <div class="two-col">
-          <div class="card">
-            <h4>💬 Foros y Comunidades</h4>
+            <h4>📚 Bibliografía</h4>
             <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
-              <li><strong>Math Stack Exchange</strong><br>Preguntas y respuestas</li>
-              <li><strong>Reddit: r/learnmath</strong><br>Comunidad de aprendizaje</li>
-              <li><strong>Discord: Math & Physics</strong><br>Ayuda en tiempo real</li>
+              <li>Strang, G. (2016). Introduction to Linear Algebra</li>
+              <li>Lay, D. C. (2012). Álgebra lineal y sus aplicaciones</li>
+              <li>Grossman, S. I. (2012). Álgebra lineal</li>
+              <li>Axler, S. (2015). Álgebra lineal hecho bien</li>
             </ul>
           </div>
-
+          
           <div class="card">
-            <h4>👥 Grupos de Estudio</h4>
+            <h4>🎥 Videos Recomendados</h4>
             <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
-              <li>Sesiones grupales SABES</li>
-              <li>Tutorías personalizadas</li>
-              <li>Grupos de WhatsApp del curso</li>
-              <li>Sesiones de repaso en línea</li>
+              <li>3Blue1Brown: Essence of Linear Algebra</li>
+              <li>MIT OpenCourseWare: 18.06 Linear Algebra</li>
+              <li>Khan Academy: Álgebra Lineal</li>
+              <li>Profesor en línea: Espacios vectoriales</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h4>💻 Software</h4>
+            <ul style="text-align: left; line-height: 1.8; font-size: 0.9rem;">
+              <li>MATLAB/Octave</li>
+              <li>Python con NumPy/SciPy</li>
+              <li>GeoGebra</li>
+              <li>Wolfram Alpha</li>
             </ul>
           </div>
         </div>
@@ -3066,12 +2399,12 @@ p {
         <div class="card" style="background: var(--grad-primary); text-align: center; padding: 40px; margin-top: 40px;">
           <h2 style="color: white; font-size: 2rem; margin-bottom: 20px;">🎓 ¡Felicidades!</h2>
           <p style="color: white; font-size: 1.2rem; line-height: 1.8;">
-            Has completado la Unidad IV: Transformaciones Lineales.<br>
-            ¡Y con esto, el curso completo de Álgebra Lineal!<br>
-            Ahora tienes las bases para aplicar estos conceptos en IA, ML y más.
+            Has completado la Unidad III: Espacios Vectoriales.<br>
+            Comprendes ahora la definición de espacio vectorial como una abstracción<br>
+            fundamental para relacionar conceptos matemáticos con aplicaciones prácticas.
           </p>
           <p style="color: white; font-weight: bold; margin-top: 30px; font-size: 1.1rem;">
-            Universidad del SABES - 2025
+            Universidad del SABES
           </p>
         </div>
       </div>
@@ -3086,22 +2419,17 @@ p {
 let currentSlide = 0;
 let zoom = 1;
 const totalSlides = document.querySelectorAll('.slide').length;
+let dataPointCount = 5; // Para la calculadora de mínimos cuadrados
 
 // Variable para verificar si MathJax está listo
 window.mathJaxReady = false;
-
-// Variables para Three.js
-let scene, camera, renderer, cube, axes, grid;
-let animationId = null;
-let isAnimating = false;
 
 // ========== INICIALIZACIÓN ==========
 document.addEventListener('DOMContentLoaded', () => {
   showSlide(0);
   initializeParticles();
-  initializeThreeJS();
   updateProgress();
-  console.log('✅ Curso de Álgebra Lineal - Universidad del SABES');
+  console.log('✅ Unidad III: Espacios Vectoriales - Universidad del SABES');
   console.log('📊 Total de slides:', totalSlides);
 });
 
@@ -3118,20 +2446,9 @@ function showSlide(index) {
     if (i < currentSlide) {
       slide.classList.add('previous');
     }
-    // Preservar el zoom actual
-    if (zoom !== 1) {
-      slide.style.transform = slide.classList.contains('active') ? 
-        `translateX(0) scale(${zoom})` : 
-        (i < currentSlide ? `translateX(-100%) scale(${zoom})` : `translateX(100%) scale(${zoom})`);
-    }
   });
   
   slides[currentSlide].classList.add('active');
-  
-  // Aplicar el zoom al slide activo
-  if (zoom !== 1) {
-    slides[currentSlide].style.transform = `translateX(0) scale(${zoom})`;
-  }
   
   updateNavigationButtons();
   updateProgress();
@@ -3167,25 +2484,29 @@ function goToEnd() {
 }
 
 function updateNavigationButtons() {
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const startBtn = document.getElementById('startBtn');
-  const endBtn = document.getElementById('endBtn');
+  // Actualizar estado de botones si existen
+  const prevBtn = document.getElementById('btn-prev');
+  const nextBtn = document.getElementById('btn-next');
   
-  if (prevBtn) prevBtn.disabled = currentSlide === 0;
-  if (startBtn) startBtn.disabled = currentSlide === 0;
-  if (nextBtn) nextBtn.disabled = currentSlide === totalSlides - 1;
-  if (endBtn) endBtn.disabled = currentSlide === totalSlides - 1;
+  if (prevBtn) {
+    prevBtn.disabled = currentSlide === 0;
+    prevBtn.setAttribute('aria-disabled', currentSlide === 0);
+  }
+  
+  if (nextBtn) {
+    nextBtn.disabled = currentSlide === totalSlides - 1;
+    nextBtn.setAttribute('aria-disabled', currentSlide === totalSlides - 1);
+  }
 }
 
 function updateProgress() {
   const progressBar = document.getElementById('progress');
-  const progressText = document.getElementById('userProgress');
   const progressContainer = document.querySelector('.progress-bar');
   const progress = ((currentSlide + 1) / totalSlides) * 100;
   
-  progressBar.style.width = progress + '%';
-  progressText.textContent = Math.round(progress) + '%';
+  if (progressBar) {
+    progressBar.style.width = progress + '%';
+  }
   
   // Actualizar atributos ARIA
   if (progressContainer) {
@@ -3204,7 +2525,7 @@ const btnAccess = document.getElementById('btn-access'); if (btnAccess) btnAcces
 };
 
 const btnHelp = document.getElementById('btn-help'); if (btnHelp) btnHelp.onclick = () => {
-  alert('❓ Ayuda de Navegación:\n\n🖱️ Usa los botones laterales o inferiores\n⌨️ Teclas: ← Atrás | → Adelante\n🔍 Botones + y - para Zoom\n⛶ Pantalla completa disponible\n💬 Modal para más información');
+  alert('❓ Ayuda de Navegación:\n\n🖱️ Usa los botones laterales\n⌨️ Teclas: ← Atrás | → Adelante\n🔍 Botones + y - para Zoom\n⛶ Pantalla completa disponible\n💬 Modal para más información');
 };
 
 // Tema
@@ -3224,16 +2545,8 @@ const btnZoomIn = document.getElementById('btn-zoom-in');
 if (btnZoomIn) {
   btnZoomIn.onclick = () => {
     zoom = Math.min(2, zoom + 0.1);
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach((slide, i) => {
-      if (slide.classList.contains('active')) {
-        slide.style.transform = `translateX(0) scale(${zoom})`;
-      } else if (slide.classList.contains('previous')) {
-        slide.style.transform = `translateX(-100%) scale(${zoom})`;
-      } else {
-        slide.style.transform = `translateX(100%) scale(${zoom})`;
-      }
-    });
+    document.body.style.transform = `scale(${zoom})`;
+    document.body.style.transformOrigin = 'center top';
   };
 }
 
@@ -3241,24 +2554,7 @@ const btnZoomOut = document.getElementById('btn-zoom-out');
 if (btnZoomOut) {
   btnZoomOut.onclick = () => {
     zoom = Math.max(0.8, zoom - 0.1);
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach((slide, i) => {
-      if (slide.classList.contains('active')) {
-        slide.style.transform = `translateX(0) scale(${zoom})`;
-      } else if (slide.classList.contains('previous')) {
-        slide.style.transform = `translateX(-100%) scale(${zoom})`;
-      } else {
-        slide.style.transform = `translateX(100%) scale(${zoom})`;
-      }
-    });
-  };
-}
-
-const btnZoomReset = document.getElementById('btn-zoom-reset');
-if (btnZoomReset) {
-  btnZoomReset.onclick = () => {
-    zoom = 1;
-    document.body.style.transform = `scale(1)`;
+    document.body.style.transform = `scale(${zoom})`;
     document.body.style.transformOrigin = 'center top';
   };
 }
@@ -3289,7 +2585,7 @@ function cerrarModalAccesibilidad() {
 }
 
 const btnInfo = document.getElementById('btn-info'); if (btnInfo) btnInfo.onclick = () => {
-  alert('ℹ️ Información del Curso:\n\n📚 Álgebra Lineal - Unidad I\n🎓 Universidad del SABES\n📅 2025\n\n✨ Proyecto educativo interactivo\n✅ Cumple WCAG 2.2 AA\n🌐 Diseño responsive');
+  alert('ℹ️ Información del Curso:\n\n📚 Álgebra Lineal - Unidad III\n🎓 Universidad del SABES\n\n✨ Proyecto educativo interactivo\n✅ Cumple WCAG 2.2 AA\n🌐 Diseño responsive');
 };
 
 const btnExit = document.getElementById('btn-exit'); if (btnExit) btnExit.onclick = () => {
@@ -3368,79 +2664,49 @@ function initializeParticles() {
   }
 }
 
-// ========== CALCULADORA MATRICIAL ==========
-function calculateMatrixOperation(operation) {
-  const a11 = parseFloat(document.getElementById('a11').value) || 0;
-  const a12 = parseFloat(document.getElementById('a12').value) || 0;
-  const a21 = parseFloat(document.getElementById('a21').value) || 0;
-  const a22 = parseFloat(document.getElementById('a22').value) || 0;
-  
-  const b11 = parseFloat(document.getElementById('b11').value) || 0;
-  const b12 = parseFloat(document.getElementById('b12').value) || 0;
-  const b21 = parseFloat(document.getElementById('b21').value) || 0;
-  const b22 = parseFloat(document.getElementById('b22').value) || 0;
-  
-  const resultDiv = document.getElementById('calculatorResult');
-  
-  let result = '';
-  
-  if (operation === 'add') {
-    const r11 = a11 + b11;
-    const r12 = a12 + b12;
-    const r21 = a21 + b21;
-    const r22 = a22 + b22;
-    result = `$$A + B = \\begin{pmatrix}${r11} & ${r12} \\\\ ${r21} & ${r22}\\end{pmatrix}$$`;
-  } else if (operation === 'multiply') {
-    const r11 = a11 * b11 + a12 * b21;
-    const r12 = a11 * b12 + a12 * b22;
-    const r21 = a21 * b11 + a22 * b21;
-    const r22 = a21 * b12 + a22 * b22;
-    result = `$$A \\times B = \\begin{pmatrix}${r11} & ${r12} \\\\ ${r21} & ${r22}\\end{pmatrix}$$`;
-  } else if (operation === 'determinant') {
-    const det = a11 * a22 - a12 * a21;
-    result = `$$\\det(A) = ${a11} \\cdot ${a22} - ${a12} \\cdot ${a21} = ${det}$$`;
-  }
-  
-  resultDiv.innerHTML = result;
-  
-  // Renderizar MathJax solo si está listo
-  if (window.mathJaxReady && typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
-    MathJax.typesetPromise([resultDiv]).catch((err) => console.log('MathJax error:', err));
-  }
-}
-
-function updateCalculator() {
-  // Actualización automática se puede implementar aquí si se desea
-}
-
 // ========== QUIZ INTERACTIVO ==========
 function checkAnswer(element, type) {
   // Remover clases previas de todas las opciones del mismo quiz
-  const options = element.parentElement.querySelectorAll('.quiz-option');
+  const quizContainer = element.closest('.quiz-options');
+  if (!quizContainer) return;
+  
+  const options = quizContainer.querySelectorAll('.quiz-option');
   options.forEach(opt => {
     opt.classList.remove('correct', 'incorrect');
-    opt.style.pointerEvents = 'auto';
   });
   
   // Agregar clase según respuesta
   if (type === 'correct') {
     element.classList.add('correct');
-    // Desactivar todas las opciones después de responder correctamente
-    options.forEach(opt => {
-      opt.style.pointerEvents = 'none';
-    });
     setTimeout(() => {
-      alert('✅ ¡Correcto! Excelente.\n\n💡 Has demostrado comprensión del tema.');
+      alert('✅ ¡Correcto! Excelente comprensión del tema.');
     }, 100);
   } else {
     element.classList.add('incorrect');
     setTimeout(() => {
-      alert('❌ Incorrecto. \n\n📚 Te recomendamos revisar el contenido de esta semana.\n\n💪 ¡Inténtalo de nuevo!');
-      // Remover la marca incorrecta para permitir otro intento
+      alert('❌ Incorrecto. Revisa el contenido del tema.');
       setTimeout(() => {
         element.classList.remove('incorrect');
       }, 500);
     }, 100);
+  }
+}
+
+function checkFinalAnswer(element, type) {
+  checkAnswer(element, type);
+  
+  // Contar respuestas correctas
+  const quizContainer = element.closest('.quiz-container');
+  const correctAnswers = quizContainer.querySelectorAll('.quiz-option.correct').length;
+  
+  // Si hay al menos 3 correctas, mostrar mensaje final
+  if (correctAnswers >= 3) {
+    setTimeout(() => {
+      if (!quizContainer.dataset.celebrated) {
+        quizContainer.dataset.celebrated = 'true';
+        alert('🎉 ¡Excelente trabajo! Has demostrado un buen dominio de la unidad.');
+      }
+    }, 500);
   }
 }
 
@@ -3452,131 +2718,231 @@ function toggleInfo(infoId) {
   }
 }
 
-// ========== THREE.JS - VISUALIZACIÓN 3D ==========
-function initializeThreeJS() {
-  const canvas = document.getElementById('threejs-canvas');
-  if (!canvas) return;
-  
-  // Configurar escena
-  scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x1a1f2e);
-  
-  // Configurar cámara
-  camera = new THREE.PerspectiveCamera(75, canvas.parentElement.clientWidth / 400, 0.1, 1000);
-  camera.position.set(5, 5, 5);
-  camera.lookAt(0, 0, 0);
-  
-  // Configurar renderer
-  renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-  renderer.setSize(canvas.parentElement.clientWidth, 400);
-  
-  // Agregar luces
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-  scene.add(ambientLight);
-  
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-  directionalLight.position.set(10, 10, 10);
-  scene.add(directionalLight);
-  
-  // Crear cubo con geometría
-  const geometry = new THREE.BoxGeometry(2, 2, 2);
-  const material = new THREE.MeshPhongMaterial({ 
-    color: 0x6496fa,
-    transparent: true,
-    opacity: 0.8
-  });
-  cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
-  
-  // Agregar wireframe
-  const wireframe = new THREE.WireframeGeometry(geometry);
-  const line = new THREE.LineSegments(wireframe);
-  line.material.color.setHex(0x00d4aa);
-  line.material.linewidth = 2;
-  cube.add(line);
-  
-  // Agregar ejes
-  axes = new THREE.AxesHelper(4);
-  scene.add(axes);
-  
-  // Agregar grid
-  grid = new THREE.GridHelper(10, 10, 0x6496fa, 0x2a3142);
-  scene.add(grid);
-  
-  // Iniciar animación
-  animate3D();
-}
-
-function animate3D() {
-  animationId = requestAnimationFrame(animate3D);
-  
-  if (cube && !isAnimating) {
-    cube.rotation.x += 0.005;
-    cube.rotation.y += 0.005;
-  }
-  
-  if (renderer && scene && camera) {
-    renderer.render(scene, camera);
-  }
-}
-
-function animateTransformation(type) {
-  if (!cube) return;
-  
-  isAnimating = true;
-  let progress = 0;
-  const duration = 2000; // 2 segundos
-  const startTime = Date.now();
-  
-  const originalScale = { x: 1, y: 1, z: 1 };
-  const originalRotation = { x: cube.rotation.x, y: cube.rotation.y, z: cube.rotation.z };
-  
-  function animateStep() {
-    const currentTime = Date.now();
-    progress = Math.min((currentTime - startTime) / duration, 1);
+// ========== CALCULADORA DE MÍNIMOS CUADRADOS ==========
+function calculateLeastSquares() {
+  try {
+    // Obtener datos
+    const xValues = [];
+    const yValues = [];
     
-    if (type === 'rotation') {
-      cube.rotation.y = originalRotation.y + progress * Math.PI * 2;
-    } else if (type === 'scaling') {
-      const scale = 1 + Math.sin(progress * Math.PI) * 0.5;
-      cube.scale.set(scale, scale, scale);
-    } else if (type === 'shear') {
-      cube.rotation.x = originalRotation.x + Math.sin(progress * Math.PI * 2) * 0.5;
+    for (let i = 1; i <= dataPointCount; i++) {
+      const x = parseFloat(document.getElementById(`x${i}`).value);
+      const y = parseFloat(document.getElementById(`y${i}`).value);
+      
+      if (!isNaN(x) && !isNaN(y)) {
+        xValues.push(x);
+        yValues.push(y);
+      }
     }
     
-    if (progress < 1) {
-      requestAnimationFrame(animateStep);
-    } else {
-      isAnimating = false;
+    if (xValues.length < 2) {
+      throw new Error('Se necesitan al menos 2 puntos de datos');
     }
+    
+    const n = xValues.length;
+    
+    // Calcular sumatorias
+    let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+    
+    for (let i = 0; i < n; i++) {
+      sumX += xValues[i];
+      sumY += yValues[i];
+      sumXY += xValues[i] * yValues[i];
+      sumX2 += xValues[i] * xValues[i];
+    }
+    
+    // Calcular coeficientes
+    const denom = n * sumX2 - sumX * sumX;
+    
+    if (Math.abs(denom) < 1e-10) {
+      throw new Error('Los datos no permiten calcular una regresión lineal única');
+    }
+    
+    const b = (n * sumXY - sumX * sumY) / denom;
+    const a = (sumY - b * sumX) / n;
+    
+    // Calcular coeficiente de determinación R²
+    let ssTotal = 0, ssResidual = 0;
+    const yMean = sumY / n;
+    
+    for (let i = 0; i < n; i++) {
+      const yPred = a + b * xValues[i];
+      ssTotal += Math.pow(yValues[i] - yMean, 2);
+      ssResidual += Math.pow(yValues[i] - yPred, 2);
+    }
+    
+    const rSquared = 1 - (ssResidual / ssTotal);
+    
+    // Mostrar resultados
+    const resultDiv = document.getElementById('calculationResult');
+    resultDiv.innerHTML = `
+      <h4>Resultados de la Regresión Lineal:</h4>
+      <p><strong>Ecuación:</strong> y = ${a.toFixed(2)} + ${b.toFixed(2)}x</p>
+      <p><strong>Coeficiente de determinación (R²):</strong> ${rSquared.toFixed(4)}</p>
+      <p><strong>Interpretación:</strong></p>
+      <ul style="text-align: left; margin-left: 20px;">
+        <li><strong>Intercepto (a):</strong> Cuando x = 0, y ≈ ${a.toFixed(2)}</li>
+        <li><strong>Pendiente (b):</strong> Por cada unidad que aumenta x, y aumenta ${b.toFixed(2)} unidades</li>
+        <li><strong>R²:</strong> ${(rSquared * 100).toFixed(1)}% de la variación en y se explica por x</li>
+      </ul>
+      <p><strong>Predicción para x = 12:</strong> y ≈ ${(a + b * 12).toFixed(2)}</p>
+    `;
+    
+    // Renderizar MathJax si está disponible
+    if (window.mathJaxReady && typeof MathJax !== 'undefined') {
+      setTimeout(() => {
+        MathJax.typesetPromise([resultDiv]).catch(err => console.log('MathJax error:', err));
+      }, 100);
+    }
+    
+  } catch (error) {
+    document.getElementById('calculationResult').innerHTML = `
+      <h4>Error en el cálculo:</h4>
+      <p>${error.message}</p>
+      <p>Verifica que todos los datos sean números válidos.</p>
+    `;
+  }
+}
+
+function addDataPoint() {
+  dataPointCount++;
+  const table = document.getElementById('dataTable');
+  const newRow = table.insertRow(-1);
+  
+  newRow.innerHTML = `
+    <td>${dataPointCount}</td>
+    <td><input type="number" class="data-input" id="x${dataPointCount}" value="${dataPointCount + 1}" step="0.1"></td>
+    <td><input type="number" class="data-input" id="y${dataPointCount}" value="${(dataPointCount + 1) * 40}" step="0.1"></td>
+  `;
+}
+
+function resetCalculator() {
+  dataPointCount = 5;
+  
+  // Restablecer valores predeterminados
+  const defaultValues = [
+    [2, 100],
+    [3, 140],
+    [4, 180],
+    [5, 210],
+    [6, 240]
+  ];
+  
+  for (let i = 1; i <= 5; i++) {
+    document.getElementById(`x${i}`).value = defaultValues[i-1][0];
+    document.getElementById(`y${i}`).value = defaultValues[i-1][1];
   }
   
-  animateStep();
-}
-
-function resetTransformation() {
-  if (!cube) return;
-  cube.rotation.set(0, 0, 0);
-  cube.scale.set(1, 1, 1);
-  cube.position.set(0, 0, 0);
-}
-
-// Redimensionar canvas cuando cambia el tamaño de la ventana
-window.addEventListener('resize', () => {
-  const canvas = document.getElementById('threejs-canvas');
-  if (canvas && renderer && camera) {
-    const width = canvas.parentElement.clientWidth;
-    const height = 400;
-    renderer.setSize(width, height);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
+  // Eliminar filas adicionales
+  const table = document.getElementById('dataTable');
+  while (table.rows.length > 6) { // 1 encabezado + 5 filas
+    table.deleteRow(-1);
   }
-});
-</script>
+  
+  document.getElementById('calculationResult').innerHTML = `
+    <h4>Resultados del Cálculo:</h4>
+    <p>Ingresa datos y haz clic en "Calcular"</p>
+  `;
+}
 
-<div class="slide-counter">1 / 8</div>
+// ========== VERIFICADOR DE DEPENDENCIA LINEAL ==========
+function checkDependence2D() {
+  const v1x = parseFloat(document.getElementById('v1x').value);
+  const v1y = parseFloat(document.getElementById('v1y').value);
+  const v2x = parseFloat(document.getElementById('v2x').value);
+  const v2y = parseFloat(document.getElementById('v2y').value);
+  
+  if (isNaN(v1x) || isNaN(v1y) || isNaN(v2x) || isNaN(v2y)) {
+    document.getElementById('dependenceResult').innerHTML = `
+      <p>Por favor ingresa valores numéricos válidos.</p>
+    `;
+    return;
+  }
+  
+  // Calcular determinante
+  const determinant = v1x * v2y - v1y * v2x;
+  const areDependent = Math.abs(determinant) < 1e-10;
+  
+  let resultHTML = `
+    <h4>Análisis de Dependencia Lineal:</h4>
+    <p><strong>Vector 1:</strong> (${v1x}, ${v1y})</p>
+    <p><strong>Vector 2:</strong> (${v2x}, ${v2y})</p>
+    <p><strong>Determinante:</strong> ${determinant.toFixed(4)}</p>
+    <p><strong>Resultado:</strong> Los vectores son <strong>${areDependent ? 'LINEALMENTE DEPENDIENTES' : 'LINEALMENTE INDEPENDIENTES'}</strong></p>
+  `;
+  
+  if (areDependent) {
+    // Encontrar la relación
+    let relation = '';
+    if (v1x !== 0 && v2x !== 0) {
+      const ratio = v2x / v1x;
+      if (Math.abs(v2y - v1y * ratio) < 1e-10) {
+        relation = `v₂ = ${ratio.toFixed(2)} v₁`;
+      }
+    } else if (v1y !== 0 && v2y !== 0) {
+      const ratio = v2y / v1y;
+      if (Math.abs(v2x - v1x * ratio) < 1e-10) {
+        relation = `v₂ = ${ratio.toFixed(2)} v₁`;
+      }
+    }
+    
+    if (relation) {
+      resultHTML += `<p><strong>Relación:</strong> ${relation}</p>`;
+    }
+  } else {
+    resultHTML += `<p><strong>Interpretación:</strong> Los vectores forman una base de ℝ²</p>`;
+  }
+  
+  document.getElementById('dependenceResult').innerHTML = resultHTML;
+}
 
-<script>
+// ========== VERIFICADOR DE SUBESPACIOS ==========
+function checkSubspace() {
+  const a = parseFloat(document.getElementById('coeffA').value);
+  const b = parseFloat(document.getElementById('coeffB').value);
+  const c = parseFloat(document.getElementById('coeffC').value);
+  const d = parseFloat(document.getElementById('coeffD').value);
+  
+  if (isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d)) {
+    document.getElementById('subspaceResult').innerHTML = `
+      <p>Por favor ingresa coeficientes numéricos válidos.</p>
+    `;
+    return;
+  }
+  
+  const equation = `${a !== 0 ? a + 'x' : ''}${b !== 0 ? (b > 0 && a !== 0 ? '+' : '') + b + 'y' : ''}${c !== 0 ? (c > 0 && (a !== 0 || b !== 0) ? '+' : '') + c + 'z' : ''} = ${d}`;
+  
+  // Un plano es subespacio si y solo si d = 0
+  const isSubspace = Math.abs(d) < 1e-10;
+  
+  let resultHTML = `
+    <h4>Análisis del Conjunto:</h4>
+    <p><strong>Ecuación del plano:</strong> ${equation}</p>
+    <p><strong>Es subespacio de ℝ³:</strong> <strong>${isSubspace ? 'SÍ ✅' : 'NO ❌'}</strong></p>
+  `;
+  
+  if (isSubspace) {
+    resultHTML += `
+      <p><strong>Verificación de axiomas:</strong></p>
+      <ol style="text-align: left; margin-left: 20px;">
+        <li>✅ Contiene al origen (0,0,0): ${a}·0 + ${b}·0 + ${c}·0 = 0 = ${d}</li>
+        <li>✅ Cerrado bajo suma: Si (x₁,y₁,z₁) y (x₂,y₂,z₂) satisfacen la ecuación, su suma también la satisface</li>
+        <li>✅ Cerrado bajo multiplicación por escalar: Si (x,y,z) satisface la ecuación, α(x,y,z) también la satisface</li>
+      </ol>
+      <p><strong>Dimensión:</strong> ${(a === 0 && b === 0 && c === 0) ? '3 (todo ℝ³)' : '2 (plano)'}</p>
+    `;
+  } else {
+    resultHTML += `
+      <p><strong>Razón:</strong> No contiene al vector cero (origen)</p>
+      <p><strong>Verificación:</strong> (0,0,0) no satisface la ecuación porque ${a}·0 + ${b}·0 + ${c}·0 = 0 ≠ ${d}</p>
+      <p><strong>Conclusión:</strong> Es un plano paralelo al subespacio ${a}x + ${b}y + ${c}z = 0, pero desplazado</p>
+    `;
+  }
+  
+  document.getElementById('subspaceResult').innerHTML = resultHTML;
+}
+
+// ========== ACTUALIZACIÓN DEL CONTADOR ==========
 (function() {
   'use strict';
   
@@ -3595,15 +2961,12 @@ window.addEventListener('resize', () => {
         progressBar.style.width = ((currentIndex + 1) / total * 100) + '%';
       }
       
-      const slideCount = document.getElementById('slideCount');
-      if (slideCount) {
-        slideCount.textContent = `${currentIndex + 1} / ${total}`;
-      }
-      
-      const counter = document.querySelector('.slide-counter');
-      if (counter) {
+      // Actualizar contador visual si existe
+      const counters = document.querySelectorAll('.slide-counter');
+      counters.forEach(counter => {
         counter.textContent = `${currentIndex + 1} / ${total}`;
-      }
+      });
+      
     } catch (e) {
       console.warn('Error actualización:', e.message);
     }
@@ -3632,728 +2995,20 @@ window.addEventListener('resize', () => {
       }
     });
     
+    // Crear contador si no existe
+    if (!document.querySelector('.slide-counter')) {
+      const counter = document.createElement('div');
+      counter.className = 'slide-counter';
+      counter.textContent = '1 / ' + document.querySelectorAll('.slide').length;
+      document.body.appendChild(counter);
+    }
+    
     console.log('✅ Actualización de progreso activada');
   });
 })();
 </script>
 
+<div class="slide-counter">1 / 8</div>
 
-<!-- ========================================= -->
-<!-- SLIDES AGREGADAS: 3.2, 3.3, 3.3.1 -->
-<!-- ========================================= -->
-
-
-  <!-- SLIDE NUEVA: 3.2 DEPENDENCIA E INDEPENDENCIA LINEAL -->
-  <div class="slide" id="slide-3-2">
-    <div class="content-container">
-      <div class="week-section">
-        <div class="week-badge">Semana 9 - Parte 2</div>
-        <h2>3.2 Dependencia e Independencia Lineal</h2>
-        
-        <div class="citation">
-          "La independencia lineal es uno de los conceptos más importantes del álgebra lineal. Determina si un conjunto de vectores contiene información redundante o si cada vector aporta algo único." 
-          <strong>— David C. Lay (2016)</strong>
-        </div>
-        
-        <button class="info-btn" onclick="toggleInfo('info-combinacion-lineal')">info ¿Qué es una combinación lineal?</button>
-        <div id="info-combinacion-lineal" class="info-box">
-          <h4>💡 Concepto clave</h4>
-          <p><strong>Combinación lineal:</strong> Es una suma de vectores, cada uno multiplicado por un escalar.</p>
-          <p><strong>Ejemplo:</strong> Si $\mathbf{v}_1 = (1,0)$ y $\mathbf{v}_2 = (0,1)$, entonces $3\mathbf{v}_1 + 2\mathbf{v}_2 = (3,2)$ es una combinación lineal.</p>
-          <p>👉 Cualquier vector en ℝ² puede escribirse como combinación lineal de $\mathbf{v}_1$ y $\mathbf{v}_2$.</p>
-        </div>
-        
-        <h3>Combinación Lineal</h3>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición:</strong> Sean $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n$ vectores en un espacio vectorial $V$. Una <strong>combinación lineal</strong> de estos vectores es:
-            <p style="text-align: center; margin: 15px 0;">
-              $c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\mathbf{v}_n$
-            </p>
-            donde $c_1, c_2, \ldots, c_n$ son escalares.
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 1:</strong> Combinación lineal en ℝ³<br><br>
-            
-            Sean $\mathbf{v}_1 = (1, 0, 1)$, $\mathbf{v}_2 = (2, 1, 0)$, $\mathbf{v}_3 = (0, 1, 1)$<br><br>
-            
-            <strong>Pregunta:</strong> ¿Es $\mathbf{w} = (5, 3, 2)$ una combinación lineal de estos vectores?<br><br>
-            
-            <strong>Solución:</strong> Debemos encontrar $c_1, c_2, c_3$ tales que:<br>
-            $c_1(1, 0, 1) + c_2(2, 1, 0) + c_3(0, 1, 1) = (5, 3, 2)$<br><br>
-            
-            Sistema de ecuaciones:<br>
-            $c_1 + 2c_2 = 5$<br>
-            $c_2 + c_3 = 3$<br>
-            $c_1 + c_3 = 2$<br><br>
-            
-            Resolviendo: $c_1 = 1$, $c_2 = 2$, $c_3 = 1$<br>
-            ✅ Sí, $\mathbf{w} = 1\mathbf{v}_1 + 2\mathbf{v}_2 + 1\mathbf{v}_3$
-          </div>
-        </div>
-
-        <h3>Dependencia Lineal</h3>
-        
-        <button class="info-btn" onclick="toggleInfo('info-dependencia')">info ¿Qué significa dependencia?</button>
-        <div id="info-dependencia" class="info-box">
-          <h4>💡 Concepto clave</h4>
-          <p><strong>Dependencia lineal:</strong> Significa que al menos uno de los vectores es "redundante" - puede expresarse como combinación de los demás.</p>
-          <p><strong>Analogía:</strong> En un conjunto de herramientas, si tienes tres destornilladores idénticos, dos son redundantes.</p>
-        </div>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición:</strong> Un conjunto de vectores $\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}$ es <strong>linealmente dependiente</strong> si existen escalares $c_1, c_2, \ldots, c_n$ (no todos cero) tales que:
-            <p style="text-align: center; margin: 15px 0;">
-              $c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\mathbf{v}_n = \mathbf{0}$
-            </p>
-          </div>
-        </div>
-
-        <h3>Independencia Lineal</h3>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición:</strong> Un conjunto de vectores es <strong>linealmente independiente</strong> si la única solución de:
-            <p style="text-align: center; margin: 15px 0;">
-              $c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\mathbf{v}_n = \mathbf{0}$
-            </p>
-            es $c_1 = c_2 = \cdots = c_n = 0$ (la solución trivial).
-          </div>
-        </div>
-
-        <div class="two-col">
-          <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo 2:</strong> Dependencia lineal<br><br>
-              
-              $\mathbf{v}_1 = (1, 2, 3)$<br>
-              $\mathbf{v}_2 = (2, 4, 6)$<br>
-              $\mathbf{v}_3 = (0, 1, 1)$<br><br>
-              
-              Observación: $\mathbf{v}_2 = 2\mathbf{v}_1$<br><br>
-              
-              Verificación:<br>
-              $2\mathbf{v}_1 - 1\mathbf{v}_2 + 0\mathbf{v}_3 = \mathbf{0}$<br><br>
-              
-              Coeficientes no todos cero ⇒ <strong>Dependientes</strong> ❌
-            </div>
-          </div>
-          
-          <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo 3:</strong> Independencia lineal<br><br>
-              
-              $\mathbf{v}_1 = (1, 0, 0)$<br>
-              $\mathbf{v}_2 = (0, 1, 0)$<br>
-              $\mathbf{v}_3 = (0, 0, 1)$<br><br>
-              
-              Para que $c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + c_3\mathbf{v}_3 = \mathbf{0}$:<br>
-              $(c_1, c_2, c_3) = (0, 0, 0)$<br><br>
-              
-              Solo solución trivial ⇒ <strong>Independientes</strong> ✅
-            </div>
-          </div>
-        </div>
-
-        <h3>Método para Verificar Independencia</h3>
-        
-        <div class="card">
-          <h4>🔧 Procedimiento usando matrices</h4>
-          <ol style="text-align: left; line-height: 2; font-size: 0.95rem;">
-            <li><strong>Paso 1:</strong> Formar una matriz con los vectores como columnas</li>
-            <li><strong>Paso 2:</strong> Reducir a forma escalonada</li>
-            <li><strong>Paso 3:</strong> Contar pivotes (columnas líderes)</li>
-            <li><strong>Conclusión:</strong> Si hay un pivote por cada vector ⇒ Independientes</li>
-          </ol>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 4:</strong> Método matricial<br><br>
-            
-            ¿Son independientes $\mathbf{v}_1 = (1, 2, 1)$, $\mathbf{v}_2 = (2, -1, 1)$, $\mathbf{v}_3 = (1, -8, 1)$?<br><br>
-            
-            <strong>Paso 1:</strong> Matriz con vectores como columnas<br>
-            $A = egin{bmatrix} 1 & 2 & 1 \ 2 & -1 & -8 \ 1 & 1 & 1 \end{bmatrix}$<br><br>
-            
-            <strong>Paso 2:</strong> Reducir (Gauss-Jordan)<br>
-            $egin{bmatrix} 1 & 0 & -3 \ 0 & 1 & 2 \ 0 & 0 & 0 \end{bmatrix}$<br><br>
-            
-            <strong>Paso 3:</strong> Solo 2 pivotes para 3 vectores<br>
-            ⇒ <strong>Dependientes</strong> ❌<br>
-            (La tercera columna es combinación de las otras dos)
-          </div>
-        </div>
-
-        <h3>Propiedades Importantes</h3>
-        
-        <div class="card">
-          <h4>📋 Teoremas fundamentales</h4>
-          <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
-            <li>🔹 Si un conjunto contiene al vector cero, es linealmente dependiente</li>
-            <li>🔹 Dos vectores son dependientes si y solo si uno es múltiplo del otro</li>
-            <li>🔹 Cualquier conjunto con más vectores que la dimensión del espacio es dependiente</li>
-            <li>🔹 En ℝⁿ, n+1 o más vectores siempre son dependientes</li>
-          </ul>
-        </div>
-
-        <!-- Quiz interactivo -->
-        <div class="quiz-container">
-          <h3>🧠 Autoevaluación - Dependencia e Independencia</h3>
-          
-          <div class="quiz-question">
-            1. ¿Cuándo un conjunto de vectores es linealmente independiente?
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Cuando todos los vectores son diferentes entre sí</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Cuando la única combinación lineal que da 0 es la trivial</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Cuando los vectores son perpendiculares</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Cuando hay más vectores que dimensiones</div>
-          </div>
-          
-          <div class="quiz-question">
-            2. Si un conjunto contiene al vector cero, entonces:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Es linealmente independiente</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Es linealmente dependiente</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Puede ser independiente o dependiente</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">No forma un espacio vectorial</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE NUEVA: 3.3 BASE Y DIMENSIÓN -->
-  <div class="slide" id="slide-3-3">
-    <div class="content-container">
-      <div class="week-section">
-        <div class="week-badge">Semana 9 - Parte 3</div>
-        <h2>3.3 Base y Dimensión de un Espacio Vectorial</h2>
-        
-        <div class="citation">
-          "Una base es el conjunto mínimo de vectores que contiene toda la información del espacio. Todo lo demás es redundante." 
-          <strong>— Gilbert Strang (2016)</strong>
-        </div>
-        
-        <button class="info-btn" onclick="toggleInfo('info-base')">info ¿Qué es una base?</button>
-        <div id="info-base" class="info-box">
-          <h4>💡 Concepto clave</h4>
-          <p><strong>Base:</strong> Es un conjunto de vectores que son "suficientes" para describir todo el espacio, pero sin redundancia.</p>
-          <p><strong>Analogía:</strong> Como los ingredientes básicos de una receta - si falta uno, no puedes hacer el plato completo. Si sobra uno, es innecesario.</p>
-          <p>👉 Cada vector del espacio puede escribirse de forma ÚNICA como combinación de vectores de la base.</p>
-        </div>
-        
-        <h3>Conjunto Generador</h3>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición:</strong> Un conjunto de vectores $S = \{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}$ <strong>genera</strong> un espacio vectorial $V$ si todo vector de $V$ puede escribirse como combinación lineal de vectores de $S$.
-            <p style="text-align: center; margin: 15px 0;">
-              $	ext{gen}(S) = \{c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\mathbf{v}_n : c_i \in \mathbb{R}\}$
-            </p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 1:</strong> Conjunto generador de ℝ²<br><br>
-            
-            Los vectores $\mathbf{v}_1 = (1, 0)$ y $\mathbf{v}_2 = (0, 1)$ generan todo ℝ²<br><br>
-            
-            <strong>Verificación:</strong> Cualquier $(x, y) \in \mathbb{R}^2$ puede escribirse como:<br>
-            $(x, y) = x(1, 0) + y(0, 1) = x\mathbf{v}_1 + y\mathbf{v}_2$<br><br>
-            
-            ✅ Por lo tanto, $	ext{gen}\{\mathbf{v}_1, \mathbf{v}_2\} = \mathbb{R}^2$
-          </div>
-        </div>
-
-        <h3>Definición de Base</h3>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición:</strong> Un conjunto de vectores $B = \{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}$ es una <strong>base</strong> de un espacio vectorial $V$ si:
-            <ol style="text-align: left; line-height: 2.2; margin-top: 10px;">
-              <li><strong>Genera todo el espacio:</strong> $	ext{gen}(B) = V$</li>
-              <li><strong>Es linealmente independiente:</strong> No hay vectores redundantes</li>
-            </ol>
-          </div>
-        </div>
-
-        <div class="card">
-          <h4>🎯 Características de una Base</h4>
-          <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
-            <li>✅ <strong>Conjunto mínimo generador:</strong> Si quitas un vector, ya no genera todo el espacio</li>
-            <li>✅ <strong>Conjunto máximo independiente:</strong> Si agregas un vector, se vuelve dependiente</li>
-            <li>✅ <strong>Representación única:</strong> Cada vector tiene coordenadas únicas respecto a la base</li>
-          </ul>
-        </div>
-
-        <h3>Bases Estándar</h3>
-        
-        <div class="two-col">
-          <div class="card">
-            <div class="example-box">
-              <strong>Base estándar de ℝ²:</strong><br><br>
-              
-              $\mathbf{e}_1 = (1, 0)$<br>
-              $\mathbf{e}_2 = (0, 1)$<br><br>
-              
-              $B = \{\mathbf{e}_1, \mathbf{e}_2\}$<br><br>
-              
-              Todo $(x, y) = x\mathbf{e}_1 + y\mathbf{e}_2$
-            </div>
-          </div>
-          
-          <div class="card">
-            <div class="example-box">
-              <strong>Base estándar de ℝ³:</strong><br><br>
-              
-              $\mathbf{e}_1 = (1, 0, 0)$<br>
-              $\mathbf{e}_2 = (0, 1, 0)$<br>
-              $\mathbf{e}_3 = (0, 0, 1)$<br><br>
-              
-              $B = \{\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3\}$
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 2:</strong> Otra base de ℝ²<br><br>
-            
-            $\mathbf{v}_1 = (1, 1)$, $\mathbf{v}_2 = (1, -1)$<br><br>
-            
-            <strong>¿Es base de ℝ²?</strong><br><br>
-            
-            1. <strong>¿Son independientes?</strong><br>
-            Si $c_1(1, 1) + c_2(1, -1) = (0, 0)$<br>
-            Entonces $c_1 + c_2 = 0$ y $c_1 - c_2 = 0$<br>
-            Solo solución: $c_1 = c_2 = 0$ ✅ Independientes<br><br>
-            
-            2. <strong>¿Generan ℝ²?</strong><br>
-            Para cualquier $(x, y)$, resolver:<br>
-            $c_1(1, 1) + c_2(1, -1) = (x, y)$<br>
-            $c_1 = rac{x+y}{2}$, $c_2 = rac{x-y}{2}$ ✅ Siempre tiene solución<br><br>
-            
-            Por lo tanto, $B = \{\mathbf{v}_1, \mathbf{v}_2\}$ <strong>es una base</strong> de ℝ²
-          </div>
-        </div>
-
-        <h3>Coordenadas respecto a una Base</h3>
-        
-        <button class="info-btn" onclick="toggleInfo('info-coordenadas')">info ¿Qué son coordenadas?</button>
-        <div id="info-coordenadas" class="info-box">
-          <h4>💡 Concepto clave</h4>
-          <p><strong>Coordenadas:</strong> Son los coeficientes que necesitas para escribir un vector como combinación de la base.</p>
-          <p><strong>Analogía:</strong> Como las direcciones en GPS - te dicen "cuánto" moverte en cada dirección de la base.</p>
-        </div>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición:</strong> Si $B = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ es base de $V$ y $\mathbf{w} = c_1\mathbf{v}_1 + \cdots + c_n\mathbf{v}_n$, entonces:
-            <p style="text-align: center; margin: 15px 0;">
-              $[\mathbf{w}]_B = egin{bmatrix} c_1 \ c_2 \ dots \ c_n \end{bmatrix}$
-            </p>
-            son las <strong>coordenadas de $\mathbf{w}$ respecto a la base $B$</strong>.
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 3:</strong> Coordenadas en base no estándar<br><br>
-            
-            Base: $B = \{(1, 1), (1, -1)\}$<br>
-            Vector: $\mathbf{w} = (3, 1)$<br><br>
-            
-            <strong>Encontrar $[\mathbf{w}]_B$:</strong><br>
-            $c_1(1, 1) + c_2(1, -1) = (3, 1)$<br><br>
-            
-            Sistema:<br>
-            $c_1 + c_2 = 3$<br>
-            $c_1 - c_2 = 1$<br><br>
-            
-            Solución: $c_1 = 2$, $c_2 = 1$<br><br>
-            
-            Por lo tanto: $[\mathbf{w}]_B = egin{bmatrix} 2 \ 1 \end{bmatrix}$<br><br>
-            
-            Verificación: $2(1, 1) + 1(1, -1) = (2+1, 2-1) = (3, 1)$ ✅
-          </div>
-        </div>
-
-        <h3>Dimensión de un Espacio Vectorial</h3>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición:</strong> La <strong>dimensión</strong> de un espacio vectorial $V$ es el número de vectores en cualquier base de $V$.
-            <p style="text-align: center; margin: 15px 0;">
-              $\dim(V) = n$ si cualquier base de $V$ tiene $n$ vectores
-            </p>
-          </div>
-        </div>
-
-        <div class="card">
-          <h4>📐 Teorema Fundamental</h4>
-          <p style="font-size: 0.95rem; line-height: 1.8;">
-            <strong>Todas las bases de un espacio vectorial tienen el mismo número de vectores.</strong><br><br>
-            Esto justifica la definición de dimensión como un número único.
-          </p>
-        </div>
-
-        <div class="two-col">
-          <div class="card">
-            <div class="example-box">
-              <strong>Dimensiones comunes:</strong><br><br>
-              
-              • $\dim(\mathbb{R}^2) = 2$<br>
-              • $\dim(\mathbb{R}^3) = 3$<br>
-              • $\dim(\mathbb{R}^n) = n$<br>
-              • $\dim(P_n) = n+1$ (polinomios grado $\le n$)<br>
-              • $\dim(M_{m 	imes n}) = mn$ (matrices $m 	imes n$)
-            </div>
-          </div>
-          
-          <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo 4:</strong> Dimensión de subespacio<br><br>
-              
-              $W = \{(x, y, 0) : x, y \in \mathbb{R}\} \subseteq \mathbb{R}^3$<br><br>
-              
-              Base de $W$: $\{(1, 0, 0), (0, 1, 0)\}$<br><br>
-              
-              $\dim(W) = 2$<br><br>
-              
-              $W$ es un plano en ℝ³
-            </div>
-          </div>
-        </div>
-
-        <h3>Cómo Encontrar una Base</h3>
-        
-        <div class="card">
-          <h4>🔧 Método general</h4>
-          <ol style="text-align: left; line-height: 2; font-size: 0.95rem;">
-            <li><strong>Formar matriz:</strong> Coloca los vectores generadores como filas</li>
-            <li><strong>Reducir a forma escalonada:</strong> Usa eliminación de Gauss</li>
-            <li><strong>Seleccionar filas no nulas:</strong> Estas forman una base</li>
-            <li><strong>Verificar:</strong> Deben ser independientes y generar el espacio</li>
-          </ol>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 5:</strong> Encontrar base del subespacio generado<br><br>
-            
-            Vectores: $\mathbf{v}_1 = (1, 2, 1)$, $\mathbf{v}_2 = (2, 4, 2)$, $\mathbf{v}_3 = (1, 1, 2)$<br><br>
-            
-            <strong>Paso 1:</strong> Matriz con vectores como filas<br>
-            $A = egin{bmatrix} 1 & 2 & 1 \ 2 & 4 & 2 \ 1 & 1 & 2 \end{bmatrix}$<br><br>
-            
-            <strong>Paso 2:</strong> Forma escalonada<br>
-            $egin{bmatrix} 1 & 2 & 1 \ 0 & -1 & 1 \ 0 & 0 & 0 \end{bmatrix}$<br><br>
-            
-            <strong>Paso 3:</strong> 2 filas no nulas<br>
-            Base: $\{(1, 2, 1), (0, -1, 1)\}$<br>
-            $\dim(	ext{gen}\{\mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3\}) = 2$
-          </div>
-        </div>
-
-        <!-- Quiz interactivo -->
-        <div class="quiz-container">
-          <h3>🧠 Autoevaluación - Base y Dimensión</h3>
-          
-          <div class="quiz-question">
-            1. Una base de un espacio vectorial V debe ser:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo linealmente independiente</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Solo un conjunto generador</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Linealmente independiente Y conjunto generador</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Un conjunto ortogonal</div>
-          </div>
-          
-          <div class="quiz-question">
-            2. ¿Cuál es la dimensión del espacio de matrices 2×3?
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">2</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">3</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">5</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">6</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE NUEVA: 3.3.1 CAMBIO DE BASE -->
-  <div class="slide" id="slide-3-3-1">
-    <div class="content-container">
-      <div class="week-section">
-        <div class="week-badge">Semana 9 - Parte 4</div>
-        <h2>3.3.1 Cambio de Base</h2>
-        
-        <div class="citation">
-          "El cambio de base es como cambiar de sistema de coordenadas. El vector es el mismo, pero sus coordenadas cambian según la perspectiva." 
-          <strong>— Stephen Boyd (2018)</strong>
-        </div>
-        
-        <button class="info-btn" onclick="toggleInfo('info-cambio-base')">info ¿Por qué cambiar de base?</button>
-        <div id="info-cambio-base" class="info-box">
-          <h4>💡 Concepto clave</h4>
-          <p><strong>Cambio de base:</strong> Es como cambiar de sistema de medición - de metros a pies, o de coordenadas cartesianas a polares.</p>
-          <p><strong>Aplicaciones:</strong></p>
-          <ul style="text-align: left;">
-            <li>🎨 Gráficos por computadora (rotar objetos)</li>
-            <li>📊 Análisis de componentes principales (PCA)</li>
-            <li>🤖 Machine learning (feature transformation)</li>
-            <li>📐 Física (cambios de sistema de referencia)</li>
-          </ul>
-        </div>
-        
-        <h3>El Problema del Cambio de Base</h3>
-        
-        <div class="card">
-          <h4>🎯 Planteamiento</h4>
-          <p style="font-size: 0.95rem; line-height: 1.8;">
-            <strong>Dado:</strong><br>
-            • Un vector $\mathbf{v}$ con coordenadas $[\mathbf{v}]_B$ en base $B$<br>
-            • Queremos encontrar sus coordenadas $[\mathbf{v}]_{B'}$ en base $B'$<br><br>
-            
-            <strong>Pregunta:</strong> ¿Cómo transformamos las coordenadas?
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo Visual:</strong> Cambio de base en ℝ²<br><br>
-            
-            <strong>Base estándar:</strong> $B = \{(1, 0), (0, 1)\}$<br>
-            <strong>Nueva base:</strong> $B' = \{(1, 1), (1, -1)\}$<br><br>
-            
-            Vector: $\mathbf{v} = (3, 1)$<br><br>
-            
-            En base $B$: $[\mathbf{v}]_B = egin{bmatrix} 3 \ 1 \end{bmatrix}$<br><br>
-            
-            ¿En base $B'$?: $[\mathbf{v}]_{B'} = ?$
-          </div>
-        </div>
-
-        <h3>Matriz de Cambio de Base</h3>
-        
-        <div class="card">
-          <div class="definition-box">
-            <strong>Definición:</strong> Sea $B = \{\mathbf{b}_1, \ldots, \mathbf{b}_n\}$ y $B' = \{\mathbf{b}'_1, \ldots, \mathbf{b}'_n\}$ bases de $V$.<br><br>
-            
-            La <strong>matriz de cambio de base</strong> de $B$ a $B'$, denotada $P_{B \leftarrow B'}$, satisface:
-            <p style="text-align: center; margin: 15px 0;">
-              $[\mathbf{v}]_B = P_{B \leftarrow B'} [\mathbf{v}]_{B'}$
-            </p>
-          </div>
-        </div>
-
-        <h3>Cómo Construir la Matriz de Cambio de Base</h3>
-        
-        <div class="card">
-          <h4>🔧 Método 1: Base B' a Base Estándar</h4>
-          <p style="font-size: 0.95rem; line-height: 1.8;">
-            Si queremos cambiar de base $B'$ a la base estándar $E$:
-          </p>
-          <ol style="text-align: left; line-height: 2; font-size: 0.95rem;">
-            <li><strong>Formar matriz:</strong> Las columnas son los vectores de $B'$ en coordenadas estándar</li>
-            <li><strong>$P_{E \leftarrow B'}$</strong> tiene como columnas los vectores de $B'$</li>
-          </ol>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 1:</strong> De base B' a estándar<br><br>
-            
-            Base: $B' = \{(1, 1), (1, -1)\}$<br><br>
-            
-            <strong>Matriz de cambio:</strong><br>
-            $P_{E \leftarrow B'} = egin{bmatrix} 1 & 1 \ 1 & -1 \end{bmatrix}$<br><br>
-            
-            Las columnas son los vectores de $B'$<br><br>
-            
-            <strong>Uso:</strong> Si $[\mathbf{v}]_{B'} = egin{bmatrix} 2 \ 1 \end{bmatrix}$<br><br>
-            
-            $[\mathbf{v}]_E = egin{bmatrix} 1 & 1 \ 1 & -1 \end{bmatrix} egin{bmatrix} 2 \ 1 \end{bmatrix} = egin{bmatrix} 3 \ 1 \end{bmatrix}$<br><br>
-            
-            Verificación: $2(1,1) + 1(1,-1) = (3, 1)$ ✅
-          </div>
-        </div>
-
-        <div class="card">
-          <h4>🔧 Método 2: Entre Dos Bases Arbitrarias</h4>
-          <p style="font-size: 0.95rem; line-height: 1.8;">
-            Para cambiar de base $B$ a base $B'$:
-          </p>
-          <ol style="text-align: left; line-height: 2; font-size: 0.95rem;">
-            <li><strong>Formar matriz aumentada:</strong> $[B' | B]$</li>
-            <li><strong>Reducir:</strong> Llevar a forma $[I | P_{B' \leftarrow B}]$</li>
-            <li><strong>Resultado:</strong> La parte derecha es la matriz de cambio</li>
-          </ol>
-        </div>
-
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 2:</strong> Cambio entre bases no estándar<br><br>
-            
-            $B = \{(1, 0), (0, 1)\}$ (estándar)<br>
-            $B' = \{(1, 1), (1, -1)\}$<br><br>
-            
-            Encontrar $P_{B' \leftarrow B}$:<br><br>
-            
-            <strong>Paso 1:</strong> Matriz aumentada<br>
-            $\left[egin{array}{cc|cc} 1 & 1 & 1 & 0 \ 1 & -1 & 0 & 1 \end{array}
-ight]$<br><br>
-            
-            <strong>Paso 2:</strong> Reducir<br>
-            $\left[egin{array}{cc|cc} 1 & 0 & 1/2 & 1/2 \ 0 & 1 & 1/2 & -1/2 \end{array}
-ight]$<br><br>
-            
-            <strong>Resultado:</strong><br>
-            $P_{B' \leftarrow B} = egin{bmatrix} 1/2 & 1/2 \ 1/2 & -1/2 \end{bmatrix}$
-          </div>
-        </div>
-
-        <h3>Propiedades del Cambio de Base</h3>
-        
-        <div class="card">
-          <h4>📋 Propiedades importantes</h4>
-          <ol style="text-align: left; line-height: 2; font-size: 0.95rem;">
-            <li><strong>Invertibilidad:</strong> $P_{B \leftarrow B'} = (P_{B' \leftarrow B})^{-1}$</li>
-            <li><strong>Composición:</strong> $P_{B \leftarrow B''} = P_{B \leftarrow B'} \cdot P_{B' \leftarrow B''}$</li>
-            <li><strong>Identidad:</strong> $P_{B \leftarrow B} = I$ (cambiar a la misma base)</li>
-            <li><strong>Preserva longitud:</strong> Si las bases son ortonormales, $P$ es ortogonal</li>
-          </ol>
-        </div>
-
-        <div class="two-col">
-          <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo 3:</strong> Verificar inversa<br><br>
-              
-              $P_{E \leftarrow B'} = egin{bmatrix} 1 & 1 \ 1 & -1 \end{bmatrix}$<br><br>
-              
-              $P_{B' \leftarrow E} = egin{bmatrix} 1/2 & 1/2 \ 1/2 & -1/2 \end{bmatrix}$<br><br>
-              
-              Verificar:<br>
-              $P_{E \leftarrow B'} \cdot P_{B' \leftarrow E} = I$ ✅
-            </div>
-          </div>
-          
-          <div class="card">
-            <div class="example-box">
-              <strong>Ejemplo 4:</strong> Composición<br><br>
-              
-              Si tenemos $B 	o B' 	o B''$<br><br>
-              
-              Entonces:<br>
-              $P_{B \leftarrow B''} = P_{B \leftarrow B'} \cdot P_{B' \leftarrow B''}$<br><br>
-              
-              Útil para cambios en cadena
-            </div>
-          </div>
-        </div>
-
-        <h3>Aplicación Práctica: Rotación en ℝ²</h3>
-        
-        <div class="card">
-          <div class="example-box">
-            <strong>Ejemplo 5:</strong> Rotar un vector 45°<br><br>
-            
-            <strong>Base estándar:</strong> $B = \{(1, 0), (0, 1)\}$<br>
-            <strong>Base rotada 45°:</strong> $B' = \left\{\left(rac{\sqrt{2}}{2}, rac{\sqrt{2}}{2}
-ight), \left(-rac{\sqrt{2}}{2}, rac{\sqrt{2}}{2}
-ight)
-ight\}$<br><br>
-            
-            Vector original: $\mathbf{v} = (1, 0)$<br><br>
-            
-            <strong>En la nueva base:</strong><br>
-            Resolver: $c_1\left(rac{\sqrt{2}}{2}, rac{\sqrt{2}}{2}
-ight) + c_2\left(-rac{\sqrt{2}}{2}, rac{\sqrt{2}}{2}
-ight) = (1, 0)$<br><br>
-            
-            Resultado: $c_1 = rac{\sqrt{2}}{2}$, $c_2 = -rac{\sqrt{2}}{2}$<br><br>
-            
-            $[\mathbf{v}]_{B'} = egin{bmatrix} \sqrt{2}/2 \ -\sqrt{2}/2 \end{bmatrix}$
-          </div>
-        </div>
-
-        <h3>Aplicaciones en Ingeniería</h3>
-        
-        <button class="info-btn" onclick="toggleInfo('info-aplicaciones-cambio')">info Aplicaciones reales</button>
-        <div id="info-aplicaciones-cambio" class="info-box">
-          <h4>🏭 Aplicaciones industriales</h4>
-          <ul style="text-align: left; line-height: 2;">
-            <li><strong>Robótica:</strong> Transformar coordenadas entre sistemas de referencia de articulaciones</li>
-            <li><strong>Gráficos:</strong> Cambiar entre coordenadas de objeto, mundo y cámara</li>
-            <li><strong>PCA:</strong> Proyectar datos a componentes principales</li>
-            <li><strong>Procesamiento de señales:</strong> Transformadas de Fourier y wavelets</li>
-          </ul>
-        </div>
-        
-        <div class="card">
-          <h4>🎨 Caso: Gráficos por Computadora</h4>
-          <p style="font-size: 0.95rem; line-height: 1.8;">
-            En un videojuego o animación 3D:<br><br>
-            
-            1. <strong>Coordenadas locales</strong> (del objeto): Base del modelo 3D<br>
-            2. <strong>Coordenadas del mundo</strong> (escena): Base global<br>
-            3. <strong>Coordenadas de cámara</strong> (vista): Base de la cámara<br><br>
-            
-            Cada transformación es un cambio de base mediante matrices
-          </p>
-        </div>
-
-        <div class="card">
-          <h4>📊 Caso: Análisis de Componentes Principales (PCA)</h4>
-          <p style="font-size: 0.95rem; line-height: 1.8;">
-            En machine learning y ciencia de datos:<br><br>
-            
-            • <strong>Base original:</strong> Variables medidas (altura, peso, edad, etc.)<br>
-            • <strong>Nueva base:</strong> Componentes principales (direcciones de máxima varianza)<br>
-            • <strong>Beneficio:</strong> Reducción de dimensionalidad, eliminar redundancia<br><br>
-            
-            El cambio de base permite visualizar datos de alta dimensión en 2D o 3D
-          </p>
-        </div>
-
-        <!-- Quiz interactivo -->
-        <div class="quiz-container">
-          <h3>🧠 Autoevaluación - Cambio de Base</h3>
-          
-          <div class="quiz-question">
-            1. La matriz de cambio de base $P_{B ← B'}$ transforma coordenadas:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">De base B a base B'</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">De base B' a base B</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">Entre vectores diferentes</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">No transforma coordenadas</div>
-          </div>
-          
-          <div class="quiz-question">
-            2. Si $P$ es la matriz de cambio de base B a B', entonces:
-          </div>
-          <div class="quiz-options">
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$P^2 = I$</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">$P^{-1}$ es la matriz de cambio de B' a B</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$P$ no es invertible</div>
-            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">$P = P^T$ siempre</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
